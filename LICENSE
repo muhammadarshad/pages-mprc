@@ -1,21 +1,29 @@
-MIT License
+Copyright (c) 2025-2026 Muhammad Arshad. All Rights Reserved.
 
-Copyright (c) 2026 Muhammad Arshad
+PROPRIETARY RESEARCH LICENSE
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This repository contains original research by Muhammad Arshad, including but
+not limited to: the MPRC Framework, QH4 Protocol, Z-Cancellation theory,
+Lattice Quantum Channel (LQC), SILIQ Goldbach verification engine, Discrete
+Lattice Mechanics (DLM), and all associated derivations, equations, figures,
+and supporting materials.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+NO PERMISSION IS GRANTED to any person or entity to:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+  1. Copy, reproduce, or duplicate this work in whole or in part.
+  2. Modify, adapt, or create derivative works.
+  3. Distribute, publish, sublicense, or transmit this work.
+  4. Use this work for commercial or academic purposes without explicit
+     written permission from the author.
+  5. Present any portion of this work as their own research.
+
+This work is made available for reading and review purposes only. The
+publication of this material on GitHub Pages does not constitute a grant
+of any license or permission beyond personal, non-commercial viewing.
+
+Any unauthorized use, reproduction, or distribution of this material may
+result in legal action.
+
+For permissions, contact the author directly.
+
+THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.

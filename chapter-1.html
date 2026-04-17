@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Chapter 1: Discrete Lattice Mechanics</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="book-title">The MPRC Framework</a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+      <li><a href="chapter-2.html">2. GUT v2</a></li>
+      <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+      <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+      <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+      <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+    </ul>
+  </nav>
+</aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>Discrete <span>Lattice Mechanics</span></h1>
+        <p class="chapter-subtitle">Space as a 3D lattice of spherical nodes — gravity, time, and particle structure from a single ternary state vector</p>
+      </header>
+
+      <div class="chapter-body">
+<!-- ABSTRACT -->
+  <section class="section">
+    <div class="section-num">Abstract</div>
+    <h2>A Discrete Mechanical <span class="accent">Model of Space</span></h2>
+
+    <p>Space is a cubic lattice of spherical nodes. Each node carries a four-component ternary state vector:</p>
+
+    <div class="eq-block">
+      <div class="eq-label">State vector</div>
+      <div class="eq-row">|ψ⟩ = [M, P, R, C] ∈ {−1, 0, +1}⁴</div>
+      <div class="eq-row cyan" style="margin-top:10px;">3⁴ = 81 total configurations · 5 tension levels T ∈ {0,1,2,3,4}</div>
+    </div>
+
+    <p>The four components — Movement, Position, Rotation, Charge — are bipolar wave modes sampled at the Nyquist minimum. M and P form a sin/cos quadrature pair governing transverse oscillation. R encodes angular velocity (helicity). C is isotropic radial breathing.</p>
+
+    <div class="pull-quote">
+      <p>A node with C = 0 and T = 3 is a photon. A node with C ≠ 0 and T = 4 is matter. The radial mode traps energy locally, producing rest mass and electric charge.</p>
+    </div>
+
+    <p><strong>Time</strong> is the update rate of local state transitions, governed by structural lattice tension T. <strong>Gravity</strong> emerges as accumulated tension: T(r) = 1 + GM/(rc²). The coupling constant k = 1/c² is forced by dimensional analysis and verified by GPS time dilation with a residual of 0.01 μs/day.</p>
+  </section>
+
+  <hr>
+
+  <!-- AXIOMS -->
+  <section class="section">
+    <div class="section-num">01 · Foundations</div>
+    <h2>Axioms and <span class="accent">State Equation</span></h2>
+
+    <h3>The Lattice</h3>
+    <p>Space is a discrete, quantifiable, 3D geometric lattice of physical <strong>Spherical Nodes</strong> connected by geometric structural threads (tension). A node has perfect spherical symmetry in its vacuum state: X = −X′, Y = −Y′, Z = Z. The Z axis carries no prime — it is the structural depth axis that holds the sphere's diameter intact. Z does not oscillate; it is geometry, not dynamics.</p>
+
+    <h3>The MPRC Modes</h3>
+    <table class="data-table">
+      <tr><th>Mode</th><th>Symbol</th><th>+1</th><th>−1</th><th>0</th><th>Physical Role</th></tr>
+      <tr><td>Movement</td><td>M</td><td>East</td><td>West</td><td>still</td><td>Horizontal translation (cos θ)</td></tr>
+      <tr><td>Position</td><td>P</td><td>North</td><td>South</td><td>still</td><td>Vertical translation (sin θ)</td></tr>
+      <tr><td>Rotation</td><td>R</td><td>CW</td><td>CCW</td><td>still</td><td>Angular momentum (helicity)</td></tr>
+      <tr><td>Charge</td><td>C</td><td>Expand</td><td>Contract</td><td>neutral</td><td>Radial breathing</td></tr>
+    </table>
+
+    <h3>Tension and Particle Types</h3>
+    <div class="eq-block">
+      <div class="eq-label">Tension classification</div>
+      <div class="eq-row">T = |M| + |P| + |R| + |C|</div>
+      <div class="eq-row">T = 0  →  vacuum node</div>
+      <div class="eq-row">T = 1,2  →  sub-photon excitations (cannot self-propagate)</div>
+      <div class="eq-row cyan">T = 3, C = 0  →  photon (minimum complete transverse wave)</div>
+      <div class="eq-row cyan">T = 4, C ≠ 0  →  matter (radial mode adds rest mass + charge)</div>
+    </div>
+
+    <h3>Gravity as Tension</h3>
+    <div class="eq-block">
+      <div class="eq-label">Gravitational tension field</div>
+      <div class="eq-row">T(r) = 1 + GM / (rc²)</div>
+      <div class="eq-row">Clock rate:  f(r) = 1 / T(r)</div>
+      <div class="eq-row cyan">GPS prediction: +38.6 μs/day  ·  Residual: 0.01 μs/day  [VERIFIED]</div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- KEY RESULTS -->
+  <section class="section">
+    <div class="section-num">02 · Results</div>
+    <h2>Key Results and <span class="accent">Epistemic Status</span></h2>
+
+    <table class="data-table">
+      <tr><th>Claim</th><th>Status</th><th>Source</th></tr>
+      <tr><td>GPS +38.6 μs/day</td><td><span class="ok">VERIFIED</span> (residual 0.01 μs/day)</td><td>exp1–2</td></tr>
+      <tr><td>Photon = minimum complete transverse wave</td><td><span class="ok">DERIVED</span> (T=1,2 cannot self-propagate)</td><td>exp7</td></tr>
+      <tr><td>B₄ symmetry, order 384</td><td><span class="ok">DERIVED</span></td><td>exp8</td></tr>
+      <tr><td>Pati–Salam 3+3+1+1 per C-sector</td><td><span class="ok">DERIVED</span></td><td>exp8</td></tr>
+      <tr><td>Solar system clock chain (Mars +489, Moon +56 μs/day)</td><td><span class="ok">DERIVED</span></td><td>exp3</td></tr>
+      <tr><td>No event horizon (f &gt; 0 everywhere)</td><td><span class="warn">PREDICTION</span></td><td>exp4</td></tr>
+      <tr><td>Gravity-induced entanglement decoherence</td><td><span class="warn">PREDICTION</span></td><td>exp6</td></tr>
+      <tr><td>Torus winding number constant across galaxies</td><td><span class="fail">FALSIFIED</span> (CV = 152%)</td><td>exp2</td></tr>
+      <tr><td>f ≥ 2/3 minimum</td><td><span class="fail">WRONG</span> (corrected: f → 0 as r → 0)</td><td>exp4</td></tr>
+    </table>
+  </section>
+
+  <hr>
+
+  <!-- SYMMETRY -->
+  <section class="section">
+    <div class="section-num">03 · Symmetry</div>
+    <h2>B₄ Symmetry and <span class="accent">Gauge Structure</span></h2>
+
+    <p>Symmetry analysis (exp8) reveals that the tension Hamiltonian Ĥ<sub>L</sub> is invariant under the hyperoctahedral group B₄ = S₄ ⋉ ℤ₂⁴ (order 384). The Weyl groups of SU(4), SU(3), and SU(2) embed naturally as subgroups via the breaking chain:</p>
+
+    <div class="eq-block">
+      <div class="eq-label">Symmetry breaking chain</div>
+      <div class="eq-row">SU(4)_MPRC → SU(3)_MPR × U(1)_C → SU(2)_MP × U(1)_R × U(1)_C</div>
+      <div class="eq-row cyan" style="margin-top:10px;">16 matter states at T=4 decompose as 8 = 3+3+1+1 per charge sector under S₃</div>
+      <div class="eq-row cyan">Matches Pati–Salam pattern of quark triplets and lepton singlets</div>
+    </div>
+
+    <p>The 81-state space organizes into tension levels, and the symmetry breaking chain maps directly to the observed gauge group structure of the Standard Model — not as an input assumption but as a derived consequence of the B₄ lattice symmetry.</p>
+  </section>
+
+  <hr>
+
+  <!-- STRONG FIELD -->
+  <section class="section">
+    <div class="section-num">04 · Predictions</div>
+    <h2>Strong-Field <span class="accent">Divergence from GR</span></h2>
+
+    <p>In the weak-field regime, the discrete lattice and General Relativity agree. GPS time dilation is verified to 0.01 μs/day. The solar system clock chain (Sun → Mercury → Venus → Earth → Mars → Moon) is derived from the same tension equation.</p>
+
+    <p>In the strong-field regime, the lattice and GR diverge fundamentally. GR gives f = 0 at the Schwarzschild radius r<sub>s</sub> — the event horizon, a boundary from which nothing escapes. The lattice gives f &gt; 0 everywhere.</p>
+
+    <div class="eq-block">
+      <div class="eq-label">Strong-field clock rate</div>
+      <div class="eq-row">GR:      f(r_s) = 0  →  event horizon  [existing model]</div>
+      <div class="eq-row cyan">Lattice: f(r) > 0 everywhere  →  no true horizon  [PREDICTION]</div>
+      <div class="eq-row" style="margin-top:10px;font-size:13px;color:var(--muted);">Observable consequence: LIGO echo waveforms should show f > 0 at apparent horizon</div>
+    </div>
+
+    <p>The stability analysis (exp7) resolved a further question: sub-photon excitations at T = 1 and T = 2 cannot self-propagate. T = 1 states migrate under coupling but lack coherent direction. T = 2 non-propagating states split apart. The photon at T = 3 is the minimum complete transverse wave — its maximum clock rate is now derived, not assumed.</p>
+  </section>
+      </div>
+
+      <div class="chapter-nav-footer">
+<a href="index.html">← Table of Contents</a>
+  <a href="index.html">MPRC Book</a>
+  <a href="chapter-2.html">Chapter 2: GUT v2 →</a>
+</div>
+      
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

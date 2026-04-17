@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Chapter 5: Lattice Quantum Channel</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="book-title">The MPRC Framework</a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+      <li><a href="chapter-2.html">2. GUT v2</a></li>
+      <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+      <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+      <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+      <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+    </ul>
+  </nav>
+</aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>Lattice Quantum<br/><span>Channel</span></h1>
+        <p class="chapter-subtitle">A zero-exchange quantum-resistant communication channel from the geometry of gravity — key agreement without classical exchange</p>
+      </header>
+
+      <div class="chapter-body">
+<!-- ABSTRACT -->
+  <section class="section">
+    <div class="section-num">Abstract</div>
+    <h2>Key Agreement Without <span class="accent">Key Exchange</span></h2>
+
+    <p>The Lattice Quantum Channel (LQC) is a communication channel in which key agreement, forward secrecy, and tamper detection emerge as unavoidable consequences of MPRC lattice geometry — without any classical key exchange and without any cryptographic primitive imported from outside the physical model.</p>
+
+    <div class="pull-quote">
+      <p>The key is not exchanged — it is inherited. Both nodes carry the full key from birth. No wire transmission is needed.</p>
+    </div>
+
+    <p>The foundation is the <strong>conjugate birth invariant</strong>: two nodes created as a conjugate pair satisfy d_A + d_B ≡ 0 (mod p) as a structural consequence of Z_p ring geometry — as unavoidable as complementary angles summing to π.</p>
+
+    <div class="highlight-box">
+      <div class="big">2²⁵⁴</div>
+      <p class="sub">Effective keyspace (derived) — exceeds NIST 2¹²⁸ minimum by 2¹²⁶ · all properties are theoretical derivations, not yet experimentally tested</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- PHYSICAL FOUNDATION -->
+  <section class="section">
+    <div class="section-num">01 · Physical Foundation</div>
+    <h2>The Conjugate <span class="accent">Birth Invariant</span></h2>
+
+    <h3>The MPRC Node</h3>
+    <p>A node's state is |ψ⟩ = [M, P, R, C] ∈ {−1, 0, +1}⁴. Local tension T = |M| + |P| + |R| + |C| ∈ {0,1,2,3,4}. (Imported from Model-1.)</p>
+
+    <h3>The Conjugate Pair</h3>
+    <p>The Z_p ring geometry at node birth forces the conjugate relationship. If node A is born with phase d_A, its structural partner B must satisfy:</p>
+
+    <div class="eq-block">
+      <div class="eq-label">Conjugate birth invariant</div>
+      <div class="eq-row cyan">d_A + d_B ≡ 0  (mod p)</div>
+      <div class="eq-row" style="font-size:13px;color:var(--muted);margin-top:8px;">This is the u ↺ / u′ ↻ clockwise–counterclockwise pair of the MPRC Rotation mode.</div>
+      <div class="eq-row" style="font-size:13px;color:var(--muted);">Maintained non-locally under any symmetric tension fluctuation at every lattice tick.</div>
+    </div>
+
+    <h3>The Tension Clock (Ratchet Source)</h3>
+    <p>The lattice clock rate is f(r) = 1/(1 + GM/rc²). The running phase advances at every tick:</p>
+
+    <div class="eq-block">
+      <div class="eq-label">Phase evolution (forward secrecy)</div>
+      <div class="eq-row">d_A(t) = (d_A(0) + Σᵢ δᵢ)  mod p</div>
+      <div class="eq-row">d_B(t) = (d_B(0) − Σᵢ δᵢ)  mod p</div>
+      <div class="eq-row cyan" style="margin-top:10px;">d_A(t) + d_B(t) ≡ 0 maintained at every tick  [DERIVED, exp35]</div>
+      <div class="eq-row" style="font-size:13px;color:var(--muted);">Past session keys are unrecoverable after each advance — the physical ratchet IS the physics.</div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- SECURITY STACK -->
+  <section class="section">
+    <div class="section-num">02 · Security Stack</div>
+    <h2>Physical Security <span class="accent">Without Cryptographic Primitives</span></h2>
+
+    <h3>Distinguished from BB84 and E91</h3>
+
+    <table class="data-table">
+      <tr><th>Property</th><th>BB84 / E91</th><th>LQC</th></tr>
+      <tr><td>Key creation</td><td>Distributed through quantum channel</td><td>Born into nodes at creation</td></tr>
+      <tr><td>Key transmission</td><td>Quantum channel required</td><td>No transmission — invariant inherited</td></tr>
+      <tr><td>Forward secrecy</td><td>Classical software ratchet</td><td>Physical lattice clock ratchet</td></tr>
+      <tr><td>Security basis</td><td>No-cloning theorem</td><td>Z_p ring conjugate invariant</td></tr>
+      <tr><td>Hash function</td><td>Required for reconciliation</td><td>Not used — no external primitives</td></tr>
+      <tr><td>Keyspace</td><td>~2¹²⁸ (NIST minimum)</td><td>~2²⁵⁴ (exceeds by 2¹²⁶)</td></tr>
+    </table>
+
+    <h3>Security Properties</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Key Agreement</h4>
+        <p>Both parties derive identical keystream independently from the conjugate invariant — no exchange over any channel.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Forward Secrecy</h4>
+        <p>Lattice tension clock advances d_A(t) and d_B(t) at every tick — past keys unrecoverable after each advance.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Tamper Detection</h4>
+        <p>Zero-false-negative tamper detection — any external perturbation breaks the conjugate invariant immediately.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Quantum Resistance</h4>
+        <p>The invariant is structural, not computational. Shor's algorithm has no attack surface on the birth invariant.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- EXPERIMENTS -->
+  <section class="section">
+    <div class="section-num">03 · Experiments</div>
+    <h2>Seven Experiments, <span class="accent">One Stack</span></h2>
+
+    <table class="data-table">
+      <tr><th>Exp</th><th>Test</th><th>Result</th></tr>
+      <tr><td>exp32</td><td>Conjugate birth invariant — initial derivation</td><td style="color:var(--green)">DERIVED</td></tr>
+      <tr><td>exp33</td><td>Invariant under symmetric tension fluctuations</td><td style="color:var(--green)">DERIVED</td></tr>
+      <tr><td>exp34</td><td>Zookeeper recognizes but does not produce invariant</td><td style="color:var(--green)">DERIVED</td></tr>
+      <tr><td>exp35</td><td>Running phase evolution — forward secrecy verified</td><td style="color:var(--green)">DERIVED</td></tr>
+      <tr><td>exp36</td><td>OTP keystream generation from conjugate pair</td><td style="color:var(--green)">DERIVED</td></tr>
+      <tr><td>exp37</td><td>Tamper detection — zero false negatives</td><td style="color:var(--green)">DERIVED</td></tr>
+      <tr><td>exp38</td><td>Physical survival budget across 6 environments</td><td style="color:var(--green)">DERIVED</td></tr>
+    </table>
+  </section>
+
+  <hr>
+
+  <!-- SURVIVAL BUDGET -->
+  <section class="section">
+    <div class="section-num">04 · Physical Envelope</div>
+    <h2>Survival Budget: <span class="accent">Tabletop to Deep Space</span></h2>
+
+    <p>The physical survival budget τ = a / (γ_g · c) bounds the operating envelope of the channel. Six environments are analyzed:</p>
+
+    <div class="eq-block">
+      <div class="eq-label">Physical survival budget τ = a / (γ_g · c)</div>
+      <div class="eq-row">Tabletop laboratory    →  τ large, γ_g negligible</div>
+      <div class="eq-row">Near Earth orbit (LEO) →  f(r) = 0.9999999..., coherence intact</div>
+      <div class="eq-row">Lunar surface          →  f(r) shifts, detectable from Earth</div>
+      <div class="eq-row">Deep space probe       →  negligible gravitational gradient</div>
+      <div class="eq-row cyan">All environments within operating envelope for coherent key derivation</div>
+    </div>
+
+    <p>The LQC is distinguished from existing QKD not just in protocol but in physical mechanism: the entanglement is <strong>born into the nodes at creation</strong> — it is not created and distributed through a quantum channel. The Zookeeper recognizes the invariant; it does not produce it.</p>
+  </section>
+      </div>
+
+      <div class="chapter-nav-footer">
+<a href="chapter-4.html">← Chapter 4: Z-Cancellation</a>
+  <a href="index.html">MPRC Book</a>
+  <a href="chapter-6.html">Chapter 6: SILIQ →</a>
+</div>
+      
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

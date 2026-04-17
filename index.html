@@ -1,726 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>A Geometric Surprise: When Charge Disappears — MPRC Framework</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap');
-
-  :root {
-    --bg:       #0a0f1e;
-    --bg2:      #0d1428;
-    --bg3:      #111830;
-    --blue:     #4A9EFF;
-    --cyan:     #00CFFF;
-    --green:    #4AFF9E;
-    --red:      #FF6B6B;
-    --gold:     #FFD700;
-    --text:     #c8d4e8;
-    --muted:    #5a6a88;
-    --border:   #1a2a4a;
-    --accent:   #4A9EFF;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Crimson Pro', Georgia, serif;
-    font-size: 19px;
-    line-height: 1.75;
-    overflow-x: hidden;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 40px;
-    position: relative;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 50%, rgba(74,158,255,0.06) 0%, transparent 70%),
-      var(--bg);
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(74,158,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74,158,255,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-  }
-
-  .hero-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--blue);
-    text-transform: uppercase;
-    margin-bottom: 28px;
-    opacity: 0.8;
-  }
-
-  .hero h1 {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    font-weight: 700;
-    line-height: 1.15;
-    color: #ffffff;
-    max-width: 820px;
-    margin-bottom: 24px;
-    letter-spacing: -0.5px;
-  }
-
-  .hero h1 span {
-    color: var(--cyan);
-  }
-
-  .hero-sub {
-    font-size: 1.2rem;
-    color: var(--muted);
-    max-width: 600px;
-    font-style: italic;
-    margin-bottom: 48px;
-    font-weight: 300;
-  }
-
-  .hero-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: var(--muted);
-    font-size: 11px;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 2px;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  .scroll-hint::after {
-    content: '';
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--muted), transparent);
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.9; }
-  }
-
-  /* ── MAIN CONTENT ── */
-  .article {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 40px 120px;
-  }
-
-  /* ── SECTION ── */
-  .section {
-    margin-bottom: 100px;
-  }
-
-  .section-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--blue);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    opacity: 0.7;
-  }
-
-  .section h2 {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 600;
-    color: #ffffff;
-    line-height: 1.2;
-    margin-bottom: 28px;
-    letter-spacing: -0.3px;
-  }
-
-  .section h2 .accent { color: var(--cyan); }
-
-  p {
-    margin-bottom: 22px;
-    color: var(--text);
-    font-weight: 300;
-  }
-
-  p strong {
-    color: #ffffff;
-    font-weight: 600;
-  }
-
-  p em {
-    color: var(--blue);
-    font-style: italic;
-  }
-
-  /* ── PULL QUOTE ── */
-  .pull-quote {
-    border-left: 3px solid var(--cyan);
-    padding: 24px 32px;
-    margin: 48px 0;
-    background: rgba(0,207,255,0.04);
-    border-radius: 0 8px 8px 0;
-  }
-
-  .pull-quote p {
-    font-size: 1.3rem;
-    font-style: italic;
-    color: #e8f0ff;
-    margin: 0;
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  /* ── EQUATION BLOCK ── */
-  .eq-block {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 28px 36px;
-    margin: 36px 0;
-    overflow-x: auto;
-  }
-
-  .eq-block .eq-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .eq-block .eq-row {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 15px;
-    color: #ffffff;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .eq-block .eq-row .note {
-    font-size: 12px;
-    color: var(--muted);
-    font-family: 'Crimson Pro', serif;
-    font-style: italic;
-  }
-
-  .eq-block .eq-row.highlight { color: var(--cyan); }
-  .eq-block .eq-row.struck .var-z {
-    text-decoration: line-through;
-    color: var(--red);
-    text-decoration-color: var(--red);
-    text-decoration-thickness: 2px;
-  }
-
-  /* ── SVG FIGURE ── */
-  .figure {
-    margin: 56px -20px;
-    position: relative;
-  }
-
-  .figure svg,
-  .figure img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
-  }
-
-  .figure-caption {
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-top: 16px;
-  }
-
-  /* ── STEP BOX ── */
-  .steps {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 40px 0;
-  }
-
-  .step {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 24px;
-  }
-
-  .step-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--blue);
-    opacity: 0.3;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .step h4 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: #ffffff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .step p {
-    font-size: 15px;
-    color: var(--muted);
-    margin: 0;
-  }
-
-  /* ── COMPARISON TABLE ── */
-  .compare {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 36px 0;
-    font-size: 15px;
-  }
-
-  .compare th {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    padding: 12px 16px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-align: left;
-  }
-
-  .compare th:first-child { color: var(--blue); }
-  .compare th:last-child { color: var(--green); }
-
-  .compare td {
-    border: 1px solid var(--border);
-    padding: 12px 16px;
-    vertical-align: top;
-    color: var(--text);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  .compare tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-
-  /* ── HIGHLIGHT BOX ── */
-  .highlight-box {
-    border: 1px solid var(--cyan);
-    background: rgba(0,207,255,0.05);
-    border-radius: 8px;
-    padding: 28px 32px;
-    margin: 48px 0;
-    text-align: center;
-  }
-
-  .highlight-box .big {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 8px;
-  }
-
-  .highlight-box .sub {
-    font-size: 1rem;
-    color: var(--muted);
-    font-style: italic;
-    font-weight: 300;
-    margin: 0;
-  }
-
-  /* ── DIVIDER ── */
-  .divider {
-    border: none;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--border), transparent);
-    margin: 60px 0;
-  }
-
-  /* ── FOOTER ── */
-  .footer {
-    border-top: 1px solid var(--border);
-    padding: 60px 40px;
-    text-align: center;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .footer-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .footer p {
-    color: var(--muted);
-    font-size: 15px;
-    font-style: italic;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .article { padding: 0 20px 80px; }
-    .steps { grid-template-columns: 1fr; }
-    .figure { margin: 40px -10px; }
-    body { font-size: 17px; }
-  }
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<meta name="description" content="The MPRC Framework — A Discrete Geometric Theory of Nature. Original research by Muhammad Arshad.">
+<title>The MPRC Framework — A Discrete Geometric Theory of Nature</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════════ -->
-<!-- HERO                                                    -->
-<!-- ══════════════════════════════════════════════════════ -->
+<div class="book-layout">
+  <aside class="book-sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="book-title">The MPRC Framework</a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+      <li><a href="chapter-2.html">2. GUT v2</a></li>
+      <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+      <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+      <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+      <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+    </ul>
+  </nav>
+</aside>
 
-<section class="hero">
-  <div class="hero-tag">MPRC Framework · QH4 Geometry · 2026</div>
-  <h1>A Geometric Surprise:<br/><span>When Charge Disappears</span><br/>from the Equation</h1>
-  <p class="hero-sub">How a discrete ring geometry reveals that atomic number Z controls metals — but vanishes completely in the gas phase</p>
-  <div class="hero-meta">Z-Cancellation Discovery · Gas Phase Protocol · 14 Species Verified</div>
-  <div class="scroll-hint">scroll</div>
-</section>
+  <main class="book-main">
+    <div class="book-content">
 
-<!-- ══════════════════════════════════════════════════════ -->
-<!-- ARTICLE BODY                                           -->
-<!-- ══════════════════════════════════════════════════════ -->
+      <header class="chapter-header">
+        <h1>The MPRC Framework</h1>
+        <p class="chapter-subtitle">A Discrete Geometric Theory of Nature.</p>
+      </header>
 
-<main class="article">
+      <div class="chapter-body">
+<!-- ── INTRODUCTION ── -->
+  <div class="book-intro">
+    <p>MPRC is a discrete geometric framework in which space is a cubic lattice of spherical nodes, each carrying a four-component ternary state vector — Movement, Position, Rotation, Charge. From this single structure emerge gravity, electromagnetism, particle stability, atomic prediction, cryptographic key agreement, and a verified Goldbach verification engine.</p>
 
-  <!-- ── SECTION 1: THE GEOMETRY ── -->
-  <section class="section">
-    <div class="section-num">01 · Foundation</div>
-    <h2>The Geometry That <span class="accent">Nature Chose</span></h2>
+    <p>The six papers collected here represent the current verified state of the framework. Each paper is self-contained but builds on a shared geometric foundation. No paper introduces a free parameter without geometric justification or explicit acknowledgment that derivation is pending.</p>
+  </div>
 
-    <p>Every stable structure in nature converges toward one shape: the sphere. Planets, atoms, bubbles, cells. This is not coincidence. The sphere is the only shape that satisfies what we call the <strong>closing condition</strong> — a centroid at the interior, equidistant to all boundary points, with inward tension T&nbsp;&gt;&nbsp;0 holding it together.</p>
-
-    <p>The question is: what is the discrete skeleton of this closing geometry? How does nature count its own resolution?</p>
-
-    <p>The answer comes from spin. Every electron has two spin states — up and down. Double that through successive shell completions and you arrive at 256. Not because of computing architecture. Because the atom itself resolves to 256 states.</p>
-
-    <!-- SVG 1: Spin doubling -->
-    <div class="figure">
-      <object type="image/svg+xml" data="01_spin_doubling.svg" style="width:100%;border-radius:10px;">
-        <!-- fallback -->
-      </object>
-      <div class="figure-caption">Fig. 1 — 256 from spin quantization: 2¹ → 2⁸ through successive shell doublings</div>
+  <section class="section author-intro">
+    <div class="section-num">Author</div>
+    <div class="author-block">
+      <img src="author.jpeg" alt="Muhammad Arshad" class="author-photo">
+      <div class="author-text">
+        <h2 style="margin-bottom:24px;">Muhammad Arshad: <span class="accent">Engineering Discipline into Physics</span></h2>
+        <p>Muhammad Arshad's research in MPRC is organized around one constraint: a theory should declare clearly what is derived, what is verified, what has failed, and what remains open. That discipline appears throughout this book, where geometric claims are carried only as far as the underlying derivation justifies.</p>
+        <p>MPRC starts from geometry, closure, and discrete state structure rather than from fitted constants or disconnected phenomenology. The six chapters collected here present that program as an active research framework: some results are already verified, some are derived but still developing, and some problems remain intentionally unresolved.</p>
+      </div>
     </div>
 
-    <p>Digital computing chose 8-bit bytes because 256 was already there in atomic physics. The causality runs: <em>atomic geometry → discrete sphere → 256 states → digital computing inherited it.</em></p>
+  </section>
 
-    <p>This is <strong>QH4 — Quwa Halaqa</strong>, the force of the ring. A discrete ring of 256 states, four quadrants of 64, with four vacuum boundaries. The ring sits at the equator of the sphere. The u-axis threads through the poles.</p>
-
-    <!-- SVG 2: QH4 ring flat -->
-    <div class="figure">
-      <object type="image/svg+xml" data="02_qh4_ring_v2.svg" style="width:100%;border-radius:10px;">
-      </object>
-      <div class="figure-caption">Fig. 2 — QH4 ring: 252 active states, 4 vacuum boundaries {0,64,128,192}, u-axis spinor eye at center</div>
+  <!-- ── SCORECARD ── -->
+  <div class="scorecard">
+    <div class="score-item">
+      <div class="score-val green">0.21%</div>
+      <div class="score-label">Metals MAPE <span class="badge ver">Verified</span></div>
     </div>
+    <div class="score-item">
+      <div class="score-val green">17+</div>
+      <div class="score-label">Gas Species <span class="badge ver">Verified</span></div>
+    </div>
+    <div class="score-item">
+      <div class="score-val">256</div>
+      <div class="score-label">QH4 Ring States <span class="badge der">Derived</span></div>
+    </div>
+    <div class="score-item">
+      <div class="score-val">0</div>
+      <div class="score-label">Goldbach Failures <span class="badge der">Derived</span></div>
+    </div>
+    <div class="score-item">
+      <div class="score-val">2²⁵⁴</div>
+      <div class="score-label">LQC Keyspace <span class="badge der">Derived</span></div>
+    </div>
+  </div>
 
-    <p>The u-axis is not a point. It is a spinor — two coupled circles making a 720° rotation, forming the eye shape at the center. This is the <strong>+1D closing dimension</strong>: not a fourth spatial direction, but the tension T that makes the ring one closed object.</p>
+  <hr>
 
-    <!-- SVG 3: 3D sphere -->
-    <div class="figure">
-      <object type="image/svg+xml" data="02_qh4_3d_sphere.svg" style="width:100%;border-radius:10px;">
-      </object>
-      <div class="figure-caption">Fig. 3 — QH4 on the sphere: ring at equator, u-axis eye threading pole to pole as +1D closing tension</div>
+  <!-- ── TABLE OF CONTENTS ── -->
+  <section>
+    <div class="section-num">Contents</div>
+    <h2 style="margin-bottom:32px;">Six Papers, <span class="accent">One Foundation</span></h2>
+
+    <div class="toc-grid">
+
+      <a class="ch-card" href="chapter-1.html">
+        <div class="ch-num">Chapter 1 · Model-1</div>
+        <h3>Discrete Lattice Mechanics</h3>
+        <p>Space as a cubic lattice of spherical MPRC nodes. The state vector |ψ⟩ = [M,P,R,C]. Gravity as tension. GPS verified. B₄ symmetry, Pati–Salam structure derived.</p>
+        <span class="ch-status verified">GPS Verified</span>
+      </a>
+
+      <a class="ch-card" href="chapter-2.html">
+        <div class="ch-num">Chapter 2 · Model-2</div>
+        <h3>Grand Unified Theory — DLM v2</h3>
+        <p>Continuation targeting seven open gaps. Node geometry formalized with two circles and six pillars. Discrete Laplacian derived. Spin-statistics closed. Dark matter remains open.</p>
+        <span class="ch-status active">Active Research</span>
+      </a>
+
+      <a class="ch-card" href="chapter-3.html">
+        <div class="ch-num">Chapter 3 · QH4 Protocol</div>
+        <h3>QH4 Atomic Prediction Protocol</h3>
+        <p>Arshad's Sieve on Z₂₅₆. Stability metric S derived from ring geometry. Metals protocol achieves 0.21% MAPE across 12 elements Z=3 to Z=92. Gas phase protocol verified across 17+ species.</p>
+        <span class="ch-status verified">0.21% MAPE</span>
+      </a>
+
+      <a class="ch-card" href="chapter-4.html">
+        <div class="ch-num">Chapter 4 · Discovery</div>
+        <h3>Z-Cancellation: When Charge Disappears</h3>
+        <p>In the gas phase, atomic number Z cancels exactly from the stability equation. Gas stability is mass and temperature driven — not charge driven. Verified across 14 gas species.</p>
+        <span class="ch-status verified">14 Species Verified</span>
+      </a>
+
+      <a class="ch-card" href="chapter-5.html">
+        <div class="ch-num">Chapter 5 · Model-3</div>
+        <h3>Lattice Quantum Channel (LQC)</h3>
+        <p>Zero-exchange quantum-resistant communication from MPRC lattice geometry. Key agreement without classical exchange. Conjugate birth invariant d_A + d_B ≡ 0 (mod p). 2²⁵⁴ keyspace.</p>
+        <span class="ch-status active">Derived — Not Yet Tested</span>
+      </a>
+
+      <a class="ch-card" href="chapter-6.html">
+        <div class="ch-num">Chapter 6 · Model-4</div>
+        <h3>SILIQ: Goldbach Verification Engine</h3>
+        <p>Z₂₅₆ ring walk for Goldbach pair verification. BPAND gate on biopod geometry. 999,999 even integers tested, zero failures. 8 DERIVED, 0 FAILED — derived from MPRC ring structure.</p>
+        <span class="ch-status verified">999,999 Computed — 0 Failures</span>
+      </a>
+
     </div>
   </section>
 
-  <hr class="divider"/>
+  <hr>
 
-  <!-- ── SECTION 2: THE UNIT CELL ── -->
-  <section class="section">
-    <div class="section-num">02 · Structure</div>
-    <h2>The Unit Cell: <span class="accent">12 + 4</span></h2>
-
-    <p>Before we can understand why atoms behave differently in metals versus gases, we need to understand one unit of the QH4 structure. Take one box from the lattice. It has twelve edges — four on the front face, four on the back, four connecting them through depth. These twelve edges are the <strong>3D spatial structure</strong>.</p>
-
-    <p>But twelve edges alone are floating geometry. They have no center. They cannot hold together as one closed object. What makes them one object is the four tension threads running from u at the center out to each corner pair. These four threads are the <strong>+1D closing force</strong> — T&nbsp;&gt;&nbsp;0 at every point.</p>
-
-    <!-- SVG unit cell -->
-    <div class="figure">
-      <object type="image/svg+xml" data="06_qh4_unit_cell.svg" style="width:100%;border-radius:10px;">
-      </object>
-      <div class="figure-caption">Fig. 4 — Unit cell: 12 spatial edges + 4 tension threads from u = one closed object</div>
+  <!-- ── SUPPLEMENTARY ── -->
+  <section>
+    <div class="section-num">Supplementary</div>
+    <h2 style="margin-bottom:24px;">Additional <span class="accent">Documents</span></h2>
+    <div class="toc-grid">
+      <a class="ch-card" href="chapter-4.html">
+        <div class="ch-num">Supplementary · A</div>
+        <h3>Z-Cancellation Extended Treatment</h3>
+        <p>The gas-phase Z-cancellation derivation and verification data are presented in Chapter 4.</p>
+        <span class="ch-status foundation">See Chapter 4</span>
+      </a>
     </div>
+  </section>
+
+  <hr>
+
+  <!-- ── FRAMEWORK OVERVIEW ── -->
+  <section>
+    <div class="section-num">Foundation</div>
+    <h2 style="margin-bottom:28px;">The <span class="accent">Geometric Core</span></h2>
+
+    <p style="margin-bottom:22px;">Every paper in this book derives from a single geometric statement: <strong>a 3D+1D spherical node carrying a ternary state vector [M, P, R, C]</strong>. The four components are not independent — they are the four faces of the same spherical geometry:</p>
 
     <div class="eq-block">
-      <div class="eq-label">The closing condition</div>
-      <div class="eq-row">12 edges  +  4 threads  =  one closed object</div>
-      <div class="eq-row highlight">3D structure  +  +1D tension  =  T(u, ∂R) &gt; 0</div>
+      <div class="eq-label">State vector</div>
+      <div class="eq-row" style="font-size:16px;">|ψ⟩ = [M, P, R, C] ∈ {−1, 0, +1}⁴</div>
+      <div class="eq-row">M — Movement (u-circle, East/West, cos θ)</div>
+      <div class="eq-row">P — Position (u'-circle, North/South, sin θ)</div>
+      <div class="eq-row">R — Rotation (angular velocity, CW/CCW helicity)</div>
+      <div class="eq-row">C — Charge (radial breathing, expand/contract)</div>
+      <div class="eq-row cyan" style="margin-top:10px;">T = |M| + |P| + |R| + |C| ∈ {0,1,2,3,4}  ← tension level</div>
+      <div class="eq-row">Photon: T=3, C=0 · Matter: T=4 · 3⁴ = 81 total states</div>
     </div>
 
-    <p>Without the four threads, 12 edges have no u, no T, no closing condition. They are an unbounded process — not a shape. This is exactly why Gabriel's Horn is not a valid geometric object. It has edges but no closing condition. Its infinite surface area is not a paradox. It is the expected result of geometry without T.</p>
+    <p style="margin-bottom:22px;">The QH4 ring (Quwa Halaqa — force of the ring) maps this geometry to 256 discrete states: four quadrants of 64, vacuum boundaries at {0,64,128,192}. This is the atom's own resolution — inherited by digital computing, not invented by it.</p>
   </section>
-
-  <hr class="divider"/>
-
-  <!-- ── SECTION 3: THE LATTICE ── -->
-  <section class="section">
-    <div class="section-num">03 · Lattice</div>
-    <h2>The Lattice is a <span class="accent">Network of u-Centers</span></h2>
-
-    <p>When unit cells tile into a lattice, something important happens at the shared corners. The corner nodes are no longer owned by one cell — they belong to multiple u-centers simultaneously. Each interior corner is the handoff point between four neighboring u-centers.</p>
-
-    <!-- SVG lattice -->
-    <div class="figure">
-      <object type="image/svg+xml" data="05_qh4_lattice.svg" style="width:100%;border-radius:10px;">
-      </object>
-      <div class="figure-caption">Fig. 5 — QH4 lattice: each u-center threads to shared corners — collective B field emerges from overlapping tension fields</div>
-    </div>
-
-    <p>This is why a metal lattice generates a magnetic shield B. Every u-center is a spinning spinor — the 720° oloid rotation we saw in the unit cell. When u-centers are connected through shared nodes, their rotations reinforce each other collectively. The B field in the metals equation is not applied from outside. <strong>It emerges from the collective rotation of u-centers through shared corners.</strong></p>
-
-    <p>Remove the lattice — as in a free gas atom — and there are no shared corners. Each u-center stands alone. B is no longer structural. It depends entirely on external confinement and temperature.</p>
-  </section>
-
-  <hr class="divider"/>
-
-  <!-- ── SECTION 4: THE TWO PROBLEMS ── -->
-  <section class="section">
-    <div class="section-num">04 · The Closing Condition in Mathematics</div>
-    <h2>Two Problems, <span class="accent">One Principle</span></h2>
-
-    <p>The closing condition is not abstract. It appears in concrete mathematics whenever you have a structure with a hidden center. Two examples — one geometric, one algebraic — both solved the same way: find u first.</p>
-
-    <p><strong>Problem 1:</strong> A quadrilateral has sides a=20, b=32, c=16, d=? The standard approach cannot find d from three sides alone. But with the closing condition — rotational equilibrium at u requires a+d = b+c — the answer is immediate.</p>
-
-    <!-- SVG Problem 2 square -->
-    <div class="figure">
-      <object type="image/svg+xml" data="08_problem2_square.svg" style="width:100%;border-radius:10px;">
-      </object>
-      <div class="figure-caption">Fig. 6 — Square equilibrium: u-axis threads through centroid, rotational balance forces a+d = b+c = 48, d = 28</div>
-    </div>
-
-    <p><strong>Problem 2:</strong> Solve (x+3)(x+5)(x+7)(x+9) = 9. A standard quartic resists. But pair the outer and inner factors — they reveal two elliptical planes with a shared centroid at x=−6. The roots are the residue around that center.</p>
-
-    <!-- SVG Problem 1 4D -->
-    <div class="figure">
-      <object type="image/svg+xml" data="07_problem1_4d_product.svg" style="width:100%;border-radius:10px;">
-      </object>
-      <div class="figure-caption">Fig. 7 — 4D product: centroid at x=−6 (u=0), outer and inner planes pair to give roots x = −6 ± √10</div>
-    </div>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h4>Observe Shape</h4>
-        <p>Identify the dimensional structure — 2D area or 4D volume</p>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h4>Find Centroid</h4>
-        <p>Shift origin to u — the thread that makes it one object</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h4>Subtract Both</h4>
-        <p>Isolate the rotational wobble around the center</p>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <h4>Collect Residue</h4>
-        <p>The missing value or roots emerge from the closing balance</p>
-      </div>
+
+      
+      
     </div>
+  </main>
+</div>
 
-    <p>Both problems are the same problem. Different shape. Same principle. <strong>Without u, the answer is underdetermined. With u, it is immediate.</strong></p>
-  </section>
-
-  <hr class="divider"/>
-
-  <!-- ── SECTION 5: THE DISCOVERY ── -->
-  <section class="section">
-    <div class="section-num">05 · The Discovery</div>
-    <h2>When <span class="accent">Z Disappears</span></h2>
-
-    <p>In atomic physics, the atomic number Z — the number of protons in the nucleus — is expected to govern how an atom behaves. More protons, stronger electric field, different energy. This is the foundation of nearly every atomic model from Bohr onward.</p>
-
-    <p>So when we extended the QH4 framework to the gas phase, the result was unexpected.</p>
-
-    <div class="pull-quote">
-      <p>Z cancelled out completely. Not approximately. Exactly. The stability metric for a gas atom reduces to mass, temperature, and geometry — charge is gone.</p>
-    </div>
-
-    <p>Here is why. In a metal, the magnetic shielding B is built into the lattice structure. Every u-center connects to its neighbors through shared nodes. The collective rotation of u-centers generates B — and that collective rotation scales with Z through the electron configuration.</p>
-
-    <p>In a free gas atom, there is no lattice. No shared corners. B depends entirely on external confinement geometry and thermal energy. When you substitute this gas-phase B expression into the general stability equation — the Z in the numerator and denominator cancel exactly.</p>
-
-    <!-- SVG Z-cancellation -->
-    <div class="figure">
-      <object type="image/svg+xml" data="03_z_cancellation.svg" style="width:100%;border-radius:10px;">
-      </object>
-      <div class="figure-caption">Fig. 8 — Z-cancellation: in metals B is lattice-built and Z-dependent; in gas B is confinement-dependent and Z cancels exactly</div>
-    </div>
-
-    <div class="eq-block">
-      <div class="eq-label">The stability metric — two phases</div>
-      <div class="eq-row">METAL:  S = E · B · r² / (Z · M)</div>
-      <div class="eq-row">        B_metal = σ_lattice / r²  ← scales with Z</div>
-      <div class="eq-row" style="margin-top:12px;">GAS: substitute B_gas = σ(T) / r</div>
-      <div class="eq-row highlight struck">        S = (BASE · <span class="var-z">Z</span> · σ(T) · r) / (<span class="var-z">Z</span> · M)</div>
-      <div class="eq-row highlight">        S = BASE · σ(T) · r / M</div>
-      <div class="eq-row"><span class="note">Z cancels — mass and temperature control stability in gas phase</span></div>
-    </div>
-
-    <p>This means: in the gas phase, whether an atom achieves stable discrete emission — the structured light you see in neon signs, discharge lamps, plasma tubes — is governed by how heavy it is and how hot its environment is. <strong>Not by how many protons it carries.</strong></p>
-
-    <p>No existing plasma physics or atomic spectroscopy model predicts this. The cancellation is a consequence of the QH4 geometry — it is not imported from existing frameworks.</p>
-  </section>
-
-  <hr class="divider"/>
-
-  <!-- ── SECTION 6: VERIFICATION ── -->
-  <section class="section">
-    <div class="section-num">06 · Verification</div>
-    <h2>14 Gases, <span class="accent">Three Regimes</span></h2>
-
-    <p>The prediction was tested across fourteen gas species covering the full range of molecular complexity — noble gases, diatomic molecules, polyatomic molecules, and reactive gases with high electron affinity.</p>
-
-    <p>The framework predicts three distinct discharge regimes for each gas under given conditions:</p>
-
-    <table class="compare">
-      <tr>
-        <th>Regime</th>
-        <th>Condition</th>
-        <th>Physical meaning</th>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--red)">LEAKAGE</strong></td>
-        <td>r &lt; 1/Z</td>
-        <td>Confinement too tight — electrons slip off ring-axis</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--blue)">RADIATION</strong></td>
-        <td>S &lt; S_crit</td>
-        <td>B too weak — u-axis unshielded, continuous emission</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--green)">DISCRETE</strong></td>
-        <td>S ≥ S_crit</td>
-        <td>Ring-axis lock achieved — structured emission</td>
-      </tr>
-    </table>
-
-    <!-- SVG verification table -->
-    <div class="figure">
-      <object type="image/svg+xml" data="04_verification_table.svg" style="width:100%;border-radius:10px;">
-      </object>
-      <div class="figure-caption">Fig. 9 — Verification: 14 gas species, predicted regime vs observed — framework correctly classifies all</div>
-    </div>
-
-    <p>A further discovery during verification: the stability threshold S_crit is not universal. It splits into two values depending on whether the electron transition is a singlet or triplet state — derived from the magnetic moment change Δμ during the jump.</p>
-
-    <div class="eq-block">
-      <div class="eq-label">Dual threshold — derived from Δμ ratio</div>
-      <div class="eq-row">Singlet (S=0):  S_crit = 0.0008</div>
-      <div class="eq-row">Triplet (S=1):  S_crit = 0.0012 = 0.0008 × 1.5</div>
-      <div class="eq-row highlight">Ratio = √(4.5)/√2 = 1.5  (exact — derived from angular momentum)</div>
-    </div>
-
-    <p>The additional boundary: gases with EA/T_ion &gt; 0.15 — high electron affinity — behave as dielectrics. Captured electrons cannot contribute to B. The ring-axis lock is prevented at all practical conditions. F₂, O₃, NO₂ all fall in this category and are correctly predicted as dielectric.</p>
-  </section>
-
-  <hr class="divider"/>
-
-  <!-- ── SECTION 7: SIGNIFICANCE ── -->
-  <section class="section">
-    <div class="section-num">07 · Significance</div>
-    <h2>What This <span class="accent">Actually Means</span></h2>
-
-    <p>Existing models describe what electrons do. QH4 predicts why — from the geometric structure of the ring. The stability metric S is not a fit parameter. It emerges from the geometry with constants derived from atomic spin quantization.</p>
-
-    <table class="compare">
-      <tr>
-        <th>Existing Models</th>
-        <th>QH4 Framework</th>
-      </tr>
-      <tr>
-        <td>Separate frameworks for metals, gases, plasmas</td>
-        <td>Single geometric foundation, two protocol extensions</td>
-      </tr>
-      <tr>
-        <td>T_floor thresholds empirically observed</td>
-        <td>T_floor derived from molecular bond structure</td>
-      </tr>
-      <tr>
-        <td>Z drives stability across all phases</td>
-        <td>Z cancels in gas phase — mass and T dominate</td>
-      </tr>
-      <tr>
-        <td>Single breakdown voltage used</td>
-        <td>Dual S_crit derived from Δμ ratio = 1.5</td>
-      </tr>
-      <tr>
-        <td>Dielectric behavior empirically classified</td>
-        <td>EA/T_ion &gt; 0.15 boundary — derived, not fitted</td>
-      </tr>
-    </table>
-
-    <div class="highlight-box">
-      <div class="big">Z cancels in the gas phase</div>
-      <p class="sub">Verified across 14 gas species. No equivalent prediction in existing atomic or plasma models.</p>
-    </div>
-
-    <p>The framework is under active development. The open derivations — mass-scaling exponent α, linear ionization fraction σ_ext, and the Fermionic Step from first principles — are explicitly identified. Nothing enters the protocol without geometric justification or acknowledgment that derivation is pending.</p>
-
-    <p>The GUT extension — incorporating gravity, charge unification, and the deeper structure of the QH4 ring — is a separate layer, addressed in separate work.</p>
-
-    <p>What is verified: <strong>the geometry predicts atomic stability from first principles, across metals and gases, from the same ring structure that the atom itself uses to count its own resolution.</strong></p>
-  </section>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-tag">MPRC Framework · QH4 Geometry</div>
-  <p>Movement · Position · Rotation · Charge<br/>Independent research — 2026</p>
-</footer>
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
 
 </body>
 </html>

@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" style="background:#0a0f1e">
+  <defs>
+    <radialGradient id="ringglow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#0d1530;stop-opacity:1"/>
+      <stop offset="70%" style="stop-color:#0a1228;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0a0f1e;stop-opacity:1"/>
+    </radialGradient>
+    <radialGradient id="eyeglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9"/>
+      <stop offset="40%" style="stop-color:#4A9EFF;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#4A9EFF;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="eyefill" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#a0d4ff;stop-opacity:0.95"/>
+      <stop offset="50%" style="stop-color:#4A9EFF;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#1a3a8f;stop-opacity:0.4"/>
+    </radialGradient>
+    <filter id="gf2">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="eyefilter">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="q1g2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a3a6a;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#0d1e3a;stop-opacity:0.2"/>
+    </linearGradient>
+    <linearGradient id="q2g2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a4a5a;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#0d2030;stop-opacity:0.2"/>
+    </linearGradient>
+    <linearGradient id="q3g2" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#2a3a6a;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#0d1540;stop-opacity:0.2"/>
+    </linearGradient>
+    <linearGradient id="q4g2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a2a6a;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#0d1535;stop-opacity:0.2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" font-family="Arial" font-size="15" fill="#888" letter-spacing="3">QH4 GEOMETRY — QUWA HALAQA</text>
+  <text x="450" y="55" text-anchor="middle" font-family="Arial" font-size="11" fill="#445" letter-spacing="2">THE FORCE OF THE RING</text>
+
+  <!-- Main ring group centered -->
+  <g transform="translate(450, 295)">
+
+    <!-- Background -->
+    <circle cx="0" cy="0" r="210" fill="url(#ringglow2)"/>
+
+    <!-- Quadrant sectors -->
+    <path d="M 0,0 L 0,-185 A 185,185 0 0,1 185,0 Z" fill="url(#q1g2)" opacity="0.9"/>
+    <path d="M 0,0 L 185,0 A 185,185 0 0,1 0,185 Z" fill="url(#q2g2)" opacity="0.9"/>
+    <path d="M 0,0 L 0,185 A 185,185 0 0,1 -185,0 Z" fill="url(#q3g2)" opacity="0.9"/>
+    <path d="M 0,0 L -185,0 A 185,185 0 0,1 0,-185 Z" fill="url(#q4g2)" opacity="0.9"/>
+
+    <!-- Dividing cross lines -->
+    <line x1="0" y1="-200" x2="0" y2="200" stroke="#1a2a4a" stroke-width="1.5"/>
+    <line x1="-200" y1="0" x2="200" y2="0" stroke="#1a2a4a" stroke-width="1.5"/>
+
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="185" fill="none" stroke="#2a4a8f" stroke-width="2.5"/>
+
+    <!-- State dots on ring -->
+    <g fill="#2a5a9f" opacity="0.65">
+      <circle cx="31" cy="-182" r="3"/>
+      <circle cx="62" cy="-174" r="3"/>
+      <circle cx="91" cy="-161" r="3"/>
+      <circle cx="118" cy="-143" r="3"/>
+      <circle cx="141" cy="-122" r="3"/>
+      <circle cx="161" cy="-98" r="3"/>
+      <circle cx="175" cy="-71" r="3"/>
+      <circle cx="183" cy="-43" r="3"/>
+      <circle cx="183" cy="43" r="3"/>
+      <circle cx="175" cy="71" r="3"/>
+      <circle cx="161" cy="98" r="3"/>
+      <circle cx="141" cy="122" r="3"/>
+      <circle cx="118" cy="143" r="3"/>
+      <circle cx="91" cy="161" r="3"/>
+      <circle cx="62" cy="174" r="3"/>
+      <circle cx="31" cy="182" r="3"/>
+      <circle cx="-31" cy="182" r="3"/>
+      <circle cx="-62" cy="174" r="3"/>
+      <circle cx="-91" cy="161" r="3"/>
+      <circle cx="-118" cy="143" r="3"/>
+      <circle cx="-141" cy="122" r="3"/>
+      <circle cx="-161" cy="98" r="3"/>
+      <circle cx="-175" cy="71" r="3"/>
+      <circle cx="-183" cy="43" r="3"/>
+      <circle cx="-183" cy="-43" r="3"/>
+      <circle cx="-175" cy="-71" r="3"/>
+      <circle cx="-161" cy="-98" r="3"/>
+      <circle cx="-141" cy="-122" r="3"/>
+      <circle cx="-118" cy="-143" r="3"/>
+      <circle cx="-91" cy="-161" r="3"/>
+      <circle cx="-62" cy="-174" r="3"/>
+      <circle cx="-31" cy="-182" r="3"/>
+    </g>
+
+    <!-- Vacuum boundary points -->
+    <circle cx="0" cy="-185" r="8" fill="#FF6B6B" filter="url(#gf2)" opacity="0.7"/>
+    <circle cx="0" cy="-185" r="5" fill="#FF6B6B"/>
+    <circle cx="185" cy="0" r="8" fill="#FF6B6B" filter="url(#gf2)" opacity="0.7"/>
+    <circle cx="185" cy="0" r="5" fill="#FF6B6B"/>
+    <circle cx="0" cy="185" r="8" fill="#FF6B6B" filter="url(#gf2)" opacity="0.7"/>
+    <circle cx="0" cy="185" r="5" fill="#FF6B6B"/>
+    <circle cx="-185" cy="0" r="8" fill="#FF6B6B" filter="url(#gf2)" opacity="0.7"/>
+    <circle cx="-185" cy="0" r="5" fill="#FF6B6B"/>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- U-AXIS: Eye/Spinor geometry [(a+b)²(c+d)²]²               -->
+    <!-- The eye is formed by two intersecting circles              -->
+    <!-- representing the coupled spin-up and spin-down circles     -->
+    <!-- of the 720° oloid spinor — not a point, not a dot         -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <!-- Two overlapping circles forming the eye (vesica piscis / spinor cross-section) -->
+    <!-- Circle 1: spin-up (shifted left) -->
+    <circle cx="-28" cy="0" r="48" fill="none" stroke="#4A9EFF" stroke-width="1.2" opacity="0.4"/>
+    <!-- Circle 2: spin-down (shifted right) -->
+    <circle cx="28" cy="0" r="48" fill="none" stroke="#4A9EFF" stroke-width="1.2" opacity="0.4"/>
+
+    <!-- Eye fill — the intersection (vesica piscis shape) -->
+    <!-- Approximated with two arcs forming the eye shape -->
+    <path d="M 0,-42 
+             A 48,48 0 0,1 0,42 
+             A 48,48 0 0,1 0,-42 Z" 
+          fill="url(#eyefill)" opacity="0.0"/>
+
+    <!-- Eye shape using clip-path approach: two arc paths -->
+    <!-- Left arc of eye (from top to bottom, curving right) -->
+    <path d="M 0,-42 A 48,48 0 0,0 0,42" 
+          fill="none" stroke="#6AB8FF" stroke-width="1.5" opacity="0.5"/>
+    <!-- Right arc of eye (from top to bottom, curving left) -->
+    <path d="M 0,-42 A 48,48 0 0,1 0,42" 
+          fill="none" stroke="#6AB8FF" stroke-width="1.5" opacity="0.5"/>
+
+    <!-- Filled eye interior -->
+    <path d="M 0,-42 
+             A 48,48 0 0,1 0,42 
+             A 48,48 0 0,1 0,-42 Z" 
+          fill="#1a3a6a" opacity="0.6"/>
+
+    <!-- Glow overlay on eye -->
+    <path d="M 0,-42 
+             A 48,48 0 0,1 0,42 
+             A 48,48 0 0,1 0,-42 Z" 
+          fill="url(#eyeglow)" opacity="0.5" filter="url(#eyefilter)"/>
+
+    <!-- Eye outline stronger -->
+    <path d="M 0,-42 A 48,48 0 0,1 0,42 A 48,48 0 0,1 0,-42 Z" 
+          fill="none" stroke="#4A9EFF" stroke-width="2" opacity="0.9"/>
+
+    <!-- Eye tips (pointed ends) -->
+    <circle cx="0" cy="-42" r="3" fill="#ffffff" opacity="0.9"/>
+    <circle cx="0" cy="42" r="3" fill="#ffffff" opacity="0.9"/>
+
+    <!-- Inner pupil — the true center point -->
+    <circle cx="0" cy="0" r="4" fill="#ffffff" opacity="0.95" filter="url(#gf2)"/>
+    <circle cx="0" cy="0" r="2" fill="#ffffff"/>
+
+    <!-- 720° label inside eye only — no external circles -->
+
+    <!-- Axis labels on eye -->
+    <text x="0" y="-52" text-anchor="middle" font-family="Arial" font-size="9" fill="#4A9EFF" opacity="0.8">spin ↑</text>
+    <text x="0" y="62" text-anchor="middle" font-family="Arial" font-size="9" fill="#4A9EFF" opacity="0.8">spin ↓</text>
+
+    <!-- The formula label -->
+    <text x="0" y="88" text-anchor="middle" font-family="Arial" font-size="10" fill="#6AB8FF" opacity="0.7">[(a+b)²(c+d)²]²</text>
+
+    <!-- u label -->
+    <text x="16" y="4" font-family="Arial" font-size="11" fill="#ffffff" opacity="0.7" font-style="italic">u</text>
+
+    <!-- Quadrant labels -->
+    <text x="85" y="-85" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A9EFF" font-weight="bold">Q₁</text>
+    <text x="85" y="-68" text-anchor="middle" font-family="Arial" font-size="10" fill="#4A9EFF">1–64</text>
+    <text x="85" y="80" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A9EFF" font-weight="bold">Q₂</text>
+    <text x="85" y="95" text-anchor="middle" font-family="Arial" font-size="10" fill="#4A9EFF">65–128</text>
+    <text x="-85" y="80" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A9EFF" font-weight="bold">Q₃</text>
+    <text x="-85" y="95" text-anchor="middle" font-family="Arial" font-size="10" fill="#4A9EFF">129–192</text>
+    <text x="-85" y="-85" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A9EFF" font-weight="bold">Q₄</text>
+    <text x="-85" y="-68" text-anchor="middle" font-family="Arial" font-size="10" fill="#4A9EFF">193–256</text>
+
+  </g>
+
+  <!-- Callout: what the eye is -->
+  <line x1="450" y1="253" x2="380" y2="210" stroke="#4A9EFF" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
+  <text x="310" y="202" text-anchor="middle" font-family="Arial" font-size="10" fill="#6AB8FF">u-axis: spinor</text>
+  <text x="310" y="215" text-anchor="middle" font-family="Arial" font-size="10" fill="#6AB8FF">720° oloid</text>
+  <text x="310" y="228" text-anchor="middle" font-family="Arial" font-size="10" fill="#6AB8FF">two coupled circles</text>
+
+  <!-- Vacuum label top -->
+  <text x="450" y="98" text-anchor="middle" font-family="Arial" font-size="10" fill="#FF6B6B">● state 0</text>
+
+  <!-- Legend -->
+  <circle cx="230" cy="530" r="5" fill="#2a5a9f" opacity="0.7"/>
+  <text x="242" y="534" font-family="Arial" font-size="11" fill="#667">active states (252)</text>
+  <circle cx="420" cy="530" r="5" fill="#FF6B6B"/>
+  <text x="432" y="534" font-family="Arial" font-size="11" fill="#667">vacuum {0,64,128,192}</text>
+  <path d="M 602,527 A 8,8 0 0,1 602,535 A 8,8 0 0,1 602,527 Z" fill="none" stroke="#4A9EFF" stroke-width="1.5"/>
+  <text x="616" y="534" font-family="Arial" font-size="11" fill="#667">u-axis (spinor eye)</text>
+
+  <!-- Bottom note -->
+  <text x="450" y="556" text-anchor="middle" font-family="Arial" font-size="11" fill="#334" font-style="italic">The u-axis is not a point — it is a 720° spinor: two coupled circles, spin-up and spin-down, forming the eye</text>
+</svg>

@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" style="background:#0a0f1e">
+  <defs>
+    <radialGradient id="ug_sq" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00CFFF;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#00CFFF;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="ucglow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="labglow">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Quadrant fills -->
+    <linearGradient id="qa" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a4a6a;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#0d2a3a;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="qb" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a5a3a;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#0d2a1a;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="qc" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#4a2a1a;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#2a0d0d;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="qd" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2a3a6a;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#0d1a3a;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="34" text-anchor="middle" font-family="Arial" font-size="15" fill="#888" letter-spacing="3">PROBLEM 2 — 2D SQUARE EQUILIBRIUM</text>
+  <text x="450" y="54" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A9EFF" font-weight="bold">a=20, b=32, c=16, d=?   Find total area</text>
+
+  <!-- ── TILTED SQUARE in perspective ── -->
+  <!-- Square corners in isometric-like tilt -->
+  <!-- Center at (450, 310) -->
+  <!-- Corners: top(450,150), right(650,290), bottom(450,430), left(250,290) -->
+
+  <g transform="translate(450, 300)">
+
+    <!-- Quadrant fills -->
+    <!-- Top triangle (a=20): center to top to right -->
+    <path d="M 0,0 L 0,-150 L 200,-10 Z" fill="url(#qa)" opacity="0.8"/>
+    <!-- Right triangle (c=16): center to right to bottom -->
+    <path d="M 0,0 L 200,-10 L 0,130 Z" fill="url(#qc)" opacity="0.8"/>
+    <!-- Bottom triangle (d=28): center to bottom to left -->
+    <path d="M 0,0 L 0,130 L -200,-10 Z" fill="url(#qd)" opacity="0.8"/>
+    <!-- Left triangle (b=32): center to left to top -->
+    <path d="M 0,0 L -200,-10 L 0,-150 Z" fill="url(#qb)" opacity="0.8"/>
+
+    <!-- Square outline -->
+    <path d="M 0,-150 L 200,-10 L 0,130 L -200,-10 Z"
+          fill="none" stroke="#4A9EFF" stroke-width="2.5" opacity="0.9"/>
+
+    <!-- Balance lines — diagonal -->
+    <line x1="0" y1="-150" x2="0" y2="130" stroke="#ffffff" stroke-width="1" opacity="0.2" stroke-dasharray="4,4"/>
+    <line x1="-200" y1="-10" x2="200" y2="-10" stroke="#ffffff" stroke-width="1" opacity="0.2" stroke-dasharray="4,4"/>
+
+    <!-- ── U-AXIS vertical thread ── -->
+    <line x1="0" y1="-220" x2="0" y2="220" stroke="#00CFFF" stroke-width="3" opacity="0.9" filter="url(#ucglow)"/>
+    <!-- Arrowhead top -->
+    <polygon points="0,-225 -8,-205 8,-205" fill="#00CFFF" opacity="0.95"/>
+
+    <!-- ── CENTROID ── -->
+    <circle cx="0" cy="0" r="16" fill="url(#ug_sq)" opacity="0.6" filter="url(#ucglow)"/>
+    <circle cx="0" cy="0" r="7" fill="#00CFFF" opacity="0.95"/>
+    <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+
+    <!-- Rotation indicator at centroid -->
+    <path d="M 20,0 A 20,20 0 1,1 0,-20" fill="none" stroke="#00CFFF" stroke-width="1.5" opacity="0.6" stroke-dasharray="3,2"/>
+    <polygon points="0,-20 -8,-28 8,-28" fill="#00CFFF" opacity="0.5" transform="rotate(10)"/>
+
+    <!-- ── SIDE LABELS ── -->
+    <!-- a = 20 (top-right side) -->
+    <text x="112" y="-98" text-anchor="middle" font-family="Arial" font-size="18" fill="#4A9EFF" font-weight="bold" font-style="italic">a = 20</text>
+
+    <!-- b = 32 (top-left side) -->
+    <text x="-118" y="-98" text-anchor="middle" font-family="Arial" font-size="18" fill="#4AFF9E" font-weight="bold" font-style="italic">b = 32</text>
+
+    <!-- c = 16 (bottom-right side) -->
+    <text x="112" y="80" text-anchor="middle" font-family="Arial" font-size="18" fill="#FF9A4A" font-weight="bold" font-style="italic">c = 16</text>
+
+    <!-- d = 28 (bottom-left side) -->
+    <text x="-112" y="80" text-anchor="middle" font-family="Arial" font-size="18" fill="#aaa" font-weight="bold" font-style="italic">d = 28</text>
+
+    <!-- ── BALANCE EQUATIONS ── -->
+    <!-- a + d balance (top+bottom) -->
+    <text x="-310" y="-110" font-family="Arial" font-size="12" fill="#ffffff">a + d = 48</text>
+    <text x="-310" y="-94" font-family="Arial" font-size="11" fill="#4A9EFF">20 + 28 = 48 ✓</text>
+    <line x1="-185" y1="-100" x2="-100" y2="-80" stroke="#ffffff" stroke-width="0.8" opacity="0.3" stroke-dasharray="3,3"/>
+
+    <!-- b + c balance (left+right) -->
+    <text x="-310" y="70" font-family="Arial" font-size="12" fill="#ffffff">b + c = 48</text>
+    <text x="-310" y="86" font-family="Arial" font-size="11" fill="#4AFF9E">32 + 16 = 48 ✓</text>
+    <line x1="-185" y1="78" x2="-100" y2="40" stroke="#ffffff" stroke-width="0.8" opacity="0.3" stroke-dasharray="3,3"/>
+
+    <!-- U-axis label -->
+    <text x="14" y="-200" font-family="Arial" font-size="11" fill="#00CFFF">u-axis</text>
+    <text x="14" y="-186" font-family="Arial" font-size="10" fill="#445">(the thread)</text>
+
+    <!-- Centroid label -->
+    <text x="16" y="-8" font-family="Arial" font-size="11" fill="#00CFFF">u</text>
+    <text x="16" y="8" font-family="Arial" font-size="10" fill="#00CFFF">centroid</text>
+
+  </g>
+
+  <!-- ── ANSWER BOX ── -->
+  <rect x="620" y="200" width="240" height="140" rx="6" fill="#0d1525" stroke="#1a3a5a" stroke-width="1"/>
+  <text x="740" y="222" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A9EFF" font-weight="bold" letter-spacing="1">CLOSING CONDITION</text>
+  <line x1="630" y1="230" x2="850" y2="230" stroke="#1a3a5a" stroke-width="1"/>
+  <text x="634" y="250" font-family="Arial" font-size="11" fill="#667">Rotational equilibrium at u:</text>
+  <text x="634" y="270" font-family="Courier New" font-size="12" fill="#ffffff">a + d = b + c</text>
+  <text x="634" y="288" font-family="Courier New" font-size="12" fill="#ffffff">20 + d = 32 + 16</text>
+  <text x="634" y="306" font-family="Courier New" font-size="12" fill="#ffffff">d = 48 - 20 = <tspan fill="#FFD700" font-weight="bold">28</tspan></text>
+  <text x="634" y="328" font-family="Arial" font-size="11" fill="#4AFF9E">Total area = 96 = 6 × Q</text>
+
+  <!-- ── PROBLEM STATEMENT BOX ── -->
+  <rect x="40" y="200" width="220" height="140" rx="6" fill="#0d1525" stroke="#1a3a5a" stroke-width="1"/>
+  <text x="150" y="222" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A9EFF" font-weight="bold" letter-spacing="1">WHY d=28?</text>
+  <line x1="50" y1="230" x2="250" y2="230" stroke="#1a3a5a" stroke-width="1"/>
+  <text x="54" y="252" font-family="Arial" font-size="10" fill="#667">Without u: d is unknown.</text>
+  <text x="54" y="268" font-family="Arial" font-size="10" fill="#667">Standard geometry cannot</text>
+  <text x="54" y="282" font-family="Arial" font-size="10" fill="#667">find d from a,b,c alone.</text>
+  <text x="54" y="302" font-family="Arial" font-size="10" fill="#4A9EFF">With u: closing condition</text>
+  <text x="54" y="316" font-family="Arial" font-size="10" fill="#4A9EFF">forces a+d = b+c.</text>
+  <text x="54" y="332" font-family="Arial" font-size="10" fill="#ffffff">d is not free — u fixes it.</text>
+
+  <!-- Bottom note -->
+  <rect x="160" y="558" width="580" height="42" rx="5" fill="#0d1525" stroke="#1a3a5a" stroke-width="1"/>
+  <text x="450" y="575" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A9EFF">Both problems are the same: find u first, the missing value follows from rotational equilibrium</text>
+  <text x="450" y="591" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Area = 96 = 6Q — the QH4 ring geometry encoded in a 2D shape</text>
+</svg>

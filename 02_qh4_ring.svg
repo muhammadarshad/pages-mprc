@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" style="background:#0a0f1e">
+  <defs>
+    <radialGradient id="ringglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#0a0f1e;stop-opacity:1"/>
+      <stop offset="60%" style="stop-color:#0d1530;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0a0f1e;stop-opacity:1"/>
+    </radialGradient>
+    <filter id="gf">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Quadrant gradients -->
+    <linearGradient id="q1g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a3a6a;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#0d1e3a;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="q2g" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a4a5a;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#0d2030;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="q3g" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#2a3a6a;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#0d1540;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="q4g" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a2a6a;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#0d1535;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" font-family="Arial" font-size="15" fill="#888" letter-spacing="3">QH4 GEOMETRY — QUWA HALAQA</text>
+  <text x="450" y="58" text-anchor="middle" font-family="Arial" font-size="11" fill="#445" letter-spacing="2">THE FORCE OF THE RING</text>
+
+  <!-- Center -->
+  <g transform="translate(450, 270)">
+
+    <!-- Background fill circle -->
+    <circle cx="0" cy="0" r="195" fill="url(#ringglow)"/>
+
+    <!-- Quadrant sectors (arcs) -->
+    <!-- Q1: 0 to 90 deg (top-right) — states 1-64 -->
+    <path d="M 0,0 L 0,-180 A 180,180 0 0,1 180,0 Z" fill="url(#q1g)" opacity="0.8"/>
+    <!-- Q2: 90 to 180 deg (bottom-right) — states 65-128 -->
+    <path d="M 0,0 L 180,0 A 180,180 0 0,1 0,180 Z" fill="url(#q2g)" opacity="0.8"/>
+    <!-- Q3: 180 to 270 deg (bottom-left) — states 129-192 -->
+    <path d="M 0,0 L 0,180 A 180,180 0 0,1 -180,0 Z" fill="url(#q3g)" opacity="0.8"/>
+    <!-- Q4: 270 to 360 deg (top-left) — states 193-256 -->
+    <path d="M 0,0 L -180,0 A 180,180 0 0,1 0,-180 Z" fill="url(#q4g)" opacity="0.8"/>
+
+    <!-- Dividing lines -->
+    <line x1="0" y1="-195" x2="0" y2="195" stroke="#1a2a4a" stroke-width="1.5"/>
+    <line x1="-195" y1="0" x2="195" y2="0" stroke="#1a2a4a" stroke-width="1.5"/>
+
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="180" fill="none" stroke="#2a4a8f" stroke-width="2.5"/>
+
+    <!-- State dots on ring — 32 dots evenly spaced, 4 are vacuum -->
+    <!-- Using 32 representative dots for clarity -->
+    <!-- Regular states: small blue dots -->
+    <!-- Vacuum states: bright highlighted at 0, 64, 128, 192 = angles 0, 90, 180, 270 -->
+
+    <!-- Generate dots at every 11.25 degrees (32 dots) -->
+    <!-- We'll place them programmatically via SVG -->
+    <!-- Skip vacuum positions for regular dots -->
+
+    <!-- Regular state dots -->
+    <g fill="#2a5a9f" opacity="0.7">
+      <!-- Top arc Q1 region, skipping top (0 deg = vacuum) -->
+      <circle cx="31" cy="-177" r="3"/>
+      <circle cx="61" cy="-170" r="3"/>
+      <circle cx="89" cy="-157" r="3"/>
+      <circle cx="115" cy="-140" r="3"/>
+      <circle cx="138" cy="-120" r="3"/>
+      <circle cx="157" cy="-96" r="3"/>
+      <circle cx="170" cy="-70" r="3"/>
+      <circle cx="178" cy="-42" r="3"/>
+      <!-- Right arc Q2 region, skipping right (90 deg = vacuum) -->
+      <circle cx="178" cy="42" r="3"/>
+      <circle cx="170" cy="70" r="3"/>
+      <circle cx="157" cy="96" r="3"/>
+      <circle cx="138" cy="120" r="3"/>
+      <circle cx="115" cy="140" r="3"/>
+      <circle cx="89" cy="157" r="3"/>
+      <circle cx="61" cy="170" r="3"/>
+      <circle cx="31" cy="177" r="3"/>
+      <!-- Bottom arc Q3, skipping bottom (180 deg = vacuum) -->
+      <circle cx="-31" cy="177" r="3"/>
+      <circle cx="-61" cy="170" r="3"/>
+      <circle cx="-89" cy="157" r="3"/>
+      <circle cx="-115" cy="140" r="3"/>
+      <circle cx="-138" cy="120" r="3"/>
+      <circle cx="-157" cy="96" r="3"/>
+      <circle cx="-170" cy="70" r="3"/>
+      <circle cx="-178" cy="42" r="3"/>
+      <!-- Left arc Q4, skipping left (270 deg = vacuum) -->
+      <circle cx="-178" cy="-42" r="3"/>
+      <circle cx="-170" cy="-70" r="3"/>
+      <circle cx="-157" cy="-96" r="3"/>
+      <circle cx="-138" cy="-120" r="3"/>
+      <circle cx="-115" cy="-140" r="3"/>
+      <circle cx="-89" cy="-157" r="3"/>
+      <circle cx="-61" cy="-170" r="3"/>
+      <circle cx="-31" cy="-177" r="3"/>
+    </g>
+
+    <!-- Vacuum boundary points — bright, highlighted -->
+    <!-- State 0: top (angle -90 = 0,−180) -->
+    <circle cx="0" cy="-180" r="7" fill="#FF6B6B" filter="url(#gf)"/>
+    <circle cx="0" cy="-180" r="4" fill="#FF6B6B"/>
+    <!-- State 64: right (angle 0 = 180,0) -->
+    <circle cx="180" cy="0" r="7" fill="#FF6B6B" filter="url(#gf)"/>
+    <circle cx="180" cy="0" r="4" fill="#FF6B6B"/>
+    <!-- State 128: bottom (angle 90 = 0,180) -->
+    <circle cx="0" cy="180" r="7" fill="#FF6B6B" filter="url(#gf)"/>
+    <circle cx="0" cy="180" r="4" fill="#FF6B6B"/>
+    <!-- State 192: left (angle 180 = −180,0) -->
+    <circle cx="-180" cy="0" r="7" fill="#FF6B6B" filter="url(#gf)"/>
+    <circle cx="-180" cy="0" r="4" fill="#FF6B6B"/>
+
+    <!-- Quadrant labels -->
+    <text x="80" y="-80" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A9EFF" font-weight="bold">Q₁</text>
+    <text x="80" y="-62" text-anchor="middle" font-family="Arial" font-size="10" fill="#4A9EFF">states 1–64</text>
+
+    <text x="80" y="75" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A9EFF" font-weight="bold">Q₂</text>
+    <text x="80" y="90" text-anchor="middle" font-family="Arial" font-size="10" fill="#4A9EFF">states 65–128</text>
+
+    <text x="-80" y="75" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A9EFF" font-weight="bold">Q₃</text>
+    <text x="-80" y="90" text-anchor="middle" font-family="Arial" font-size="10" fill="#4A9EFF">states 129–192</text>
+
+    <text x="-80" y="-80" text-anchor="middle" font-family="Arial" font-size="13" fill="#4A9EFF" font-weight="bold">Q₄</text>
+    <text x="-80" y="-62" text-anchor="middle" font-family="Arial" font-size="10" fill="#4A9EFF">states 193–256</text>
+
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="5" fill="#4A9EFF" opacity="0.5"/>
+    <circle cx="0" cy="0" r="2" fill="#ffffff"/>
+
+    <!-- Center label -->
+    <text x="0" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="#445">centroid u</text>
+    <text x="0" y="34" text-anchor="middle" font-family="Arial" font-size="10" fill="#445">T &gt; 0</text>
+
+  </g>
+
+  <!-- Vacuum label callouts -->
+  <text x="450" y="68" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF6B6B">● state 0</text>
+  <line x1="450" y1="74" x2="450" y2="88" stroke="#FF6B6B" stroke-width="1" opacity="0.5"/>
+
+  <!-- Legend -->
+  <circle cx="300" cy="480" r="5" fill="#4A9EFF" opacity="0.7"/>
+  <text x="312" y="484" font-family="Arial" font-size="11" fill="#667">active states (252 total)</text>
+  <circle cx="560" cy="480" r="5" fill="#FF6B6B"/>
+  <text x="572" y="484" font-family="Arial" font-size="11" fill="#667">vacuum boundaries {0, 64, 128, 192}</text>
+
+  <!-- Bottom note -->
+  <text x="450" y="508" text-anchor="middle" font-family="Arial" font-size="11" fill="#334" font-style="italic">The discrete skeleton of the sphere — 256 states, 4 quadrants, derived from atomic spin quantization</text>
+</svg>

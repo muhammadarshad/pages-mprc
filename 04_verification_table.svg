@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" style="background:#0a0f1e">
+  <defs>
+    <filter id="glow4">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" font-family="Arial" font-size="15" fill="#888" letter-spacing="3">Z-CANCELLATION — VERIFIED PREDICTIONS</text>
+  <text x="450" y="55" text-anchor="middle" font-family="Arial" font-size="11" fill="#445" letter-spacing="1">14 gas species · 3 discharge regimes · framework prediction vs experiment</text>
+
+  <!-- Legend -->
+  <rect x="160" y="70" width="14" height="14" rx="3" fill="#4AFF9E" opacity="0.8"/>
+  <text x="180" y="82" font-family="Arial" font-size="11" fill="#667">DISCRETE emission</text>
+  <rect x="340" y="70" width="14" height="14" rx="3" fill="#FF9A4A" opacity="0.8"/>
+  <text x="360" y="82" font-family="Arial" font-size="11" fill="#667">RADIATION dominant</text>
+  <rect x="540" y="70" width="14" height="14" rx="3" fill="#FF6B6B" opacity="0.8"/>
+  <text x="560" y="82" font-family="Arial" font-size="11" fill="#667">DIELECTRIC / r-limited</text>
+
+  <!-- Column headers -->
+  <text x="85"  y="112" text-anchor="middle" font-family="Arial" font-size="10" fill="#556" font-weight="bold" letter-spacing="1">GAS</text>
+  <text x="165" y="112" text-anchor="middle" font-family="Arial" font-size="10" fill="#556" font-weight="bold" letter-spacing="1">TYPE</text>
+  <text x="260" y="112" text-anchor="middle" font-family="Arial" font-size="10" fill="#556" font-weight="bold" letter-spacing="1">T_floor</text>
+  <text x="360" y="112" text-anchor="middle" font-family="Arial" font-size="10" fill="#556" font-weight="bold" letter-spacing="1">EA/T_ion</text>
+  <text x="480" y="112" text-anchor="middle" font-family="Arial" font-size="10" fill="#556" font-weight="bold" letter-spacing="1">PREDICTED</text>
+  <text x="620" y="112" text-anchor="middle" font-family="Arial" font-size="10" fill="#556" font-weight="bold" letter-spacing="1">OBSERVED</text>
+  <text x="760" y="112" text-anchor="middle" font-family="Arial" font-size="10" fill="#556" font-weight="bold" letter-spacing="1">MATCH</text>
+
+  <!-- Divider line -->
+  <line x1="40" y1="118" x2="860" y2="118" stroke="#1a2a4a" stroke-width="1"/>
+
+  <!-- Data rows -->
+  <!-- Format: gas, type, T_floor, EA_ratio, predicted, observed, match, color, y -->
+
+  <!-- Row data array (y spacing = 30) -->
+  <!-- y starts at 138 -->
+
+  <!-- He -->
+  <text x="85"  y="138" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">He</text>
+  <text x="165" y="138" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Noble</text>
+  <text x="260" y="138" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.5 eV</text>
+  <text x="360" y="138" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.000</text>
+  <rect x="415" y="126" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.25"/>
+  <text x="480" y="138" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <rect x="555" y="126" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.15"/>
+  <text x="620" y="138" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <text x="760" y="138" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- Ne -->
+  <text x="85"  y="168" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">Ne</text>
+  <text x="165" y="168" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Noble</text>
+  <text x="260" y="168" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.5 eV</text>
+  <text x="360" y="168" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.000</text>
+  <rect x="415" y="156" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.25"/>
+  <text x="480" y="168" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <rect x="555" y="156" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.15"/>
+  <text x="620" y="168" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <text x="760" y="168" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- Ar -->
+  <text x="85"  y="198" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">Ar</text>
+  <text x="165" y="198" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Noble</text>
+  <text x="260" y="198" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.5 eV</text>
+  <text x="360" y="198" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.000</text>
+  <rect x="415" y="186" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.25"/>
+  <text x="480" y="198" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <rect x="555" y="186" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.15"/>
+  <text x="620" y="198" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <text x="760" y="198" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- Kr -->
+  <text x="85"  y="228" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">Kr</text>
+  <text x="165" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Noble</text>
+  <text x="260" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.5 eV</text>
+  <text x="360" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.000</text>
+  <rect x="415" y="216" width="130" height="18" rx="3" fill="#FF6B6B" opacity="0.25"/>
+  <text x="480" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">r-limited</text>
+  <rect x="555" y="216" width="130" height="18" rx="3" fill="#FF6B6B" opacity="0.15"/>
+  <text x="620" y="228" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">arc lamp only</text>
+  <text x="760" y="228" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- Xe -->
+  <text x="85"  y="258" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">Xe</text>
+  <text x="165" y="258" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Noble</text>
+  <text x="260" y="258" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.5 eV</text>
+  <text x="360" y="258" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.000</text>
+  <rect x="415" y="246" width="130" height="18" rx="3" fill="#FF6B6B" opacity="0.25"/>
+  <text x="480" y="258" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">r-limited</text>
+  <rect x="555" y="246" width="130" height="18" rx="3" fill="#FF6B6B" opacity="0.15"/>
+  <text x="620" y="258" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">arc lamp only</text>
+  <text x="760" y="258" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="272" x2="860" y2="272" stroke="#1a2a4a" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+  <!-- H2 -->
+  <text x="85"  y="293" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">H₂</text>
+  <text x="165" y="293" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Diatomic</text>
+  <text x="260" y="293" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">4.52 eV</text>
+  <text x="360" y="293" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.049</text>
+  <rect x="415" y="281" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.25"/>
+  <text x="480" y="293" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <rect x="555" y="281" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.15"/>
+  <text x="620" y="293" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <text x="760" y="293" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- N2 -->
+  <text x="85"  y="323" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">N₂</text>
+  <text x="165" y="323" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Diatomic</text>
+  <text x="260" y="323" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">8.5 eV</text>
+  <text x="360" y="323" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.000</text>
+  <rect x="415" y="311" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.25"/>
+  <text x="480" y="323" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <rect x="555" y="311" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.15"/>
+  <text x="620" y="323" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <text x="760" y="323" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- O2 -->
+  <text x="85"  y="353" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">O₂</text>
+  <text x="165" y="353" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Diatomic</text>
+  <text x="260" y="353" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">5.17 eV</text>
+  <text x="360" y="353" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.037</text>
+  <rect x="415" y="341" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.25"/>
+  <text x="480" y="353" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <rect x="555" y="341" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.15"/>
+  <text x="620" y="353" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <text x="760" y="353" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="367" x2="860" y2="367" stroke="#1a2a4a" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+  <!-- CO2 -->
+  <text x="85"  y="388" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">CO₂</text>
+  <text x="165" y="388" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Molecular</text>
+  <text x="260" y="388" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">5.51 eV</text>
+  <text x="360" y="388" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.000</text>
+  <rect x="415" y="376" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.25"/>
+  <text x="480" y="388" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <rect x="555" y="376" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.15"/>
+  <text x="620" y="388" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <text x="760" y="388" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- NH3 -->
+  <text x="85"  y="418" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">NH₃</text>
+  <text x="165" y="418" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Molecular</text>
+  <text x="260" y="418" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">4.50 eV</text>
+  <text x="360" y="418" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">0.000</text>
+  <rect x="415" y="406" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.25"/>
+  <text x="480" y="418" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <rect x="555" y="406" width="130" height="18" rx="3" fill="#4AFF9E" opacity="0.15"/>
+  <text x="620" y="418" text-anchor="middle" font-family="Arial" font-size="11" fill="#4AFF9E">DISCRETE</text>
+  <text x="760" y="418" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="432" x2="860" y2="432" stroke="#1a2a4a" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+  <!-- F2 -->
+  <text x="85"  y="453" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">F₂</text>
+  <text x="165" y="453" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Reactive</text>
+  <text x="260" y="453" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">1.60 eV</text>
+  <text x="360" y="453" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">0.217 ↑</text>
+  <rect x="415" y="441" width="130" height="18" rx="3" fill="#FF6B6B" opacity="0.25"/>
+  <text x="480" y="453" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">DIELECTRIC</text>
+  <rect x="555" y="441" width="130" height="18" rx="3" fill="#FF6B6B" opacity="0.15"/>
+  <text x="620" y="453" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">DIELECTRIC</text>
+  <text x="760" y="453" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- O3 -->
+  <text x="85"  y="483" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">O₃</text>
+  <text x="165" y="483" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Reactive</text>
+  <text x="260" y="483" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">1.05 eV</text>
+  <text x="360" y="483" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">0.168 ↑</text>
+  <rect x="415" y="471" width="130" height="18" rx="3" fill="#FF6B6B" opacity="0.25"/>
+  <text x="480" y="483" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">DIELECTRIC</text>
+  <rect x="555" y="471" width="130" height="18" rx="3" fill="#FF6B6B" opacity="0.15"/>
+  <text x="620" y="483" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">DIELECTRIC</text>
+  <text x="760" y="483" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- NO2 -->
+  <text x="85"  y="513" text-anchor="middle" font-family="Arial" font-size="12" fill="#ccc" font-weight="bold">NO₂</text>
+  <text x="165" y="513" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">Reactive</text>
+  <text x="260" y="513" text-anchor="middle" font-family="Arial" font-size="11" fill="#667">3.17 eV</text>
+  <text x="360" y="513" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">0.246 ↑</text>
+  <rect x="415" y="501" width="130" height="18" rx="3" fill="#FF6B6B" opacity="0.25"/>
+  <text x="480" y="513" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">DIELECTRIC</text>
+  <rect x="555" y="501" width="130" height="18" rx="3" fill="#FF6B6B" opacity="0.15"/>
+  <text x="620" y="513" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF9A9A">DIELECTRIC</text>
+  <text x="760" y="513" text-anchor="middle" font-family="Arial" font-size="14" fill="#4AFF9E" filter="url(#glow4)">✓</text>
+
+  <!-- Bottom line -->
+  <line x1="40" y1="528" x2="860" y2="528" stroke="#2a4a8f" stroke-width="1"/>
+  <text x="450" y="547" text-anchor="middle" font-family="Arial" font-size="11" fill="#4A9EFF" font-style="italic">↑ EA/T_ion &gt; 0.15 → electron capture suppresses ring-axis lock → dielectric behavior predicted and confirmed</text>
+</svg>

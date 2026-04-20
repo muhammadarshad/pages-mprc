@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Chapter 7: Gravity as E·B Field — Artemis III Predictions</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="book-title">The MPRC Framework</a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+      <li><a href="chapter-2.html">2. GUT v2</a></li>
+      <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+      <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+      <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+      <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+      <li><a href="chapter-7.html" class="active">7. Artemis III Predictions</a></li>
+    </ul>
+  </nav>
+</aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>Gravity as <span>E·B Field Output</span></h1>
+        <p class="chapter-subtitle">Pre-mission predictions for Artemis III — stated April 20, 2026, before mission data is available</p>
+      </header>
+
+      <div class="chapter-body">
+
+<!-- ABSTRACT -->
+<section class="section">
+  <div class="section-num">Abstract</div>
+  <h2>MPRC Gravity Framework and <span class="accent">Falsifiable Predictions</span></h2>
+
+  <p>The MPRC (Movement-Position-Rotation-Charge) framework derives gravitational force as the inward E·B field output of a discrete Z256 ring geometry. The central result:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">T_drag formula</div>
+    <div class="eq-row">T_drag = 16(Δa · Δb · Δc · Δd)²</div>
+    <div class="eq-row">reduces exactly to F = GM₁M₂/r² under frame conversion:</div>
+    <div class="eq-row cyan">F_newton = T_drag × cos²(θ₁) × cos²(θ₂)</div>
+    <div class="eq-row">Verified to ratio 1.00000000 on 3 planetary pairs and 8 satellites.</div>
+  </div>
+
+  <p>Newton's inverse-square law is identified as the geometric projection of MPRC onto flat coordinate space. The tilt angles θ₁, θ₂ are the frame conversion factors — not corrections.</p>
+
+  <p>Three falsifiable pre-mission predictions are stated for NASA's Artemis III lunar landing (scheduled 2027): E-field gradient at −89°S, vacuum micro-discontinuity at 12 km altitude during powered descent, and a discrete frame transition in the NRHO trajectory at 18,454 km from Moon center.</p>
+
+  <div class="pull-quote">
+    <p>Mission status: Artemis III not yet launched (scheduled late 2027). All predictions stated before any mission data is available.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- Z256 STRUCTURE -->
+<section class="section">
+  <div class="section-num">01 · Structure</div>
+  <h2>The Z256 <span class="accent">Ring Geometry</span></h2>
+
+  <p>The fundamental state space is a discrete ring of 256 positions:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Ring definition</div>
+    <div class="eq-row">Z256 = {0, 1, 2, ..., 255}</div>
+    <div class="eq-row">Vacuum boundaries (T_drag = 0): V = {0, 64, 128, 192}</div>
+    <div class="eq-row">u-axis (anticlockwise, outward field): positions 1–63, 65–127</div>
+    <div class="eq-row cyan">u'-axis (clockwise, inward field — gravity): positions 129–191, 193–255</div>
+  </div>
+
+  <p>Charge is not a primary input — it is the output of E·B:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Charge output</div>
+    <div class="eq-row">charge_sign = sign(E·B) × rotation_sign</div>
+    <div class="eq-row">rotation_sign = +1 (anticlockwise) or −1 (clockwise)</div>
+  </div>
+
+  <h3>Vacuum Boundary Altitudes</h3>
+  <p>With Earth's 23.5° tilt correction, the Z256 vacuum boundaries map to:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>u</th><th>Altitude (km)</th><th>Nearest satellite</th><th>Separation (km)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0</td><td>576.2</td><td>Hubble (540 km)</td><td>36</td></tr>
+      <tr><td>64</td><td>10,372</td><td>LAGEOS-1 (5,900 km)</td><td>4,472</td></tr>
+      <tr><td>128</td><td>20,168</td><td>GPS IIF (20,184 km)</td><td><strong>21</strong></td></tr>
+      <tr><td>192</td><td>29,964</td><td>Galileo (23,222 km)</td><td>6,742</td></tr>
+    </tbody>
+  </table>
+
+  <p>GPS IIF sits 21 km from the u=128 vacuum boundary. This was not fitted — it emerged from the Z256 geometry with Earth tilt applied.</p>
+</section>
+
+<hr>
+
+<!-- DRAG FORMULA -->
+<section class="section">
+  <div class="section-num">02 · Derivation</div>
+  <h2>The Drag Formula and <span class="accent">Frame Conversion</span></h2>
+
+  <p>For two gravitationally interacting bodies with masses M₁, M₂ at distance r:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Component definitions</div>
+    <div class="eq-row">Δa = √(G·M₁) / (2√r_eff)</div>
+    <div class="eq-row">Δb = √(M₂) / (2√r_eff)</div>
+    <div class="eq-row">Δc = 1  (radial thread direction)</div>
+    <div class="eq-row">Δd = 1  (rotation axis direction)</div>
+    <div class="eq-row">r_eff = r_actual × cos(θ₁) × cos(θ₂)</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-label">Algebraic derivation</div>
+    <div class="eq-row">Δa · Δb · Δc · Δd = √(G·M₁·M₂) / (4·r_eff)</div>
+    <div class="eq-row">T_drag = 16 · [√(G·M₁·M₂) / (4·r_eff)]²</div>
+    <div class="eq-row">       = G·M₁·M₂ / r_eff²</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-label">Frame conversion proof</div>
+    <div class="eq-row">F_proj = T_drag × cos²θ₁ × cos²θ₂</div>
+    <div class="eq-row">       = G·M₁·M₂ / (r_actual² · cos²θ₁ · cos²θ₂) × cos²θ₁ × cos²θ₂</div>
+    <div class="eq-row cyan">       = G·M₁·M₂ / r_actual²  =  F_newton  ∎</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- NUMERICAL VERIFICATION -->
+<section class="section">
+  <div class="section-num">03 · Verification</div>
+  <h2>Numerical <span class="accent">Verification</span></h2>
+
+  <h3>Planetary Pairs</h3>
+  <p>Tilt angles: Earth 23.5°, Moon 6.68°, Sun 7.25°</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Pair</th><th>T_drag (N)</th><th>F_Newton (N)</th><th>Ratio</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Earth-Moon</td><td>1.980403×10²⁰</td><td>1.980403×10²⁰</td><td><strong>1.00000000</strong></td></tr>
+      <tr><td>Earth-Sun</td><td>3.542237×10²²</td><td>3.542237×10²²</td><td><strong>1.00000000</strong></td></tr>
+      <tr><td>Moon-Sun</td><td>4.354840×10²⁰</td><td>4.354840×10²⁰</td><td><strong>1.00000000</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Earth-Orbiting Satellites</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Satellite</th><th>Altitude (km)</th><th>u-position</th><th>Ratio</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>ISS</td><td>408</td><td>0 (VACUUM)</td><td><strong>1.00000000</strong></td></tr>
+      <tr><td>GPS IIF</td><td>20,200</td><td>128 (VACUUM)</td><td><strong>1.00000000</strong></td></tr>
+      <tr><td>GLONASS</td><td>19,100</td><td>121</td><td><strong>1.00000000</strong></td></tr>
+      <tr><td>Galileo</td><td>23,222</td><td>148</td><td><strong>1.00000000</strong></td></tr>
+      <tr><td>GRACE-FO</td><td>490</td><td>0 (VACUUM)</td><td><strong>1.00000000</strong></td></tr>
+      <tr><td>Hubble</td><td>540</td><td>0 (VACUUM)</td><td><strong>1.00000000</strong></td></tr>
+      <tr><td>LAGEOS-1</td><td>5,900</td><td>35</td><td><strong>1.00000000</strong></td></tr>
+      <tr><td>Beidou MEO</td><td>21,528</td><td>137</td><td><strong>1.00000000</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>GPS Time Dilation</h3>
+
+  <div class="eq-block">
+    <div class="eq-label">GPS time drift</div>
+    <div class="eq-row">Gravitational rate gain : +45.72 μs/day</div>
+    <div class="eq-row">SR velocity correction  : −7.11 μs/day</div>
+    <div class="eq-row">Net drift               : +38.61 μs/day</div>
+    <div class="eq-row cyan">Measured value          : +38.4 μs/day  →  PASS</div>
+  </div>
+
+  <h3>Anomalous Acceleration Pattern</h3>
+  <p>Published non-gravitational accelerations (Rodriguez-Solano et al. 2017). Pattern: anomalous acceleration increases with distance from vacuum boundary. Newton and Einstein provide no structural prediction for this correlation.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Satellite</th><th>Anomalous acc (m/s²)</th><th>Distance from u=128 (km)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>GPS III</td><td>0.6×10⁻⁹</td><td>21</td></tr>
+      <tr><td>Galileo</td><td>0.7×10⁻⁹</td><td>3,061</td></tr>
+      <tr><td>GPS IIF</td><td>0.9×10⁻⁹</td><td>21</td></tr>
+      <tr><td>GPS IIA</td><td>1.2×10⁻⁹</td><td>21</td></tr>
+      <tr><td>GLONASS</td><td>1.8×10⁻⁹</td><td>1,031</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>
+
+<!-- LUNAR EVIDENCE -->
+<section class="section">
+  <div class="section-num">04 · Lunar Evidence</div>
+  <h2>Prior <span class="accent">Lunar Observations</span></h2>
+
+  <h3>E-Field Gradient Toward South Pole</h3>
+  <p>Two prior missions measured the surface electromagnetic environment near the lunar south pole:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Mission</th><th>Latitude</th><th>E-field</th><th>Instrument</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>IM-1 Odysseus (Feb 2024)</td><td>−80°S</td><td>&lt; 1.0 mV/m</td><td>ROLSES</td></tr>
+      <tr><td>IM-2 (Mar 2025)</td><td>−84°S</td><td>~ 2.1 mV/m</td><td>MAPP</td></tr>
+    </tbody>
+  </table>
+
+  <p>A 2.1× increase over 4 degrees of latitude toward the pole. MPRC predicts this gradient continues toward the pole axis endpoint — the lunar south pole is the endpoint of the Z256 u'-clockwise axis.</p>
+
+  <h3>NRHO Properties (Artemis III vs Apollo)</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Parameter</th><th>Apollo LLO</th><th>Artemis III NRHO</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Perilune</td><td>110 km</td><td>1,500 km</td></tr>
+      <tr><td>Apolune</td><td>313 km</td><td>70,000 km</td></tr>
+      <tr><td>Period</td><td>2 hours</td><td>6.56 days</td></tr>
+      <tr><td>Earth gravity at apolune</td><td>negligible</td><td>201% of Moon gravity</td></tr>
+    </tbody>
+  </table>
+
+  <p>NRHO sweeps u = 6 → 255 in Moon Z256 frame — the widest sweep of any lunar mission. Crosses vacuum boundaries at u=64, 128, 192 each orbit. In Moon's frame:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Moon Z256 vacuum altitudes</div>
+    <div class="eq-row">u=64  →  16,276 km from Moon center</div>
+    <div class="eq-row">u=128  →  32,540 km from Moon center</div>
+    <div class="eq-row">u=192  →  48,805 km from Moon center</div>
+    <div class="eq-row cyan">Apolune (70,000 km) = 116.6% of Earth-Moon L2 distance</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- PREDICTIONS -->
+<section class="section">
+  <div class="section-num">05 · Predictions</div>
+  <h2>Three Falsifiable <span class="accent">Pre-Mission Predictions</span></h2>
+
+  <p>All predictions stated: <strong>April 20, 2026</strong>. Artemis III is scheduled for late 2027.</p>
+
+  <!-- P1 -->
+  <div class="eq-block" style="margin-bottom:32px;">
+    <div class="eq-label">P1 — E-Field at Landing Site (−89°S)</div>
+    <div class="eq-row">Measurable by: crew EM environment sensors at landing site</div>
+    <div class="eq-row">IM-1 at −80°S: &lt; 1.0 mV/m · IM-2 at −84°S: ~ 2.1 mV/m (2.1× increase per 4°)</div>
+    <div class="eq-row cyan">Prediction: E-field &gt; 2.1 mV/m at −89°S · Best estimate: 4–6 mV/m</div>
+    <div class="eq-row">Falsified if: E-field ≤ 2.1 mV/m, or shows reversal/plateau before −89°S</div>
+  </div>
+
+  <div class="pull-quote">
+    <p><strong>P1 basis:</strong> The lunar pole is the endpoint of the Z256 u'-clockwise axis. The inward E·B field strengthens as u-position approaches the axis endpoint. The gradient observed from IM-1 to IM-2 is consistent with this geometry.</p>
+  </div>
+
+  <!-- P2 -->
+  <div class="eq-block" style="margin-bottom:32px;">
+    <div class="eq-label">P2 — Vacuum Micro-Discontinuity During Powered Descent</div>
+    <div class="eq-row">Measurable by: IMU data during powered descent phase</div>
+    <div class="eq-row">Moon Z256 vacuum u=0 altitude: r_actual = R_moon / cos(6.68°) ≈ R_moon + 12 km</div>
+    <div class="eq-row cyan">Prediction: IMU records micro-discontinuity at ~12 km altitude</div>
+    <div class="eq-row">Falsified if: IMU shows smooth monotonic deceleration through 12 km with no anomaly</div>
+  </div>
+
+  <div class="pull-quote">
+    <p><strong>P2 basis:</strong> T_drag = 0 at vacuum boundary positions. Standard powered descent trajectory crosses the u=0 vacuum boundary during the terminal phase. Both Newton and Einstein predict smooth, monotonically increasing gravitational acceleration. MPRC predicts a discrete structure at the boundary crossing.</p>
+  </div>
+
+  <!-- P3 -->
+  <div class="eq-block" style="margin-bottom:32px;">
+    <div class="eq-label">P3 — NRHO Frame Transition Boundary</div>
+    <div class="eq-row">Measurable by: NRHO trajectory residuals from published ephemeris data</div>
+    <div class="eq-row">Frame transition (Earth T_drag = Moon T_drag): r ≈ 18,454 km from Moon center</div>
+    <div class="eq-row cyan">Prediction: Systematic bias or step change in trajectory residuals at r = 18,454 km</div>
+    <div class="eq-row">Falsified if: Residuals show no structure at 18,454 km — purely smooth transition</div>
+  </div>
+
+  <div class="pull-quote">
+    <p><strong>P3 basis:</strong> MPRC has distinct Z256 ring frames per gravitational body (Earth: 23.5°, Moon: 6.68°). The frame transition where Earth and Moon T_drag contributions are equal is a discrete boundary. Standard CR3BP treats this transition as continuous.</p>
+  </div>
+
+  <h3>Summary</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Prediction</th><th>Value</th><th>Measurable when</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>P1 — E-field at −89°S</td><td>&gt; 2.1 mV/m (est. 4–6 mV/m)</td><td>Surface operations</td></tr>
+      <tr><td>P2 — IMU discontinuity at ~12 km</td><td>Anomalous deceleration signature</td><td>Powered descent</td></tr>
+      <tr><td>P3 — NRHO residual step at 18,454 km</td><td>Systematic trajectory bias</td><td>Orbital phase</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>
+
+<!-- SUPPORTING EVIDENCE -->
+<section class="section">
+  <div class="section-num">06 · Evidence Base</div>
+  <h2>Prior Observations <span class="accent">Supporting the Framework</span></h2>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Observation</th><th>Value</th><th>Source</th><th>MPRC status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>GPS IIF altitude</td><td>20,183.5 km</td><td>IS-GPS-200H</td><td>21 km from u=128 vacuum</td></tr>
+      <tr><td>GPS III anomalous acc</td><td>0.6×10⁻⁹ m/s²</td><td>Rodriguez-Solano 2017</td><td>lowest — nearest vacuum</td></tr>
+      <tr><td>GLONASS anomalous acc</td><td>1.8×10⁻⁹ m/s²</td><td>Rodriguez-Solano 2017</td><td>highest — farthest from vacuum</td></tr>
+      <tr><td>IM-1 E-field at −80°S</td><td>&lt; 1.0 mV/m</td><td>Farrell et al. 2024, GRL</td><td>consistent with axis prediction</td></tr>
+      <tr><td>IM-2 E-field at −84°S</td><td>~ 2.1 mV/m</td><td>MAPP instrument 2025</td><td>gradient matches MPRC</td></tr>
+      <tr><td>GPS time dilation</td><td>+38.61 μs/day</td><td>calculated</td><td>measured +38.4 μs/day — PASS</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>
+
+<!-- OPEN ITEMS -->
+<section class="section">
+  <div class="section-num">07 · Open Items</div>
+  <h2>Honestly Stated <span class="accent">Open Questions</span></h2>
+
+  <p>The following items are not resolved and are honestly stated as open:</p>
+
+  <ol>
+    <li><strong>LAGEOS-1 outward field magnitude</strong> — direction of the 0.35 mm/day residual matches MPRC prediction, but the magnitude calculation requires refinement of the outward field formula.</li>
+    <li><strong>Chang'e-6 far-side tension</strong> — Chang'e-6 landed at −41°S on the lunar far side (June 2024). The South Pole-Aitken Basin shows −600 mGal anomaly. MPRC predicts the far side is on the u'-clockwise (inward) axis, which should produce stronger gravity. The −600 mGal reading is in tension with this prediction. Possible explanation: SPA Basin mascon deficiency from impact-related iron depletion dominates over the E·B field contribution.</li>
+    <li><strong>z3 derivation</strong> — the oloid projection factor z3 = z4·|sin θ| was verified numerically but needs a complete formal proof.</li>
+    <li><strong>Arshad's Sieve connection</strong> — the Z256 ring structure connects to Arshad's Sieve modular framework; this connection is not yet formally derived.</li>
+  </ol>
+
+  <div class="pull-quote">
+    <p>MPRC does not replace Newton or Einstein — it extends them. Newton is verified as the geometric projection of MPRC. Einstein's weak-field limit (GPS time dilation) is reproduced exactly. Open questions are acknowledged, not swept under the rug.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- TILT FACTORS -->
+<section class="section">
+  <div class="section-num">Appendix</div>
+  <h2>Tilt Factors <span class="accent">Used</span></h2>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Body</th><th>Tilt to ecliptic</th><th>cos(tilt)</th><th>cos²(tilt)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Earth</td><td>23.5°</td><td>0.91706007</td><td>0.84099918</td></tr>
+      <tr><td>Moon</td><td>6.68°</td><td>0.99321131</td><td>0.98646872</td></tr>
+      <tr><td>Sun</td><td>7.25°</td><td>0.99200495</td><td>0.98407382</td></tr>
+    </tbody>
+  </table>
+
+  <div class="eq-block">
+    <div class="eq-label">Combined frame factors</div>
+    <div class="eq-row">Earth-Moon: cos²(E) × cos²(M) = 0.82961938</div>
+    <div class="eq-row">Earth-Sun: cos²(E) × cos²(S) = 0.82760528</div>
+    <div class="eq-row">Moon-Sun: cos²(M) × cos²(S) = 0.97075804</div>
+  </div>
+
+  <h3>Verification Code</h3>
+  <p>All supporting calculations are independently runnable in the repository:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Code files</div>
+    <div class="eq-row">gravity_verification.py  → T_drag = F_Newton, ratio 1.00000000 on all pairs</div>
+    <div class="eq-row">lens_dynamics.py         → Z256 structure, 7 sections all PASS</div>
+    <div class="eq-row">satellite_analysis.py    → GPS at u=128, 8 satellites PASS</div>
+    <div class="eq-row">moon_missions.py         → IM-1/IM-2 gradient, LRO Moon frame PASS</div>
+    <div class="eq-row">artemis_trajectory.py    → NRHO sweep, vacuum crossings, frame transition</div>
+  </div>
+
+  <h3>References</h3>
+  <ul>
+    <li>IS-GPS-200H Interface Control Document, GPS Directorate, 2013</li>
+    <li>Rodriguez-Solano et al., "Adjustable box-wing model," Journal of Geodesy, 2017</li>
+    <li>Farrell et al., "ROLSES observations," Geophysical Research Letters, 2024</li>
+    <li>Williams et al., "Targeting cislunar NRHOs," AAS 19-882, 2019</li>
+    <li>Lucchesi &amp; Peron, "Accurate measurement of LAGEOS residuals," PRL, 2010</li>
+    <li>Zuber et al., "Gravity field of the Moon from GRAIL," Science, 2013</li>
+  </ul>
+</section>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

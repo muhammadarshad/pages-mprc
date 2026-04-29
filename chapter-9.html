@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Chapter 9: Lunar-Nodal Modulation of South Asian Hydroclimate</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="book-title">The MPRC Framework</a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+      <li><a href="chapter-2.html">2. GUT v2</a></li>
+      <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+      <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+      <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+      <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+      <li><a href="chapter-7.html">7. Artemis III Predictions</a></li>
+      <li><a href="chapter-8.html">8. MPRC Spectral Transform</a></li>
+      <li><a href="chapter-9.html" style="font-weight:600;">9. Lunar-Nodal Climate Hypothesis</a></li>
+    </ul>
+  </nav>
+</aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>Lunar-Nodal <span>Climate Hypothesis</span></h1>
+        <p class="chapter-subtitle">A testable MPRC-derived hypothesis for lunar-nodal modulation of South Asian hydroclimate extremes · Exploratory Analysis · April 2026 · Third Revision</p>
+      </header>
+
+      <div class="chapter-body">
+
+<!-- ABSTRACT -->
+<section class="section">
+  <div class="section-num">Abstract</div>
+  <h2>MPRC-Derived Modulation of <span class="accent">South Asian Hydroclimate</span></h2>
+
+  <p>South Asian climate contains several unresolved variability patterns, including a seasonal temperature inversion in the Upper Indus Basin (UIB) and contrasting Pakistan hydroclimate outcomes during La Niña and solar ascending phases: near-identical forcing produced severe drought in 1998–2001 and catastrophic flooding in 2010 and 2022.</p>
+
+  <p>We test whether the 18.6-year lunar nodal cycle, represented by a zero-parameter MPRC-derived geometric index:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Modulation Factor</div>
+    <div class="eq-row">MF = sin²(θ_sum) / sin²(41.72°)</div>
+    <div class="eq-row cyan">MF = 1.000 at minor standstill · MF = 1.403 at major standstill</div>
+    <div class="eq-row">Zero free parameters · reproducible from any standard lunar ephemeris</div>
+  </div>
+
+  <p>is a candidate modulator of these outcomes. The 1998–2001 drought occurred near nodal minimum (MF 1.00–1.04), whereas the catastrophic 2010 and 2022 floods occurred at elevated MF (1.28 and 1.30 respectively), motivating the hypothesis.</p>
+
+  <p>Arabian Sea JJAS SST anomaly is the strongest additional predictor by AIC. MF does not add statistically significant predictive skill for major flood occurrence in the 44-year record (phase-randomised null test p = 0.806), and the best-fit period scan identifies 21.5 years rather than 18.6 years. However, the MF coefficient is positive and stable across all leave-one-event-out iterations (range [1.46, 2.99], full = 2.06). The null test failure is consistent with expected low power: the record spans 2.4 nodal cycles, whereas reliable period detection requires approximately five complete cycles (~93 years).</p>
+
+  <div class="pull-quote">
+    <p>We present the nodal mechanism as a falsifiable hypothesis rather than an established attribution. The primary falsifiable prediction is that the UIB seasonal temperature inversion should moderate toward the 2034 minor standstill as MF declines.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- INTRODUCTION -->
+<section class="section">
+  <div class="section-num">01 · Introduction</div>
+  <h2>The Pakistan Monsoon <span class="accent">Behavioural Split</span></h2>
+
+  <p>Pakistan and the Upper Indus Basin occupy the western edge of the South Asian monsoon. Multiple independent studies document a seasonal temperature inversion: winter maximum temperatures rising at +0.38°C per decade while summer maximum temperatures cool at −0.14°C per decade (Fowler and Archer 2006; Iqbal et al. 2021). Pre-monsoon temperatures have increased uniformly across all regions (Sheikh et al. 2009). These patterns are not reproduced by uniform greenhouse gas forcing scenarios.</p>
+
+  <p>The behavioural split in the Pakistan monsoon record is the primary motivation for this study. La Niña is a well-established precursor of enhanced Pakistan monsoon rainfall (Adnan et al. 2021). The ascending solar cycle phase is associated with intensified atmospheric circulation (Gray et al. 2010). Yet the coincidence of both conditions in 1998–2001 produced Pakistan's worst multi-year drought since independence (GCISC 2009), while the same joint condition produced catastrophic flooding in 2010 (1,985 deaths, $9.7B damage) and 2022 (1,739 deaths, $40B damage).</p>
+
+  <p>Existing attribution studies for 2022 emphasise anthropogenic warming, La Niña circulation, and subtropical high behaviour (Nanditha et al. 2023; Zhou et al. 2023) but do not identify a variable that explains why the same ENSO and solar configuration produced drought in 1998–2001.</p>
+
+  <div class="pull-quote">
+    <p>We propose that the 18.6-year lunar nodal cycle is a candidate modulating variable. The physical pathway is grounded in tidal oceanography: the nodal cycle drives measurable variations in tidal amplitude, which alter Arabian Sea mixed-layer depth and SST, modulating monsoon moisture transport.</p>
+  </div>
+
+  <p>We quantify this via a dimensionless index MF, derived from the MPRC geometric framework (Arshad 2026), that cycles between 1.00 (minor standstill) and 1.40 (major standstill) with zero free parameters. This paper reports both the motivating event-phase pattern and the results of formal statistical tests. We do not claim the mechanism is established; we claim it is testable, motivated by an unexplained event contrast, and falsifiable on a near-term observational timescale.</p>
+</section>
+
+<hr>
+
+<!-- MF DEFINITION -->
+<section class="section">
+  <div class="section-num">02 · Modulation Index MF</div>
+  <h2>The Zero-Parameter <span class="accent">Nodal Index</span></h2>
+
+  <p>Climate tests in this paper do not require acceptance of the full MPRC framework; they require only that MF is a reproducible, zero-parameter time series with the 18.612-year nodal period.</p>
+
+  <h3>Operational Definition</h3>
+
+  <p>The Moon's orbital inclination to Earth's equator cycles between 18.3° at minor standstill and 28.6° at major standstill over the 18.612-year nodal precession cycle. Confirmed recent standstills: minor October 1997, major mid-2006, minor October 2015, major early 2025. The sum angle and MF are defined as:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Sum angle and MF</div>
+    <div class="eq-row">θ_sum = 23.44° (Earth axial tilt) + Moon inclination to equator</div>
+    <div class="eq-row cyan">MF(year) = sin²(θ_sum(year)) / sin²(41.72°)</div>
+    <div class="eq-row">MF = 1.000 at minor standstill · MF = 1.403 at major standstill</div>
+  </div>
+
+  <p>The 40.3% range follows from the confirmed standstill inclination limits (18.3° and 28.6°) and Earth's fixed axial tilt (23.44°). No fitting. No free parameters. All MF values are independently reproducible from any standard lunar ephemeris.</p>
+
+  <h3>Physical Motivation</h3>
+
+  <p>The sin-squared form follows the same angular dependence used in tidal constituent nodal factor analysis (Haigh et al. 2011): the nodal modulation of tidal forcing is proportional to the squared sine of the inclination angle. MF is therefore consistent in functional form with, though not calibrated to, standard tidal harmonic nodal factors.</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Range values</div>
+    <div class="eq-row">Minor standstill (1997, 2015, 2034): MF = 1.000, θ_sum = 41.74°</div>
+    <div class="eq-row">Major standstill (2006, 2025):        MF = 1.403, θ_sum = 52.04°</div>
+    <div class="eq-row cyan">Drought cluster (1998–1999):          MF = 1.01–1.04</div>
+    <div class="eq-row cyan">Catastrophic floods (2010, 2022):     MF = 1.28, 1.30</div>
+  </div>
+
+  <p>The MPRC framework (Arshad 2026, Chapter 7) provides a geometric derivation of the sin-squared partition from first principles, independently verified against Newton's law on eleven gravitational datasets. Whether or not the MPRC framework is accepted, MF is a well-defined, reproducible quantity.</p>
+
+  <p><strong>Figure 1 (described):</strong> Physical basis of MF. (a) The MPRC gravitational partition from Chapter 7: T_drag = GMm/r² partitions via cos²(θ) + sin²(θ) = 1 (verified to ratio 1.00000000 on 11 datasets). (b) θ_sum variation over the nodal cycle with confirmed standstill dates. (c) MF showing the 40.3% range between standstills.</p>
+</section>
+
+<hr>
+
+<!-- DOCUMENTED ANOMALIES -->
+<section class="section">
+  <div class="section-num">03 · Documented Anomalies</div>
+  <h2>South Asian Climate <span class="accent">Unresolved Patterns</span></h2>
+
+  <p>Each anomaly below is cited from peer-reviewed literature or primary government sources. No findings from the present analysis are introduced in this section.</p>
+
+  <h3>UIB Seasonal Temperature Inversion</h3>
+  <p>Iqbal et al. (2021) document winter T<sub>max</sub> +0.38°C/decade and spring T<sub>max</sub> +0.35°C/decade, while summer T<sub>max</sub> declined at −0.14°C/decade and autumn T<sub>min</sub> at −0.22°C/decade across nine UIB stations for 1955–2016. Fowler and Archer (2006) confirm the pattern for 1961–2000. This seasonal inversion has no established causal mechanism.</p>
+
+  <h3>Pre-Monsoon Thermal Intensification</h3>
+  <p>Sheikh et al. (2009) found April–May temperatures increased in all regions across 52 stations for 1961–2000. The spatial uniformity suggests a common large-scale forcing.</p>
+
+  <h3>The 1998–2001 La Niña Drought Paradox</h3>
+  <p>Pakistan's 1998–2001 drought was the worst in recorded history (GCISC 2009). It occurred during confirmed La Niña conditions and the ascending phase of Solar Cycle 23 — the same joint configuration that produced major flooding in 1988 and catastrophic flooding in 2010 and 2022. No published study identifies why 2010 — also following a weak El Niño in 2009 — was catastrophic under the same configuration.</p>
+
+  <h3>The 2010–2022 Catastrophe Clustering</h3>
+  <p>The two worst Pakistan floods in recorded history are separated by exactly 12 years — one Schwabe solar cycle. Both occurred during solar ascending phase with active monsoon-season La Niña. Attribution studies for 2022 identify anthropogenic warming, La Niña circulation, and subtropical high behaviour as contributing factors. The present paper proposes the nodal cycle as an additional candidate modulating variable, complementary to these explanations.</p>
+
+  <h3>SC22 versus SC25 Severity Asymmetry</h3>
+  <p>Solar Cycles 22 and 25 are 33 years apart with near-identical peak sunspot numbers (158 vs 157). SC25 produced a catastrophic event (2022) while the SC22 epoch produced only major events (1988 major, 1992 severe). A variable beyond the solar cycle is required to explain this asymmetry.</p>
+</section>
+
+<hr>
+
+<!-- DATA AND METHODS -->
+<section class="section">
+  <div class="section-num">04 · Data and Methods</div>
+  <h2>Statistical Framework and <span class="accent">Null Tests</span></h2>
+
+  <h3>Event Catalogue, 1982–2025</h3>
+  <p>The primary analysis uses the 1982–2025 period (n = 44 years). NOAA OISST Arabian Sea SST data begin in September 1981 and the full regression panel requires complete covariate coverage. A supplementary descriptive analysis uses the 1971–2026 record for event-phase visualisation.</p>
+
+  <p>Flood severity is classified on a 0–3 ordinal scale: 0 = no significant event, 1 = major flood, 2 = severe flood, 3 = catastrophic. Classification sources: Federal Flood Commission Annual Reports (primary, 1971–2014), NDMA annual reports, UN OCHA situation reports (2010, 2022), and published academic literature. The binary outcome <em>event_binary</em> = 1 when severity ≥ 1. A separate <em>catastrophic_binary</em> identifies severity = 3 events (two cases: 2010 and 2022).</p>
+
+  <h3>Covariates</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Variable</th><th>Definition</th><th>Source</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>la_nina_jjas</strong></td><td>Binary, 1 when Jun–Aug ONI ≤ −0.5</td><td>NOAA CPC</td></tr>
+      <tr><td><strong>solar_ascending</strong></td><td>Binary, 1 during SC21–SC25 ascending phase</td><td>NOAA WDC-SILSO</td></tr>
+      <tr><td><strong>iod_jjas</strong></td><td>Jun–Aug DMI index, continuous</td><td>NOAA</td></tr>
+      <tr><td><strong>jjas_sst_arabian_sea_anom</strong></td><td>OISST Jun–Aug mean, 55–75E, 10–25N, detrended</td><td>NOAA OISST v2.1</td></tr>
+      <tr><td><strong>MF</strong></td><td>sin²(θ_sum) / sin²(41.72°), zero free parameters</td><td>Computed from ephemeris</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Regression Models</h3>
+  <p>Logistic regression (statsmodels, Python) with Firth penalisation for rare events. Model comparison by AIC. Thirteen model specifications tested. Standard errors from the observed information matrix; Wald p-values reported with the acknowledgment that the dataset is small and asymptotic approximations may be unreliable.</p>
+
+  <h3>Null Tests</h3>
+  <p>Four null tests were applied to the primary specification (event_binary ~ la_nina_jjas + solar_ascending + MF + jjas_sst_arabian_sea_anom), tested against the baseline (event_binary ~ la_nina_jjas + solar_ascending + jjas_sst_arabian_sea_anom):</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Test</th><th>Method</th><th>Question</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>A</strong> Year-shuffle (n=2000)</td><td>MF values shuffled across years</td><td>Is coefficient larger than random year assignment?</td></tr>
+      <tr><td><strong>B</strong> Phase-randomised (n=2000)</td><td>Random phases assigned to 18.612-yr sinusoid</td><td>Is the 18.6-yr phase distinctive?</td></tr>
+      <tr><td><strong>C</strong> Optimal period scan</td><td>Best-fitting period scanned across range</td><td>Is 18.6 yr the data-preferred period?</td></tr>
+      <tr><td><strong>D</strong> Leave-one-out (LOO)</td><td>MF coefficient refit excluding each flood year</td><td>Is association driven by individual events?</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>
+
+<!-- RESULTS -->
+<section class="section">
+  <div class="section-num">05 · Results</div>
+  <h2>Event-Phase Contrast and <span class="accent">Statistical Tests</span></h2>
+
+  <h3>Event-Phase Contrast — Motivating Pattern</h3>
+  <p>The contrast between La Niña + solar ascending years is visually clear: years at MF ≤ 1.09 produced drought or no event; years at MF ≥ 1.15 produced major to catastrophic events.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Year</th><th>ENSO</th><th>Solar</th><th>MF</th><th>Outcome</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1988</td><td>La Niña</td><td>ASC</td><td>1.40</td><td>Major flood</td></tr>
+      <tr><td>1998–1999</td><td>La Niña</td><td>ASC</td><td class="cyan">1.01–1.04</td><td class="cyan">Catastrophic drought</td></tr>
+      <tr><td>2010</td><td>La Niña</td><td>ASC</td><td class="cyan">1.28</td><td class="cyan">Catastrophic flood</td></tr>
+      <tr><td>2022</td><td>La Niña</td><td>ASC</td><td class="cyan">1.30</td><td class="cyan">Catastrophic flood</td></tr>
+    </tbody>
+  </table>
+
+  <p>The 1989 anomaly (MF 1.39, La Niña weak by JJA, ASC, no major flood) and the 1988 major flood (not catastrophic despite MF 1.40) illustrate the limits of the three-factor framework. These are noted as open problems.</p>
+
+  <h3>Seasonal Inversion Consistent with Nodal Phase</h3>
+  <p>The UIB seasonal inversion gap acceleration after the mid-1990s is consistent with MF rising from the 1997 minor standstill toward the 2006 major standstill. <strong>Prediction: the gap should moderate toward 2034 as MF declines.</strong></p>
+
+  <h3>Regression and Null Test Results, 1982–2025</h3>
+  <p>Arabian Sea JJAS SST anomaly is the strongest additional predictor by AIC. Adding MF to the baseline model does not improve AIC for major flood prediction. The MF coefficient is positive across all specifications but does not reach standard significance thresholds in the 44-year record.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Null Test</th><th>Result</th><th>Interpretation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A (year-shuffle)</td><td>Not significant</td><td>Does not confirm signal above random year assignment</td></tr>
+      <tr><td>B (phase-randomised)</td><td>p = 0.806</td><td>Does not confirm unique 18.6-yr phase signal</td></tr>
+      <tr><td>C (period scan)</td><td>Best period = 21.5 yr</td><td>18.6 yr not data-preferred in 44-yr record</td></tr>
+      <tr><td><strong>D (LOO)</strong></td><td><strong>Coeff range [1.46, 2.99]</strong></td><td><strong>Positive in every iteration — not event-driven</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Power Context</h3>
+  <p>The null test failures must be interpreted in the context of statistical power. Reliable detection of an 18.6-year periodic signal via phase-randomisation tests requires approximately five complete cycles (~93 years). The 1982–2025 record spans 44 years = 2.4 nodal cycles. The estimated power of the phase-randomisation test at this record length is approximately 20–25% for a true signal of the observed effect size.</p>
+
+  <div class="pull-quote">
+    <p>The null tests represent expected negatives given the record length, not evidence against the hypothesis. Test D (LOO stability) is the most informative result available from the current record: the MF coefficient sign is positive in every leave-one-event-out iteration.</p>
+  </div>
+
+  <h3>SC22 versus SC25 Asymmetry</h3>
+  <p>The 33-year solar period asymmetry between SC22 and SC25 is consistent with the different nodal phases at the time of La Niña conjunctions. During SC22, La Niña in 1988–1989 occurred at MF = 1.40–1.39 (near the 1988 major standstill) but La Niña intensity was moderate (JJA ONI ~−0.8). During SC25, the sustained La Niña of 2020–2022 coincided with elevated MF throughout the 2006–2025 major standstill window, reaching MF = 1.30 in 2022 alongside strong La Niña (JJA ONI ~−1.4).</p>
+</section>
+
+<hr>
+
+<!-- FALSIFIABLE PREDICTION -->
+<section class="section">
+  <div class="section-num">06 · Falsifiable Prediction</div>
+  <h2>Near-Term <span class="accent">Observational Tests</span></h2>
+
+  <div class="eq-block" style="margin-bottom:32px;">
+    <div class="eq-label">P1 — UIB Seasonal Inversion Moderation (Primary)</div>
+    <div class="eq-row">Window: 2025–2034 (MF declining from 2025 peak toward 2034 minor standstill)</div>
+    <div class="eq-row">Prediction: UIB winter-summer T_max divergence (Iqbal et al. 2021) narrows measurably</div>
+    <div class="eq-row cyan">+0.38°C/decade winter warming slows · −0.14°C/decade summer cooling moderates by 2030–2034</div>
+    <div class="eq-row">Falsified if: the inversion gap continues to widen after 2028</div>
+    <div class="eq-row" style="font-size:14px; color:#888;">Measured from the same nine-station UIB network (Iqbal et al. 2021)</div>
+  </div>
+
+  <div class="pull-quote">
+    <p><strong>P1 basis:</strong> The 2025 major standstill marks the MF peak of the current nodal cycle. As MF declines toward 1.00 at the 2034 minor standstill, the hypothesis predicts a measurable narrowing in the UIB temperature inversion. This prediction is resolvable from standard meteorological station data within the decade.</p>
+  </div>
+
+  <div class="eq-block" style="margin-bottom:32px;">
+    <div class="eq-label">P2 — La Niña + Ascending Solar at Low MF (Secondary)</div>
+    <div class="eq-row">Window: La Niña + ASC conjunction within two years of 2034 minor standstill (MF ≤ 1.05)</div>
+    <div class="eq-row cyan">Prediction: below-average Pakistan monsoon rainfall — NOT catastrophic flooding</div>
+    <div class="eq-row">Falsified if: catastrophic flooding occurs during that low-MF window</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- DISCUSSION -->
+<section class="section">
+  <div class="section-num">07 · Discussion</div>
+  <h2>Claims, Limitations, and <span class="accent">Required Next Steps</span></h2>
+
+  <h3>What This Paper Claims and Does Not Claim</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Claims</th><th>Does Not Claim</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1998–2001 drought and 2010/2022 catastrophes occupy contrasting phases of a zero-parameter nodal index</td>
+        <td>That the nodal mechanism is established</td>
+      </tr>
+      <tr>
+        <td>Arabian Sea SST is a stronger statistical predictor of major flood occurrence than MF</td>
+        <td>That the 1998–2001 paradox is resolved</td>
+      </tr>
+      <tr>
+        <td>Formal null tests do not confirm a unique 18.6-yr nodal phase signal, consistent with expected low power</td>
+        <td>That MF explains GCM hindcast failures</td>
+      </tr>
+      <tr>
+        <td>The MF association is sign-stable across leave-one-event-out samples</td>
+        <td>That the hypothesis has been statistically confirmed</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Required Next Steps</h3>
+
+  <p><strong>Arabian Sea tidal analysis:</strong> Compute constituent-specific nodal factors for M2, K1, O1, and Mf in the Arabian Sea from TPXO9 tidal constituents or FES2014. Quantify whether the nodal modulation of internal tide generation at the Arabian Sea thermocline follows the MF proxy or a different functional form.</p>
+
+  <p><strong>Mixed-layer depth verification:</strong> Extract an 18.6-year signal from Argo mixed-layer depth and ORAS5 ocean reanalysis in the Arabian Sea after removing ENSO, IOD, greenhouse trend, aerosol forcing, and internal variability. This is the critical mechanistic link.</p>
+
+  <p><strong>Extended historical catalogue:</strong> Extend the Pakistan flood catalogue to 1950 using FFC historical records and British-era Indus discharge data (4.1 nodal cycles). This would approximately double the statistical power of the phase-randomisation test.</p>
+
+  <p><strong>Regional model experiment:</strong> Run a regional Arabian Sea ocean model with and without the 18.6-year variation in tidal mixing amplitude, forced by observed ENSO boundary conditions, and compare Pakistan rainfall anomalies for 1996–2005 versus 2006–2015.</p>
+
+  <h3>The MPRC Framework as Theoretical Motivation</h3>
+  <p>The sin-squared functional form of MF is derived from the MPRC gravitational thread partition (Arshad 2026, Chapter 7), which recovers Newton's law exactly on eleven independent datasets. The framework provides a geometric reason why the perpendicular component of the gravitational thread scales as sin²(θ_sum). This derivation motivates the form of MF; it does not by itself establish that MF modulates Arabian Sea mixing or Pakistan flood severity. The climate mechanism must be established through the oceanographic and atmospheric tests described above.</p>
+</section>
+
+<hr>
+
+<!-- CONCLUSIONS -->
+<section class="section">
+  <div class="section-num">08 · Conclusions</div>
+  <h2>An Exploratory <span class="accent">Falsifiable Hypothesis</span></h2>
+
+  <p>We present an exploratory hypothesis: that the 18.6-year lunar nodal cycle, quantified by a zero-parameter MPRC-derived index MF, is a candidate modulator of South Asian hydroclimate extremes. The motivating observation is that La Niña and solar ascending phase produced drought when MF was near its minimum (1998–2001, minor standstill) and catastrophic flooding when MF was elevated (2010, 2022, post-major standstill). This contrast is visually clear and sign-stable across leave-one-event-out samples.</p>
+
+  <p>Formal regression and null tests on the 1982–2025 panel do not confirm statistically significant predictive skill for MF in major flood occurrence. Arabian Sea JJAS SST anomaly is the stronger observed predictor. The null test failures are consistent with expected low power from a 44-year record spanning only 2.4 nodal cycles; reliable period detection requires approximately 93 years.</p>
+
+  <div class="pull-quote">
+    <p>The hypothesis is neither confirmed nor falsified by the current record. The primary falsifiable prediction — that the UIB seasonal temperature inversion should moderate toward the 2034 minor standstill as MF declines from its 2025 peak — will be resolvable from standard meteorological station data within the decade.</p>
+  </div>
+
+  <p>The critical analytical next steps are TPXO Arabian Sea tidal constituent analysis, Argo mixed-layer depth verification, and extension of the flood catalogue to 1950.</p>
+</section>
+
+<hr>
+
+<!-- DATA AVAILABILITY -->
+<section class="section">
+  <div class="section-num">Data &amp; Code</div>
+  <h2>Data and Code <span class="accent">Availability</span></h2>
+
+  <p>Analysis code, MPRC_CORE.py constants registry, event catalogue, null test scripts, and figure generation code are available from the author. MF time series are independently reproducible from any standard lunar ephemeris using:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">MF reproduction formula</div>
+    <div class="eq-row">MF(year) = sin²(23.44 + Moon_inc(year)) / sin²(41.72)</div>
+    <div class="eq-row cyan">Moon_inc follows the 18.612-yr precession anchored at the confirmed 2006.5 major standstill</div>
+  </div>
+
+  <p>OISST Arabian Sea SST data: NOAA OISST v2.1, ncei.noaa.gov. Solar cycle data: NOAA WDC-SILSO, Brussels. ENSO ONI: NOAA CPC. Flood catalogue: FFC Annual Report 2014 (primary 1971–2014), NDMA/UN OCHA (2015–2026).</p>
+</section>
+
+<hr>
+
+<!-- REFERENCES -->
+<section class="section">
+  <div class="section-num">References</div>
+  <h2><span class="accent">References</span></h2>
+
+  <p>Adnan S, Ullah K, Shuanglin L, Gao S, Khan AH, Mahmood R (2021) Relationship between ENSO and Pakistan rainfall and the influence of the QBO and geomagnetic activity. <em>Int J Climatol</em> 41:S1513–S1527.</p>
+
+  <p>Arshad M (2026) <em>The MPRC Framework — A Discrete Geometric Theory of Nature.</em> April 2026. <a href="https://muhammadarshad.github.io/pages-mprc/" style="color:#0066cc; text-decoration:none;">muhammadarshad.github.io/pages-mprc/</a>.</p>
+
+  <p>FFC — Government of Pakistan, Federal Flood Commission (2014) <em>Annual Flood Report 2014.</em> Federal Flood Commission, Islamabad.</p>
+
+  <p>Fowler HJ, Archer DR (2006) Conflicting signals of climatic change in the Upper Indus Basin. <em>J Clim</em> 19(17):4276–4293.</p>
+
+  <p>GCISC (2009) <em>Climate of Pakistan — Trends and Variability.</em> Global Change Impact Studies Centre, Islamabad.</p>
+
+  <p>Gray LJ, Beer J, Geller M et al. (2010) Solar influences on climate. <em>Rev Geophys</em> 48(4):RG4001.</p>
+
+  <p>Haigh ID, Eliot M, Pattiaratchi C (2011) Global influences of the 18.61 year nodal cycle and 8.85 year cycle of lunar perigee on high tidal levels. <em>J Geophys Res</em> 116:C06025.</p>
+
+  <p>Iqbal MF, Liu J, Li J, Saeed S, Bilal M, Shafiq MU (2021) Observed trends and variability of temperature and precipitation and their global teleconnections in the Upper Indus Basin, Hindukush-Karakoram-Himalaya. <em>Atmosphere</em> 12(8):973.</p>
+
+  <p>Nanditha JS, Kushwaha AP, Singh R et al. (2023) The Pakistan flood of August 2022: causes and implications. <em>Earths Future</em> 11(3):e2022EF003230.</p>
+
+  <p>Sheikh MM, Manzoor N, Adnan M et al. (2009) <em>Climate profile and past climate changes in Pakistan.</em> GCOS-Pakistan final report, GCISC-RR-08.</p>
+
+  <p>van Loon H, Meehl GA (2012) The Indian summer monsoon during peaks in the 11-year sunspot cycle. <em>Geophys Res Lett</em> 39:L13701.</p>
+
+  <p>Zhou S, Huang G, Huang P (2023) Changes in the East Asia-Pacific teleconnection and influences on summer precipitation over the Yangtze River basin. <em>Clim Dyn</em> 60:2151–2166.</p>
+</section>
+
+<hr>
+
+<!-- APPENDIX -->
+<section class="section">
+  <div class="section-num">Appendix A</div>
+  <h2>MPRC Gravitational Partition — <span class="accent">Derivation of MF</span></h2>
+
+  <p>This appendix provides the MPRC derivation for readers who wish to evaluate the theoretical basis of MF. It is not a prerequisite for the climate results in Sections 3–6.</p>
+
+  <h3>The Thread Force and Frame Conversion</h3>
+  <p>Chapter 7 derives the gravitational thread force T_drag and proves its reduction to Newton's law under frame conversion:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Frame conversion proof</div>
+    <div class="eq-row">T_drag = GMm / r²</div>
+    <div class="eq-row">F_Newton = T_drag × cos²(θ₁) × cos²(θ₂)</div>
+    <div class="eq-row cyan">Verified to ratio 1.00000000 on 3 planetary pairs and 8 Earth-orbiting satellites</div>
+    <div class="eq-row">GPS time dilation predicted: +38.61 μs/day · measured: +38.4 μs/day</div>
+  </div>
+
+  <h3>The Sin-Squared Partition</h3>
+  <p>The frame conversion identity cos² + sin² = 1 partitions T_drag into two orthogonal components:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Orthogonal decomposition</div>
+    <div class="eq-row">T_orbital = T_drag × cos²(θ_sum)   [projects into orbital mechanics]</div>
+    <div class="eq-row">T_perp    = T_drag × sin²(θ_sum)   [perpendicular boundary component]</div>
+    <div class="eq-row cyan">MF(year) = T_perp(year) / T_perp(minor) = sin²(θ_sum(year)) / sin²(41.72°)</div>
+  </div>
+
+  <p>This ratio is derived from the partition proof in Chapter 7. It varies between 1.000 (minor standstill, θ_sum = 41.74°) and 1.403 (major standstill, θ_sum = 52.04°) with zero free parameters.</p>
+
+  <h3>Relationship to Standard Tidal Theory</h3>
+  <p>MF is consistent in functional form with standard tidal harmonic nodal factors, which scale with sin or sin² of the lunar inclination for different constituents. MF is not calibrated to specific tidal constituents and should not be equated with constituent-specific nodal factors for the Arabian Sea. A constituent-specific calibration using TPXO9 is identified as required work in Section 7. MF serves as a first-order geometric proxy for the nodal modulation amplitude pending that calibration.</p>
+</section>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

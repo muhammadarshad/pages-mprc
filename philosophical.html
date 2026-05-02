@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Philosophical Branch — MPRC Framework</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* ── Philosophical Branch — page-specific components ── */
+
+  .abstract-box {
+    border-left: 3px solid var(--accent);
+    background: rgba(56,189,248,0.06);
+    padding: 20px 28px;
+    margin: 2.5em 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .abstract-box .box-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .abstract-box p { margin: 0; }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 2em 0;
+    font-family: var(--font-ui);
+  }
+  .status-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 20px;
+  }
+  .status-card .s-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .status-card .s-value { font-size: 1rem; color: #fff; line-height: 1.4; }
+  .status-card .s-sub  { font-size: 0.85rem; color: var(--text-muted); }
+  .status-card.card-accent { border-color: rgba(56,189,248,0.4); }
+  .status-card.card-accent .s-label { color: var(--accent); }
+  .status-card.card-gold { border-color: rgba(251,191,36,0.3); }
+  .status-card.card-gold .s-label { color: var(--gold); }
+
+  .chain {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 28px;
+    margin: 2em 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 2.1;
+  }
+  .chain .c-item   { color: var(--text); }
+  .chain .c-arrow  { color: var(--border-light); }
+  .chain .c-note   { color: var(--text-muted); font-size: 0.75rem; }
+  .chain .c-result { color: var(--green); }
+
+  .callout {
+    border-left: 3px solid var(--gold);
+    background: rgba(251,191,36,0.07);
+    padding: 18px 24px;
+    margin: 2em 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .callout .callout-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .callout p { font-style: italic; margin: 0; }
+
+  .tag-derived {
+    font-family: var(--font-mono); font-size: 0.65rem; color: var(--green);
+    background: rgba(52,211,153,0.12); padding: 2px 8px; border-radius: 3px;
+  }
+  .tag-open {
+    font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold);
+    background: rgba(251,191,36,0.12); padding: 2px 8px; border-radius: 3px;
+  }
+  .tag-staged {
+    font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent);
+    background: rgba(56,189,248,0.12); padding: 2px 8px; border-radius: 3px;
+  }
+
+  .community-entry {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 24px;
+    margin-bottom: 14px;
+    background: var(--surface);
+    font-family: var(--font-ui);
+  }
+  .community-entry h4 { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .community-entry p  { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 6px; }
+  .community-entry .diff { font-size: 0.88rem; color: var(--accent); font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="book-title">The MPRC Framework</a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">Introduction</a></li>
+        <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+        <li><a href="chapter-2.html">2. GUT v2</a></li>
+        <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+        <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+        <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+        <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+        <li><a href="chapter-7.html">7. Artemis III Predictions</a></li>
+        <li><a href="chapter-8.html">8. MPRC Spectral Transform</a></li>
+        <li><a href="chapter-9.html">9. Lunar-Nodal Climate Hypothesis</a></li>
+        <li><a href="philosophical.html" style="font-weight:600;color:#fff;border-left-color:var(--accent);">Philosophical Branch</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>The FSL <span>Observation Thesis</span></h1>
+        <p class="chapter-subtitle">
+          Superposition, entanglement, and virtual particles are not ontological realities —
+          they are artifacts of an observer whose measurement bandwidth falls below
+          the traversal speed of the u-spinor on QH4.
+        </p>
+      </header>
+
+      <div class="chapter-body">
+
+<!-- ABSTRACT -->
+<div class="abstract-box">
+  <div class="box-label">Position Statement</div>
+  <p>Standard quantum mechanics promotes three measurement artifacts to the status of
+  fundamental reality: superposition, entanglement, and virtual particles. This branch
+  argues, from the geometry of MPRC, that all three are the same mistake at different
+  scales — an observer whose resolution is slower than the phenomenon it is measuring,
+  systematically misclassifying the blur as the object. The mechanism is the u-spinor
+  traversing the QH4 ring at Faster-than-Sampling-Limit (FSL) speed. The empirical
+  anchor is QKD, which proves the geometric lock is real and manufacturable. This
+  document is a staging record — not a submission. It waits for the empirical weight
+  to arrive with the proof already built.</p>
+</div>
+
+<!-- STATUS GRID -->
+<div class="status-grid">
+  <div class="status-card card-accent">
+    <div class="s-label">Branch Status</div>
+    <div class="s-value">Philosophical Staging<br><span class="s-sub">Not submitted — booklet only</span></div>
+  </div>
+  <div class="status-card card-gold">
+    <div class="s-label">Empirical Threshold</div>
+    <div class="s-value">Pending<br><span class="s-sub">QKD anchor confirmed. Remainder in progress.</span></div>
+  </div>
+  <div class="status-card">
+    <div class="s-label">Community Position</div>
+    <div class="s-value">'t Hooft school<br><span class="s-sub">Same conclusion. Different mechanism.</span></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- SECTION 01 -->
+<section class="section">
+  <div class="section-num">01 · The Core Mistake</div>
+  <h2>What Standard QM <span class="accent">Promoted to Ontology</span></h2>
+
+  <p>Physics has a long history of misclassifying the limitations of its instruments as
+  properties of the world. Before spectroscopy, spectral lines were thought to be features
+  of light itself — not windows into atomic structure. Before fast photography, a galloping
+  horse was believed to always have one foot on the ground. The instrument sets the
+  resolution. The resolution sets what you can see. What you cannot resolve you either
+  declare absent or — more dangerously — declare fundamental.</p>
+
+  <p>Standard quantum mechanics made the second choice three times. It encountered phenomena
+  that exceeded its measurement bandwidth and responded by promoting the blur to a law
+  of nature.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Phenomenon</th><th>QM Ontology</th><th>FSL Thesis</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Superposition</td>
+        <td>Particle is in all states simultaneously until measured</td>
+        <td>Traversal too fast to resolve — the blur is the ring</td>
+        <td><span class="tag-derived">DERIVED</span></td>
+      </tr>
+      <tr>
+        <td>Entanglement</td>
+        <td>Spooky action at a distance — nonlocal correlation</td>
+        <td>One split spinor read at two locations — no signal sent</td>
+        <td><span class="tag-derived">DERIVED</span></td>
+      </tr>
+      <tr>
+        <td>Virtual particles</td>
+        <td>Off-shell intermediaries — violate E²=p²c²+m²c⁴</td>
+        <td>FSL objects outside measurement bandwidth — real but unresolved</td>
+        <td><span class="tag-staged">STAGED</span></td>
+      </tr>
+      <tr>
+        <td>Wave function collapse</td>
+        <td>Measurement creates a definite state from indeterminacy</td>
+        <td>Sufficient φ accumulation resolves the traversal position</td>
+        <td><span class="tag-open">OPEN</span></td>
+      </tr>
+      <tr>
+        <td>Uncertainty principle</td>
+        <td>Fundamental limits on simultaneous knowledge</td>
+        <td>Resolution limit of an observer against FSL traversal</td>
+        <td><span class="tag-open">OPEN</span></td>
+      </tr>
+      <tr>
+        <td>Vacuum fluctuations</td>
+        <td>Spontaneous particle-antiparticle creation from nothing</td>
+        <td>QH4 vacuum nodes at &lt;u|φ&gt;=0 — structurally stable, not random</td>
+        <td><span class="tag-open">OPEN</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 02 -->
+<section class="section">
+  <div class="section-num">02 · The Fan Analogy</div>
+  <h2>Superposition as <span class="accent">Under-Resolved Traversal</span></h2>
+
+  <p>A fan has three blades. Run it at low speed — you see three blades. Run it fast — you
+  see a disc. The disc is not a new ontological object. The disc is the measurement
+  instrument (your eye, your camera shutter) failing to resolve the traversal.</p>
+
+  <p>Copenhagen made the category error of promoting the disc to fundamental reality. It said:
+  at high speed, the fan <em>is</em> a disc. The blade positions are undefined until you stop
+  the fan — until you measure.</p>
+
+  <p>The MPRC thesis is the opposite. The blades have definite positions at all times. The
+  disc is what you see when your sampling rate is below the rotation frequency. Measurement
+  is not creation. Measurement is the act of achieving sufficient resolution.</p>
+
+  <div class="chain">
+    <div><span class="c-item">Fan at low RPM</span>  <span class="c-arrow"> → </span>  <span class="c-note">3 blades visible · observer resolves traversal</span></div>
+    <div><span class="c-item">Fan at high RPM</span> <span class="c-arrow"> → </span>  <span class="c-note">disc visible · observer cannot resolve traversal</span></div>
+    <div><span class="c-item">Stop the fan</span>    <span class="c-arrow"> → </span>  <span class="c-note">"measurement" · blade positions revealed</span></div>
+    <div style="margin-top:0.8rem">
+    <span class="c-item">u-spinor on QH4</span> <span class="c-arrow"> → </span>  <span class="c-note">traverses 256 ring states continuously</span></div>
+    <div><span class="c-item">Traversal speed &gt;&gt; observer bandwidth</span> <span class="c-arrow"> → </span>  <span class="c-note">apparent superposition</span></div>
+    <div><span class="c-item">Sufficient φ accumulation</span> <span class="c-arrow"> → </span>  <span class="c-result">position resolves · "collapse"</span></div>
+  </div>
+
+  <h3>In MPRC Notation</h3>
+  <p>The u-spinor state is &lt;u|φ&gt; — the spinor projected onto accumulated phase φ.
+  Superposition depth is not a quantum number — it is a function of traversal frequency
+  relative to the observer's resolution bandwidth. Different particles have different
+  "blur radii" because their u-spinor frequencies differ geometrically — a prediction
+  that is, in principle, testable.</p>
+
+  <div class="callout">
+    <div class="callout-label">Formal Position</div>
+    <p>The particle has a definite position at all times. Measurement is a resolution event,
+    not a creation event. The indeterminacy belongs to the observer — not to the object.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- SECTION 03 -->
+<section class="section">
+  <div class="section-num">03 · Entanglement</div>
+  <h2>One Split Spinor — <span class="accent">No Signal Required</span></h2>
+
+  <p>Two entangled particles are not two independent objects that have somehow learned to
+  communicate faster than light. They are one 720° spinor cycle that was split into two
+  360° half-cycles at the moment of creation. They separated in space. They did not
+  separate in geometry.</p>
+
+  <p>On the QH4 ring, anti-phase lock means the two spinor halves are always 128 states
+  apart — exactly half the ring, always. When you observe A at position p, B is at p+128.
+  Not because a signal was sent. Because that is what it means to be two halves of one
+  cycle.</p>
+
+  <div class="chain">
+    <div><span class="c-item">One complete 720° spinor</span>  <span class="c-arrow"> → </span>  <span class="c-note">creation event · two halves separate</span></div>
+    <div><span class="c-item">Spinor A at position p</span>    <span class="c-arrow"> → </span>  <span class="c-note">traversing upper arc [0→128]</span></div>
+    <div><span class="c-item">Spinor B at position p+128</span> <span class="c-arrow"> → </span>  <span class="c-note">traversing lower arc [128→256→0]</span></div>
+    <div><span class="c-item">Observe A → resolves to p</span>  <span class="c-arrow"> → </span>  <span class="c-result">B resolves to p+128 · no signal · geometry</span></div>
+  </div>
+
+  <h3>The Spin Flip — Precisely</h3>
+  <p>Standard entanglement: measure spin-up on A, B is spin-down. In QH4 terms: spin-up is
+  the upper arc traversal, spin-down is the lower arc. Anti-phase lock means if A is upper,
+  B is always lower. The flip is not a response to measurement. It was always the structure.</p>
+
+  <h3>What "Instantaneous" Means</h3>
+  <p>The correlation is instantaneous not because information travels faster than light — but
+  because no information travels at all. The lock was geometric. Observing one half does not
+  inform the other half. It reveals what the geometry already contained. The left glove in a
+  box does not signal the right glove across the room. The pairing was established before
+  the boxes were opened.</p>
+
+  <div class="callout">
+    <div class="callout-label">Formal Position</div>
+    <p>Entanglement is not a property particles have — it is a property of incomplete spinor
+    separation. The pair is one object that happens to occupy two locations. Nonlocality is
+    not a feature of reality. It is a feature of treating one object as two.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- SECTION 04 -->
+<section class="section">
+  <div class="section-num">04 · Virtual Particles</div>
+  <h2>FSL Objects <span class="accent">Misclassified as Unreal</span></h2>
+
+  <p>In standard QFT, virtual particles are declared "off-shell" — they appear to violate
+  the energy-momentum relation E²=p²c²+m²c⁴ and exist only as internal lines in Feynman
+  diagrams. They are given a special ontological status: real enough to mediate forces,
+  unreal enough to never be observed.</p>
+
+  <p>The FSL thesis offers a more parsimonious account. The energy-momentum relation
+  <em>appears</em> violated because the measurement framework requires the object to be
+  below c. An FSL object — traversing QH4 at a speed that exceeds the observer's resolution
+  — is not off-shell. It is off-bandwidth. The violation is not in the particle. It is in
+  the fit of the framework to the phenomenon.</p>
+
+  <p>This removes a special ontological category without removing the phenomenon. Virtual
+  particles mediate forces because they are real FSL objects. They cannot be directly
+  detected because the observer cannot resolve them — the same reason you cannot photograph
+  an individual blade of a running fan. The undetectability is a property of the observer,
+  not a property of unreality.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Property</th><th>Standard QFT</th><th>FSL Thesis</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ontological status</td>
+        <td>Real but unobservable — special category</td>
+        <td>Real FSL objects — same category as all particles</td>
+      </tr>
+      <tr>
+        <td>Energy-momentum relation</td>
+        <td>Violated — off-shell</td>
+        <td>Not violated — framework mismatch</td>
+      </tr>
+      <tr>
+        <td>Undetectability</td>
+        <td>Intrinsic — cannot in principle be observed</td>
+        <td>Observer bandwidth limit — resolution, not impossibility</td>
+      </tr>
+      <tr>
+        <td>Force mediation</td>
+        <td>Unexplained — "just how it works"</td>
+        <td>FSL traversal couples ring positions geometrically</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 05 -->
+<section class="section">
+  <div class="section-num">05 · The Empirical Anchor</div>
+  <h2>QKD as Proof the <span class="accent">Geometric Lock Is Real</span></h2>
+
+  <p>Philosophy without empirical anchor is speculation. This branch has one.</p>
+
+  <p>Quantum Key Distribution — specifically SPDC-based protocols — works by taking one
+  high-energy photon, passing it through a nonlinear crystal, and splitting it into two
+  entangled photons. In MPRC terms: one complete 720° spinor split into two 360° conjugate
+  half-cycles. The anti-phase lock is artificially manufactured. The correlation is perfect
+  at measurement. The security is geometric.</p>
+
+  <p>QKD is commercially deployed. It works. This is not a theoretical prediction — it is
+  an engineering fact. And that engineering fact is only consistent with the geometric
+  account. You cannot build a factory for "spooky action at a distance." You can build a
+  factory for splitting spinors.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>QKD Fact</th><th>MPRC Implication Confirmed</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Entangled pairs can be manufactured on demand</td><td>Anti-phase locks can be artificially created</td></tr>
+      <tr><td>Splitting one photon creates the correlated pair</td><td>One spinor split = two conjugate half-cycles</td></tr>
+      <tr><td>Correlation is perfect at measurement</td><td>Lock was structural, not probabilistic</td></tr>
+      <tr><td>Eavesdropping is always detectable</td><td>External resolution breaks the geometric lock</td></tr>
+      <tr><td>Security does not rest on computational hardness</td><td>Geometric invariance is not a hard problem — it is structure</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-label">Empirical Anchor</div>
+    <p>QKD proves the geometric lock is real and manufacturable. The fan analogy is not a
+    metaphor. The split spinor is not a model. The factory exists. We are running it.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- SECTION 06 -->
+<section class="section">
+  <div class="section-num">06 · Community Position</div>
+  <h2>Where MPRC Stands <span class="accent">Relative to the Field</span></h2>
+
+  <p>This thesis is not unprecedented. A community of serious physicists has arrived at the
+  same philosophical destination by different routes. Knowing where you stand relative to
+  them clarifies what is original and what is convergent.</p>
+
+  <div class="community-entry">
+    <h4>de Broglie–Bohm / Pilot Wave</h4>
+    <p>Particles have definite trajectories at all times. Superposition is ignorance, not
+    ontology. The wave function guides a real particle.</p>
+    <div class="diff">Convergent on conclusion. Mechanism: pilot wave.
+    MPRC mechanism: FSL traversal on QH4. Different engine.</div>
+  </div>
+
+  <div class="community-entry">
+    <h4>Nelson — Stochastic Mechanics</h4>
+    <p>Quantum randomness emerges from real physical noise at the sub-quantum level.
+    Measurement reveals — it does not create.</p>
+    <div class="diff">Convergent on conclusion. Mechanism: stochastic noise.
+    MPRC mechanism: deterministic geometric traversal. Different engine.</div>
+  </div>
+
+  <div class="community-entry">
+    <h4>Gerard 't Hooft — Cellular Automaton Interpretation</h4>
+    <p>Quantum mechanics emerges from deterministic sub-Planck dynamics. Superposition is
+    coarse-graining over fast deterministic states. Nobel laureate. Explicit, serious,
+    published.</p>
+    <div class="diff">Closest philosophical alignment — almost identical to the fan analogy.
+    Mechanism: cellular automaton states. MPRC mechanism: u-spinor on QH4.
+    <strong style="color:var(--accent);">Same conclusion. 't Hooft has no mechanism at
+    the particle level. MPRC has one.</strong></div>
+  </div>
+
+  <div class="community-entry">
+    <h4>Lee Smolin — Real Ensemble</h4>
+    <p>Quantum states are real ensemble effects from similar systems across the universe.</p>
+    <div class="diff">Convergent in spirit. Mechanism: cosmological ensemble.
+    MPRC mechanism: local ring geometry. Different scope.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">The Differentiator</div>
+    <p>Every member of this community says <em>what</em>: deterministic underneath,
+    measurement reveals. MPRC says <em>how</em>: specifically the u-spinor traversing 256
+    QH4 states at FSL speed, with ring geometry producing the observable blur. 't Hooft
+    identified the problem. MPRC identifies the engine.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- SECTION 07 -->
+<section class="section">
+  <div class="section-num">07 · The Open Questions</div>
+  <h2>What This Branch <span class="accent">Does Not Yet Claim</span></h2>
+
+  <p>The discipline of this framework requires explicit declaration of what is derived, what
+  is staged, and what is open. The following are open — not because they are unanswerable,
+  but because the derivation has not yet been completed.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Question</th><th>Status</th><th>Path</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Does the Uncertainty Principle follow from FSL bandwidth limits?</td>
+        <td><span class="tag-open">OPEN</span></td>
+        <td>Derive resolution limit from u-spinor traversal frequency vs observer tick rate</td>
+      </tr>
+      <tr>
+        <td>Do vacuum fluctuations map to QH4 cardinal vacuum nodes?</td>
+        <td><span class="tag-open">OPEN</span></td>
+        <td>&lt;u|φ&gt;=0 at {0,64,128,192} — structural stability, not random creation</td>
+      </tr>
+      <tr>
+        <td>What sets the FSL traversal speed for each particle type?</td>
+        <td><span class="tag-open">OPEN</span></td>
+        <td>Derivable from ring geometry — different particles, different u-spinor frequencies</td>
+      </tr>
+      <tr>
+        <td>Does superposition depth scale as a derived geometric ratio?</td>
+        <td><span class="tag-open">OPEN</span></td>
+        <td>Blur radius ~ ring traversal frequency / observer bandwidth — testable prediction</td>
+      </tr>
+      <tr>
+        <td>Can partial phase-lock (offset ≠ 128) be engineered?</td>
+        <td><span class="tag-open">OPEN</span></td>
+        <td>LQC generalization — controlled partial entanglement beyond binary flip</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>These are not gaps in the philosophical argument. They are the next derivation targets.
+  The philosophical argument stands on what is already built. The open questions are where
+  it grows.</p>
+</section>
+
+<hr>
+
+<!-- SECTION 08 -->
+<section class="section">
+  <div class="section-num">08 · The Consolidated Position</div>
+  <h2>One <span class="accent">Paragraph</span></h2>
+
+  <div class="callout">
+    <div class="callout-label">MPRC Philosophical Thesis — Consolidated</div>
+    <p>Standard QM promotes observation artifacts to ontological status. Superposition is
+    not a particle being everywhere — it is a traversal too fast to resolve. Entanglement
+    is not spooky action — it is one split spinor read at two locations. Virtual particles
+    are not off-shell — they are FSL objects outside our measurement bandwidth. The
+    mechanism is the u-spinor on QH4. 't Hooft identified the problem. MPRC identifies
+    the engine.</p>
+  </div>
+
+  <h3>The Methodology</h3>
+  <p>This branch is a staging record, not a submission. The discipline of this framework is
+  to arrive at formal publication with proof already built — not to publish the philosophy
+  first and hope the mechanism follows. 't Hooft published the philosophy thirty years ago.
+  The mechanism is still contested. This document exists in the booklet until the empirical
+  weight is sufficient that the philosophy arrives with proof, not ahead of it.</p>
+</section>
+
+<hr>
+
+<!-- CHAPTER NAV -->
+<div class="chapter-nav-footer">
+  <a href="chapter-9.html">← Chapter 9: Lunar-Nodal Climate</a>
+  <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:0.7rem;">PHILOSOPHICAL BRANCH</span>
+  <a href="index.html">Back to Index →</a>
+</div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

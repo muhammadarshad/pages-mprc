@@ -1,46 +1,71 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" style="background:#0a0f1e">
   <defs>
-    <radialGradient id="fa-disc" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#1a3a6a" stop-opacity="0.55"/>
-      <stop offset="65%" stop-color="#38bdf8" stop-opacity="0.09"/>
-      <stop offset="100%" stop-color="#0a0f1e" stop-opacity="0"/>
-    </radialGradient>
     <filter id="fa-hub">
       <feGaussianBlur stdDeviation="4" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
+    <!-- Blade template: 3 ellipses at 0 / 120 / 240 degrees, hub at (0,0) -->
+    <!-- blade tip is at (0,-88) from hub centre, blade height 73, hub-to-blade-centre 88 -->
+    <g id="blades">
+      <ellipse cx="0" cy="-88" rx="20" ry="73" fill="#0d1e38" stroke="#38bdf8" stroke-width="1.8"/>
+      <ellipse cx="0" cy="-88" rx="20" ry="73" fill="#0d1e38" stroke="#38bdf8" stroke-width="1.8" transform="rotate(120)"/>
+      <ellipse cx="0" cy="-88" rx="20" ry="73" fill="#0d1e38" stroke="#38bdf8" stroke-width="1.8" transform="rotate(240)"/>
+    </g>
   </defs>
+
+  <!-- Title -->
   <text x="450" y="28" text-anchor="middle" font-family="Arial" font-size="11" fill="#3a4a60" letter-spacing="3">THE FAN — POSITIONAL BLUR</text>
   <line x1="450" y1="46" x2="450" y2="460" stroke="#1a2540" stroke-width="1.5"/>
+
+  <!-- ══ LEFT: SLOW RPM — blades clearly visible, rotating at 5s ══ -->
   <text x="225" y="63" text-anchor="middle" font-family="Arial" font-size="11" fill="#34d399" letter-spacing="4">SLOW RPM</text>
-  <g>
-    <animateTransform attributeName="transform" type="rotate" from="0 225 270" to="360 225 270" dur="5s" repeatCount="indefinite"/>
-    <ellipse cx="225" cy="182" rx="20" ry="73" fill="#0d1e38" stroke="#38bdf8" stroke-width="1.8"/>
-    <ellipse cx="225" cy="182" rx="20" ry="73" fill="#0d1e38" stroke="#38bdf8" stroke-width="1.8" transform="rotate(120,225,270)"/>
-    <ellipse cx="225" cy="182" rx="20" ry="73" fill="#0d1e38" stroke="#38bdf8" stroke-width="1.8" transform="rotate(240,225,270)"/>
-    <circle cx="225" cy="109" r="5" fill="#38bdf8" opacity="0.85"/>
-    <circle cx="364" cy="351" r="5" fill="#38bdf8" opacity="0.85"/>
-    <circle cx="86"  cy="351" r="5" fill="#38bdf8" opacity="0.85"/>
+
+  <g transform="translate(225,270)">
+    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="5s" additive="sum" repeatCount="indefinite"/>
+    <use href="#blades"/>
+    <!-- Blade tip markers — orbit with blades, showing definite positions -->
+    <circle cx="0" cy="-161" r="5" fill="#38bdf8" opacity="0.85"/>
+    <circle cx="0" cy="-161" r="5" fill="#38bdf8" opacity="0.85" transform="rotate(120)"/>
+    <circle cx="0" cy="-161" r="5" fill="#38bdf8" opacity="0.85" transform="rotate(240)"/>
   </g>
+  <!-- Hub -->
   <circle cx="225" cy="270" r="24" fill="#080e1c" stroke="#38bdf8" stroke-width="2"/>
   <circle cx="225" cy="270" r="8"  fill="#38bdf8" filter="url(#fa-hub)"/>
+
   <text x="225" y="393" text-anchor="middle" font-family="Arial" font-size="14" fill="#ffffff" font-weight="bold">3 blades visible</text>
   <text x="225" y="413" text-anchor="middle" font-family="Arial" font-size="11" fill="#8892a8">definite positions at all times</text>
   <text x="225" y="433" text-anchor="middle" font-family="Arial" font-size="11" fill="#34d399">observer resolves the traversal</text>
+
+  <!-- ══ RIGHT: HIGH RPM — same blades spinning so fast they smear into a disc ══ -->
   <text x="675" y="63" text-anchor="middle" font-family="Arial" font-size="11" fill="#fbbf24" letter-spacing="4">HIGH RPM</text>
-  <circle cx="675" cy="270" r="116" fill="none" stroke="#38bdf8" stroke-width="0.5"><animate attributeName="stroke-opacity" values="0.04;0.12;0.04" dur="2s" repeatCount="indefinite"/></circle>
-  <circle cx="675" cy="270" r="102" fill="none" stroke="#38bdf8" stroke-width="0.7"><animate attributeName="stroke-opacity" values="0.06;0.18;0.06" dur="2s" begin="-0.25s" repeatCount="indefinite"/></circle>
-  <circle cx="675" cy="270" r="90" fill="url(#fa-disc)"><animate attributeName="opacity" values="0.55;1;0.55" dur="2s" repeatCount="indefinite"/></circle>
-  <circle cx="675" cy="270" r="90" fill="none" stroke="#38bdf8" stroke-width="1.8"><animate attributeName="stroke-opacity" values="0.24;0.62;0.24" dur="2s" repeatCount="indefinite"/></circle>
-  <circle cx="675" cy="270" r="73" fill="none" stroke="#38bdf8" stroke-width="0.7"><animate attributeName="stroke-opacity" values="0.05;0.20;0.05" dur="2s" begin="-0.5s" repeatCount="indefinite"/></circle>
-  <circle cx="675" cy="270" r="50" fill="none" stroke="#38bdf8" stroke-width="0.5"><animate attributeName="stroke-opacity" values="0.04;0.13;0.04" dur="2s" begin="-0.75s" repeatCount="indefinite"/></circle>
-  <text x="675" y="208" text-anchor="middle" font-family="Arial" font-size="20" fill="#38bdf8"><animate attributeName="opacity" values="0.12;0.40;0.12" dur="2s" repeatCount="indefinite"/>?</text>
-  <text x="751" y="296" text-anchor="middle" font-family="Arial" font-size="20" fill="#38bdf8"><animate attributeName="opacity" values="0.12;0.40;0.12" dur="2s" begin="-0.67s" repeatCount="indefinite"/>?</text>
-  <text x="606" y="348" text-anchor="middle" font-family="Arial" font-size="20" fill="#38bdf8"><animate attributeName="opacity" values="0.12;0.40;0.12" dur="2s" begin="-1.33s" repeatCount="indefinite"/>?</text>
+
+  <!-- Ghost copies: 11 static rotated blade groups at 30° steps, very low opacity
+       — these represent the "after-images" the eye integrates, forming the disc -->
+  <g transform="translate(675,270) rotate(30)">  <use href="#blades" opacity="0.06"/></g>
+  <g transform="translate(675,270) rotate(60)">  <use href="#blades" opacity="0.06"/></g>
+  <g transform="translate(675,270) rotate(90)">  <use href="#blades" opacity="0.06"/></g>
+  <g transform="translate(675,270) rotate(120)"> <use href="#blades" opacity="0.06"/></g>
+  <g transform="translate(675,270) rotate(150)"> <use href="#blades" opacity="0.06"/></g>
+  <g transform="translate(675,270) rotate(180)"> <use href="#blades" opacity="0.06"/></g>
+  <g transform="translate(675,270) rotate(210)"> <use href="#blades" opacity="0.06"/></g>
+  <g transform="translate(675,270) rotate(240)"> <use href="#blades" opacity="0.06"/></g>
+  <g transform="translate(675,270) rotate(270)"> <use href="#blades" opacity="0.06"/></g>
+  <g transform="translate(675,270) rotate(300)"> <use href="#blades" opacity="0.06"/></g>
+  <g transform="translate(675,270) rotate(330)"> <use href="#blades" opacity="0.06"/></g>
+
+  <!-- The actual fast-spinning blades on top — clearly the same geometry, just fast -->
+  <g transform="translate(675,270)">
+    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="0.35s" additive="sum" repeatCount="indefinite"/>
+    <use href="#blades" opacity="0.55"/>
+  </g>
+
+  <!-- Hub -->
   <circle cx="675" cy="270" r="24" fill="#080e1c" stroke="#fbbf24" stroke-width="2"/>
   <circle cx="675" cy="270" r="8"  fill="#fbbf24" filter="url(#fa-hub)"/>
+
   <text x="675" y="393" text-anchor="middle" font-family="Arial" font-size="14" fill="#ffffff" font-weight="bold">disc appears</text>
-  <text x="675" y="413" text-anchor="middle" font-family="Arial" font-size="11" fill="#8892a8">positions no longer resolvable</text>
+  <text x="675" y="413" text-anchor="middle" font-family="Arial" font-size="11" fill="#8892a8">same blades — too fast to resolve</text>
   <text x="675" y="433" text-anchor="middle" font-family="Arial" font-size="11" fill="#fbbf24">apparent superposition</text>
-  <text x="450" y="477" text-anchor="middle" font-family="Arial" font-size="10" fill="#2a3550" letter-spacing="2">SAME OBJECT · SAME BLADES · DIFFERENT OBSERVER RESOLUTION</text>
+
+  <text x="450" y="477" text-anchor="middle" font-family="Arial" font-size="10" fill="#2a3550" letter-spacing="2">SAME BLADES · SAME GEOMETRY · DIFFERENT OBSERVER RESOLUTION</text>
 </svg>

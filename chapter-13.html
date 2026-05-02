@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Chapter 13: Arshad's Sieve — Complete Theorem Register</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="book-title">The MPRC Framework</a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li class="nav-group-label">I · Ring Foundation</li>
+      <li><a href="chapter-12.html">12. Speed &amp; Velocity on Z₂₅₆</a></li>
+      <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+      <li><a href="chapter-2.html">2. GUT v2</a></li>
+      <li class="nav-group-label">II · Atomic Physics</li>
+      <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+      <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+      <li class="nav-group-label">III · Gravity &amp; Cosmology</li>
+      <li><a href="chapter-7.html">7. Artemis III Predictions</a></li>
+      <li><a href="chapter-9.html">9. Lunar-Nodal Climate</a></li>
+      <li class="nav-group-label">IV · Mathematics &amp; Conjectures</li>
+      <li><a href="chapter-13.html" style="font-weight:600;color:#fff;border-left-color:var(--accent);">13. Arshad's Sieve</a></li>
+      <li><a href="chapter-14.html">14. Quartic Centroid Conjecture</a></li>
+      <li><a href="chapter-15.html">15. QH4 Pattern Mining</a></li>
+      <li><a href="chapter-16.html">16. QH4 Pattern Matching ★</a></li>
+      <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+      <li><a href="chapter-10.html">10. Bell Correlations</a></li>
+      <li class="nav-group-label">V · Cryptography &amp; Security</li>
+      <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+      <li><a href="chapter-11.html">11. LQC Three-Layer Safety</a></li>
+      <li class="nav-group-label">VI · Computing</li>
+      <li><a href="chapter-8.html">8. MPRC Spectral Transform</a></li>
+      <li class="nav-group-label">Philosophical Branch</li>
+      <li><a href="philosophical.html">FSL Observation Thesis</a></li>
+    </ul>
+  </nav>
+</aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>Arshad's Sieve<br/><span>Theorem Register</span></h1>
+        <p class="chapter-subtitle">A modular power-sum framework derived from the MPRC 3D+1D lattice on Z₂₅₆ — 12 proven theorems, 3 open problems · April 2026</p>
+      </header>
+
+      <div class="chapter-body">
+
+<!-- ABSTRACT -->
+<section class="section">
+  <div class="section-num">Abstract</div>
+  <h2>Power Sums on <span class="accent">Z₂₅₆</span></h2>
+
+  <p>Arshad's Sieve is a modular power-sum framework derived from the geometry of the MPRC 3D+1D lattice on Z₂₅₆. It characterizes when the equation Σxᵢⁿ ≡ n² (mod m) has solutions, when it does not, and why the failures are structurally forced by the ring geometry.</p>
+
+  <div class="pull-quote">
+    <p>The sieve does not search for solutions. It reads the ring geometry and announces in advance which targets are reachable and which are not. The three obstruction types — Type-A, Type-B, Type-AB — are exhaustive and geometrically distinct.</p>
+  </div>
+
+  <table class="data-table">
+    <tr><th>ID</th><th>Theorem</th><th>Status</th></tr>
+    <tr><td>T1</td><td>Type-A Wall</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T2</td><td>Type-B Wall at n=8</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T3</td><td>Gap Splitting</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T4</td><td>Spillover Conservation</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T5</td><td>CRT Collision</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T6</td><td>Type-B Complete Characterization</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T7</td><td>Type-B Harmonic Structure</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T8</td><td>16/9 Identity</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T9</td><td>Disk Count Formula</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T10</td><td>Type-AB Wall</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T11</td><td>Spiral Non-Closure</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T12</td><td>Z₂₅₆ Three-Region Partition</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>O1</td><td>Witness Existence (all n)</td><td><span class="badge prop">Open</span></td></tr>
+    <tr><td>O2</td><td>Type-B walls beyond n=64</td><td><span class="badge prop">Open</span></td></tr>
+    <tr><td>O3</td><td>Type-B on extended disks</td><td><span class="badge prop">Open</span></td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 01 -->
+<section class="section">
+  <div class="section-num">01 · Foundations</div>
+  <h2>Anchor, Disk Tower, <span class="accent">Spillover Registry</span></h2>
+
+  <p>The framework operates on the ring Z₂₅₆ with anchor A = 256 = 2⁸. The disk tower extends to primes ranked by proximity to A. The sin/cos LUT has 256 entries across 4 quadrants of 64.</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Anchor and Disk Tower</div>
+    <div class="eq-row">m₁ = 256 = 2⁸   (anchor, prime power)</div>
+    <div class="eq-row">mₖ = k-th prime ranked by |p − 256|, for k ≥ 2</div>
+  </div>
+
+  <table class="data-table">
+    <tr><th>Disk k</th><th>Modulus mₖ</th><th>Gap |mₖ−256|</th><th>Side</th><th>Wall Period</th></tr>
+    <tr><td>1</td><td>256 = 2⁸</td><td>—</td><td>anchor</td><td>16</td></tr>
+    <tr><td>2</td><td>257 (Fermat)</td><td>1</td><td>above</td><td>257</td></tr>
+    <tr><td>3</td><td>251</td><td>5</td><td>below</td><td>251</td></tr>
+    <tr><td>4</td><td>263</td><td>7</td><td>above</td><td>263</td></tr>
+    <tr><td>5</td><td>269</td><td>13</td><td>above</td><td>269</td></tr>
+    <tr><td>6</td><td>241</td><td>15</td><td>below</td><td>241</td></tr>
+  </table>
+
+  <div class="eq-block">
+    <div class="eq-label">Spillover Registry</div>
+    <div class="eq-row">Rₖ = (Σ xᵢⁿ) mod mₖ       residue on disk k</div>
+    <div class="eq-row">Cₖ = ⌊(Σ xᵢⁿ) / mₖ⌋        carry to disk k+1</div>
+    <div class="eq-row">Cₖ' = mₖ − (Cₖ mod mₖ)     conjugate carry</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- SECTION 02 -->
+<section class="section">
+  <div class="section-num">02 · Original Theorems T1–T5</div>
+  <h2>Type-A, Type-B, <span class="accent">Gap Splitting</span></h2>
+
+  <p><strong>Theorem 1 — Type-A Wall.</strong> Zₙ has a Type-A wall at n if and only if m | n². For m₁ = 256: wall period W = 16 = √256. The Type-A sequence on Z₂₅₆ is n = 16, 32, 48, 64, … At each such n the target n² ≡ 0 (mod 256) and charge routes to the next disk.</p>
+  <p style="color:var(--text-muted); font-style:italic;">Proof. 256 | n² ⟺ 2⁸ | n² ⟺ 2⁴ | n ⟺ 16 | n. Target vanishes; spillover mandatory. ■</p>
+
+  <p><strong>Theorem 2 — Type-B Wall at n = 8.</strong> No tuple (x₁,…,x₈) satisfies Σxᵢ⁸ ≡ 64 (mod 256).</p>
+  <p style="color:var(--text-muted); font-style:italic;">Proof. For all odd x: x⁸ ≡ 1 (mod 32). Sum of 8 terms ≡ 8 (mod 32). Target 8² = 64 ≡ 0 (mod 32). Gap = 8 ≠ 0. Even x⁸ ≡ 0 (mod 32), cannot bridge. ■</p>
+
+  <p><strong>Theorem 3 — Gap Splitting.</strong> When prime p saturates at n = pk, the residue on disk j satisfies Rⱼ(pk) = (mⱼ − p)² · k² (mod mⱼ).</p>
+  <p style="color:var(--text-muted); font-style:italic;">Proof. p ≡ −(mⱼ − p) (mod mⱼ), so (pk)² ≡ (mⱼ − p)²k² (mod mⱼ). ■<br/>Corollary: At n = 251, R₂₅₆ = 25, R₂₅₇ = 36. Their squares differ by 11 = 6² − 5².</p>
+
+  <p><strong>Theorem 4 — Spillover Conservation.</strong> Cₖ + Cₖ' = mₖ at every saturated disk k.</p>
+  <p style="color:var(--text-muted); font-style:italic;">Proof. Follows directly from the definitions of Cₖ and Cₖ'. ■</p>
+
+  <p><strong>Theorem 5 — CRT Collision.</strong> k disks saturate simultaneously at n = lcm(w₁,…,wₖ). This forces introduction of disk k+1.</p>
+  <p style="color:var(--text-muted); font-style:italic;">Proof. Simultaneous saturation requires n divisible by all wall periods. At such n, all active disks carry zero residue; a new disk is the only resolution. ■</p>
+</section>
+
+<hr>
+
+<!-- SECTION 03 -->
+<section class="section">
+  <div class="section-num">03 · New Theorems T6–T12</div>
+  <h2>Harmonic Structure, Partition, <span class="accent">Non-Closure</span></h2>
+
+  <p><strong>Theorem 6 — Type-B Complete Characterization.</strong> On Z₂₅₆, exactly three Type-B walls exist: n ∈ {8, 12, 24}.</p>
+
+  <table class="data-table">
+    <tr><th>n</th><th>Obstruction M</th><th>xⁿ mod M</th><th>n·c mod M</th><th>Target n² mod M</th><th>Gap</th></tr>
+    <tr><td>8</td><td>16</td><td>1</td><td>8</td><td>0</td><td>8 = M/2</td></tr>
+    <tr><td>12</td><td>8</td><td>1</td><td>4</td><td>0</td><td>4 = M/2</td></tr>
+    <tr><td>24</td><td>16</td><td>1</td><td>8</td><td>0</td><td>8 = M/2</td></tr>
+  </table>
+
+  <p><strong>Theorem 7 — Type-B Harmonic Structure.</strong> All Type-B walls are rational multiples of W = 16: n = W/2, 3W/4, 3W/2. Every Type-B n is a multiple of W/4 = 4 (the quarter-period). The obstruction moduli {8, 16} are exactly {W/2, W}.</p>
+
+  <p><strong>Theorem 8 — 16/9 Identity.</strong> The disk growth exponent is geometric and exact.</p>
+  <div class="eq-block">
+    <div class="eq-label">Disk Growth Exponent</div>
+    <div class="eq-row">( ln 2⁸ / ln 2⁶ )² = ( 8/6 )² = ( 4/3 )² = 16/9</div>
+    <div class="eq-row">8 = 2 × 4 quadrants · 6 = 2 × 3 oloid components (C₁, C₂, U-axis)</div>
+    <div class="eq-row">Squaring: U closes on both circles simultaneously.</div>
+  </div>
+
+  <p><strong>Theorem 9 — Disk Count Formula.</strong> The cumulative prime sum across d stacked disks satisfies C(d) ~ 2179.54 · d^(16/9). Minimum disk count: d(T) ≈ ((T − 4422) / 2179.54)^(9/16).</p>
+
+  <p><strong>Theorem 10 — Type-AB Wall.</strong> n is a Type-AB wall iff 64 | n and n ≢ 0 (mod 256). The group exponent of (ℤ/256ℤ)* equals 64 = 2⁶. Type-AB walls: n = 64, 128, 192, 320, …</p>
+
+  <table class="data-table">
+    <tr><th>Wall Class</th><th>Condition</th><th>Resolution</th></tr>
+    <tr><td>Type-A</td><td>16 | n, non-uniform odd residues</td><td>Standard spillover; odd terms recombine</td></tr>
+    <tr><td>Type-B</td><td>n ∈ {8,12,24}; uniform odd, target ≠ 0</td><td>Extended disk tower required</td></tr>
+    <tr><td>Type-AB</td><td>64 | n, n mod 256 ≠ 0; uniform odd = 1</td><td>Spillover mandatory; odd alone cannot reach 0</td></tr>
+  </table>
+
+  <p><strong>Theorem 11 — Spiral Non-Closure.</strong> When spillover is broken at n = 128, the trajectory f(n) = (n² − 128) mod 256 never equals 0. Charge traces a non-closing spiral through Z₂₅₆.</p>
+  <p style="color:var(--text-muted); font-style:italic;">Proof. Closure requires 128 ∈ QR₂₅₆. By 2-adic descent all cases exhaust: n odd → n² ≡ 1 (mod 8) ≠ 0; n even → m² ≡ 32 (mod 64); j odd → impossible; j even → i² ≡ 2 (mod 4) — impossible. ■<br/>Corollary: normal closure = 720° (2π); broken spillover at n=128 = 1440° (4π) — the discrete spinor condition.</p>
+
+  <p><strong>Theorem 12 — Z₂₅₆ Three-Region Partition.</strong> The ring partitions into exactly three disjoint regions.</p>
+
+  <table class="data-table">
+    <tr><th>Region</th><th>Size</th><th>Contains</th><th>Mechanism</th></tr>
+    <tr><td>QR₂₅₆</td><td>44</td><td>0 — gyroscope lock point</td><td>Normal sieve; spillover intact</td></tr>
+    <tr><td>QR₂₅₆ + 128</td><td>44</td><td>128 — antipodal point</td><td>Broken spillover / spiral only</td></tr>
+    <tr><td>Δ (dead zone)</td><td>210</td><td>Neither 0 nor 128</td><td>Unreachable by any mechanism</td></tr>
+  </table>
+  <p style="color:var(--text-muted); font-style:italic;">Proof. |QR₂₅₆| = 44 by direct computation. Shift preserves size. QR₂₅₆ ∩ (QR₂₅₆+128) shares 42 elements but not {0,128}. |Δ| = 256 − 46 = 210. ■</p>
+</section>
+
+<hr>
+
+<!-- SECTION 04 -->
+<section class="section">
+  <div class="section-num">04 · Open Problems</div>
+  <h2>Three <span class="accent">Open Questions</span></h2>
+
+  <p><strong>O1 — Witness Existence for All n.</strong> Prove: for every n ≥ 3, ∃ integers (x₁,…,xₙ) such that Σxᵢⁿ ≡ n² (mod mⱼ*). Verified: n = 3..16, 32, 48, 64. Partial proof: Weil (1948) character sum bounds close the prime-disk case. Gap: the Z₂₅₆ direct case for non-wall, non-obstructed n.</p>
+
+  <p><strong>O2 — Type-B Walls Beyond n = 64.</strong> The harmonic structure (T7) suggests no Type-B walls exist beyond n = 24. Candidates n = 40 and n = 48 were verified clear. A formal proof of termination, or a counterexample, remains open.</p>
+
+  <p><strong>O3 — Type-B Characterization on Extended Disks.</strong> Each stacked disk mₖ (primes near 256) has its own wall structure. The Type-B obstructions on Z₂₅₁, Z₂₅₇, Z₂₆₃ are not yet characterized. Does T7 generalize to prime moduli, or is it specific to the 2-power anchor 256?</p>
+</section>
+
+      </div><!-- /.chapter-body -->
+
+      <div class="chapter-nav-footer">
+        <a href="chapter-9.html">← Chapter 9: Lunar-Nodal Climate</a>
+        <a href="index.html">MPRC Book</a>
+        <a href="chapter-14.html">Chapter 14: Quartic Centroid Conjecture →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

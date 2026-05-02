@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Chapter 12: Speed and Velocity on Z₂₅₆</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="book-title">The MPRC Framework</a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li class="nav-group-label">I · Ring Foundation</li>
+      <li><a href="chapter-12.html" style="font-weight:600;color:#fff;border-left-color:var(--accent);">12. Speed &amp; Velocity on Z₂₅₆</a></li>
+      <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+      <li><a href="chapter-2.html">2. GUT v2</a></li>
+      <li class="nav-group-label">II · Atomic Physics</li>
+      <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+      <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+      <li class="nav-group-label">III · Gravity &amp; Cosmology</li>
+      <li><a href="chapter-7.html">7. Artemis III Predictions</a></li>
+      <li><a href="chapter-9.html">9. Lunar-Nodal Climate</a></li>
+      <li class="nav-group-label">IV · Mathematics &amp; Conjectures</li>
+      <li><a href="chapter-13.html">13. Arshad's Sieve</a></li>
+      <li><a href="chapter-14.html">14. Quartic Centroid Conjecture</a></li>
+      <li><a href="chapter-15.html">15. QH4 Pattern Mining</a></li>
+      <li><a href="chapter-16.html">16. QH4 Pattern Matching ★</a></li>
+      <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+      <li><a href="chapter-10.html">10. Bell Correlations</a></li>
+      <li class="nav-group-label">V · Cryptography &amp; Security</li>
+      <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+      <li><a href="chapter-11.html">11. LQC Three-Layer Safety</a></li>
+      <li class="nav-group-label">VI · Computing</li>
+      <li><a href="chapter-8.html">8. MPRC Spectral Transform</a></li>
+      <li class="nav-group-label">Philosophical Branch</li>
+      <li><a href="philosophical.html">FSL Observation Thesis</a></li>
+    </ul>
+  </nav>
+</aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>Speed and Velocity<br/><span>on the Ring</span></h1>
+        <p class="chapter-subtitle">Formal definitions for ring trajectory, velocity, speed, orientation, and conservation — standalone foundations for MPRC motion analysis on Z₂₅₆ · v1.1</p>
+      </header>
+
+      <div class="chapter-body">
+
+<!-- ABSTRACT -->
+<section class="section">
+  <div class="section-num">Abstract</div>
+  <h2>Closed Ring, <span class="accent">Two Arcs</span></h2>
+
+  <p>Standard real-line mechanics defines velocity as a signed difference on an open interval. On a closed ring, this breaks: between any two positions there are exactly two arcs, and the "direction" of a step is not given by sign alone. This chapter gives the formal definitions that replace real-line intuitions on Z<sub>256</sub> — the ring used throughout the MPRC framework.</p>
+
+  <div class="pull-quote">
+    <p>Direction is resolved by choosing the shorter arc. This is not a convention — it is the intrinsic metric of a closed ring. Speed and orientation are then fully decoupled quantities.</p>
+  </div>
+
+  <p>These definitions underpin all motion analysis in the MPRC framework: acoustic ring trajectories, LQC clock-drift detection, and the oloid two-circle decomposition. Every chapter that uses velocity, speed, or orientation implicitly relies on this foundation.</p>
+
+  <table class="data-table">
+    <tr><th>Quantity</th><th>Symbol</th><th>AGC Effect</th><th>Notes</th></tr>
+    <tr><td>Speed</td><td>s[n]</td><td><span class="fail">Destroyed</span></td><td>|v[n]| compressed toward zero</td></tr>
+    <tr><td>Velocity magnitude</td><td>|v[n]|</td><td><span class="fail">Destroyed</span></td><td>Same as speed</td></tr>
+    <tr><td>Velocity direction</td><td>sign(v[n])</td><td><span class="ok">Preserved</span></td><td>Positive rescaling leaves sign invariant</td></tr>
+    <tr><td>Orientation bit</td><td>b[n]</td><td><span class="ok">Preserved</span></td><td>Depends only on sign(v[n])</td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 01 -->
+<section class="section">
+  <div class="section-num">01 · Ring Trajectory</div>
+  <h2>The <span class="accent">Ring as Closed System</span></h2>
+
+  <p>A ring trajectory is a sequence of positions on a closed ring of finite circumference. Unlike a real-line trajectory, the ring has no boundary and no preferred cut-point. Every trajectory on the ring eventually returns to its starting position.</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Definition 1.1 — Ring trajectory</div>
+    <div class="eq-row">φ : ℤ → ℜ</div>
+    <div class="eq-row">φ[n] = ring position at discrete time n ∈ ℤ</div>
+    <div class="eq-row">ℜ = closed ring of finite circumference</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-label">Definition 2.1 — Raw step (unsigned)</div>
+    <div class="eq-row">δ[n] = φ[n] − φ[n−1]   (unsigned, in ℜ)</div>
+    <div class="eq-row">Measures arc length only — no directional information.</div>
+  </div>
+
+  <p>The closure has one immediate consequence: between any two positions on ℜ there are exactly <strong>two</strong> arcs. Direction is resolved by choosing the shorter one. This is not a convention — it is the intrinsic metric of a closed ring.</p>
+</section>
+
+<hr>
+
+<!-- SECTION 02 -->
+<section class="section">
+  <div class="section-num">02 · Velocity</div>
+  <h2>Signed Shortest Arc — <span class="accent">Velocity on Z₂₅₆</span></h2>
+
+  <div class="eq-block">
+    <div class="eq-label">Definition 4.1 — Ring velocity</div>
+    <div class="eq-row">v[n] = ( φ[n] − φ[n−1] )*ᵒ</div>
+    <div class="eq-row">( · )*ᵒ = signed shortest arc on ℜ</div>
+    <div class="eq-row" style="margin-top:10px;">For Z₂₅₆:   v[n] ∈ {−128, …, 127}</div>
+    <div class="eq-row">v[n] &gt; 0  ⇒  CW (rising)</div>
+    <div class="eq-row">v[n] &lt; 0  ⇒  ACW (falling)</div>
+    <div class="eq-row">v[n] = 0  ⇒  stationary</div>
+  </div>
+
+  <p>The magnitude |v[n]| is the arc length of the step. The sign is the direction. Both are contained in a single quantity — no separate direction flag is needed.</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Definition 5.1 — Ring speed</div>
+    <div class="eq-row">s[n] = | v[n] | ≥ 0</div>
+    <div class="eq-row">Speed carries no directional information.</div>
+    <div class="eq-row" style="margin-top:8px; color: var(--text-muted);">Two trajectories with identical speed profiles may traverse the ring in opposite directions — indistinguishable by speed alone.</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- SECTION 03 -->
+<section class="section">
+  <div class="section-num">03 · Orientation Bit</div>
+  <h2>AGC-Invariant <span class="accent">Direction Signal</span></h2>
+
+  <div class="eq-block">
+    <div class="eq-label">Definition 6.1 — Orientation bit</div>
+    <div class="eq-row">b[n] = 1   if v[n] ≥ 0   (CW / rising)</div>
+    <div class="eq-row">b[n] = 0   if v[n] &lt; 0   (ACW / falling)</div>
+  </div>
+
+  <div class="pull-quote">
+    <p><strong>Proposition 6.2 — AGC invariance.</strong> The orientation bit b[n] is invariant under any strictly positive rescaling of φ.<br/><em>Proof.</em> AGC replaces φ[n] with α·φ[n] for α &gt; 0. The difference scales by α, preserving sign. Hence b[n] is unchanged. □</p>
+  </div>
+
+  <p>This invariance is non-trivial. Automatic Gain Control is applied to virtually all real-world audio and sensor signals before analysis. Speed and velocity magnitude are both destroyed by AGC — the ring compresses toward zero. The orientation bit survives because it depends only on the sign of the step, which is preserved under positive rescaling.</p>
+</section>
+
+<hr>
+
+<!-- SECTION 04 -->
+<section class="section">
+  <div class="section-num">04 · Conservation</div>
+  <h2>Zero Net Angular Momentum — <span class="accent">Closed Trajectories</span></h2>
+
+  <div class="eq-block">
+    <div class="eq-label">Definition 7.1 — Closed trajectory</div>
+    <div class="eq-row">A trajectory is closed over N steps if φ[N] = φ[0].</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-label">Theorem 7.2 — Zero net angular momentum</div>
+    <div class="eq-row">For any closed trajectory:</div>
+    <div class="eq-row" style="margin-top:6px;">Σ v[n] = 0   (n = 1 to N)</div>
+    <div class="eq-row" style="margin-top:8px; color: var(--text-muted);">Proof: The sum telescopes to (φ[N] − φ[0])*ᵒ = 0*ᵒ = 0. □</div>
+  </div>
+
+  <p><strong>Remark 7.3.</strong> This is a consequence of closure, not an independent physical law. The postulate with real content is that physical signals form closed trajectories on the ring. That claim must be stated explicitly wherever the theorem is applied. The theorem itself is purely algebraic — it holds for any closed sequence on any ring.</p>
+</section>
+
+<hr>
+
+<!-- SECTION 05 -->
+<section class="section">
+  <div class="section-num">05 · Degenerate Cases</div>
+  <h2>Edge Cases on <span class="accent">Z₂₅₆</span></h2>
+
+  <table class="data-table">
+    <tr><th>Case</th><th>Condition</th><th>Resolution</th></tr>
+    <tr>
+      <td>Antipodal step</td>
+      <td>Both arcs equal length (step = 128 on Z₂₅₆)</td>
+      <td>Direction undefined. Flag as degenerate. Do not emit.</td>
+    </tr>
+    <tr>
+      <td>Stationary step</td>
+      <td>v[n] = 0</td>
+      <td>Orientation bit b[n] = 1 by convention. No contribution to net angular momentum.</td>
+    </tr>
+    <tr>
+      <td>Transient AGC</td>
+      <td>Short gain-settling window</td>
+      <td>Proposition 6.2 holds under steady-state rescaling only. Transient AGC is explicitly excluded.</td>
+    </tr>
+  </table>
+
+  <p>The antipodal degenerate case (step = 128) corresponds to the half-ring boundary on Z₂₅₆. This is structurally distinct from the vacuum positions {0, 64, 128, 192} — the antipodal step is a <em>transition</em> crossing the diameter, not a forbidden state.</p>
+</section>
+
+      </div><!-- /.chapter-body -->
+
+      <div class="chapter-nav-footer">
+        <a href="index.html">← Introduction</a>
+        <a href="index.html">MPRC Book</a>
+        <a href="chapter-1.html">Chapter 1: Discrete Lattice Mechanics →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

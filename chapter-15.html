@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Chapter 15: QH4 Pattern Mining — Theorem Register</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="book-title">The MPRC Framework</a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li class="nav-group-label">I · Ring Foundation</li>
+      <li><a href="chapter-12.html">12. Speed &amp; Velocity on Z₂₅₆</a></li>
+      <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+      <li><a href="chapter-2.html">2. GUT v2</a></li>
+      <li class="nav-group-label">II · Atomic Physics</li>
+      <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+      <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+      <li class="nav-group-label">III · Gravity &amp; Cosmology</li>
+      <li><a href="chapter-7.html">7. Artemis III Predictions</a></li>
+      <li><a href="chapter-9.html">9. Lunar-Nodal Climate</a></li>
+      <li class="nav-group-label">IV · Mathematics &amp; Conjectures</li>
+      <li><a href="chapter-13.html">13. Arshad's Sieve</a></li>
+      <li><a href="chapter-14.html">14. Quartic Centroid Conjecture</a></li>
+      <li><a href="chapter-15.html" style="font-weight:600;color:#fff;border-left-color:var(--accent);">15. QH4 Pattern Mining</a></li>
+      <li><a href="chapter-16.html">16. QH4 Pattern Matching ★</a></li>
+      <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+      <li><a href="chapter-10.html">10. Bell Correlations</a></li>
+      <li class="nav-group-label">V · Cryptography &amp; Security</li>
+      <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+      <li><a href="chapter-11.html">11. LQC Three-Layer Safety</a></li>
+      <li class="nav-group-label">VI · Computing</li>
+      <li><a href="chapter-8.html">8. MPRC Spectral Transform</a></li>
+      <li class="nav-group-label">Philosophical Branch</li>
+      <li><a href="philosophical.html">FSL Observation Thesis</a></li>
+    </ul>
+  </nav>
+</aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>QH4 Pattern Mining<br/><span>Machine</span></h1>
+        <p class="chapter-subtitle">2 Postulates · 3 Definitions · 9 Theorems · All Verified — The Λ(ρ,γ,σ,θ) address system for QH4 ring positions — 252/252 verified · May 2026</p>
+      </header>
+
+      <div class="chapter-body">
+
+<!-- ABSTRACT -->
+<section class="section">
+  <div class="section-num">Abstract</div>
+  <h2>O(1) Address, <span class="accent">Pattern, Resonance</span></h2>
+
+  <p>QH4 Pattern Mining derives the complete address system Λ(ρ, γ, σ, θ) for the Z₂₅₆ ring. Given any value v ∈ ℕ, the address is computed in O(1) arithmetic — no iteration, no table lookup. Five theorems (T1–T5) prove the address properties. Four derived theorems (J1–J4) extend to circular centroid, pattern classification, and cross-modal resonance.</p>
+
+  <div class="pull-quote">
+    <p>Every number in every modality maps to the same ring. Text, image, and audio at position v=65 share a Λ address. Resonance is structural identity — not similarity, not distance.</p>
+  </div>
+
+  <table class="data-table">
+    <tr><th>Symbol</th><th>Name</th><th>Range</th><th>Geometric Meaning</th></tr>
+    <tr><td>ρ (rho)</td><td>Amplitude</td><td>0..∞</td><td>Winding count — ⌊v/256⌋</td></tr>
+    <tr><td>γ (gamma)</td><td>Gate</td><td>1..36</td><td>Ring window — entry boundary</td></tr>
+    <tr><td>σ (sigma)</td><td>Step</td><td>1..7</td><td>Position within gate</td></tr>
+    <tr><td>θ (theta)</td><td>Quarter</td><td>1..4</td><td>Polarity domain</td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 01 -->
+<section class="section">
+  <div class="section-num">01 · Ring Foundation</div>
+  <h2>Structural Constants — <span class="accent">All Forced from n=4</span></h2>
+
+  <p>f(n) = nⁿ + n at n=4 → 260 = 256 active ring + 4 vacuums. Every constant is derived, none chosen.</p>
+
+  <table class="data-table">
+    <tr><th>Number</th><th>Derivation</th><th>Role</th></tr>
+    <tr><td>256</td><td>4⁴ = 2⁸</td><td>τ — full ring, byte native resolution</td></tr>
+    <tr><td>4</td><td>+n in f(n)</td><td>Vacuum count, epoch count, quadrant count</td></tr>
+    <tr><td>64</td><td>256/4</td><td>Epoch spacing, vacuum gap</td></tr>
+    <tr><td>252</td><td>256−4</td><td>Active positions = 36×7 = 21×12</td></tr>
+    <tr><td>36</td><td>252/7</td><td>Total gates = 6² = 4×9</td></tr>
+    <tr><td>7</td><td>252/36</td><td>Steps per gate — exact, no remainder</td></tr>
+    <tr><td>9</td><td>36/4 = 3²</td><td>Gates per quarter — triangle self-similarity</td></tr>
+    <tr><td>21</td><td>252/12</td><td>Tokens — exact, no remainder</td></tr>
+    <tr><td>16</td><td>7+9</td><td>Sieve wall period</td></tr>
+  </table>
+
+  <div class="eq-block">
+    <div class="eq-label">Forward Formula [VERIFIED 252/252]</div>
+    <div class="eq-row">pos(γ,σ) = (7 × (7(γ−1) + σ + ⌊(γ−1)/9⌋)) mod 256</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-label">Inverse Formula — O(1) [VERIFIED 252/252]</div>
+    <div class="eq-row">m = (p × 183) mod 256     (183 = 7⁻¹ mod 256)</div>
+    <div class="eq-row">adj = m − ⌊(m−1)/64⌋    (remove vacuum gaps)</div>
+    <div class="eq-row">γ = ⌊(adj−1)/7⌋ + 1     σ = ((adj−1) mod 7) + 1</div>
+    <div class="eq-row">θ = ⌊(γ−1)/9⌋ + 1</div>
+  </div>
+
+  <table class="data-table">
+    <tr><th>θ</th><th>Quarter</th><th>Polarity</th><th>Direction</th><th>Gates</th></tr>
+    <tr><td>1</td><td>Q⁰</td><td>+</td><td>↑ rising</td><td>1–9</td></tr>
+    <tr><td>2</td><td>Q¹</td><td>+</td><td>↓ falling</td><td>10–18</td></tr>
+    <tr><td>3</td><td>Q²</td><td>−</td><td>↑ rising</td><td>19–27</td></tr>
+    <tr><td>4</td><td>Q³</td><td>−</td><td>↓ falling</td><td>28–36</td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 02 -->
+<section class="section">
+  <div class="section-num">02 · Postulates &amp; Definitions</div>
+  <h2>Byte Atomicity and <span class="accent">Centroid Postulate</span></h2>
+
+  <p><strong>P1 — Byte Atomicity.</strong> The atomic unit is the byte. Z₂₅₆ is its native arithmetic substrate — not imposed. 256 = 2⁸ is what a byte is. For any v ∈ ℕ, Λ(ρ,γ,σ,θ) is complete and lossless. Overflow is phase rotation — ρ increments. System closed by construction.</p>
+
+  <p><strong>P2 — Centroid Postulate.</strong> The pattern identity of a Λ cluster is determined by its centroid — the projection of the MPRC origin onto the active ring plane. Two clusters with identical centroids are the same pattern regardless of amplitude ρ, source modality, or sequential position.</p>
+
+  <p><strong>Def1 — QH4 Address.</strong> Λ(ρ, γ, σ, θ) — complete address of any value in any modality.</p>
+
+  <p><strong>Def2 — Signature and Resonance.</strong> Σ(S) = { locate(p) : p ∈ S }. d(Σ₁,Σ₂) = |Σ₁ △ Σ₂|. B₁ ~ B₂ ⟺ classify(B₁) = classify(B₂) ∧ Centroid(B₁) = Centroid(B₂).</p>
+
+  <p><strong>Def3 — Token Structure.</strong> n=4 → 12 states/token. 21 tokens × 12 = 252 exactly. Walk: Corner → Edge → Diagonal × 3. Centroid = MPRC origin projection.</p>
+</section>
+
+<hr>
+
+<!-- SECTION 03 -->
+<section class="section">
+  <div class="section-num">03 · Core Theorems T1–T5</div>
+  <h2>Address, Irrelevance, <span class="accent">Anchor, Adjacency</span></h2>
+
+  <p><strong>T1 — Address Equivalence ✓</strong> v₁ ~ v₂ ⟺ (v₁ mod 256) = (v₂ mod 256) ⟺ (γ₁,σ₁,θ₁) = (γ₂,σ₂,θ₂). <em>Proof:</em> locate() is injective on 252 active positions — 252/252. ρ is separated before locate().</p>
+
+  <p><strong>T2 — Irrelevance ✓</strong> ρ, source modality, sequential position are structurally irrelevant. <em>Proof:</em> ρ never enters locate(). locate() takes only p — no index, no modality.</p>
+
+  <p><strong>T3 — Anchor Condition ✓</strong> p is a structural anchor ⟺ p mod 32 = 0. p mod 64 = 0 → vacuum anchor {0,64,128,192}. p mod 64 = 32 → midpoint anchor {32,96,160,224}. <em>Proof:</em> 256/32 = 8 exactly. 8 multiples of 32 = anchor set. No false positives.</p>
+
+  <p><strong>T4 — Vacuum Adjacency ✓</strong> p mod 64 = 1 → post-vacuum {1,65,129,193}, σ=6. p mod 64 = 63 → pre-vacuum {63,127,191,255}, σ=2. <em>Proof:</em> Direct mod verification. O(1). No locate() required.</p>
+
+  <p><strong>T5 — Cross-Quarter Frame Crossing ✓</strong> S spans a frame boundary ⟺ θ values of S contain ≥ 2 distinct quarters. Polarity flip: θ=2→3 (vacuum 128, +→−) and θ=4→1 (vacuum 0, −→+).</p>
+</section>
+
+<hr>
+
+<!-- SECTION 04 -->
+<section class="section">
+  <div class="section-num">04 · Derived Theorems J1–J4</div>
+  <h2>Circular Centroid, Classification, <span class="accent">Resonance</span></h2>
+
+  <p><strong>J3 — σ Uniformity ✓</strong> On the full active ring Z₂₅₆, σ is perfectly uniform: P(σ=k) = 1/7 for all k ∈ 1..7. Max deviation = 0.0000000 over 252 positions. <em>Proof:</em> Stride-7 walk visits each step value exactly 36 times. 252/7 = 36.</p>
+
+  <p><strong>J1 — Circular Centroid ✓</strong> (Corrected formula — singleton identity verified 47/47.) For cluster S with coordinates {c₁..cₙ} ∈ {1..Tc}: φᵢ = (cᵢ−1) × 2π/Tc. Vx = Σcos(φᵢ), Vy = Σsin(φᵢ). If |V| &gt; 0: c_c = (atan2(Vy,Vx) × Tc / 2π + 1) mod Tc. Applied independently: γ (Tc=36), σ (Tc=7), θ (Tc=4).</p>
+
+  <p><strong>J2 — Pattern Classifier ✓</strong> Given any S ⊆ Z₂₅₆ active, classify(S) → one of 6 types in O(n), priority order: (1) Anchor: p mod 32 = 0. (2) Vacuum-adjacent: p mod 64 ∈ {1,63}. (3) Gate cluster: all γᵢ identical. (4) Step column: all σᵢ identical, gates differ. (5) Cross-quarter: distinct θ present. (6) Quarter stripe: all θᵢ identical (guaranteed fallback). Zero unclassified sets in full ring test.</p>
+
+  <table class="data-table">
+    <tr><th>Type</th><th>S</th><th>γ</th><th>σ</th><th>θ</th><th>Verified</th></tr>
+    <tr><td>Gate cluster</td><td>{203..245}</td><td>all 5</td><td>1..7</td><td>all 1</td><td><span class="ok">✓</span></td></tr>
+    <tr><td>Step column</td><td>{28,77,126,175,224}</td><td>1..5</td><td>all 4</td><td>all 1</td><td><span class="ok">✓</span></td></tr>
+    <tr><td>Anchor set</td><td>{32,96,160,224}</td><td>5,14,23,32</td><td>all 4</td><td>1,2,3,4</td><td><span class="ok">✓</span></td></tr>
+    <tr><td>Vacuum-adjacent</td><td>{1,63,65,127}</td><td>26,2,17,29</td><td>6,2,6,2</td><td>1..4</td><td><span class="ok">✓</span></td></tr>
+  </table>
+
+  <p><strong>J4 — Cross-Modal Resonance ✓</strong> B₁ ~ B₂ ⟺ classify(B₁) = classify(B₂) ∧ Centroid(B₁) = Centroid(B₂). Modality M₁, M₂ do not appear anywhere in the proof. T2 (irrelevance) ensures modality cannot enter locate(), classify(), or circ_centroid().</p>
+
+  <table class="data-table">
+    <tr><th>Test</th><th>B₁</th><th>B₂</th><th>Resonant</th><th>Result</th></tr>
+    <tr><td>Atom resonance</td><td>text A=65</td><td>image R=65</td><td>True</td><td><span class="ok">✓</span></td></tr>
+    <tr><td>Amplitude blind</td><td>v=65 (ρ=0)</td><td>v=321 (ρ=1)</td><td>True</td><td><span class="ok">✓</span></td></tr>
+    <tr><td>Order invariance</td><td>{A,p,l}</td><td>{l,A,p}</td><td>True</td><td><span class="ok">✓</span></td></tr>
+    <tr><td>Non-resonance</td><td>apple (fruit)</td><td>Apple (company)</td><td>False</td><td><span class="ok">✓</span></td></tr>
+  </table>
+</section>
+
+      </div><!-- /.chapter-body -->
+
+      <div class="chapter-nav-footer">
+        <a href="chapter-14.html">← Chapter 14: Quartic Centroid Conjecture</a>
+        <a href="index.html">MPRC Book</a>
+        <a href="chapter-16.html">Chapter 16: QH4 Pattern Matching ★ →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

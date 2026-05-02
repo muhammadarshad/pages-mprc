@@ -144,6 +144,18 @@ hr {
   text-decoration: none;
 }
 
+.nav-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.57rem;
+  color: var(--accent);
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  padding: 16px 28px 4px;
+  opacity: 0.65;
+  pointer-events: none;
+  list-style: none;
+}
+
 /* ── Main Reading Pane ── */
 .book-main {
   flex: 1;

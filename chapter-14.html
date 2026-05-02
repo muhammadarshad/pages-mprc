@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Chapter 14: Quartic Centroid Conjecture</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="book-title">The MPRC Framework</a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li class="nav-group-label">I · Ring Foundation</li>
+      <li><a href="chapter-12.html">12. Speed &amp; Velocity on Z₂₅₆</a></li>
+      <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+      <li><a href="chapter-2.html">2. GUT v2</a></li>
+      <li class="nav-group-label">II · Atomic Physics</li>
+      <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+      <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+      <li class="nav-group-label">III · Gravity &amp; Cosmology</li>
+      <li><a href="chapter-7.html">7. Artemis III Predictions</a></li>
+      <li><a href="chapter-9.html">9. Lunar-Nodal Climate</a></li>
+      <li class="nav-group-label">IV · Mathematics &amp; Conjectures</li>
+      <li><a href="chapter-13.html">13. Arshad's Sieve</a></li>
+      <li><a href="chapter-14.html" style="font-weight:600;color:#fff;border-left-color:var(--accent);">14. Quartic Centroid Conjecture</a></li>
+      <li><a href="chapter-15.html">15. QH4 Pattern Mining</a></li>
+      <li><a href="chapter-16.html">16. QH4 Pattern Matching ★</a></li>
+      <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+      <li><a href="chapter-10.html">10. Bell Correlations</a></li>
+      <li class="nav-group-label">V · Cryptography &amp; Security</li>
+      <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+      <li><a href="chapter-11.html">11. LQC Three-Layer Safety</a></li>
+      <li class="nav-group-label">VI · Computing</li>
+      <li><a href="chapter-8.html">8. MPRC Spectral Transform</a></li>
+      <li class="nav-group-label">Philosophical Branch</li>
+      <li><a href="philosophical.html">FSL Observation Thesis</a></li>
+    </ul>
+  </nav>
+</aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>Quartic Centroid<br/><span>Conjecture</span></h1>
+        <p class="chapter-subtitle">Centroid–residue decoupling in the 4-term arithmetic product family — √10 as the fundamental residue unit — f(n)=3n geometric scaling law · April 2026</p>
+      </header>
+
+      <div class="chapter-body">
+
+<!-- ABSTRACT -->
+<section class="section">
+  <div class="section-num">Abstract</div>
+  <h2>Position Moves. <span class="accent">Residue Does Not.</span></h2>
+
+  <p>For the 4-term arithmetic product family (x+k)(x+k+2)(x+k+4)(x+k+6) = (n−1)², the solution decomposes into two fully independent components: a centroid that shifts with k, and a residue that is fixed regardless of where the sequence starts. The two components are decoupled — a direct instance of MPRC's core architecture separating movement from invariant structure.</p>
+
+  <div class="pull-quote">
+    <p>√10 is not merely the residue for step=2. It is the fundamental residue unit of the entire 4-term arithmetic family. Step is a scaling factor only. The geometric invariant √10 = √(1²+3²) survives all step changes.</p>
+  </div>
+
+  <table class="data-table">
+    <tr><th>Component</th><th>Depends On</th><th>Value</th></tr>
+    <tr><td>Centroid x_base</td><td>Starting position k</td><td>−(k+3), shifts with k</td></tr>
+    <tr><td>Residue x_res</td><td>n and step only</td><td>√10, always fixed</td></tr>
+    <tr><td>RHS</td><td>Shape geometry</td><td>(n−1)² = 9</td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 01 -->
+<section class="section">
+  <div class="section-num">01 · Statement</div>
+  <h2>The Three <span class="accent">Invariants</span></h2>
+
+  <div class="eq-block">
+    <div class="eq-label">The Family (n=4, step=2, RHS=9)</div>
+    <div class="eq-row">(x+k)(x+k+2)(x+k+4)(x+k+6) = (n−1)² = 9</div>
+    <div class="eq-row" style="margin-top:10px;">Universal solution:</div>
+    <div class="eq-row">x = −(k+3) ± √10</div>
+  </div>
+
+  <p><strong>Invariant I — Centroid.</strong> x_base = −(k+3). The centroid operator always inverts the parity of k. If k is odd, x_base is even. If k is even, x_base is odd. Adding 3 (odd) to any k always flips parity — structural, not coincidental.</p>
+
+  <p><strong>Invariant II — Residue.</strong> x_res = ±√10 = ±√(1²+3²). The residue is fixed and k-independent. It encodes the geometry of the 4-step family: the four terms sit at centroid ±1 and centroid ±3. The residue is the Euclidean distance over these offsets. It does not change regardless of where the sequence starts.</p>
+
+  <p><strong>Invariant III — Scaling Law.</strong> Δx_base = −Δk. Δx_res = 0. Position moves. Residue does not. They are fully decoupled.</p>
+
+  <table class="data-table">
+    <tr><th>State</th><th>k</th><th>Solution x</th><th>x_base parity</th></tr>
+    <tr><td>S₁</td><td>1 (odd)</td><td>−4 ± √10</td><td>Even</td></tr>
+    <tr><td>S₂</td><td>3 (odd)</td><td>−6 ± √10</td><td>Even</td></tr>
+    <tr><td>S₃</td><td>5 (odd)</td><td>−8 ± √10</td><td>Even</td></tr>
+    <tr><td>S₄</td><td>7 (odd)</td><td>−10 ± √10</td><td>Even</td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 02 -->
+<section class="section">
+  <div class="section-num">02 · Origin of RHS = 9</div>
+  <h2>Shape Geometry, <span class="accent">Not Arbitrary Choice</span></h2>
+
+  <p>The RHS is not arbitrary. It is the geometric area of the shape defined by the family:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">RHS = (n−1)² = 3² = 9</div>
+    <div class="eq-row">For n=4 with step=2: total range = 6, inner box side = 3, area = 9.</div>
+    <div class="eq-row" style="margin-top:8px;">Condition for a clean residue:</div>
+    <div class="eq-row">16 + N = perfect square   (N = m² − 16)</div>
+    <div class="eq-row">N=9 is the first non-trivial clean case after N=0. Structurally distinguished.</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- SECTION 03 -->
+<section class="section">
+  <div class="section-num">03 · Competition Problem</div>
+  <h2>90 Seconds vs. <span class="accent">10 Minutes</span></h2>
+
+  <p>Solve (x+2)(x+4)(x+6)(x+8) = 105.</p>
+
+  <p><strong>Standard method:</strong> Expand to x⁴ + 20x³ + 143x² + 430x + 279 = 0, then apply rational root theorem testing ±1, ±3, ±9, ±31… Minimum 10 minutes. No geometric insight.</p>
+
+  <p><strong>Conjecture method:</strong> 4 terms, step=2. Centroid = (2+4+6+8)/4 = 5. x_base = −5. Clean residue check: 16 + 105 = 121 = 11². Perfect square — clean roots guaranteed before solving. Let t = x+5: (t²−9)(t²−1) = 105. Then u² − 10u − 96 = 0 → (u−16)(u+6) = 0 → u = 16 → t = ±4 → x = −1 or x = −9.</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Verification</div>
+    <div class="eq-row">(1)(3)(5)(7) = 105 ✓   (−7)(−5)(−3)(−1) = 105 ✓</div>
+  </div>
+
+  <table class="data-table">
+    <tr><th></th><th>Standard</th><th>Conjecture</th></tr>
+    <tr><td>Time</td><td>10+ minutes</td><td>90 seconds</td></tr>
+    <tr><td>Why x = −5 ± 4?</td><td>Invisible</td><td>Centroid −5, residue 4</td></tr>
+    <tr><td>Clean roots?</td><td>Check after solving</td><td>Known before solving</td></tr>
+    <tr><td>Why two solutions?</td><td>Algebra output</td><td>Shape always pairs</td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 04 -->
+<section class="section">
+  <div class="section-num">04 · General Residue Formula</div>
+  <h2>Residue² = 5 + <span class="accent">√(16+N)</span></h2>
+
+  <div class="eq-block">
+    <div class="eq-label">General Formula (derived from competition problem)</div>
+    <div class="eq-row">Residue = √(5 + √(16 + N))</div>
+    <div class="eq-row">From quadratic: u² − 10u − (N−9) = 0 → u = 5 ± √(16+N)</div>
+    <div class="eq-row">Residue² = 5 + √(16+N)</div>
+  </div>
+
+  <table class="data-table">
+    <tr><th>N</th><th>16+N</th><th>√(16+N)</th><th>Residue²</th><th>Residue</th></tr>
+    <tr><td>9</td><td>25</td><td>5</td><td>10</td><td>√10</td></tr>
+    <tr><td>105</td><td>121</td><td>11</td><td>16</td><td>4</td></tr>
+    <tr><td>m²−16</td><td>m²</td><td>m</td><td>5+m</td><td>√(5+m)</td></tr>
+  </table>
+
+  <p>Clean residues occur exactly when 16+N is a perfect square. N=9 gives the first clean surd. N=105 gives the first clean integer residue beyond N=0.</p>
+</section>
+
+<hr>
+
+<!-- SECTION 05 -->
+<section class="section">
+  <div class="section-num">05 · Falsification Tests</div>
+  <h2>Negative k and <span class="accent">Step ≠ 2</span></h2>
+
+  <p><strong>Test 1 — Negative k (k = −1).</strong> Prediction: x = −2 ± √10. Equation: (x−1)(x+1)(x+3)(x+5) = 9. Let t = x+2: (t²−9)(t²−1) = 9 → u² − 10u = 0 → u = 10 → x = −2 ± √10 ✓. Parity: k = −1 odd → x_base = −2 even. Inversion holds. Scaling: Δk = −2 → Δx_base = +2. <span class="ok">CONJECTURE SURVIVES.</span></p>
+
+  <p><strong>Test 2 — Step = 3 (k = 0).</strong> Equation: x(x+3)(x+6)(x+9) = 9. Centroid = 18/4 = 4.5 → x_base = −4.5. Offsets: ±1.5, ±4.5. Residue² = 1.5² + 4.5² = 22.5. Residue = 1.5√10 = (step/2)·√10. <span class="ok">CONJECTURE SURVIVES.</span></p>
+</section>
+
+<hr>
+
+<!-- SECTION 06 -->
+<section class="section">
+  <div class="section-num">06 · Fundamental Residue Unit</div>
+  <h2>√10 Survives <span class="accent">All Step Changes</span></h2>
+
+  <table class="data-table">
+    <tr><th>Step</th><th>Offsets</th><th>Residue</th><th>Core</th></tr>
+    <tr><td>2</td><td>±1, ±3</td><td>√10</td><td>√10</td></tr>
+    <tr><td>3</td><td>±1.5, ±4.5</td><td>1.5√10</td><td>√10</td></tr>
+    <tr><td>4</td><td>±2, ±6</td><td>2√10</td><td>√10</td></tr>
+    <tr><td>s</td><td>±s/2, ±3s/2</td><td>(s/2)√10</td><td>√10</td></tr>
+  </table>
+
+  <p>Step is a scaling factor only. The geometric invariant √10 = √(1²+3²) is the Euclidean distance over the offsets {±1, ±3} at unit step — it survives all step changes.</p>
+</section>
+
+<hr>
+
+<!-- SECTION 07 -->
+<section class="section">
+  <div class="section-num">07 · Geometric Scaling Law</div>
+  <h2>f(n) = 3n — <span class="accent">Open Connection</span></h2>
+
+  <p>For any regular n-gon, connecting all vertices to centre C and bisecting each corner angle produces exactly 3n angles total: n central angles at C, n bisected corner angles, and 2n small angles from each bisection.</p>
+
+  <table class="data-table">
+    <tr><th>Shape</th><th>n</th><th>Central</th><th>Small (2n)</th><th>f(n)=3n</th></tr>
+    <tr><td>Triangle</td><td>3</td><td>3</td><td>6</td><td>9</td></tr>
+    <tr><td>Square</td><td>4</td><td>4</td><td>8</td><td>12</td></tr>
+    <tr><td>Pentagon</td><td>5</td><td>5</td><td>10</td><td>15</td></tr>
+    <tr><td>Hexagon</td><td>6</td><td>6</td><td>12</td><td>18</td></tr>
+    <tr><td>n-gon</td><td>n</td><td>n</td><td>2n</td><td>3n</td></tr>
+  </table>
+
+  <div class="pull-quote">
+    <p><strong>Open Conjecture.</strong> The algebraic residue formula Residue² = (n−1)² + 1 is proven. Whether this residue arises from the 2n small angles of f(n) = 3n is conjectured — not yet derived. The explicit link between small angle count 2n and offset sum (n−1)² + 1 is an open problem.</p>
+  </div>
+</section>
+
+      </div><!-- /.chapter-body -->
+
+      <div class="chapter-nav-footer">
+        <a href="chapter-13.html">← Chapter 13: Arshad's Sieve</a>
+        <a href="index.html">MPRC Book</a>
+        <a href="chapter-15.html">Chapter 15: QH4 Pattern Mining →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

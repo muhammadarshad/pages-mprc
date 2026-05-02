@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Chapter 16: QH4 Pattern Matching — Open Conjecture</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="book-title">The MPRC Framework</a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="index.html">Introduction</a></li>
+      <li class="nav-group-label">I · Ring Foundation</li>
+      <li><a href="chapter-12.html">12. Speed &amp; Velocity on Z₂₅₆</a></li>
+      <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+      <li><a href="chapter-2.html">2. GUT v2</a></li>
+      <li class="nav-group-label">II · Atomic Physics</li>
+      <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+      <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+      <li class="nav-group-label">III · Gravity &amp; Cosmology</li>
+      <li><a href="chapter-7.html">7. Artemis III Predictions</a></li>
+      <li><a href="chapter-9.html">9. Lunar-Nodal Climate</a></li>
+      <li class="nav-group-label">IV · Mathematics &amp; Conjectures</li>
+      <li><a href="chapter-13.html">13. Arshad's Sieve</a></li>
+      <li><a href="chapter-14.html">14. Quartic Centroid Conjecture</a></li>
+      <li><a href="chapter-15.html">15. QH4 Pattern Mining</a></li>
+      <li><a href="chapter-16.html" style="font-weight:600;color:#fff;border-left-color:var(--accent);">16. QH4 Pattern Matching ★</a></li>
+      <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+      <li><a href="chapter-10.html">10. Bell Correlations</a></li>
+      <li class="nav-group-label">V · Cryptography &amp; Security</li>
+      <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+      <li><a href="chapter-11.html">11. LQC Three-Layer Safety</a></li>
+      <li class="nav-group-label">VI · Computing</li>
+      <li><a href="chapter-8.html">8. MPRC Spectral Transform</a></li>
+      <li class="nav-group-label">Philosophical Branch</li>
+      <li><a href="philosophical.html">FSL Observation Thesis</a></li>
+    </ul>
+  </nav>
+</aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>QH4 Pattern Matching<br/><span style="color:var(--gold);">★ Open Conjecture</span></h1>
+        <p class="chapter-subtitle">O(1) structural classification of ring positions by pattern type — the conjecture to derive — all priors established in Chapter 15 · Research Seed</p>
+      </header>
+
+      <div class="chapter-body">
+
+<!-- STATUS BOX -->
+<div style="border-left:3px solid var(--gold); background:rgba(251,191,36,0.06); padding:20px 28px; margin:0 0 2.5em; border-radius:0 6px 6px 0;">
+  <div style="font-family:var(--font-mono); font-size:0.62rem; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:10px;">Chapter Status</div>
+  <p style="margin:0;">This chapter is a <strong>research seed</strong>. The prior results (Chapters 13–15, including all 9 theorems of the Pattern Mining Machine) are established and locked. The Pattern Matching conjecture stated here is <strong>not yet derived</strong>. This chapter records the conjecture precisely so future work begins from known ground, not guesswork.</p>
+</div>
+
+<!-- ABSTRACT -->
+<section class="section">
+  <div class="section-num">Abstract</div>
+  <h2>From WHERE to <span class="accent">WHAT</span></h2>
+
+  <p>Chapter 15 established the O(1) inverse formula: given position p, compute its Λ(ρ,γ,σ,θ) address in constant time. This tells us <em>where</em> position p is in the ring. The Pattern Matching conjecture asks a different question: <em>what</em> is position p — its structural role, its relationship to neighbours, and how to recognize a known pattern without searching.</p>
+
+  <div class="pull-quote">
+    <p>Given a set of positions S ⊆ Z₂₅₆, classify S by its structural signature — without iterating through bins. The answer is O(1) per position, derived purely from (γ, σ, θ) arithmetic.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- SECTION 01 -->
+<section class="section">
+  <div class="section-num">01 · Established Priors</div>
+  <h2>Do Not Re-Derive — <span class="accent">Reference Only</span></h2>
+
+  <p>All of the following are proven and locked in Chapters 13–15. They are the starting point for the conjecture, not the subject of it.</p>
+
+  <table class="data-table">
+    <tr><th>Prior</th><th>Content</th><th>Status</th></tr>
+    <tr><td>A1 — Ring constants</td><td>256=4⁴, 4 vacuums, 252 active, 36 gates × 7 steps, 9 gates/epoch</td><td><span class="badge ver">Locked</span></td></tr>
+    <tr><td>A2 — Forward formula</td><td>pos(γ,σ) = (7×(7(γ−1)+σ+⌊(γ−1)/9⌋)) mod 256</td><td><span class="badge ver">252/252</span></td></tr>
+    <tr><td>A3 — Inverse formula</td><td>locate(p): m=(p×183)%256, adj correction, γ=div, σ=mod — O(1)</td><td><span class="badge ver">252/252</span></td></tr>
+    <tr><td>A4 — Quadrant midpoints</td><td>{32,96,160,224} — slot σ=4, equidistant at spacing 64</td><td><span class="badge ver">Locked</span></td></tr>
+    <tr><td>T3 — Anchor condition</td><td>p is anchor ⟺ p mod 32 = 0 — O(1), no locate() required</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>T4 — Vacuum adjacency</td><td>p mod 64 ∈ {1,63} — O(1), no locate() required</td><td><span class="badge ver">Proven</span></td></tr>
+    <tr><td>J2 — Pattern classifier</td><td>6-type classification in O(n) for sets of positions</td><td><span class="badge ver">Proven</span></td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 02 -->
+<section class="section">
+  <div class="section-num">02 · The Conjecture</div>
+  <h2>Structural Classification <span class="accent">from Arithmetic</span></h2>
+
+  <p>The six pattern types defined in J2 (Ch15) classify any set S by iterating locate() over each element. The Pattern Matching conjecture claims something stronger: given positions p₁, p₂, …, pₙ, their pattern type is determined O(1) from (γ, σ, θ) arithmetic — without calling locate() at all for individual comparisons.</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Conjecture (to be derived)</div>
+    <div class="eq-row">Given positions p₁, p₂, ..., pₙ ∈ QH4 active ring,</div>
+    <div class="eq-row">their pattern type is determined O(1) by:</div>
+    <div class="eq-row" style="margin-top:6px;">1. Compute locate(pᵢ) → (γᵢ, σᵢ, θᵢ) for each pᵢ</div>
+    <div class="eq-row">2. Compute epoch(γᵢ) = ⌊(γᵢ−1)/9⌋ + 1</div>
+    <div class="eq-row">3. Classify by which of {γ, σ, epoch, dist_to_vac} are equal</div>
+    <div class="eq-row" style="margin-top:6px; color:var(--text-muted);">No search. No table. Pure arithmetic on (γ, σ) signatures.</div>
+  </div>
+
+  <table class="data-table">
+    <tr><th>Pattern Name</th><th>Definition</th></tr>
+    <tr><td>Bin cluster</td><td>All positions share the same gate γ — differ by multiples of 7</td></tr>
+    <tr><td>Step column</td><td>All positions share the same step σ across different gates</td></tr>
+    <tr><td>Epoch stripe</td><td>All positions within one epoch (quarter of ring)</td></tr>
+    <tr><td>Vacuum-adjacent</td><td>Position is first or last slot of an epoch (1 step from vacuum)</td></tr>
+    <tr><td>Midpoint</td><td>Position is slot σ=4 of its gate (centre of gate window)</td></tr>
+    <tr><td>Cross-epoch</td><td>Set of positions spanning multiple epochs</td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- SECTION 03 -->
+<section class="section">
+  <div class="section-num">03 · Starting Questions</div>
+  <h2>Five Questions to <span class="accent">Open the Derivation</span></h2>
+
+  <table class="data-table">
+    <tr><th>#</th><th>Question</th></tr>
+    <tr><td>Q1</td><td>What is the algebraic condition for two positions to be in the same gate? Is it (p₁×183 − p₂×183) mod 7 = 0 after vacuum correction?</td></tr>
+    <tr><td>Q2</td><td>What is the condition for same step across gates? Does pᵢ mod 7 = constant hold directly?</td></tr>
+    <tr><td>Q3</td><td>Can we detect a vacuum-adjacent position directly from p without locate()? (T4 does this — but can we also classify the pattern type of a set without locate()?)</td></tr>
+    <tr><td>Q4</td><td>Does the distance between two positions in (γ,σ) space encode physical meaning in MPRC?</td></tr>
+    <tr><td>Q5</td><td>What is the pattern signature of the 4 quadrant midpoints {32,96,160,224}?</td></tr>
+  </table>
+
+  <p>Q1 and Q2 are the algebraic core. If the same-gate and same-step conditions can be read directly from p (without going through locate()), the full classifier becomes a sequence of modular arithmetic tests on raw position values — no address computation needed per comparison.</p>
+</section>
+
+<hr>
+
+<!-- SECTION 04 -->
+<section class="section">
+  <div class="section-num">04 · MPRC Context</div>
+  <h2>Physical Meaning of <span class="accent">Pattern Type</span></h2>
+
+  <p>In MPRC, the ring position p encodes a physical state: φ (position on the oloid), u-spinor direction, and quadrant polarity. Pattern types are not abstract classifications — they correspond to physical groupings:</p>
+
+  <table class="data-table">
+    <tr><th>Pattern Type</th><th>MPRC Interpretation</th></tr>
+    <tr><td>Gate cluster</td><td>Same coherent u-axis window — same angular momentum range</td></tr>
+    <tr><td>Step column</td><td>Same phase position within each window — same φ modular offset</td></tr>
+    <tr><td>Epoch stripe</td><td>Same quadrant — same polarity domain (Q⁰..Q³)</td></tr>
+    <tr><td>Vacuum-adjacent</td><td>Boundary state — 1 step from a frame crossing at {0,64,128,192}</td></tr>
+    <tr><td>Midpoint</td><td>σ=4 structural node — centre of coherent window</td></tr>
+  </table>
+
+  <p>Pattern matching in MPRC context means recognizing which physical state a position belongs to without scanning the ring — directly from the position value. This enables O(1) state identification across any modality.</p>
+</section>
+
+      </div><!-- /.chapter-body -->
+
+      <div class="chapter-nav-footer">
+        <a href="chapter-15.html">← Chapter 15: QH4 Pattern Mining</a>
+        <a href="index.html">MPRC Book</a>
+        <a href="chapter-6.html">Chapter 6: SILIQ Goldbach Engine →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

@@ -34,9 +34,10 @@
   <use href="#obj" transform="translate(333,228)" opacity="0.74"/>
   <use href="#obj" transform="translate(364,228)" opacity="0.90"/>
 
-  <!-- Animated leading dot — the actual object moving through the frame -->
+  <!-- Animated leading dot — opacity increases left→right matching ghost taper -->
   <g>
     <animateMotion dur="1.5s" repeatCount="indefinite"><mpath href="#cam-path"/></animateMotion>
+    <animate attributeName="opacity" values="0.12;1" dur="1.5s" repeatCount="indefinite"/>
     <circle r="20" fill="#38bdf8" opacity="0.07"/>
     <circle r="13" fill="#38bdf8" opacity="0.22"/>
     <circle r="7"  fill="#38bdf8" opacity="0.75" filter="url(#ca-glow)"/>

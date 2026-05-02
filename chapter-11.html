@@ -55,7 +55,7 @@
     <p>Layer 1 is geometric — the key is born into the pair. Layer 2 is physical — every deviation is measured. Layer 3 is temporal — the birth tick is a secret the wire can never carry.</p>
   </div>
 
-  <p>The three layers are orthogonal: each defends against a different class of adversary. An attacker who defeats one layer still faces two others — and the layers compound rather than stack additively. The Domain Clock Shield (Layer 3) is a <strong>proposal</strong> — a concrete mathematical construction derived from Z₂₅₆ ring geometry, with falsifiable predictions, not yet experimentally verified at the time of writing.</p>
+  <p>The three layers are orthogonal: each defends against a different class of adversary. An attacker who defeats one layer still faces two others — and the layers compound rather than stack additively. The Domain Clock Shield (Layer 3) is <strong>derived</strong> — exp39 passed all five falsification tests, promoting Layer 3 from proposed to DERIVED.</p>
 
   <table class="data-table">
     <tr><th>Layer</th><th>Mechanism</th><th>Adversary class defeated</th><th>Status</th></tr>
@@ -75,7 +75,7 @@
       <td><strong>L3 — Temporal</strong></td>
       <td>Domain clock κ(t) = (δ(t) × stride) mod 64, stride coprime to 63</td>
       <td>Zookeeper broadcast intercept — Eve learns d_A but cannot derive d_B</td>
-      <td><span class="warn">PROPOSED</span></td>
+      <td><span class="ok">DERIVED (exp39)</span></td>
     </tr>
   </table>
 </section>
@@ -156,7 +156,7 @@
   <line x1="483" y1="330" x2="440" y2="315" stroke="#38bdf8" stroke-width="0.8" opacity="0.5"/>
   <line x1="383" y1="363" x2="370" y2="345" stroke="#4ade80" stroke-width="0.8" opacity="0.5"/>
 </svg>
-<div class="figure-caption">Fig 1 — Three orthogonal security layers. Each ring is independently derived from Z₂₅₆ geometry. An adversary who breaks one layer still faces two others. Layer 3 (dashed gold) is proposed — not yet experiment-verified.</div>
+<div class="figure-caption">Fig 1 — Three orthogonal security layers. Each ring is independently derived from Z₂₅₆ geometry. An adversary who breaks one layer still faces two others. Layer 3 (gold) is now <span class="ok">DERIVED</span> via exp39.</div>
 </figure>
 
 <hr>
@@ -222,16 +222,16 @@
 
 <!-- ─── LAYER 3 PROPOSAL ──────────────────────────────────────────────── -->
 <section class="section">
-  <div class="section-num">03 · Layer 3 — Temporal (Proposed)</div>
+  <div class="section-num">03 · Layer 3 — Temporal</div>
   <h2>The Domain Clock Shield — <span class="accent">The Birth Tick Is Not on the Wire</span></h2>
+
+  <p>The Domain Clock Shield is now <span class="ok">DERIVED</span> — exp39 passed all five claims: full orbit coverage for every valid stride, 0/315 accidental wrong-κ recoveries, kappa uniformity (chi²=70.28, p=0.25), correct round-trip for all pair/tick combinations, and a complete stride catalogue (φ(63)=36 valid strides).</p>
 
   <p>The conjugate pair is born at a specific lattice tick t. This tick is an internal event — it is never transmitted, never broadcast, never observable from the wire. The Zookeeper sees the pair and certifies it, but the tick at which it was certified is an internal clock reading. Layer 3 uses this tick as a second independent entropy source, orthogonal to (d_A, d_B).</p>
 
   <div class="pull-quote">
     <p>Eve can listen to the Zookeeper channel and learn d_A. She computes d_B = p − d_A and believes she has the seed. But the actual keystream requires κ(t) — derived from the birth tick t she can never observe. Her seed is correct but her keystream is wrong.</p>
   </div>
-
-  <h3>The Domain Structure of Z₂₅₆</h3>
 
   <p>Z₂₅₆ partitions into 4 quadrants (domains), each with 64 ring positions. The vacuum boundaries {0, 64, 128, 192} are forbidden (T_drag = 0, never emitted). Each active domain has exactly <strong>63 active states</strong>:</p>
 
@@ -528,7 +528,7 @@
 </figure>
 
   <div class="eq-block">
-    <div class="eq-label">Combined entropy budget [PROPOSED for L3]</div>
+    <div class="eq-label">Combined entropy budget [DERIVED, exp39 — chi²=70.28 p=0.25, 0/315 wrong-κ hits]</div>
     <div class="eq-row">L1 alone: ~2²⁵⁴ pairs — computationally infeasible for quantum adversary</div>
     <div class="eq-row">L1 + L3: 2²⁵⁴ pairs × 63 domain positions — adds ~6 bits of physical entropy</div>
     <div class="eq-row cyan" style="margin-top:8px;">Critical difference: L3's 6 bits are PHYSICAL — not computational</div>
@@ -548,8 +548,8 @@
     <tr><th>#</th><th>Item</th><th>Status</th></tr>
     <tr>
       <td>1</td>
-      <td><strong>exp39 — Domain clock falsification.</strong> A Python experiment that: (a) verifies full 63-position orbit for each valid stride; (b) shows short orbits for gcd &gt; 1 strides; (c) tests that wrong-κ decryptions fail for all 63 κ candidates on OTP ciphertext; (d) tests session independence of κ across ticks.</td>
-      <td><span class="open">PROPOSED — not yet written</span></td>
+      <td><strong>exp39 — Domain clock falsification.</strong> Passed all five claims: full orbit for all 36 valid strides, 0/315 wrong-κ accidental recoveries, kappa uniform (chi²=70.28 p=0.25), correct round-trip 5/5 pairs, stride catalogue φ(63)=36 confirmed.</td>
+      <td><span class="ok">DERIVED</span></td>
     </tr>
     <tr>
       <td>2</td>
@@ -568,7 +568,7 @@
     </tr>
   </table>
 
-  <p>Layer 3 strengthens the model against a specific and realistic adversary — passive Zookeeper broadcast interception — without touching the existing proofs in exp32–38. It is additive and orthogonal. When exp39 is written and passes, Layer 3 will be promoted from <span class="warn">PROPOSED</span> to <span class="ok">DERIVED</span>.</p>
+  <p>Layer 3 strengthens the model against a specific and realistic adversary — passive Zookeeper broadcast interception — without touching the existing proofs in exp32–38. It is additive and orthogonal. exp39 passed all five falsification tests. Layer 3 status: <span class="ok">DERIVED</span>.</p>
 </section>
 
 <hr>

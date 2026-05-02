@@ -4,110 +4,101 @@
       <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.45"/>
       <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
     </radialGradient>
-    <filter id="ent-glowA">
+    <filter id="glA">
       <feGaussianBlur stdDeviation="5" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="ent-glowB">
+    <filter id="glB">
       <feGaussianBlur stdDeviation="5" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <!-- Arrowhead for Spinor A travel direction (cyan) -->
-    <marker id="mA" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#38bdf8" opacity="0.65"/>
-    </marker>
-    <!-- Arrowhead for Spinor B travel direction (gold) -->
-    <marker id="mB" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#fbbf24" opacity="0.65"/>
-    </marker>
+    <!-- Full QH4 ring: clockwise from V0(top) -> V64(right) -> V128(bottom) -> V192(left) -> V0 -->
+    <!-- Center (450,246) radius 118 -->
+    <path id="ring-orbit" d="M 450,128 A 118,118 0 0,1 568,246 A 118,118 0 0,1 450,364 A 118,118 0 0,1 332,246 A 118,118 0 0,1 450,128"/>
   </defs>
 
-  <!-- Title -->
   <text x="450" y="26" text-anchor="middle" font-family="Arial" font-size="11" fill="#3a4a60" letter-spacing="3">ENTANGLEMENT — ONE SPLIT SPINOR · NO SIGNAL SENT</text>
 
-  <!-- ═══════════ QH4 RING  centre (450, 246)  radius 118 ═══════════ -->
-  <!-- Computed vacuum node positions:
-       V0   (position   0, top):   (450, 246-118) = (450, 128)
-       V64  (position  64, right): (450+118, 246) = (568, 246)
-       V128 (position 128, bottom):(450, 246+118) = (450, 364)
-       V192 (position 192, left):  (450-118, 246) = (332, 246) -->
+  <!-- QH4 ring circle -->
+  <circle cx="450" cy="246" r="118" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
 
-  <!-- Vacuum glow halos -->
+  <!-- Vacuum node glows -->
   <circle cx="450" cy="128" r="16" fill="url(#ent-vac)"/>
   <circle cx="568" cy="246" r="16" fill="url(#ent-vac)"/>
   <circle cx="450" cy="364" r="16" fill="url(#ent-vac)"/>
   <circle cx="332" cy="246" r="16" fill="url(#ent-vac)"/>
 
-  <!-- Right semicircle: Spinor A travels 0 → 128 clockwise (rightward arc) — cyan -->
-  <!-- M 450 128 A 118 118 0 0 1 450 364 goes clockwise through (568, 246) -->
-  <path d="M 450 128 A 118 118 0 0 1 450 364" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
-
-  <!-- Left semicircle: Spinor B travels 128 → 0 clockwise (leftward arc) — gold -->
-  <!-- M 450 364 A 118 118 0 0 1 450 128 goes clockwise through (332, 246) -->
-  <path d="M 450 364 A 118 118 0 0 1 450 128" fill="none" stroke="#fbbf24" stroke-width="2.5"/>
-
-  <!-- Vacuum node dots (drawn over arcs) -->
+  <!-- Vacuum node dots -->
   <circle cx="450" cy="128" r="7" fill="#0a0f1e" stroke="#fbbf24" stroke-width="1.8"/>
-  <text x="450" y="116" text-anchor="middle" font-family="Arial" font-size="9" fill="#fbbf24" opacity="0.72">V₀</text>
+  <text x="450" y="115" text-anchor="middle" font-family="Arial" font-size="9" fill="#fbbf24" opacity="0.72">V&#x2080;</text>
   <circle cx="568" cy="246" r="7" fill="#0a0f1e" stroke="#fbbf24" stroke-width="1.8"/>
-  <text x="582" y="250" text-anchor="start"  font-family="Arial" font-size="9" fill="#fbbf24" opacity="0.72">V₆₄</text>
+  <text x="583" y="250" text-anchor="start" font-family="Arial" font-size="9" fill="#fbbf24" opacity="0.72">V&#x2086;&#x2084;</text>
   <circle cx="450" cy="364" r="7" fill="#0a0f1e" stroke="#fbbf24" stroke-width="1.8"/>
-  <text x="450" y="380" text-anchor="middle" font-family="Arial" font-size="9" fill="#fbbf24" opacity="0.72">V₁₂₈</text>
+  <text x="450" y="381" text-anchor="middle" font-family="Arial" font-size="9" fill="#fbbf24" opacity="0.72">V&#x2081;&#x2082;&#x2088;</text>
   <circle cx="332" cy="246" r="7" fill="#0a0f1e" stroke="#fbbf24" stroke-width="1.8"/>
-  <text x="318" y="250" text-anchor="end"    font-family="Arial" font-size="9" fill="#fbbf24" opacity="0.72">V₁₉₂</text>
+  <text x="317" y="250" text-anchor="end" font-family="Arial" font-size="9" fill="#fbbf24" opacity="0.72">V&#x2081;&#x2089;&#x2082;</text>
 
-  <!-- Arc identity labels -->
-  <text x="542" y="185" text-anchor="middle" font-family="Arial" font-size="10" fill="#38bdf8" opacity="0.72">Spinor A</text>
-  <text x="542" y="198" text-anchor="middle" font-family="Arial" font-size="9"  fill="#38bdf8" opacity="0.50">upper arc [0→128]</text>
-  <text x="358" y="318" text-anchor="middle" font-family="Arial" font-size="10" fill="#fbbf24" opacity="0.72">Spinor B</text>
-  <text x="358" y="331" text-anchor="middle" font-family="Arial" font-size="9"  fill="#fbbf24" opacity="0.50">lower arc [128→0]</text>
+  <!-- ANTI-PHASE DIAMETER LINE: rotates at same angular velocity as the spinors -->
+  <!-- Starts vertical (A at top V0, B at bottom V128) — same 6s period -->
+  <line x1="450" y1="128" x2="450" y2="364" stroke="#2a3d55" stroke-width="1.2" stroke-dasharray="4,5">
+    <animateTransform attributeName="transform" type="rotate" from="0 450 246" to="360 450 246" dur="6s" repeatCount="indefinite"/>
+  </line>
 
-  <!-- Spinor A dot: position 32 = 45° clockwise from top
-       x = 450 + 118·sin(45°) = 450 + 83.4 = 533
-       y = 246 − 118·cos(45°) = 246 − 83.4 = 163 -->
-  <circle cx="533" cy="163" r="11" fill="#38bdf8" opacity="0.22"/>
-  <circle cx="533" cy="163" r="7"  fill="#38bdf8" filter="url(#ent-glowA)"/>
-  <circle cx="533" cy="163" r="3"  fill="#ffffff"/>
-  <text x="548" y="160" text-anchor="start" font-family="Arial" font-size="10" fill="#38bdf8">p</text>
-
-  <!-- Spinor B dot: position 160 = 225° clockwise from top (always p+128 = opposite)
-       x = 450 + 118·sin(225°) = 450 − 83.4 = 367
-       y = 246 − 118·cos(225°) = 246 + 83.4 = 329 -->
-  <circle cx="367" cy="329" r="11" fill="#fbbf24" opacity="0.22"/>
-  <circle cx="367" cy="329" r="7"  fill="#fbbf24" filter="url(#ent-glowB)"/>
-  <circle cx="367" cy="329" r="3"  fill="#ffffff"/>
-  <text x="352" y="326" text-anchor="end" font-family="Arial" font-size="10" fill="#fbbf24">p+128</text>
-
-  <!-- Anti-phase lock line connecting the two spinors (always 128 apart) -->
-  <line x1="533" y1="163" x2="367" y2="329" stroke="#243048" stroke-width="1" stroke-dasharray="4,5"/>
-  <text x="458" y="252" text-anchor="middle" font-family="Arial" font-size="9" fill="#2e3f58">128 states apart</text>
-
-  <!-- u-axis eye at centre -->
+  <!-- u-axis eye at center -->
   <circle cx="450" cy="246" r="11" fill="#07101e" stroke="#2a3850" stroke-width="1"/>
-  <circle cx="450" cy="246" r="4"  fill="#38bdf8" opacity="0.45"/>
+  <circle cx="450" cy="246" r="4" fill="#38bdf8" opacity="0.45"/>
 
-  <!-- ═══════════ RIGHT OBSERVER: Lab B — measures Spinor A ═══════════ -->
-  <rect x="762" y="124" width="128" height="74" rx="6" fill="#08121f" stroke="#38bdf8" stroke-width="1.2"/>
-  <text x="826" y="147" text-anchor="middle" font-family="Arial" font-size="11" fill="#38bdf8" font-weight="bold">Lab B</text>
-  <text x="826" y="165" text-anchor="middle" font-family="Arial" font-size="10" fill="#8892a8">measures Spinor A</text>
-  <text x="826" y="184" text-anchor="middle" font-family="Arial" font-size="10" fill="#34d399">result: spin-up ↑</text>
+  <!-- SPINOR A (cyan) — orbits full ring clockwise, 6s period, starts at V0(top) -->
+  <circle r="16" fill="#38bdf8" opacity="0.14" filter="url(#glA)">
+    <animateMotion dur="6s" repeatCount="indefinite"><mpath href="#ring-orbit"/></animateMotion>
+  </circle>
+  <circle r="9" fill="#38bdf8" opacity="0.88">
+    <animateMotion dur="6s" repeatCount="indefinite"><mpath href="#ring-orbit"/></animateMotion>
+  </circle>
+  <circle r="4" fill="#ffffff" opacity="0.92">
+    <animateMotion dur="6s" repeatCount="indefinite"><mpath href="#ring-orbit"/></animateMotion>
+  </circle>
+  <!-- Label "A" moves with spinor -->
+  <text font-family="Arial" font-size="10" font-weight="bold" fill="#38bdf8" dx="13" dy="-6" text-anchor="start">
+    <animateMotion dur="6s" repeatCount="indefinite"><mpath href="#ring-orbit"/></animateMotion>A
+  </text>
 
-  <!-- Spinor A travels rightward from ring to Lab B -->
-  <line x1="542" y1="162" x2="760" y2="162" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="5,5" opacity="0.55" marker-end="url(#mA)"/>
+  <!-- SPINOR B (gold) — same path, begin="-3s" keeps it exactly 180deg opposite to A -->
+  <circle r="16" fill="#fbbf24" opacity="0.14" filter="url(#glB)">
+    <animateMotion dur="6s" begin="-3s" repeatCount="indefinite"><mpath href="#ring-orbit"/></animateMotion>
+  </circle>
+  <circle r="9" fill="#fbbf24" opacity="0.88">
+    <animateMotion dur="6s" begin="-3s" repeatCount="indefinite"><mpath href="#ring-orbit"/></animateMotion>
+  </circle>
+  <circle r="4" fill="#ffffff" opacity="0.92">
+    <animateMotion dur="6s" begin="-3s" repeatCount="indefinite"><mpath href="#ring-orbit"/></animateMotion>
+  </circle>
+  <!-- Label "B" moves with spinor -->
+  <text font-family="Arial" font-size="10" font-weight="bold" fill="#fbbf24" dx="13" dy="-6" text-anchor="start">
+    <animateMotion dur="6s" begin="-3s" repeatCount="indefinite"><mpath href="#ring-orbit"/></animateMotion>B
+  </text>
 
-  <!-- ═══════════ LEFT OBSERVER: Lab A — measures Spinor B ═══════════ -->
-  <rect x="10" y="286" width="128" height="74" rx="6" fill="#08121f" stroke="#fbbf24" stroke-width="1.2"/>
-  <text x="74" y="309" text-anchor="middle" font-family="Arial" font-size="11" fill="#fbbf24" font-weight="bold">Lab A</text>
-  <text x="74" y="327" text-anchor="middle" font-family="Arial" font-size="10" fill="#8892a8">measures Spinor B</text>
-  <text x="74" y="346" text-anchor="middle" font-family="Arial" font-size="10" fill="#34d399">result: spin-down ↓</text>
+  <!-- Arc identity key: small legend text -->
+  <text x="540" y="178" text-anchor="middle" font-family="Arial" font-size="9" fill="#38bdf8" opacity="0.55">Spinor A</text>
+  <text x="360" y="326" text-anchor="middle" font-family="Arial" font-size="9" fill="#fbbf24" opacity="0.55">Spinor B</text>
+  <text x="450" y="244" text-anchor="middle" font-family="Arial" font-size="8" fill="#2a3d55">128 apart</text>
 
-  <!-- Spinor B travels leftward from ring to Lab A -->
-  <line x1="358" y1="328" x2="140" y2="328" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="5,5" opacity="0.55" marker-end="url(#mB)"/>
+  <!-- Lab boxes -->
+  <rect x="762" y="108" width="130" height="88" rx="6" fill="#08121f" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="827" y="132" text-anchor="middle" font-family="Arial" font-size="11" fill="#38bdf8" font-weight="bold">Lab B</text>
+  <text x="827" y="151" text-anchor="middle" font-family="Arial" font-size="10" fill="#8892a8">measures Spinor A</text>
+  <text x="827" y="169" text-anchor="middle" font-family="Arial" font-size="10" fill="#34d399">result: spin-up &#x2191;</text>
+  <text x="827" y="186" text-anchor="middle" font-family="Arial" font-size="9" fill="#445566" font-style="italic">wherever A is found</text>
 
-  <!-- "No Signal Sent" badge -->
-  <rect x="342" y="410" width="216" height="30" rx="5" fill="#0b1424" stroke="#243048" stroke-width="1"/>
-  <text x="450" y="430" text-anchor="middle" font-family="Arial" font-size="11" fill="#445566" letter-spacing="2">NO SIGNAL SENT</text>
+  <rect x="8" y="284" width="130" height="88" rx="6" fill="#08121f" stroke="#fbbf24" stroke-width="1.2"/>
+  <text x="73" y="308" text-anchor="middle" font-family="Arial" font-size="11" fill="#fbbf24" font-weight="bold">Lab A</text>
+  <text x="73" y="327" text-anchor="middle" font-family="Arial" font-size="10" fill="#8892a8">measures Spinor B</text>
+  <text x="73" y="345" text-anchor="middle" font-family="Arial" font-size="10" fill="#34d399">result: spin-down &#x2193;</text>
+  <text x="73" y="362" text-anchor="middle" font-family="Arial" font-size="9" fill="#445566" font-style="italic">always opposite to A</text>
 
-  <!-- Bottom note -->
-  <text x="450" y="466" text-anchor="middle" font-family="Arial" font-size="10" fill="#2a3550" letter-spacing="1">ANTI-PHASE LOCK IS GEOMETRIC STRUCTURE — NOT COMMUNICATION</text>
+  <!-- No signal badge -->
+  <rect x="342" y="408" width="216" height="30" rx="5" fill="#0b1424" stroke="#243048" stroke-width="1"/>
+  <text x="450" y="428" text-anchor="middle" font-family="Arial" font-size="11" fill="#445566" letter-spacing="2">NO SIGNAL SENT</text>
+
+  <text x="450" y="465" text-anchor="middle" font-family="Arial" font-size="10" fill="#2a3550" letter-spacing="1">ANTI-PHASE LOCK IS GEOMETRIC STRUCTURE — NOT COMMUNICATION</text>
 </svg>

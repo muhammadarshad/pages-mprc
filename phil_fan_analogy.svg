@@ -1,81 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" style="background:#0a0f1e">
   <defs>
     <radialGradient id="fa-disc" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#1a3a6a" stop-opacity="0.5"/>
-      <stop offset="65%" stop-color="#38bdf8" stop-opacity="0.07"/>
+      <stop offset="0%" stop-color="#1a3a6a" stop-opacity="0.55"/>
+      <stop offset="65%" stop-color="#38bdf8" stop-opacity="0.09"/>
       <stop offset="100%" stop-color="#0a0f1e" stop-opacity="0"/>
     </radialGradient>
-    <filter id="fa-glow">
+    <filter id="fa-hub">
       <feGaussianBlur stdDeviation="4" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
-
-  <!-- Title -->
   <text x="450" y="28" text-anchor="middle" font-family="Arial" font-size="11" fill="#3a4a60" letter-spacing="3">THE FAN — POSITIONAL BLUR</text>
-
-  <!-- Vertical divider -->
   <line x1="450" y1="46" x2="450" y2="460" stroke="#1a2540" stroke-width="1.5"/>
-
-  <!-- ═══════════ LEFT PANEL: LOW RPM ═══════════ -->
-  <text x="225" y="63" text-anchor="middle" font-family="Arial" font-size="11" fill="#34d399" letter-spacing="4">LOW RPM</text>
-
-  <!-- Blades: fan hub at (225,270). Blade ellipse center at (225,182) = 88px above hub. -->
-  <!-- SVG rotate(θ,cx,cy) is clockwise. rotate(0)=up, rotate(120)=lower-right, rotate(240)=lower-left -->
-  <!-- Blade 1: pointing up -->
-  <ellipse cx="225" cy="182" rx="20" ry="73" fill="#112a4a" stroke="#38bdf8" stroke-width="1.5" transform="rotate(0,225,270)"/>
-  <!-- Blade 2: lower-right (120° clockwise) -->
-  <ellipse cx="225" cy="182" rx="20" ry="73" fill="#112a4a" stroke="#38bdf8" stroke-width="1.5" transform="rotate(120,225,270)"/>
-  <!-- Blade 3: lower-left (240° clockwise) -->
-  <ellipse cx="225" cy="182" rx="20" ry="73" fill="#112a4a" stroke="#38bdf8" stroke-width="1.5" transform="rotate(240,225,270)"/>
-
-  <!-- Hub -->
-  <circle cx="225" cy="270" r="22" fill="#080e1c" stroke="#38bdf8" stroke-width="2"/>
-  <circle cx="225" cy="270" r="7" fill="#38bdf8" filter="url(#fa-glow)"/>
-
-  <!-- Blade tip position markers (small dots to emphasise definite positions) -->
-  <!-- Blade 1 tip: (225, 182-73) = (225, 109) -->
-  <circle cx="225" cy="109" r="5" fill="#38bdf8" opacity="0.75"/>
-  <!-- Blade 2 tip: hub+(88+73) in direction 120° from up = (225+161*sin120°, 270-161*cos120°) = (225+139.4, 270+80.5) = (364,351) -->
-  <circle cx="364" cy="351" r="5" fill="#38bdf8" opacity="0.75"/>
-  <!-- Blade 3 tip: (225-139.4, 270+80.5) = (86,351) -->
-  <circle cx="86"  cy="351" r="5" fill="#38bdf8" opacity="0.75"/>
-
-  <!-- Position labels beside tip dots -->
-  <text x="235" y="106" font-family="Arial" font-size="9" fill="#38bdf8" opacity="0.6">blade 1</text>
-  <text x="372" y="349" font-family="Arial" font-size="9" fill="#38bdf8" opacity="0.6">blade 2</text>
-  <text x="55"  y="349" font-family="Arial" font-size="9" fill="#38bdf8" opacity="0.6">blade 3</text>
-
-  <!-- Caption -->
-  <text x="225" y="390" text-anchor="middle" font-family="Arial" font-size="14" fill="#ffffff" font-weight="bold">3 blades visible</text>
-  <text x="225" y="410" text-anchor="middle" font-family="Arial" font-size="11" fill="#8892a8">observer resolves traversal</text>
-  <text x="225" y="431" text-anchor="middle" font-family="Arial" font-size="11" fill="#34d399">→ definite positions at all times</text>
-
-  <!-- ═══════════ RIGHT PANEL: HIGH RPM ═══════════ -->
+  <text x="225" y="63" text-anchor="middle" font-family="Arial" font-size="11" fill="#34d399" letter-spacing="4">SLOW RPM</text>
+  <g>
+    <animateTransform attributeName="transform" type="rotate" from="0 225 270" to="360 225 270" dur="5s" repeatCount="indefinite"/>
+    <ellipse cx="225" cy="182" rx="20" ry="73" fill="#0d1e38" stroke="#38bdf8" stroke-width="1.8"/>
+    <ellipse cx="225" cy="182" rx="20" ry="73" fill="#0d1e38" stroke="#38bdf8" stroke-width="1.8" transform="rotate(120,225,270)"/>
+    <ellipse cx="225" cy="182" rx="20" ry="73" fill="#0d1e38" stroke="#38bdf8" stroke-width="1.8" transform="rotate(240,225,270)"/>
+    <circle cx="225" cy="109" r="5" fill="#38bdf8" opacity="0.85"/>
+    <circle cx="364" cy="351" r="5" fill="#38bdf8" opacity="0.85"/>
+    <circle cx="86"  cy="351" r="5" fill="#38bdf8" opacity="0.85"/>
+  </g>
+  <circle cx="225" cy="270" r="24" fill="#080e1c" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="225" cy="270" r="8"  fill="#38bdf8" filter="url(#fa-hub)"/>
+  <text x="225" y="393" text-anchor="middle" font-family="Arial" font-size="14" fill="#ffffff" font-weight="bold">3 blades visible</text>
+  <text x="225" y="413" text-anchor="middle" font-family="Arial" font-size="11" fill="#8892a8">definite positions at all times</text>
+  <text x="225" y="433" text-anchor="middle" font-family="Arial" font-size="11" fill="#34d399">observer resolves the traversal</text>
   <text x="675" y="63" text-anchor="middle" font-family="Arial" font-size="11" fill="#fbbf24" letter-spacing="4">HIGH RPM</text>
-
-  <!-- Blur disc: concentric rings + radial gradient fill -->
-  <circle cx="675" cy="270" r="116" fill="none" stroke="#38bdf8" stroke-width="0.4" opacity="0.07"/>
-  <circle cx="675" cy="270" r="102" fill="none" stroke="#38bdf8" stroke-width="0.6" opacity="0.10"/>
-  <circle cx="675" cy="270" r="90"  fill="url(#fa-disc)"/>
-  <circle cx="675" cy="270" r="90"  fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.5"/>
-  <circle cx="675" cy="270" r="73"  fill="none" stroke="#38bdf8" stroke-width="0.6" opacity="0.15"/>
-  <circle cx="675" cy="270" r="52"  fill="none" stroke="#38bdf8" stroke-width="0.4" opacity="0.10"/>
-
-  <!-- Question marks: blade positions unknown inside blur -->
-  <text x="675" y="210" text-anchor="middle" font-family="Arial" font-size="18" fill="#38bdf8" opacity="0.28">?</text>
-  <text x="748" y="292" text-anchor="middle" font-family="Arial" font-size="18" fill="#38bdf8" opacity="0.28">?</text>
-  <text x="609" y="346" text-anchor="middle" font-family="Arial" font-size="18" fill="#38bdf8" opacity="0.28">?</text>
-
-  <!-- Hub -->
-  <circle cx="675" cy="270" r="22" fill="#080e1c" stroke="#fbbf24" stroke-width="2"/>
-  <circle cx="675" cy="270" r="7" fill="#fbbf24" filter="url(#fa-glow)"/>
-
-  <!-- Caption -->
-  <text x="675" y="390" text-anchor="middle" font-family="Arial" font-size="14" fill="#ffffff" font-weight="bold">disc appears</text>
-  <text x="675" y="410" text-anchor="middle" font-family="Arial" font-size="11" fill="#8892a8">observer cannot resolve traversal</text>
-  <text x="675" y="431" text-anchor="middle" font-family="Arial" font-size="11" fill="#fbbf24">→ apparent superposition</text>
-
-  <!-- Bottom note -->
+  <circle cx="675" cy="270" r="116" fill="none" stroke="#38bdf8" stroke-width="0.5"><animate attributeName="stroke-opacity" values="0.04;0.12;0.04" dur="2s" repeatCount="indefinite"/></circle>
+  <circle cx="675" cy="270" r="102" fill="none" stroke="#38bdf8" stroke-width="0.7"><animate attributeName="stroke-opacity" values="0.06;0.18;0.06" dur="2s" begin="-0.25s" repeatCount="indefinite"/></circle>
+  <circle cx="675" cy="270" r="90" fill="url(#fa-disc)"><animate attributeName="opacity" values="0.55;1;0.55" dur="2s" repeatCount="indefinite"/></circle>
+  <circle cx="675" cy="270" r="90" fill="none" stroke="#38bdf8" stroke-width="1.8"><animate attributeName="stroke-opacity" values="0.24;0.62;0.24" dur="2s" repeatCount="indefinite"/></circle>
+  <circle cx="675" cy="270" r="73" fill="none" stroke="#38bdf8" stroke-width="0.7"><animate attributeName="stroke-opacity" values="0.05;0.20;0.05" dur="2s" begin="-0.5s" repeatCount="indefinite"/></circle>
+  <circle cx="675" cy="270" r="50" fill="none" stroke="#38bdf8" stroke-width="0.5"><animate attributeName="stroke-opacity" values="0.04;0.13;0.04" dur="2s" begin="-0.75s" repeatCount="indefinite"/></circle>
+  <text x="675" y="208" text-anchor="middle" font-family="Arial" font-size="20" fill="#38bdf8"><animate attributeName="opacity" values="0.12;0.40;0.12" dur="2s" repeatCount="indefinite"/>?</text>
+  <text x="751" y="296" text-anchor="middle" font-family="Arial" font-size="20" fill="#38bdf8"><animate attributeName="opacity" values="0.12;0.40;0.12" dur="2s" begin="-0.67s" repeatCount="indefinite"/>?</text>
+  <text x="606" y="348" text-anchor="middle" font-family="Arial" font-size="20" fill="#38bdf8"><animate attributeName="opacity" values="0.12;0.40;0.12" dur="2s" begin="-1.33s" repeatCount="indefinite"/>?</text>
+  <circle cx="675" cy="270" r="24" fill="#080e1c" stroke="#fbbf24" stroke-width="2"/>
+  <circle cx="675" cy="270" r="8"  fill="#fbbf24" filter="url(#fa-hub)"/>
+  <text x="675" y="393" text-anchor="middle" font-family="Arial" font-size="14" fill="#ffffff" font-weight="bold">disc appears</text>
+  <text x="675" y="413" text-anchor="middle" font-family="Arial" font-size="11" fill="#8892a8">positions no longer resolvable</text>
+  <text x="675" y="433" text-anchor="middle" font-family="Arial" font-size="11" fill="#fbbf24">apparent superposition</text>
   <text x="450" y="477" text-anchor="middle" font-family="Arial" font-size="10" fill="#2a3550" letter-spacing="2">SAME OBJECT · SAME BLADES · DIFFERENT OBSERVER RESOLUTION</text>
 </svg>

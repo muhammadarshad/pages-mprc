@@ -4,79 +4,74 @@
       <feGaussianBlur stdDeviation="5" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
+    <path id="cam-path" d="M 85,228 L 365,228"/>
   </defs>
 
-  <!-- Title -->
   <text x="450" y="28" text-anchor="middle" font-family="Arial" font-size="11" fill="#3a4a60" letter-spacing="3">THE CAMERA — TRAJECTORY BLUR</text>
-
-  <!-- Vertical divider -->
   <line x1="450" y1="46" x2="450" y2="428" stroke="#1a2540" stroke-width="1.5"/>
 
-  <!-- ═══════════ LEFT PANEL: SLOW SHUTTER ═══════════ -->
+  <!-- LEFT PANEL: SLOW SHUTTER -->
   <text x="225" y="63" text-anchor="middle" font-family="Arial" font-size="11" fill="#fbbf24" letter-spacing="4">SLOW SHUTTER</text>
-
-  <!-- Trajectory line (the path the object travels) -->
   <line x1="50" y1="228" x2="400" y2="228" stroke="#1c2a42" stroke-width="1" stroke-dasharray="5,7"/>
 
-  <!-- Motion blur: 9 overlapping circles spread 280px centred at x=225 -->
-  <!-- Opacities: 0.07 0.12 0.20 0.33 0.48 0.33 0.20 0.12 0.07 -->
-  <circle cx="85"  cy="228" r="26" fill="#38bdf8" opacity="0.07"/>
-  <circle cx="120" cy="228" r="26" fill="#38bdf8" opacity="0.12"/>
-  <circle cx="155" cy="228" r="26" fill="#38bdf8" opacity="0.20"/>
-  <circle cx="190" cy="228" r="26" fill="#38bdf8" opacity="0.33"/>
-  <circle cx="225" cy="228" r="26" fill="#38bdf8" opacity="0.48"/>
-  <circle cx="260" cy="228" r="26" fill="#38bdf8" opacity="0.33"/>
-  <circle cx="295" cy="228" r="26" fill="#38bdf8" opacity="0.20"/>
-  <circle cx="330" cy="228" r="26" fill="#38bdf8" opacity="0.12"/>
-  <circle cx="365" cy="228" r="26" fill="#38bdf8" opacity="0.07"/>
+  <!-- Static background blur (dim — shows integrated result of slow shutter) -->
+  <ellipse cx="225" cy="228" rx="148" ry="22" fill="#38bdf8" opacity="0.06"/>
+  <ellipse cx="225" cy="228" rx="148" ry="22" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.18"/>
 
-  <!-- Enclosing outline for the blur trail -->
-  <ellipse cx="225" cy="228" rx="148" ry="26" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.22"/>
+  <!-- ANIMATED MOTION TRAIL: 6 dots with staggered begin times create blur smear -->
+  <!-- Farthest back: largest, most transparent -->
+  <circle r="28" fill="#38bdf8" opacity="0.05"><animateMotion dur="3s" begin="-0.50s" repeatCount="indefinite"><mpath href="#cam-path"/></animateMotion></circle>
+  <circle r="24" fill="#38bdf8" opacity="0.10"><animateMotion dur="3s" begin="-0.35s" repeatCount="indefinite"><mpath href="#cam-path"/></animateMotion></circle>
+  <circle r="20" fill="#38bdf8" opacity="0.18"><animateMotion dur="3s" begin="-0.22s" repeatCount="indefinite"><mpath href="#cam-path"/></animateMotion></circle>
+  <circle r="17" fill="#38bdf8" opacity="0.33"><animateMotion dur="3s" begin="-0.12s" repeatCount="indefinite"><mpath href="#cam-path"/></animateMotion></circle>
+  <circle r="14" fill="#38bdf8" opacity="0.60"><animateMotion dur="3s" begin="-0.05s" repeatCount="indefinite"><mpath href="#cam-path"/></animateMotion></circle>
+  <!-- Leading bright dot — the object's current position -->
+  <circle r="11" fill="#38bdf8" opacity="0.95"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#cam-path"/></animateMotion></circle>
+  <circle r="5"  fill="#ffffff" opacity="0.80"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#cam-path"/></animateMotion></circle>
 
-  <!-- Wave annotation: subtle dashed curve showing the blur "looks like a wave" -->
-  <path d="M 78 278 Q 150 305 225 278 Q 300 251 372 278" fill="none" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="3,5" opacity="0.42"/>
-  <text x="225" y="302" text-anchor="middle" font-family="Arial" font-size="10" fill="#fbbf24" opacity="0.58">~ wave-like appearance</text>
+  <!-- Wave appearance annotation -->
+  <path d="M 78 278 Q 150 308 225 278 Q 300 248 372 278" fill="none" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="3,5" opacity="0.45"/>
+  <text x="225" y="303" text-anchor="middle" font-family="Arial" font-size="10" fill="#fbbf24" opacity="0.62">~ wave-like appearance</text>
 
-  <!-- Direction arrow on trajectory -->
-  <line x1="290" y1="218" x2="320" y2="218" stroke="#38bdf8" stroke-width="1" opacity="0.4"/>
-  <polygon points="320,215 327,218 320,221" fill="#38bdf8" opacity="0.4"/>
+  <!-- Direction arrow -->
+  <line x1="288" y1="218" x2="318" y2="218" stroke="#38bdf8" stroke-width="1" opacity="0.45"/>
+  <polygon points="318,215 325,218 318,221" fill="#38bdf8" opacity="0.45"/>
 
-  <!-- Caption -->
   <text x="225" y="352" text-anchor="middle" font-family="Arial" font-size="14" fill="#ffffff" font-weight="bold">blur trail</text>
   <text x="225" y="372" text-anchor="middle" font-family="Arial" font-size="11" fill="#8892a8">entire trajectory integrated in one frame</text>
-  <text x="225" y="393" text-anchor="middle" font-family="Arial" font-size="11" fill="#fbbf24">→ u-spinor traversal trail</text>
+  <text x="225" y="393" text-anchor="middle" font-family="Arial" font-size="11" fill="#fbbf24">u-spinor traversal trail</text>
   <text x="225" y="412" text-anchor="middle" font-family="Arial" font-size="10" fill="#445570" font-style="italic">same object — full path visible at once</text>
 
-  <!-- ═══════════ RIGHT PANEL: FAST SHUTTER ═══════════ -->
+  <!-- RIGHT PANEL: FAST SHUTTER -->
   <text x="675" y="63" text-anchor="middle" font-family="Arial" font-size="11" fill="#34d399" letter-spacing="4">FAST SHUTTER</text>
-
-  <!-- Trajectory line -->
   <line x1="500" y1="228" x2="850" y2="228" stroke="#1c2a42" stroke-width="1" stroke-dasharray="5,7"/>
 
-  <!-- Ghost dots: other positions on the path that the shutter missed -->
-  <circle cx="552" cy="228" r="4" fill="#38bdf8" opacity="0.07"/>
-  <circle cx="590" cy="228" r="4" fill="#38bdf8" opacity="0.07"/>
-  <circle cx="628" cy="228" r="4" fill="#38bdf8" opacity="0.07"/>
-  <circle cx="722" cy="228" r="4" fill="#38bdf8" opacity="0.07"/>
-  <circle cx="760" cy="228" r="4" fill="#38bdf8" opacity="0.07"/>
-  <circle cx="798" cy="228" r="4" fill="#38bdf8" opacity="0.07"/>
+  <!-- Ghost positions: very faint — other points on path that were NOT captured -->
+  <circle cx="552" cy="228" r="4" fill="#38bdf8" opacity="0.04"/>
+  <circle cx="590" cy="228" r="4" fill="#38bdf8" opacity="0.04"/>
+  <circle cx="628" cy="228" r="4" fill="#38bdf8" opacity="0.04"/>
+  <circle cx="722" cy="228" r="4" fill="#38bdf8" opacity="0.04"/>
+  <circle cx="760" cy="228" r="4" fill="#38bdf8" opacity="0.04"/>
+  <circle cx="798" cy="228" r="4" fill="#38bdf8" opacity="0.04"/>
 
-  <!-- Single crisp dot at the frozen position -->
-  <circle cx="675" cy="228" r="32" fill="#38bdf8" opacity="0.07"/>
-  <circle cx="675" cy="228" r="22" fill="#38bdf8" opacity="0.20"/>
-  <circle cx="675" cy="228" r="13" fill="#38bdf8" opacity="0.68" filter="url(#ca-glow)"/>
-  <circle cx="675" cy="228" r="5"  fill="#ffffff"  opacity="0.94"/>
+  <!-- FROZEN DOT: pulses like a periodic shutter click (same 3s period as left panel) -->
+  <circle cx="675" cy="228" r="36" fill="#38bdf8"><animate attributeName="opacity" values="0.03;0.11;0.03" dur="3s" repeatCount="indefinite"/></circle>
+  <circle cx="675" cy="228" r="24" fill="#38bdf8"><animate attributeName="opacity" values="0.07;0.24;0.07" dur="3s" repeatCount="indefinite"/></circle>
+  <circle cx="675" cy="228" r="14" fill="#38bdf8" filter="url(#ca-glow)">
+    <animate attributeName="opacity" values="0.45;0.88;0.45;0.45;0.45" keyTimes="0;0.08;0.18;0.5;1" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="675" cy="228" r="6" fill="#ffffff">
+    <animate attributeName="opacity" values="0.70;1;0.70;0.70;0.70" keyTimes="0;0.08;0.18;0.5;1" dur="3s" repeatCount="indefinite"/>
+  </circle>
 
-  <!-- Direction arrow on trajectory -->
-  <line x1="740" y1="218" x2="770" y2="218" stroke="#38bdf8" stroke-width="1" opacity="0.4"/>
-  <polygon points="770,215 777,218 770,221" fill="#38bdf8" opacity="0.4"/>
+  <!-- Direction arrow -->
+  <line x1="738" y1="218" x2="768" y2="218" stroke="#38bdf8" stroke-width="1" opacity="0.45"/>
+  <polygon points="768,215 775,218 768,221" fill="#38bdf8" opacity="0.45"/>
 
-  <!-- Caption -->
   <text x="675" y="352" text-anchor="middle" font-family="Arial" font-size="14" fill="#ffffff" font-weight="bold">frozen dot</text>
   <text x="675" y="372" text-anchor="middle" font-family="Arial" font-size="11" fill="#8892a8">single moment resolved</text>
-  <text x="675" y="393" text-anchor="middle" font-family="Arial" font-size="11" fill="#34d399">→ same u-spinor — frozen</text>
+  <text x="675" y="393" text-anchor="middle" font-family="Arial" font-size="11" fill="#34d399">same u-spinor — frozen</text>
   <text x="675" y="412" text-anchor="middle" font-family="Arial" font-size="10" fill="#445570" font-style="italic">same object — one instant captured</text>
 
-  <!-- Bottom note -->
   <text x="450" y="447" text-anchor="middle" font-family="Arial" font-size="10" fill="#2a3550" letter-spacing="2">SAME OBJECT · SAME PATH · DIFFERENT TEMPORAL RESOLUTION</text>
 </svg>

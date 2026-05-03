@@ -70,6 +70,8 @@
 
   <p>Projected onto Hensen et al. 2015 loophole-free Bell data (245 valid trials, 1.3 km separation, electron spins, NV centers at Delft): S<sub>exp</sub> = 2.422 ± 0.20. The sign pattern of all four correlators matches exactly. Three further predictions are made that Standard QM cannot make: vacuum notches, non-uniform pair emission, and LIGO post-ringdown echoes.</p>
 
+  <p>This chapter also resolves the EPR-Bell impasse. EPR argued hidden variables must exist. Bell proved separable hidden variables cannot exceed S=2. Both are correct simultaneously. MPRC constructs the hidden variable EPR demanded — the shared birth tick on the QH4 ring — and shows precisely why Bell's theorem does not exclude it: Bell's proof assumes the hidden variable separates into two independent per-particle components after creation. MPRC's hidden variable is the ring geometry itself — one non-separable object, never split, never transmitted, read at two locations. The domain function shared by both spinors is not a loophole in Bell's theorem. It is the explicit identification of which assumption Bell's proof requires and MPRC does not satisfy.</p>
+
   <h3>The Three Positions</h3>
   <table class="data-table">
     <tr><th>Property</th><th>Einstein LHV</th><th>Standard QM</th><th>MPRC</th></tr>
@@ -348,6 +350,11 @@
 
   <h3>Why Two Independent resolve_spin() Calls Fail</h3>
   <p>If one naïvely treats each spinor independently — calling <code>resolve_spin(φ_A)</code> and <code>resolve_spin(φ_B)</code> separately and multiplying — the birth tick t does <em>not</em> cancel. The product becomes a function of t, and averaging over t gives S ≤ 2, reproducing an LHV model. The non-separable result requires <code>project_joint()</code> — a single cosine of the phase difference. This is not a loophole: it is the physical statement that the two spinors are one geometric object, not two.</p>
+
+  <h3>The Domain Function Is the Hidden Variable</h3>
+  <p>Einstein, Podolsky, and Rosen were correct: the correlation requires a common element carried from the moment of creation. Bell was correct: no hidden variable that splits into two independent per-particle components can exceed S=2. Both results are simultaneously true in MPRC because the hidden variable does not split. The shared domain function — the birth tick t on the QH4 ring — is the complete specification of the pair's state at creation. It does not separate into λ_A and λ_B. It remains one ring object. Both spinors are projections of it. Bell's assumption of separability — that λ = (λ_A, λ_B) with each component carried independently — is precisely the assumption MPRC does not satisfy. The non-separable hidden variable is not excluded by Bell's theorem. It is the construction Bell's theorem implicitly required someone to produce.</p>
+
+  <p>The computational demonstration has an honest limitation: Computer A and Computer B share the same domain function explicitly in code. The correlation is therefore trivially explained by shared runtime — not by geometric structure. This proves the arithmetic, not the mechanism. A genuine physical test requires independent detectors with no shared runtime function. Given A's birth position and B's detector angle, A's outcome is deterministically computable without any runtime communication between A and B. The simulation cannot demonstrate this independence. That is what P1, P2, and P3 exist to test.</p>
 
   <h3>The Physical Meaning of project_joint()</h3>
   <p>Alice's detector and Bob's detector are not measuring two independent particles. They are two projection axes of one geometric object — the ring phase difference Δ = ang_B − ang_A − 128. Alice's outcome is the projection of Δ onto her detector axis. Bob's outcome is the projection of Δ onto his detector axis. The correlation E(a,b) is the inner product of two projections of the same structure — not the product of two independent local measurements. No information crosses space after birth. Both outcomes were determined when the ring phase difference was established at creation. The pair is one object that happens to be read at two locations. This is the same principle as wave-particle duality: the observer's projection axis selects what is seen, not what exists. See Philosophical Branch — Section 02.</p>
@@ -824,6 +831,11 @@
       <td>4</td>
       <td><strong>Emission envelope coupling.</strong> The polynomial threshold value of 10 is derived from the ring structure, but the exact coincidence count profile shape depends on the physical coupling between pump phase and ring birth tick. The magnitude of the rate variation is not yet calculated.</td>
       <td><span class="open">OPEN</span></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>EPR hidden variable — separability assumption.</strong> Bell's theorem assumes the hidden variable separates: λ = (λ_A, λ_B), each component carried independently. MPRC's hidden variable — the birth tick t on the QH4 ring — is non-separable by construction. The domain function is one geometric object, never split. Formal proof that MPRC's λ is non-separable in the Bell sense is not yet written as a standalone derivation.</td>
+      <td><span class="open">STAGED</span></td>
     </tr>
   </table>
 </section>

@@ -348,6 +348,9 @@
 
   <h3>Why Two Independent resolve_spin() Calls Fail</h3>
   <p>If one naïvely treats each spinor independently — calling <code>resolve_spin(φ_A)</code> and <code>resolve_spin(φ_B)</code> separately and multiplying — the birth tick t does <em>not</em> cancel. The product becomes a function of t, and averaging over t gives S ≤ 2, reproducing an LHV model. The non-separable result requires <code>project_joint()</code> — a single cosine of the phase difference. This is not a loophole: it is the physical statement that the two spinors are one geometric object, not two.</p>
+
+  <h3>The Physical Meaning of project_joint()</h3>
+  <p>Alice's detector and Bob's detector are not measuring two independent particles. They are two projection axes of one geometric object — the ring phase difference Δ = ang_B − ang_A − 128. Alice's outcome is the projection of Δ onto her detector axis. Bob's outcome is the projection of Δ onto his detector axis. The correlation E(a,b) is the inner product of two projections of the same structure — not the product of two independent local measurements. No information crosses space after birth. Both outcomes were determined when the ring phase difference was established at creation. The pair is one object that happens to be read at two locations. This is the same principle as wave-particle duality: the observer's projection axis selects what is seen, not what exists. See Philosophical Branch — Section 02.</p>
 </section>
 
 <hr>
@@ -814,8 +817,8 @@
     </tr>
     <tr>
       <td>3</td>
-      <td><strong>project_joint() vs two independent clicks.</strong> Two independent resolve_spin() calls reproduce an LHV model (S ≤ 2). The non-separable result requires project_joint() — a single cosine of the phase difference, not a product of two independent projections. The physical implementation mechanism of how a real detector implements project_joint vs two independent clicks is not yet specified.</td>
-      <td><span class="open">OPEN</span></td>
+      <td><strong>project_joint() vs two independent clicks.</strong> Two independent resolve_spin() calls reproduce an LHV model (S ≤ 2). The non-separable result requires project_joint() — a single cosine of the phase difference, not a product of two independent projections. The physical implementation mechanism of how a real detector implements project_joint vs two independent clicks is not yet specified. Resolution: both outcomes are projections of one geometric object (the ring phase difference Δ) onto two detector axes. The correlation is the inner product of two projections of the same structure — not a product of two independent local events. Mechanism stated in Section 03. Cross-reference: Philosophical Branch §02.</td>
+      <td><span class="open">STAGED</span></td>
     </tr>
     <tr>
       <td>4</td>

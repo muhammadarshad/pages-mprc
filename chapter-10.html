@@ -760,6 +760,34 @@
     <div class="eq-row" style="color:#f87171;">Falsified if: no echo structure found in LIGO ringdown data at predicted timescale</div>
     <div class="eq-row" style="color:#fbbf24;">Open: echo timescale derivation from T(r) = 1 + GM/(rc²) not yet completed</div>
   </div>
+
+<h3>P4 — Ecliptic Strain Scaling (GWTC-3 Catalogue)</h3>
+
+<pre>P4 — ecliptic latitude coupling prediction
+
+MPRC: h_residual = h_observed / h_GR(D_L, M_chirp) ∝ sin²(β_ecliptic)
+
+β_ecliptic = ecliptic latitude of GW source sky localisation centroid
+Same sin²(θ) coupling that governs solar system graviton emission
+applies to external GW sources via their ecliptic latitude.
+
+GW150914 anchor:
+  β = −51.56°  →  sin²(β) = 0.6135
+  h_GR ~ 1.4×10⁻²¹  (matches observed ~10⁻²¹ ✓)
+  E_grav = E_radiated × 0.6135  [61.4% into u-axis channel]
+  E_orbital = E_radiated × 0.3865  [38.6% stays orbital]
+  cos²+sin² = 1 — energy conserved exactly
+
+Standard QM / GR: R = 1 — no dependence on ecliptic latitude
+MPRC prediction: R = sin²(β_ecliptic) — linear correlation
+
+Test: compute R = h_observed / h_GR for each event in GWTC-3.
+      Plot R vs sin²(β_ecliptic). Slope = 1 confirms MPRC.
+Requires: normalisation by D_L and M_chirp before comparing.
+Falsified if: no correlation found across ≥20 events.
+Data: GWTC-3 public catalogue — no new hardware required.</pre>
+
+<p><strong>Standard QM / GR prediction:</strong> strain residuals show no correlation with ecliptic latitude — source orientation relative to the ecliptic carries no physical significance. <strong>MPRC prediction:</strong> residuals follow sin²(β_ecliptic), reflecting the u-axis coupling geometry. Distinguishable from GR with the existing public GWTC-3 catalogue.</p>
 </section>
 
 <hr>
@@ -820,10 +848,10 @@
       <td><span class="open">OPEN</span></td>
     </tr>
     <tr>
-      <td>2</td>
-      <td><strong>Echo timescale derivation.</strong> LIGO echo prediction (P3) requires formal derivation of the lattice clock rate near the apparent horizon from T(r) = 1 + GM/(rc²). Not yet calculated.</td>
-      <td><span class="open">OPEN</span></td>
-    </tr>
+  <td>2</td>
+  <td><strong>Echo timescale derivation.</strong> T(r) = 1 + GM/(rc²) gives T(r<sub>s</sub>) = 3/2 exactly at the Schwarzschild radius — the lattice clock runs at 2/3 rate, never zero. No true event horizon exists in MPRC. The echo timescale is the same characteristic time already derived for Hawking leakage: τ<sub>echo</sub> = 8πGM/c³. For GW150914 (M<sub>final</sub> = 62 M<sub>☉</sub>) this gives τ<sub>echo</sub> = 7.68 ms. GR predicts clean exponential ringdown with no structure. MPRC predicts echo amplitude residuals at 7.7, 15.4, 23.1, 30.8 ms post-merger. Test: search GWOSC public GW150914 ringdown data in the 5–20 ms post-peak window. Source: <code>mprc_ligo_echo_p3.py</code>.</td>
+  <td><code>DERIVED</code></td>
+</tr>
     <tr>
       <td>3</td>
       <td><strong>project_joint() vs two independent clicks.</strong> Two independent resolve_spin() calls reproduce an LHV model (S ≤ 2). The non-separable result requires project_joint() — a single cosine of the phase difference, not a product of two independent projections. The physical implementation mechanism of how a real detector implements project_joint vs two independent clicks is not yet specified. Resolution: both outcomes are projections of one geometric object — the ring phase difference Δ — onto two detector axes. The correlation is the inner product of two projections of the same structure. Mechanism stated in Section 03. Cross-reference: Philosophical Branch §02.</td>
@@ -866,7 +894,8 @@
     <div class="eq-row" style="color:#fbbf24;">S_exp gap at 245 trials:     OPEN — within 2σ, larger dataset needed</div>
     <div class="eq-row" style="color:#fbbf24;">Vacuum notch experiment:     PREDICTION — not yet tested</div>
     <div class="eq-row" style="color:#fbbf24;">Polynomial emission (P2):    PREDICTION — not yet tested</div>
-    <div class="eq-row" style="color:#fbbf24;">LIGO echoes (P3):            PREDICTION — timescale derivation pending</div>
+    <div class="eq-row cyan">LIGO echoes (P3):          DERIVED   — τ_echo = 7.68 ms from T(r_s)=3/2, GW150914</div>
+    <div class="eq-row" style="color:#fbbf24;">Ecliptic scaling (P4):     PREDICTION — h_residual ∝ sin²(β_ecl), GWTC-3 test pending</div>
     <div class="eq-row" style="margin-top:10px;color:#8892a8;">Stated: May 3, 2026. Results reproducible from public data and open source code.</div>
   </div>
 </section>

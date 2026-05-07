@@ -1,0 +1,7 @@
+## Posts
+Post 2 (Bell): Chapter 10 + both bell scripts — fully covered. The LIGO prediction I can note as "in development" which is accurate.
+Post 3 (LQC): Chapters 5+11 + exp39.py — fully covered.
+Post 1 (FSL): This is the only one where I'd actually benefit from philosophical.html — one file, because that's the source document for the post itself.
+## Path of related code
+"G:\quantum\research\QM-Real\model-3\exp39.py" Chapter 11 and 5
+"G:\quantum\research\fsl" Chapter 10

@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#050818"/>
+      <stop offset="50%" style="stop-color:#0a0f2e"/>
+      <stop offset="100%" style="stop-color:#010510"/>
+    </linearGradient>
+    <radialGradient id="ringGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Grid -->
+  <g opacity="0.04" stroke="#6366f1" stroke-width="1">
+    <line x1="0" y1="126" x2="1200" y2="126"/><line x1="0" y1="252" x2="1200" y2="252"/>
+    <line x1="0" y1="378" x2="1200" y2="378"/><line x1="0" y1="504" x2="1200" y2="504"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Central ring -->
+  <ellipse cx="600" cy="315" rx="200" ry="200" fill="url(#ringGlow)"/>
+  <!-- Upper arc: states 1-127, spin +1 -->
+  <path d="M 600 115 A 200 200 0 0 1 800 315" fill="none" stroke="#6366f1" stroke-width="4" opacity="0.9"/>
+  <!-- Lower arc: states 129-255, spin -1 -->
+  <path d="M 800 315 A 200 200 0 0 1 600 515 A 200 200 0 0 1 400 315 A 200 200 0 0 1 600 115" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.3" stroke-dasharray="4 6"/>
+  <!-- Better: just lower semicircle -->
+  <path d="M 600 515 A 200 200 0 0 1 400 315" fill="none" stroke="#06b6d4" stroke-width="4" opacity="0.9"/>
+  <path d="M 400 315 A 200 200 0 0 1 600 115" fill="none" stroke="#6366f1" stroke-width="4" opacity="0.9"/>
+  <path d="M 800 315 A 200 200 0 0 1 600 515" fill="none" stroke="#06b6d4" stroke-width="4" opacity="0.9"/>
+
+  <!-- Spinor A dot -->
+  <circle cx="736" cy="155" r="12" fill="#818cf8" filter="url(#glow)"/>
+  <text x="760" y="142" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#a5b4fc">Spinor A  (spin +1)</text>
+
+  <!-- Spinor B dot (anti-phase: +128 states = opposite) -->
+  <circle cx="464" cy="475" r="12" fill="#22d3ee" filter="url(#glow)"/>
+  <text x="340" y="495" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#67e8f9">Spinor B  (spin -1)</text>
+
+  <!-- Dashed diameter showing anti-phase link -->
+  <line x1="736" y1="155" x2="464" y2="475" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="8 4" opacity="0.7"/>
+  <text x="620" y="300" font-family="monospace" font-size="11" fill="#c084fc" opacity="0.8">p + 128</text>
+  <text x="620" y="318" font-family="monospace" font-size="11" fill="#7c3aed" opacity="0.7">always opposite</text>
+
+  <!-- Vacuum markers -->
+  <circle cx="600" cy="115" r="7" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="800" cy="315" r="7" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="600" cy="515" r="7" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="400" cy="315" r="7" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+
+  <!-- Spin labels on arcs -->
+  <text x="730" y="215" font-family="'Segoe UI', sans-serif" font-size="12" fill="#818cf8" opacity="0.7">spin = +1</text>
+  <text x="420" y="430" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22d3ee" opacity="0.7">spin = -1</text>
+
+  <!-- Left column: three positions -->
+  <rect x="30" y="80" width="260" height="460" rx="8" fill="#0a0f1e" stroke="#1e3a8a" stroke-width="1" opacity="0.9"/>
+  <text x="160" y="108" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#94a3b8">Three Positions</text>
+
+  <!-- Einstein -->
+  <rect x="45" y="118" width="230" height="80" rx="6" fill="#1a0a0a" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="160" y="138" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#fca5a5">Einstein (Ruled Out)</text>
+  <text x="160" y="156" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Local hidden variables</text>
+  <text x="160" y="172" text-anchor="middle" font-family="monospace" font-size="10" fill="#ef4444">S ≤ 2</text>
+  <text x="160" y="188" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#7f1d1d">Hensen 2015 rules this out</text>
+
+  <!-- Bohr -->
+  <rect x="45" y="210" width="230" height="80" rx="6" fill="#0a1220" stroke="#0891b2" stroke-width="1.2"/>
+  <text x="160" y="230" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#67e8f9">Bohr (Standard QM)</text>
+  <text x="160" y="248" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Nonlocal wavefunction collapse</text>
+  <text x="160" y="264" text-anchor="middle" font-family="monospace" font-size="10" fill="#22d3ee">S = 2&#x221A;2  (Tsirelson)</text>
+  <text x="160" y="280" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#475569">No geometric mechanism</text>
+
+  <!-- MPRC -->
+  <rect x="45" y="302" width="230" height="90" rx="6" fill="#0a1810" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="160" y="322" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#4ade80">MPRC (This Derivation)</text>
+  <text x="160" y="340" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Geometric anti-phase lock at birth</text>
+  <text x="160" y="356" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">No signal after separation</text>
+  <text x="160" y="372" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ade80">S = 2&#x221A;2  (derived)</text>
+  <text x="160" y="388" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#16a34a">cos(2&#x03C0; &#xD7; 64/256) = 1/&#x221A;2</text>
+
+  <!-- t cancels box -->
+  <rect x="45" y="406" width="230" height="110" rx="6" fill="#0d0a1f" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="160" y="426" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#c084fc">Birth Tick Cancels</text>
+  <text x="160" y="446" text-anchor="middle" font-family="monospace" font-size="9" fill="#818cf8">&#x03C6;_A = t &#x2212; ang_A</text>
+  <text x="160" y="462" text-anchor="middle" font-family="monospace" font-size="9" fill="#818cf8">&#x03C6;_B = t + 128 &#x2212; ang_B</text>
+  <text x="160" y="480" text-anchor="middle" font-family="monospace" font-size="9" fill="#a855f7">&#x0394; = ang_B &#x2212; ang_A &#x2212; 128</text>
+  <text x="160" y="498" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#c084fc">t cancels completely</text>
+
+  <!-- Right column: derivation + predictions -->
+  <rect x="910" y="80" width="260" height="460" rx="8" fill="#0a0f1e" stroke="#1e3a8a" stroke-width="1" opacity="0.9"/>
+  <text x="1040" y="108" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#94a3b8">S = 2&#x221A;2 Derived</text>
+
+  <!-- CHSH formula box -->
+  <rect x="925" y="118" width="230" height="130" rx="6" fill="#0a1810" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="1040" y="138" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ade80">E(0,0) = +0.7071</text>
+  <text x="1040" y="155" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ade80">E(0,1) = +0.7071</text>
+  <text x="1040" y="172" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ade80">E(1,0) = +0.7071</text>
+  <text x="1040" y="189" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ade80">E(1,1) = &#x2212;0.7071</text>
+  <line x1="935" y1="200" x2="1145" y2="200" stroke="#16a34a" stroke-width="1" opacity="0.5"/>
+  <text x="1040" y="220" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#4ade80">S = 4 &#xD7; 0.7071 = 2.828</text>
+  <text x="1040" y="238" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#475569">sign pattern (+++&#x2212;) exact</text>
+
+  <!-- Hensen comparison -->
+  <rect x="925" y="260" width="230" height="70" rx="6" fill="#0c1a14" stroke="#0891b2" stroke-width="1.2"/>
+  <text x="1040" y="278" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Hensen 2015  (245 trials)</text>
+  <text x="1040" y="296" text-anchor="middle" font-family="monospace" font-size="10" fill="#94a3b8">S_exp  = 2.422 &#xB1; 0.20</text>
+  <text x="1040" y="314" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ade80">S_mprc = 2.828  (&lt;2&#x03C3; gap)</text>
+
+  <!-- Predictions -->
+  <text x="1040" y="354" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#94a3b8">3 Unique Predictions</text>
+  <rect x="925" y="364" width="230" height="36" rx="5" fill="#1a0505" stroke="#ef4444" stroke-width="1"/>
+  <text x="1040" y="378" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fca5a5">P1: Vacuum notches at {0&#xB0;,45&#xB0;,90&#xB0;,135&#xB0;}</text>
+  <text x="1040" y="393" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#7f1d1d">Hard zeros &#x2014; Standard QM predicts smooth</text>
+  <rect x="925" y="406" width="230" height="36" rx="5" fill="#1a0505" stroke="#f97316" stroke-width="1"/>
+  <text x="1040" y="420" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fdba74">P2: Non-uniform pair emission</text>
+  <text x="1040" y="435" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#9a3412">Polynomial envelope &#x2014; QM predicts flat</text>
+  <rect x="925" y="448" width="230" height="36" rx="5" fill="#1a0505" stroke="#eab308" stroke-width="1"/>
+  <text x="1040" y="462" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fde047">P3: LIGO ringdown echoes</text>
+  <text x="1040" y="477" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#713f12">No true horizon &#x2014; GR predicts clean ringdown</text>
+
+  <!-- Title -->
+  <text x="600" y="585" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="26" font-weight="700" fill="#e2e8f0">S = 2&#x221A;2 Without Mystery: Bell Correlations from Ring Geometry</text>
+  <text x="600" y="612" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" letter-spacing="2">MPRC FRAMEWORK  &#xB7;  Z&#x2082;&#x2085;&#x2086; RING GEOMETRY  &#xB7;  THREE FALSIFIABLE PREDICTIONS</text>
+</svg>

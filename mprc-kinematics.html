@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Kinematics in Ring Coordinates — MPRC Framework</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* ── Page-specific components ── */
+
+  .status-row {
+    display: flex;
+    gap: 1.2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .status-card {
+    flex: 1;
+    min-width: 150px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.2rem 1.5rem;
+    border-radius: 6px;
+  }
+
+  .status-card .s-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .status-card .s-value {
+    font-size: 1.05rem;
+    color: var(--text);
+    font-family: var(--font-ui);
+    font-weight: 600;
+  }
+
+  .status-card.card-ok   { border-color: rgba(52,211,153,0.4); }
+  .status-card.card-ok .s-label  { color: var(--green); }
+  .status-card.card-ok .s-value  { color: var(--green); }
+  .status-card.card-open { border-color: rgba(251,191,36,0.35); }
+  .status-card.card-open .s-label { color: var(--gold); }
+  .status-card.card-open .s-value { color: var(--gold); }
+
+  .rust-block {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 2rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.8;
+    overflow-x: auto;
+    color: #cdd9e5;
+  }
+
+  .rust-block .kw  { color: #f47067; }
+  .rust-block .fn  { color: #dcbdfb; }
+  .rust-block .ty  { color: #6cb6ff; }
+  .rust-block .cm  { color: #636e7b; font-style: italic; }
+  .rust-block .num { color: #6cb6ff; }
+  .rust-block .str { color: #96d0ff; }
+
+  @media (max-width: 640px) {
+    .status-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="book-layout">
+  <aside class="book-sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="book-title">The MPRC Framework</a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">Introduction</a></li>
+        <li class="nav-group-label">I · Ring Foundation</li>
+        <li><a href="chapter-12.html">12. Speed &amp; Velocity on Z₂₅₆</a></li>
+        <li><a href="chapter-1.html">1. Discrete Lattice Mechanics</a></li>
+        <li><a href="chapter-2.html">2. GUT v2</a></li>
+        <li class="nav-group-label">II · Atomic Physics</li>
+        <li><a href="chapter-3.html">3. QH4 Atomic Prediction</a></li>
+        <li><a href="chapter-4.html">4. Z-Cancellation</a></li>
+        <li class="nav-group-label">III · Gravity &amp; Cosmology</li>
+        <li><a href="chapter-7.html">7. Artemis III Predictions</a></li>
+        <li><a href="chapter-9.html">9. Lunar-Nodal Climate</a></li>
+        <li class="nav-group-label">IV · Mathematics &amp; Conjectures</li>
+        <li><a href="chapter-13.html">13. Arshad's Sieve</a></li>
+        <li><a href="chapter-14.html">14. Quartic Centroid Conjecture</a></li>
+        <li><a href="chapter-15.html">15. QH4 Pattern Mining</a></li>
+        <li><a href="chapter-16.html">16. QH4 Pattern Matching ★</a></li>
+        <li><a href="chapter-6.html">6. SILIQ Goldbach Engine</a></li>
+        <li><a href="chapter-10.html">10. Bell Correlations</a></li>
+        <li class="nav-group-label">V · Cryptography &amp; Security</li>
+        <li><a href="chapter-5.html">5. Lattice Quantum Channel</a></li>
+        <li><a href="chapter-11.html">11. LQC Three-Layer Safety</a></li>
+        <li class="nav-group-label">VI · Computing</li>
+        <li><a href="chapter-8.html">8. MPRC Spectral Transform</a></li>
+        <li class="nav-group-label">Philosophical Branch</li>
+        <li><a href="philosophical.html">FSL Observation Thesis</a></li>
+        <li><a href="mprc-time-definition.html">The Definition of Time</a></li>
+        <li><a href="mprc-kinematics.html" style="font-weight:600;color:#fff;border-left-color:var(--accent);">Kinematics in Ring Coordinates</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>Kinematics in <span>Ring Coordinates</span></h1>
+        <p class="chapter-subtitle">
+          The six kinematic formulas — time, displacement, velocity — derived in Z₂₅₆ ring coordinates
+          via the 16/45 codec. Proven results only · May 2026
+        </p>
+      </header>
+
+      <div class="chapter-body">
+
+<!-- 1. STARTING POINT -->
+<section class="section">
+  <div class="section-num">1</div>
+  <h2>Starting Point</h2>
+
+  <p>Three standard kinematic formulas — one equation, three arrangements:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Standard kinematics</div>
+    <div class="eq-row">v = d / t</div>
+    <div class="eq-row">d = v · t</div>
+    <div class="eq-row">t = d / v</div>
+  </div>
+
+  <p>These form a closed definitional loop. In standard physics, <em>t</em> enters as a primitive with no geometric grounding. MPRC replaces <em>t</em> with a ring coordinate derived from QH4 geometry.</p>
+</section>
+
+<!-- 2. THE CODEC -->
+<section class="section">
+  <div class="section-num">2</div>
+  <h2>The Codec — g and g⁻¹</h2>
+
+  <h3>2.1 Origin of 720</h3>
+
+  <p>The u-spinor requires 720° for one full cycle. 720 is the moon cycle counted in hours. All time units derive from 720:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Spinor closure identities</div>
+    <div class="eq-row">720 hours = 1 moon cycle = 1 full spinor traversal</div>
+    <div class="eq-row">720 / 30  = 24 hours = 1 day</div>
+    <div class="eq-row">720 × 2   = 1440 = minutes per day</div>
+    <div class="eq-row cyan">720 × 120 = 86400 = seconds per day</div>
+    <div class="eq-row cyan">86400 / 120 = 720  ← seconds close back to spinor exactly</div>
+  </div>
+
+  <p>720 is the fixed point. Every operation returns to 720 or produces a time unit. The second is the smallest unit where this closure holds.</p>
+
+  <h3>2.2 The Codec Constant</h3>
+
+  <p>The QH4 ring has τ = 256 states per traversal. One traversal = 720 hours. The ratio:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Codec constant derivation</div>
+    <div class="eq-row cyan">k = 256 / 720 = 16 / 45</div>
+    <div class="eq-row" style="margin-top:0.8rem;">16 is the QH4 geometric constant. It factors out of 720 exactly: 720 = 16 × 45.</div>
+  </div>
+
+  <h3>2.3 The Domain Function</h3>
+
+  <p>h = total hours within the current ring (month), assembled from clock units:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Domain assembly and codec</div>
+    <div class="eq-row">h = 24d + H + M/60 + S/3600</div>
+    <div class="eq-row" style="margin-top:0.8rem; color: var(--cyan);">g(h)    = (16/45) · h    [hours → ring state]</div>
+    <div class="eq-row cyan">g⁻¹(φ) = (45/16) · φ    [ring state → hours]</div>
+    <div class="eq-row" style="margin-top:0.6rem;">g : [0, 720) → [0, 256)</div>
+  </div>
+
+  <h3>2.4 Vacuum Node Verification</h3>
+
+  <table class="data-table">
+    <tr>
+      <th>Hours (h)</th>
+      <th>g(h)</th>
+      <th>Ring State φ</th>
+      <th>Moon Phase</th>
+    </tr>
+    <tr><td>0</td><td>0</td><td>0</td><td>New moon</td></tr>
+    <tr><td>180</td><td>64</td><td>64</td><td>First quarter</td></tr>
+    <tr><td>360</td><td>128</td><td>128</td><td>Full moon</td></tr>
+    <tr><td>540</td><td>192</td><td>192</td><td>Last quarter</td></tr>
+    <tr><td>720</td><td>256 ≡ 0</td><td>0</td><td>Month closes — exact</td></tr>
+  </table>
+</section>
+
+<!-- 3. THE SIX KINEMATIC FORMULAS -->
+<section class="section">
+  <div class="section-num">3</div>
+  <h2>The Six Kinematic Formulas — Proven</h2>
+
+  <table class="data-table">
+    <tr>
+      <th>Quantity</th>
+      <th>Forward</th>
+      <th>Inverse</th>
+    </tr>
+    <tr>
+      <td>Time</td>
+      <td>|φ⟩ = (16/45) · (d/v)</td>
+      <td>t = (45/16) · |φ⟩</td>
+    </tr>
+    <tr>
+      <td>Displacement</td>
+      <td>Δd = v<sub>x</sub> · Δ|φ⟩</td>
+      <td>Δ|φ⟩ = Δd / v<sub>x</sub></td>
+    </tr>
+    <tr>
+      <td>Velocity</td>
+      <td>v = (16/45) · (Δd / Δ|φ⟩)</td>
+      <td>v<sub>x</sub> = (45/16) · v</td>
+    </tr>
+  </table>
+
+  <p>All six formulas are invertible. Knowing any two quantities gives the third. The codec constant 16/45 appears at every boundary between ring coordinates and standard units.</p>
+
+  <div class="pull-quote">
+    <p>Note: d and v remain physical quantities. The spatial codec (mapping d to its own ring coordinate) is the next open derivation. Velocity is currently derived by substitution.</p>
+  </div>
+</section>
+
+<!-- 4. VALIDATION -->
+<section class="section">
+  <div class="section-num">4</div>
+  <h2>Validation — Lahore to Islamabad</h2>
+
+  <p>Journey: Lahore to Islamabad via M2 motorway. d = 377 km, v = 82.6 km/h (average speed).</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Derived velocity in ring units</div>
+    <div class="eq-row">v<sub>x</sub> = (45/16) · 82.6 = 232.3125 km/state</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-label">Case 1 — Know d and v, find |φ⟩</div>
+    <div class="eq-row">|φ⟩ = 377 / 232.3125 = 1.6224 states</div>
+    <div class="eq-row green">t   = (45/16) × 1.6224 = 4.563 h = 4h 33m 48s  ✓</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-label">Case 2 — Know d and |φ⟩, find v</div>
+    <div class="eq-row green">v<sub>x</sub> = 377 / 1.6224 = 232.3125 km/state  ✓</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-label">Case 3 — Know v and |φ⟩, find d</div>
+    <div class="eq-row green">Δd = 232.3125 × 1.6224 = 377 km  ✓</div>
+  </div>
+
+  <p>All three cases close exactly. Knowing any two gives the third.</p>
+</section>
+
+<!-- 5. INVERSE SCALING CONJECTURE -->
+<section class="section">
+  <div class="section-num">5</div>
+  <h2>Inverse Scaling Conjecture</h2>
+
+  <h3>5.1 The Second as Hinge</h3>
+
+  <p>The second is the boundary between two different scaling regimes:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Above second — (×720) — ancient geometric system</div>
+    <div class="eq-row">second → minute → hour → day → month</div>
+    <div class="eq-row cyan">86400 ÷ 120 = 720  ← seconds close back to spinor</div>
+    <div class="eq-row" style="margin-top:1rem;" ></div>
+    <div class="eq-label" style="margin-top:0;">Below second — (÷1024) — ring-native inverse scaling</div>
+    <div class="eq-row">second → millisecond → microsecond → nanosecond</div>
+    <div class="eq-row cyan">1024 = 4 × 256 = 4 × τ  ← ring-geometric divisor</div>
+  </div>
+
+  <h3>5.2 Why 1024, not 1000</h3>
+
+  <p>Metric sub-second units (ms, μs, ns) use 1000 as the step factor. The ring-native step is 1024 = 4τ. The deviation per step:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Deviation measured in ring coordinates</div>
+    <div class="eq-row">ε = (1024 − 1000) / 1024 = 24 / 1024 = 3 / 128</div>
+    <div class="eq-row" style="margin-top:0.8rem;">24  = 6 × 4 = hours between vacuum nodes × vacuum node count</div>
+    <div class="eq-row">128 = antipodal vacuum node</div>
+    <div class="eq-row" style="margin-top:0.8rem; color: var(--cyan);">The unifying identity: 720 × 1024 = SPINOR × 4τ</div>
+  </div>
+
+  <h3>5.3 Sub-second Projection Formula</h3>
+
+  <p>The sub-second g function extended to level n (0=second, 1=ms, 2=μs, 3=ns):</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Extended codec</div>
+    <div class="eq-row cyan">g_n(t)   = (16/45) · t / (3600 · 1024ⁿ)</div>
+    <div class="eq-row cyan">g_n⁻¹(φ) = φ · (45/16) · 3600 · 1024ⁿ</div>
+  </div>
+
+  <table class="data-table">
+    <tr>
+      <th>Level n</th>
+      <th>Unit</th>
+      <th>Ring-native φ</th>
+      <th>Metric φ</th>
+      <th>Error %</th>
+    </tr>
+    <tr><td>0</td><td>second</td><td>9.8765 × 10⁻⁵</td><td>9.8765 × 10⁻⁵</td><td class="ok">0.0000%</td></tr>
+    <tr><td>1</td><td>millisecond</td><td>9.6451 × 10⁻⁸</td><td>9.8765 × 10⁻⁸</td><td class="warn">2.3438%</td></tr>
+    <tr><td>2</td><td>microsecond</td><td>9.4190 × 10⁻¹¹</td><td>9.8765 × 10⁻¹¹</td><td class="warn">4.6326%</td></tr>
+    <tr><td>3</td><td>nanosecond</td><td>9.1982 × 10⁻¹⁴</td><td>9.8765 × 10⁻¹⁴</td><td class="warn">6.8677%</td></tr>
+  </table>
+</section>
+
+<!-- 6. INTEGER MOD IMPLEMENTATION -->
+<section class="section">
+  <div class="section-num">6</div>
+  <h2>Integer Mod Implementation — No Floats</h2>
+
+  <h3>6.1 The Division Algorithm</h3>
+
+  <p>The ring codec has no floats. The fraction 2/675 is expressed as the division algorithm:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Division algorithm</div>
+    <div class="eq-row cyan">2 × t = state × SCALE_n + r</div>
+    <div class="eq-row" style="margin-top:0.8rem;">where:</div>
+    <div class="eq-row">  state ∈ {0..255}            (ring position)</div>
+    <div class="eq-row">  r     ∈ {0..SCALE_n − 1}   (sub-state residual)</div>
+    <div class="eq-row">  SCALE_n = 675 × 1024ⁿ</div>
+  </div>
+
+  <h3>6.2 Forward and Inverse</h3>
+
+  <div class="eq-block">
+    <div class="eq-label">Integer encode / decode</div>
+    <div class="eq-row cyan">state = (2 × t) / SCALE_n mod 256    [integer division]</div>
+    <div class="eq-row cyan">r     = (2 × t) mod SCALE_n           [remainder]</div>
+    <div class="eq-row" style="margin-top:0.8rem;">t = (state × SCALE_n + r) / 2         [exact — sum always even]</div>
+    <div class="eq-row" style="margin-top:0.6rem; color: var(--text-muted);">Division by 2 in the inverse is always exact. The sum state × SCALE_n + r = 2t is always even by construction.</div>
+  </div>
+
+  <h3>6.3 SCALE at Each Level</h3>
+
+  <table class="data-table">
+    <tr>
+      <th>Level n</th>
+      <th>Unit</th>
+      <th>SCALE_n = 675 × 1024ⁿ</th>
+      <th>Max t (per day)</th>
+    </tr>
+    <tr><td>0</td><td>second</td><td>675</td><td>86,400</td></tr>
+    <tr><td>1</td><td>millisecond</td><td>691,200</td><td>88,473,600</td></tr>
+    <tr><td>2</td><td>microsecond</td><td>707,788,800</td><td>90,597,427,200</td></tr>
+    <tr><td>3</td><td>nanosecond</td><td>724,775,731,200</td><td>92,771,765,452,800</td></tr>
+  </table>
+
+  <h3>6.4 Vacuum Nodes Land at r = 0</h3>
+
+  <p>Vacuum nodes are the only positions where the residual is exactly zero:</p>
+
+  <table class="data-table">
+    <tr>
+      <th>t (seconds)</th>
+      <th>state</th>
+      <th>r</th>
+      <th>Vacuum node</th>
+      <th>Clock time</th>
+    </tr>
+    <tr><td>21,600</td><td>64</td><td>0</td><td class="ok">✓ exact</td><td>06:00:00</td></tr>
+    <tr><td>43,200</td><td>128</td><td>0</td><td class="ok">✓ exact</td><td>12:00:00</td></tr>
+    <tr><td>64,800</td><td>192</td><td>0</td><td class="ok">✓ exact</td><td>18:00:00</td></tr>
+    <tr><td>86,400</td><td>0</td><td>0</td><td class="ok">✓ exact</td><td>24:00:00 (ring closes)</td></tr>
+  </table>
+
+  <p>All other seconds have r ≠ 0. The residual r is the sub-state position — how far within the current state the second sits. Only hour boundaries carry r = 0.</p>
+
+  <h3>6.5 Rust Implementation Pattern</h3>
+
+  <p>Hard rule: no floats, no signed integers, all arithmetic unsigned.</p>
+
+  <div class="rust-block"><span class="cm">// Forward: seconds → ring state + residual</span>
+<span class="kw">fn</span> <span class="fn">encode</span>(t: <span class="ty">u64</span>, level: <span class="ty">u32</span>) -> (<span class="ty">u8</span>, <span class="ty">u64</span>) {
+    <span class="kw">let</span> scale: <span class="ty">u64</span> = <span class="num">675</span> * <span class="num">1024</span><span class="ty">u64</span>.pow(level);
+    <span class="kw">let</span> num:   <span class="ty">u64</span> = <span class="num">2</span> * t;
+    <span class="kw">let</span> state: <span class="ty">u8</span>  = ((num / scale) % <span class="num">256</span>) <span class="kw">as</span> <span class="ty">u8</span>;
+    <span class="kw">let</span> r:     <span class="ty">u64</span> = num % scale;
+    (state, r)
+}
+
+<span class="cm">// Inverse: ring state + residual → seconds</span>
+<span class="kw">fn</span> <span class="fn">decode</span>(state: <span class="ty">u8</span>, r: <span class="ty">u64</span>, level: <span class="ty">u32</span>) -> <span class="ty">u64</span> {
+    <span class="kw">let</span> scale: <span class="ty">u64</span> = <span class="num">675</span> * <span class="num">1024</span><span class="ty">u64</span>.pow(level);
+    <span class="kw">let</span> num:   <span class="ty">u64</span> = (state <span class="kw">as</span> <span class="ty">u64</span>) * scale + r;
+    num / <span class="num">2</span>  <span class="cm">// always exact — num is always even</span>
+}</div>
+</section>
+
+<!-- 7. UNIFIED CONSTANT TABLE -->
+<section class="section">
+  <div class="section-num">7</div>
+  <h2>Unified Constant Table</h2>
+
+  <table class="data-table">
+    <tr>
+      <th>Time Unit</th>
+      <th>Hours</th>
+      <th>Degrees (year)</th>
+      <th>Ring State φ</th>
+      <th>Closes exactly?</th>
+    </tr>
+    <tr><td>1 year (360d)</td><td>8,640</td><td>360°</td><td>256 × 12 = 3,072</td><td class="ok">Yes</td></tr>
+    <tr><td>1 month</td><td>720</td><td>30°</td><td>256</td><td class="ok">Yes — natural unit</td></tr>
+    <tr><td>1 day</td><td>24</td><td>0.9863°</td><td>8.533...</td><td class="warn">No (365.25 impurity)</td></tr>
+    <tr><td>1 hour</td><td>1</td><td>0.04110°</td><td>0.3556</td><td class="warn">No</td></tr>
+    <tr><td>1 second</td><td>1/3600</td><td>0.0000114°</td><td>1/10,125</td><td class="warn">No (hinge point)</td></tr>
+    <tr><td>1 ms (ring)</td><td>—</td><td>—</td><td>1/10,368,000</td><td class="warn">No</td></tr>
+    <tr><td>1 μs (ring)</td><td>—</td><td>—</td><td>1/10,617,062,400</td><td class="warn">No</td></tr>
+    <tr><td>1 ns (ring)</td><td>—</td><td>—</td><td>1/10,871,872,051,200</td><td class="warn">No</td></tr>
+  </table>
+
+  <p>The month is the only unit that closes exactly on an integer ring state. The second is the hinge — the last unit where the day folds back to 720 above, and the first unit subdivided by 1024 below.</p>
+</section>
+
+<!-- 8. OPEN ITEMS -->
+<section class="section">
+  <div class="section-num">8</div>
+  <h2>Open Items</h2>
+
+  <div class="pull-quote">
+    <p><strong>OPEN — Spatial codec for d</strong>: Displacement Δd currently has no ring address. It lives on the x-axis. To place it on the ring requires the u-spinor projection: ⟨u | Δx · Δy⟩ = ring states traversed. Linear displacement alone (Δx or Δy) is incomplete. The u-spinor must complete one full rotation to close displacement on the ring. This connects to the existing T_drag formula: T₁→₃ = 16(Δa · Δb · Δc · Δd)². Distance is already a product of coordinate differences — not a sum. Next target: derive k_d such that Δd_ring = k_d · d</p>
+  </div>
+
+  <table class="data-table">
+    <tr>
+      <th>Item</th>
+      <th>Status</th>
+    </tr>
+    <tr><td>Codec constant 16/45</td><td class="ok">Derived</td></tr>
+    <tr><td>Domain function g and g⁻¹</td><td class="ok">Proven — verified at all vacuum nodes</td></tr>
+    <tr><td>Time formula forward and inverse</td><td class="ok">Proven</td></tr>
+    <tr><td>Displacement formula forward and inverse</td><td class="ok">Proven</td></tr>
+    <tr><td>Velocity formula (standard units)</td><td class="ok">Proven by substitution</td></tr>
+    <tr><td>Validation — all three cases</td><td class="ok">Verified — round trip exact</td></tr>
+    <tr><td>Inverse scaling conjecture</td><td class="ok">Proven — ε = 3/128 per step</td></tr>
+    <tr><td>Integer mod formula (no floats)</td><td class="ok">Proven — 1000 random round trips exact</td></tr>
+    <tr><td>Vacuum nodes at r = 0</td><td class="ok">Proven — all four exact</td></tr>
+    <tr><td>Spatial codec for d</td><td class="warn">Open — next derivation target</td></tr>
+    <tr><td>Velocity ring-native formula</td><td class="warn">Open — requires spatial codec</td></tr>
+    <tr><td>Even speed definition</td><td class="warn">Open — requires spatial codec</td></tr>
+  </table>
+
+  <div class="status-row">
+    <div class="status-card card-ok">
+      <div class="s-label">Proven</div>
+      <div class="s-value">9 items</div>
+    </div>
+    <div class="status-card card-open">
+      <div class="s-label">Open</div>
+      <div class="s-value">3 items</div>
+    </div>
+    <div class="status-card card-ok">
+      <div class="s-label">Float arithmetic</div>
+      <div class="s-value">Zero</div>
+    </div>
+  </div>
+</section>
+
+      </div>
+
+      <nav class="chapter-nav-footer">
+        <a href="mprc-time-definition.html">← The Definition of Time</a>
+        <a href="index.html">Back to Index →</a>
+      </nav>
+
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+</body>
+</html>

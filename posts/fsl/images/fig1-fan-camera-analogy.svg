@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#050818"/>
+      <stop offset="100%" style="stop-color:#0d1530"/>
+    </linearGradient>
+    <radialGradient id="discGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.8"/>
+      <stop offset="60%" style="stop-color:#4f46e5;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#312e81;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="900" height="520" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#e2e8f0">The Fan and Camera: One Mechanism, Two Manifestations</text>
+
+  <!-- ===== TOP ROW: Fan analogy ===== -->
+  <!-- Panel A: Fan slow -->
+  <rect x="30" y="48" width="190" height="220" rx="8" fill="#050d18" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="125" y="70" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#93c5fd">Fan — Low RPM</text>
+
+  <!-- Slow fan: 3 blades -->
+  <circle cx="125" cy="165" r="10" fill="#334155"/>
+  <ellipse cx="125" cy="110" rx="14" ry="45" fill="#6366f1" opacity="0.9" transform="rotate(0, 125, 165)"/>
+  <ellipse cx="125" cy="110" rx="14" ry="45" fill="#6366f1" opacity="0.9" transform="rotate(120, 125, 165)"/>
+  <ellipse cx="125" cy="110" rx="14" ry="45" fill="#6366f1" opacity="0.9" transform="rotate(240, 125, 165)"/>
+  <circle cx="125" cy="165" r="10" fill="#475569"/>
+  <circle cx="125" cy="165" r="4" fill="#e2e8f0"/>
+
+  <text x="125" y="220" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#4ade80">3 definite positions</text>
+  <text x="125" y="238" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">bandwidth &#x2265; traversal</text>
+  <text x="125" y="253" text-anchor="middle" font-family="monospace" font-size="9" fill="#64748b">RESOLVED</text>
+
+  <!-- Arrow -->
+  <text x="240" y="168" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20" fill="#64748b">&#x2192;</text>
+  <text x="240" y="184" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">RPM &#x2191;</text>
+
+  <!-- Panel B: Fan fast -->
+  <rect x="270" y="48" width="190" height="220" rx="8" fill="#050d18" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="365" y="70" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#c084fc">Fan — High RPM</text>
+
+  <!-- Fast fan: disc -->
+  <circle cx="365" cy="165" r="72" fill="url(#discGrad)"/>
+  <circle cx="365" cy="165" r="72" fill="none" stroke="#6366f1" stroke-width="1" opacity="0.5"/>
+  <circle cx="365" cy="165" r="10" fill="#475569"/>
+  <circle cx="365" cy="165" r="4" fill="#e2e8f0"/>
+
+  <text x="365" y="220" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#ef4444">Apparent &#x201C;disc&#x201D;</text>
+  <text x="365" y="238" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">bandwidth &lt; traversal</text>
+  <text x="365" y="253" text-anchor="middle" font-family="monospace" font-size="9" fill="#7c3aed">BLUR = SUPERPOSITION?</text>
+
+  <!-- Arrow -->
+  <text x="475" y="154" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">stop fan</text>
+  <text x="475" y="168" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="20" fill="#64748b">&#x2192;</text>
+  <text x="475" y="182" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">= measure</text>
+
+  <!-- Panel C: Fan stopped -->
+  <rect x="510" y="48" width="190" height="220" rx="8" fill="#050d18" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="605" y="70" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#4ade80">Fan — Stopped</text>
+
+  <!-- Stopped fan: blades revealed -->
+  <circle cx="605" cy="165" r="10" fill="#334155"/>
+  <ellipse cx="605" cy="110" rx="14" ry="45" fill="#818cf8" opacity="0.9" transform="rotate(35, 605, 165)"/>
+  <ellipse cx="605" cy="110" rx="14" ry="45" fill="#818cf8" opacity="0.9" transform="rotate(155, 605, 165)"/>
+  <ellipse cx="605" cy="110" rx="14" ry="45" fill="#818cf8" opacity="0.9" transform="rotate(275, 605, 165)"/>
+  <circle cx="605" cy="165" r="10" fill="#475569"/>
+  <circle cx="605" cy="165" r="4" fill="#e2e8f0"/>
+
+  <text x="605" y="220" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#4ade80">Blades always existed</text>
+  <text x="605" y="238" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">Measurement = resolution</text>
+  <text x="605" y="253" text-anchor="middle" font-family="monospace" font-size="9" fill="#16a34a">NOT &#x201C;COLLAPSE&#x201D;</text>
+
+  <!-- FSL label -->
+  <rect x="730" y="48" width="140" height="220" rx="8" fill="#0a0818" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="800" y="80" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#e879f9">FSL Thesis</text>
+  <text x="800" y="100" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#94a3b8">Disc =</text>
+  <text x="800" y="114" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#94a3b8">observer&#x2019;s</text>
+  <text x="800" y="128" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#94a3b8">shutter</text>
+  <text x="800" y="142" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#94a3b8">speed</text>
+  <line x1="745" y1="158" x2="865" y2="158" stroke="#4c1d95" stroke-width="1"/>
+  <text x="800" y="176" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#c084fc">The blur is</text>
+  <text x="800" y="190" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#c084fc">not ontology</text>
+  <text x="800" y="218" text-anchor="middle" font-family="monospace" font-size="9" fill="#7c3aed">Blades:</text>
+  <text x="800" y="232" text-anchor="middle" font-family="monospace" font-size="9" fill="#7c3aed">always</text>
+  <text x="800" y="246" text-anchor="middle" font-family="monospace" font-size="9" fill="#7c3aed">definite</text>
+
+  <!-- ===== BOTTOM ROW: Camera analogy ===== -->
+  <text x="450" y="294" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#64748b">CAMERA ANALOGY: Wave vs Particle = Shutter Speed</text>
+  <line x1="30" y1="300" x2="870" y2="300" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Camera slow -->
+  <rect x="30" y="310" width="255" height="185" rx="8" fill="#050d18" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="157" y="332" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#22d3ee">Slow Shutter</text>
+  <!-- Car trail (wave) -->
+  <rect x="50" y="380" width="8" height="30" rx="4" fill="#22d3ee" opacity="0.2"/>
+  <rect x="65" y="375" width="8" height="35" rx="4" fill="#22d3ee" opacity="0.3"/>
+  <rect x="80" y="370" width="8" height="40" rx="4" fill="#22d3ee" opacity="0.4"/>
+  <rect x="95" y="366" width="10" height="44" rx="4" fill="#22d3ee" opacity="0.6"/>
+  <rect x="112" y="362" width="12" height="48" rx="4" fill="#22d3ee" opacity="0.8"/>
+  <rect x="132" y="360" width="15" height="50" rx="4" fill="#22d3ee" opacity="0.9"/>
+  <rect x="155" y="362" width="12" height="48" rx="4" fill="#22d3ee" opacity="0.7"/>
+  <rect x="175" y="367" width="10" height="43" rx="4" fill="#22d3ee" opacity="0.4"/>
+  <rect x="193" y="373" width="8" height="37" rx="4" fill="#22d3ee" opacity="0.2"/>
+  <text x="157" y="428" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#22d3ee">Blur trail &#x2014; appears as &#x201C;wave&#x201D;</text>
+  <text x="157" y="444" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">Exposure integrates trajectory</text>
+  <text x="157" y="464" text-anchor="middle" font-family="monospace" font-size="9" fill="#0891b2">&#x201C;wave nature&#x201D; = slow shutter</text>
+  <text x="157" y="480" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">Double-slit, no which-path detector</text>
+
+  <!-- Arrow -->
+  <text x="305" y="400" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">same object</text>
+  <text x="305" y="416" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" fill="#64748b">&#x21C4;</text>
+  <text x="305" y="432" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">different</text>
+  <text x="305" y="445" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">shutter</text>
+
+  <!-- Camera fast -->
+  <rect x="335" y="310" width="255" height="185" rx="8" fill="#050d18" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="462" y="332" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#4ade80">Fast Shutter</text>
+  <!-- Car dot (particle) -->
+  <circle cx="462" cy="393" r="20" fill="#4ade80" opacity="0.9"/>
+  <circle cx="462" cy="393" r="28" fill="none" stroke="#4ade80" stroke-width="1.5" opacity="0.4"/>
+  <text x="462" y="428" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#4ade80">Frozen dot &#x2014; appears as &#x201C;particle&#x201D;</text>
+  <text x="462" y="444" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">Exposure resolves one position</text>
+  <text x="462" y="464" text-anchor="middle" font-family="monospace" font-size="9" fill="#16a34a">&#x201C;particle nature&#x201D; = fast shutter</text>
+  <text x="462" y="480" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">Which-path detector at slit</text>
+
+  <!-- FSL summary box -->
+  <rect x="620" y="310" width="250" height="185" rx="8" fill="#0a0818" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="745" y="334" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#e879f9">Wave-Particle Duality</text>
+  <text x="745" y="352" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">NOT two properties of the object</text>
+  <text x="745" y="370" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">TWO projections of one FSL</text>
+  <text x="745" y="386" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">traversal at different resolution</text>
+  <line x1="635" y1="400" x2="865" y2="400" stroke="#4c1d95" stroke-width="1"/>
+  <text x="745" y="420" text-anchor="middle" font-family="monospace" font-size="10" fill="#c084fc">Duality is in the instrument</text>
+  <text x="745" y="436" text-anchor="middle" font-family="monospace" font-size="10" fill="#c084fc">not in the object</text>
+  <line x1="635" y1="450" x2="865" y2="450" stroke="#4c1d95" stroke-width="1"/>
+  <text x="745" y="468" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">u-spinor on Z&#x2082;&#x2085;&#x2086; has ONE trajectory</text>
+  <text x="745" y="483" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">Observer selects which projection</text>
+</svg>

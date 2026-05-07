@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#050818"/>
+      <stop offset="100%" style="stop-color:#0d1530"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="480" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="450" y="26" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#e2e8f0">Seven Quantum Phenomena — QM Ontology vs FSL Thesis</text>
+
+  <!-- Header row -->
+  <rect x="15" y="34" width="870" height="28" rx="4" fill="#0f172a"/>
+  <text x="100" y="52" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#475569">Phenomenon</text>
+  <text x="320" y="52" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#475569">QM Ontology</text>
+  <text x="560" y="52" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#475569">FSL Thesis</text>
+  <text x="790" y="52" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#475569">Empirical Status</text>
+
+  <!-- Row 1: Superposition -->
+  <rect x="15" y="62" width="870" height="52" rx="0" fill="#0a1220"/>
+  <text x="100" y="80" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#67e8f9">Superposition</text>
+  <text x="100" y="97" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">wave-particle</text>
+  <text x="320" y="80" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Object literally in all states</text>
+  <text x="320" y="97" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">until measured</text>
+  <text x="560" y="80" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#a5b4fc">Traversal below observer bandwidth</text>
+  <text x="560" y="97" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">Fan blur — blades always definite</text>
+  <rect x="700" y="68" width="170" height="38" rx="4" fill="#0d1a1a" stroke="#0891b2" stroke-width="1"/>
+  <text x="785" y="83" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#22d3ee">&#x26A0; Pending</text>
+  <text x="785" y="97" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#475569">FSL threshold not yet measured</text>
+
+  <!-- Row 2: Entanglement -->
+  <rect x="15" y="114" width="870" height="52" rx="0" fill="#050d14"/>
+  <text x="100" y="132" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#67e8f9">Entanglement</text>
+  <text x="100" y="149" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">nonlocal corr.</text>
+  <text x="320" y="132" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Spooky action at distance</text>
+  <text x="320" y="149" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">collapse of joint wavefunction</text>
+  <text x="560" y="132" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#a5b4fc">One 720&#xB0; spinor, two 360&#xB0; halves</text>
+  <text x="560" y="149" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">anti-phase lock at birth, no signal</text>
+  <rect x="700" y="120" width="170" height="38" rx="4" fill="#0a1810" stroke="#16a34a" stroke-width="1"/>
+  <text x="785" y="135" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#4ade80">&#x2714; Confirmed</text>
+  <text x="785" y="149" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#475569">QKD deployed (SPDC factory scale)</text>
+
+  <!-- Row 3: Wave-Particle Duality -->
+  <rect x="15" y="166" width="870" height="52" rx="0" fill="#0a1220"/>
+  <text x="100" y="184" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#67e8f9">Wave-Particle</text>
+  <text x="100" y="201" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">duality</text>
+  <text x="320" y="184" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Two fundamental natures</text>
+  <text x="320" y="201" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">complementarity principle</text>
+  <text x="560" y="184" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#a5b4fc">Two projections, one traversal</text>
+  <text x="560" y="201" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">slow shutter vs fast shutter</text>
+  <rect x="700" y="172" width="170" height="38" rx="4" fill="#0d1a1a" stroke="#0891b2" stroke-width="1"/>
+  <text x="785" y="187" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#22d3ee">&#x26A0; Pending</text>
+  <text x="785" y="201" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#475569">Requires FSL bandwidth test</text>
+
+  <!-- Row 4: Wavefunction Collapse -->
+  <rect x="15" y="218" width="870" height="52" rx="0" fill="#050d14"/>
+  <text x="100" y="236" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#67e8f9">WF Collapse</text>
+  <text x="100" y="253" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">measurement</text>
+  <text x="320" y="236" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Instantaneous discontinuous</text>
+  <text x="320" y="253" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">jump to definite state</text>
+  <text x="560" y="236" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#a5b4fc">&#x27E8;u|&#x03C6;&#x27E9; accumulates to resolution</text>
+  <text x="560" y="253" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">focus, not collapse</text>
+  <rect x="700" y="224" width="170" height="38" rx="4" fill="#1a0a08" stroke="#f97316" stroke-width="1"/>
+  <text x="785" y="239" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#fb923c">&#x26A0; Open</text>
+  <text x="785" y="253" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#475569">&#x03C6; accumulation threshold not calc.</text>
+
+  <!-- Row 5: Uncertainty -->
+  <rect x="15" y="270" width="870" height="52" rx="0" fill="#0a1220"/>
+  <text x="100" y="288" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#67e8f9">Uncertainty</text>
+  <text x="100" y="305" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">&#x394;x&#xB7;&#x394;p &#x2265; &#x0127;/2</text>
+  <text x="320" y="288" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Fundamental ontological limit</text>
+  <text x="320" y="305" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">cannot know both simultaneously</text>
+  <text x="560" y="288" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#a5b4fc">Observer bandwidth &#x2192; trade-off</text>
+  <text x="560" y="305" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">fast shutter &#x2194; position; slow &#x2194; frequency</text>
+  <rect x="700" y="276" width="170" height="38" rx="4" fill="#0d1a1a" stroke="#0891b2" stroke-width="1"/>
+  <text x="785" y="291" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#22d3ee">&#x26A0; Pending</text>
+  <text x="785" y="305" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#475569">Formal &#x0127;/2 derivation in progress</text>
+
+  <!-- Row 6: Virtual Particles -->
+  <rect x="15" y="322" width="870" height="52" rx="0" fill="#050d14"/>
+  <text x="100" y="340" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#67e8f9">Virtual Particles</text>
+  <text x="100" y="357" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">off-shell</text>
+  <text x="320" y="340" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Off-shell, violate E-momentum</text>
+  <text x="320" y="357" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">special unobservable category</text>
+  <text x="560" y="340" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#a5b4fc">Off-bandwidth, not off-shell</text>
+  <text x="560" y="357" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">same category as all real objects</text>
+  <rect x="700" y="328" width="170" height="38" rx="4" fill="#1a0a08" stroke="#f97316" stroke-width="1"/>
+  <text x="785" y="343" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#fb923c">&#x26A0; Staged</text>
+  <text x="785" y="357" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#475569">Formal derivation pending</text>
+
+  <!-- Row 7: Vacuum Fluctuations -->
+  <rect x="15" y="374" width="870" height="52" rx="0" fill="#0a1220"/>
+  <text x="100" y="392" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#67e8f9">Vacuum Fluct.</text>
+  <text x="100" y="409" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">Casimir, ZPE</text>
+  <text x="320" y="392" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Virtual pairs from empty vacuum</text>
+  <text x="320" y="409" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">infinite zero-point energy</text>
+  <text x="560" y="392" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#a5b4fc">Ring vacuum states {0,64,128,192}</text>
+  <text x="560" y="409" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">finite, discrete — 4 exact points</text>
+  <rect x="700" y="380" width="170" height="38" rx="4" fill="#0a1810" stroke="#16a34a" stroke-width="1"/>
+  <text x="785" y="395" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#4ade80">&#x2714; Partial</text>
+  <text x="785" y="409" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#475569">Casimir matches; ZPE derivation open</text>
+
+  <!-- Legend -->
+  <rect x="15" y="436" width="870" height="34" rx="4" fill="#0a0f1e" stroke="#1e293b" stroke-width="1"/>
+  <circle cx="40" cy="453" r="6" fill="#0a1810" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="52" y="457" font-family="'Segoe UI', sans-serif" font-size="10" fill="#4ade80">&#x2714; Confirmed</text>
+  <circle cx="150" cy="453" r="6" fill="#0d1a1a" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="162" y="457" font-family="'Segoe UI', sans-serif" font-size="10" fill="#22d3ee">&#x26A0; Pending measurement</text>
+  <circle cx="320" cy="453" r="6" fill="#1a0a08" stroke="#f97316" stroke-width="1.5"/>
+  <text x="332" y="457" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fb923c">&#x26A0; Open derivation</text>
+  <text x="520" y="457" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">Empirical anchor: QKD (SPDC-based entanglement) commercially deployed and confirmed</text>
+</svg>

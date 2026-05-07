@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#070d20"/>
+      <stop offset="100%" style="stop-color:#0d1530"/>
+    </linearGradient>
+    <radialGradient id="aliceAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="bobAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrowI" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#818cf8"/>
+    </marker>
+    <marker id="arrowC" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="480" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="44" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#e2e8f0" letter-spacing="0.3">The Conjugate Birth Invariant</text>
+  <text x="450" y="66" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="#64748b">d_A + d_B ≡ 0 (mod p)  — a ring relationship, not a cryptographic construction</text>
+
+  <!-- Shared ring axis — horizontal number line -->
+  <line x1="100" y1="240" x2="800" y2="240" stroke="#1e3a8a" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Ring p tick marks -->
+  <!-- p=0 -->
+  <line x1="100" y1="232" x2="100" y2="248" stroke="#475569" stroke-width="1.5"/>
+  <text x="100" y="264" text-anchor="middle" font-family="monospace" font-size="11" fill="#475569">0</text>
+  <!-- p/4 -->
+  <line x1="275" y1="232" x2="275" y2="248" stroke="#475569" stroke-width="1.5"/>
+  <text x="275" y="264" text-anchor="middle" font-family="monospace" font-size="11" fill="#475569">p/4</text>
+  <!-- p/2 -->
+  <line x1="450" y1="228" x2="450" y2="252" stroke="#94a3b8" stroke-width="2"/>
+  <text x="450" y="268" text-anchor="middle" font-family="monospace" font-size="12" fill="#94a3b8">p/2</text>
+  <!-- 3p/4 -->
+  <line x1="625" y1="232" x2="625" y2="248" stroke="#475569" stroke-width="1.5"/>
+  <text x="625" y="264" text-anchor="middle" font-family="monospace" font-size="11" fill="#475569">3p/4</text>
+  <!-- p -->
+  <line x1="800" y1="232" x2="800" y2="248" stroke="#475569" stroke-width="1.5"/>
+  <text x="800" y="264" text-anchor="middle" font-family="monospace" font-size="11" fill="#475569">p</text>
+
+  <!-- p label -->
+  <text x="450" y="285" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#475569">p = secp256k1 prime ≈ 2²⁵⁶</text>
+
+  <!-- d_A placement — at 0.28p -->
+  <ellipse cx="220" cy="240" rx="90" ry="90" fill="url(#aliceAura)"/>
+  <circle cx="298" cy="240" r="9" fill="#6366f1" filter="url(#glow)"/>
+  <!-- d_A label -->
+  <text x="298" y="215" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="#818cf8">d_A</text>
+  <!-- bracket under d_A -->
+  <path d="M 100 296 L 100 308 L 298 308 L 298 296" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.7"/>
+  <text x="199" y="326" text-anchor="middle" font-family="monospace" font-size="11" fill="#818cf8">Alice's half</text>
+
+  <!-- d_B placement — at 0.72p (conjugate: d_A + d_B = p) -->
+  <ellipse cx="680" cy="240" rx="90" ry="90" fill="url(#bobAura)"/>
+  <circle cx="602" cy="240" r="9" fill="#06b6d4" filter="url(#glow)"/>
+  <!-- d_B label -->
+  <text x="602" y="215" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="#22d3ee">d_B</text>
+  <!-- bracket under d_B -->
+  <path d="M 602 296 L 602 308 L 800 308 L 800 296" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.7"/>
+  <text x="701" y="326" text-anchor="middle" font-family="monospace" font-size="11" fill="#22d3ee">Bob's half</text>
+
+  <!-- Conjugate mirror arrow — curved arc above the line -->
+  <path d="M 298 210 Q 450 130 602 210" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7" marker-end="url(#arrowP)"/>
+  <path d="M 602 210 Q 450 130 298 210" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7" marker-end="url(#arrowP2)"/>
+  <defs>
+    <marker id="arrowP" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#a855f7" opacity="0.8"/>
+    </marker>
+    <marker id="arrowP2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#a855f7" opacity="0.8"/>
+    </marker>
+  </defs>
+
+  <!-- Arc label -->
+  <text x="450" y="152" text-anchor="middle" font-family="monospace" font-size="12" fill="#c084fc">d_B = p − d_A</text>
+  <text x="450" y="168" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#7c3aed" opacity="0.8">computed independently · nothing crosses the wire</text>
+
+  <!-- Node boxes -->
+  <!-- Alice box -->
+  <rect x="30" y="355" width="190" height="90" rx="8" fill="#0f172a" stroke="#6366f1" stroke-width="1.5" opacity="0.9"/>
+  <text x="125" y="376" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#a5b4fc">ALICE</text>
+  <text x="125" y="396" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">knows: d_A</text>
+  <text x="125" y="412" text-anchor="middle" font-family="monospace" font-size="10" fill="#818cf8">derives: d_B = p − d_A</text>
+  <text x="125" y="430" text-anchor="middle" font-family="monospace" font-size="10" fill="#c7d2fe">seed = d_A × p + d_B</text>
+
+  <!-- Bob box -->
+  <rect x="680" y="355" width="190" height="90" rx="8" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5" opacity="0.9"/>
+  <text x="775" y="376" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#67e8f9">BOB</text>
+  <text x="775" y="396" text-anchor="middle" font-family="monospace" font-size="10" fill="#64748b">knows: d_B</text>
+  <text x="775" y="412" text-anchor="middle" font-family="monospace" font-size="10" fill="#22d3ee">derives: d_A = p − d_B</text>
+  <text x="775" y="430" text-anchor="middle" font-family="monospace" font-size="10" fill="#a5f3fc">seed = d_A × p + d_B</text>
+
+  <!-- Both derive same seed label -->
+  <text x="450" y="385" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Both independently compute</text>
+  <text x="450" y="405" text-anchor="middle" font-family="monospace" font-size="14" font-weight="700" fill="#e2e8f0">the same session key seed</text>
+  <text x="450" y="425" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#475569">Keyspace ≈ 2²⁵⁴ · exceeds NIST 2¹²⁸ by factor 2¹²⁶</text>
+
+  <!-- Equals signs connecting the two boxes -->
+  <text x="450" y="408" text-anchor="middle" font-family="monospace" font-size="20" fill="#4ade80" opacity="0.0">≡</text>
+</svg>

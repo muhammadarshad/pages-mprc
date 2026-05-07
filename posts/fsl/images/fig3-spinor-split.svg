@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#050818"/>
+      <stop offset="100%" style="stop-color:#0d1530"/>
+    </linearGradient>
+    <radialGradient id="ringA" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="ringB" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="900" height="480" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="700" fill="#e2e8f0">Spinor Split: One 720&#xB0; Cycle &#x2192; Two 360&#xB0; Half-Cycles</text>
+  <text x="450" y="50" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#64748b">Entanglement is not a property particles have — it is incomplete spinor separation</text>
+
+  <!-- ===== LEFT: Full spinor (before split) ===== -->
+  <text x="165" y="80" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#94a3b8">Before: One Complete Spinor</text>
+
+  <!-- Outer 720° circle -->
+  <circle cx="165" cy="210" r="110" fill="url(#ringA)" />
+  <circle cx="165" cy="210" r="110" fill="none" stroke="#6366f1" stroke-width="2.5"/>
+  <!-- Inner 360° circle -->
+  <circle cx="165" cy="210" r="65" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.6"/>
+
+  <!-- 720° label -->
+  <text x="165" y="110" text-anchor="middle" font-family="monospace" font-size="11" fill="#818cf8">720&#xB0; (4&#x03C0;)</text>
+  <!-- two-loop arrow hint -->
+  <path d="M 165 100 A 110 110 0 1 1 165 322 A 110 110 0 1 1 165 100" fill="none" stroke="#6366f1" stroke-width="0" opacity="0"/>
+
+  <!-- Spinor position dot -->
+  <circle cx="255" cy="155" r="11" fill="#6366f1" filter="url(#glow)"/>
+  <text x="270" y="148" font-family="monospace" font-size="10" fill="#a5b4fc">&#x03C6;(t)</text>
+
+  <!-- Vacuum markers -->
+  <circle cx="165" cy="100" r="6" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="275" cy="210" r="6" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="165" cy="320" r="6" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="55" cy="210" r="6" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+
+  <!-- Vacuum labels -->
+  <text x="165" y="92" text-anchor="middle" font-family="monospace" font-size="9" fill="#ef4444">V&#x2080;</text>
+  <text x="290" y="214" font-family="monospace" font-size="9" fill="#ef4444">V&#x2086;&#x2084;</text>
+  <text x="165" y="340" text-anchor="middle" font-family="monospace" font-size="9" fill="#ef4444">V&#x2081;&#x2082;&#x2088;</text>
+  <text x="30" y="214" font-family="monospace" font-size="9" fill="#ef4444">V&#x2081;&#x2089;&#x2082;</text>
+
+  <!-- State labels -->
+  <text x="165" y="215" text-anchor="middle" font-family="monospace" font-size="10" fill="#475569">0..255</text>
+  <text x="165" y="228" text-anchor="middle" font-family="monospace" font-size="9" fill="#475569">256 states</text>
+
+  <!-- Creation event label -->
+  <rect x="75" y="340" width="180" height="36" rx="6" fill="#0a0f1e" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="165" y="356" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#c084fc">Creation event (SPDC crystal)</text>
+  <text x="165" y="369" text-anchor="middle" font-family="monospace" font-size="10" fill="#a855f7">one spinor &#x2192; two halves</text>
+
+  <!-- Arrow -->
+  <text x="370" y="220" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="28" fill="#64748b">&#x21D2;</text>
+  <text x="370" y="244" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#475569">split + separate</text>
+
+  <!-- ===== RIGHT: Two half-spinors (after split) ===== -->
+  <text x="635" y="80" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#94a3b8">After: Two Conjugate Half-Cycles</text>
+
+  <!-- Spinor A: upper arc -->
+  <circle cx="535" cy="210" r="90" fill="url(#ringA)"/>
+  <!-- Upper semicircle -->
+  <path d="M 535 120 A 90 90 0 0 1 625 210" fill="none" stroke="#6366f1" stroke-width="4"/>
+  <path d="M 625 210 A 90 90 0 0 1 535 300" fill="none" stroke="#6366f1" stroke-width="4" opacity="0.25" stroke-dasharray="4 4"/>
+  <path d="M 535 300 A 90 90 0 0 1 445 210" fill="none" stroke="#6366f1" stroke-width="4" opacity="0.25" stroke-dasharray="4 4"/>
+  <path d="M 445 210 A 90 90 0 0 1 535 120" fill="none" stroke="#6366f1" stroke-width="4"/>
+  <!-- Only upper half is active -->
+  <path d="M 535 120 A 90 90 0 0 1 625 210 A 90 90 0 0 1 535 120" fill="#6366f1" opacity="0.1"/>
+
+  <!-- Spinor A dot -->
+  <circle cx="601" cy="154" r="11" fill="#818cf8" filter="url(#glow)"/>
+  <text x="617" y="146" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#a5b4fc">A  (p)</text>
+  <text x="617" y="160" font-family="monospace" font-size="9" fill="#818cf8">states 1..127</text>
+  <text x="617" y="173" font-family="monospace" font-size="9" fill="#818cf8">spin = +1</text>
+
+  <!-- Spinor B (Alice's conjugate): lower arc -->
+  <circle cx="735" cy="210" r="90" fill="url(#ringB)"/>
+  <!-- Lower semicircle -->
+  <path d="M 735 120 A 90 90 0 0 1 825 210" fill="none" stroke="#22d3ee" stroke-width="4" opacity="0.25" stroke-dasharray="4 4"/>
+  <path d="M 825 210 A 90 90 0 0 1 735 300" fill="none" stroke="#22d3ee" stroke-width="4"/>
+  <path d="M 735 300 A 90 90 0 0 1 645 210" fill="none" stroke="#22d3ee" stroke-width="4"/>
+  <path d="M 645 210 A 90 90 0 0 1 735 120" fill="none" stroke="#22d3ee" stroke-width="4" opacity="0.25" stroke-dasharray="4 4"/>
+
+  <!-- Spinor B dot (anti-phase: p+128) -->
+  <circle cx="669" cy="266" r="11" fill="#22d3ee" filter="url(#glow)"/>
+  <text x="615" y="282" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#67e8f9">B  (p+128)</text>
+  <text x="615" y="296" font-family="monospace" font-size="9" fill="#22d3ee">states 129..255</text>
+  <text x="615" y="309" font-family="monospace" font-size="9" fill="#22d3ee">spin = &#x2212;1</text>
+
+  <!-- Anti-phase connection -->
+  <line x1="601" y1="154" x2="669" y2="266" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.7"/>
+  <text x="623" y="198" font-family="monospace" font-size="9" fill="#c084fc">always</text>
+  <text x="618" y="210" font-family="monospace" font-size="9" fill="#c084fc">128 apart</text>
+
+  <!-- Vacuum markers on A ring -->
+  <circle cx="535" cy="120" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="625" cy="210" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="535" cy="300" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="445" cy="210" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+
+  <!-- Vacuum markers on B ring -->
+  <circle cx="735" cy="120" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="825" cy="210" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="735" cy="300" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="645" cy="210" r="5" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+
+  <!-- Labels A / B ring -->
+  <text x="535" y="215" text-anchor="middle" font-family="monospace" font-size="9" fill="#6366f1" opacity="0.7">Alice</text>
+  <text x="735" y="215" text-anchor="middle" font-family="monospace" font-size="9" fill="#22d3ee" opacity="0.7">Bob</text>
+
+  <!-- Summary box -->
+  <rect x="430" y="380" width="440" height="78" rx="8" fill="#0a0818" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="650" y="400" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#e879f9">No Signal. No Action. Geometry.</text>
+  <text x="650" y="418" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">Observing A resolves p. B is then p+128 — because that IS the split spinor.</text>
+  <text x="650" y="434" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94a3b8">The lock was geometric at birth. Measurement reads it; doesn&#x2019;t create it.</text>
+  <text x="650" y="450" text-anchor="middle" font-family="monospace" font-size="9" fill="#7c3aed">Left glove found &#x2192; right glove must be right. No magic. No signal.</text>
+</svg>

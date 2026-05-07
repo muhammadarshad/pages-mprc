@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#070d20"/>
+      <stop offset="100%" style="stop-color:#0d1530"/>
+    </linearGradient>
+    <radialGradient id="ringAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#0f766e;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#0f766e;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="520" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#e2e8f0">Z₂₅₆ Domain Clock — Layer 3 Shield</text>
+  <text x="450" y="62" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="#64748b">Birth tick t is internal · coprime walk covers all 63 active states · Eve sees the seed, not κ(t)</text>
+
+  <!-- Ring aura -->
+  <ellipse cx="300" cy="280" rx="190" ry="190" fill="url(#ringAura)"/>
+
+  <!-- Outer decorative ring (Z₂₅₆ full 256 states, faint) -->
+  <circle cx="300" cy="280" r="175" fill="none" stroke="#1e3a8a" stroke-width="1" opacity="0.3" stroke-dasharray="2 4"/>
+
+  <!-- Active ring (63 active states per quadrant) -->
+  <!-- Q0: states 1-63, arc from top going clockwise to right -->
+  <path d="M 300 105 A 175 175 0 0 1 475 280" fill="none" stroke="#6366f1" stroke-width="3" opacity="0.7"/>
+  <!-- Q1: states 65-127 -->
+  <path d="M 475 280 A 175 175 0 0 1 300 455" fill="none" stroke="#06b6d4" stroke-width="3" opacity="0.7"/>
+  <!-- Q2: states 129-191 -->
+  <path d="M 300 455 A 175 175 0 0 1 125 280" fill="none" stroke="#6366f1" stroke-width="3" opacity="0.7"/>
+  <!-- Q3: states 193-255 -->
+  <path d="M 125 280 A 175 175 0 0 1 300 105" fill="none" stroke="#06b6d4" stroke-width="3" opacity="0.7"/>
+
+  <!-- 4 Vacuum positions (forbidden boundary points) -->
+  <!-- V0 = 0, top -->
+  <circle cx="300" cy="105" r="9" fill="#0f172a" stroke="#ef4444" stroke-width="2.5" filter="url(#glow)"/>
+  <text x="300" y="88" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">V₀ = 0</text>
+  <text x="300" y="74" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#7f1d1d">FORBIDDEN</text>
+
+  <!-- V64 = 64, right -->
+  <circle cx="475" cy="280" r="9" fill="#0f172a" stroke="#ef4444" stroke-width="2.5" filter="url(#glow)"/>
+  <text x="502" y="276" text-anchor="start" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">V₆₄</text>
+  <text x="502" y="291" text-anchor="start" font-family="'Segoe UI', sans-serif" font-size="10" fill="#7f1d1d">FORBIDDEN</text>
+
+  <!-- V128 = 128, bottom -->
+  <circle cx="300" cy="455" r="9" fill="#0f172a" stroke="#ef4444" stroke-width="2.5" filter="url(#glow)"/>
+  <text x="300" y="480" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">V₁₂₈</text>
+  <text x="300" y="494" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#7f1d1d">FORBIDDEN</text>
+
+  <!-- V192 = 192, left -->
+  <circle cx="125" cy="280" r="9" fill="#0f172a" stroke="#ef4444" stroke-width="2.5" filter="url(#glow)"/>
+  <text x="98" y="276" text-anchor="end" font-family="monospace" font-size="12" font-weight="700" fill="#ef4444">V₁₉₂</text>
+  <text x="98" y="291" text-anchor="end" font-family="'Segoe UI', sans-serif" font-size="10" fill="#7f1d1d">FORBIDDEN</text>
+
+  <!-- Coprime walk dots — stride 11, visiting 63 states in Q0 
+       Placing sample dots evenly around the Q0 arc to illustrate the walk -->
+  <!-- 8 sample walk positions along the top-right arc -->
+  <circle cx="323" cy="106" r="3.5" fill="#2dd4bf" opacity="0.9"/>
+  <circle cx="346" cy="110" r="3.5" fill="#2dd4bf" opacity="0.9"/>
+  <circle cx="368" cy="119" r="3.5" fill="#2dd4bf" opacity="0.9"/>
+  <circle cx="388" cy="132" r="3.5" fill="#2dd4bf" opacity="0.9"/>
+  <circle cx="406" cy="148" r="3.5" fill="#2dd4bf" opacity="0.9"/>
+  <circle cx="421" cy="167" r="3.5" fill="#2dd4bf" opacity="0.9"/>
+  <circle cx="434" cy="188" r="3.5" fill="#2dd4bf" opacity="0.9"/>
+  <circle cx="444" cy="211" r="3.5" fill="#2dd4bf" opacity="0.9"/>
+  <circle cx="450" cy="235" r="3.5" fill="#2dd4bf" opacity="0.9"/>
+  <circle cx="453" cy="258" r="3.5" fill="#2dd4bf" opacity="0.9"/>
+
+  <!-- Walk label -->
+  <text x="410" y="165" text-anchor="start" font-family="monospace" font-size="10" fill="#2dd4bf" opacity="0.6">stride 11</text>
+
+  <!-- Centre label -->
+  <text x="300" y="272" text-anchor="middle" font-family="monospace" font-size="14" font-weight="700" fill="#e2e8f0">Z₂₅₆</text>
+  <text x="300" y="292" text-anchor="middle" font-family="monospace" font-size="11" fill="#94a3b8">256 states</text>
+  <text x="300" y="310" text-anchor="middle" font-family="monospace" font-size="11" fill="#64748b">4 forbidden · 252 active</text>
+
+  <!-- Q labels -->
+  <text x="390" y="190" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#818cf8" opacity="0.7">Q0</text>
+  <text x="390" y="370" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22d3ee" opacity="0.7">Q1</text>
+  <text x="210" y="370" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#818cf8" opacity="0.7">Q2</text>
+  <text x="210" y="190" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22d3ee" opacity="0.7">Q3</text>
+
+  <!-- Right panel — explanation -->
+  <line x1="540" y1="90" x2="540" y2="490" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Domain Clock formula box -->
+  <rect x="565" y="95" width="310" height="80" rx="8" fill="#0f1e12" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="720" y="118" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#4ade80">Domain Clock Function</text>
+  <text x="720" y="140" text-anchor="middle" font-family="monospace" font-size="14" fill="#86efac">κ(t) = (δ(t) × stride) mod 64</text>
+  <text x="720" y="160" text-anchor="middle" font-family="monospace" font-size="11" fill="#64748b">δ(t) = t mod 64  ·  gcd(stride, 63) = 1</text>
+
+  <!-- Coprime condition box -->
+  <rect x="565" y="195" width="310" height="100" rx="8" fill="#0f172a" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="720" y="218" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Coprime Condition</text>
+  <text x="720" y="240" text-anchor="middle" font-family="monospace" font-size="11" fill="#7dd3fc">63 = 3² × 7</text>
+  <text x="720" y="258" text-anchor="middle" font-family="monospace" font-size="11" fill="#7dd3fc">φ(63) = 36 valid strides</text>
+  <text x="720" y="276" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#475569">stride 7 → orbit 9 (3 bits) ← WEAK</text>
+  <text x="720" y="291" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#0d9488">stride 11 → orbit 63 (6 bits) ← FULL</text>
+
+  <!-- What Eve knows -->
+  <rect x="565" y="315" width="310" height="110" rx="8" fill="#1a0505" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="720" y="338" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#fca5a5">What Eve Has</text>
+  <text x="720" y="358" text-anchor="middle" font-family="monospace" font-size="11" fill="#fca5a5">d_A  →  base_seed  ✓</text>
+  <text x="720" y="376" text-anchor="middle" font-family="monospace" font-size="11" fill="#ef4444">birth tick t  →  κ(t)  ✗</text>
+  <text x="720" y="396" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">seed correct · keystream wrong</text>
+  <text x="720" y="414" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#475569">315 wrong-κ attempts: 0 recoveries</text>
+
+  <!-- Key derivation -->
+  <rect x="565" y="445" width="310" height="45" rx="8" fill="#0c1a14" stroke="#16a34a" stroke-width="1"/>
+  <text x="720" y="463" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#64748b">Session key</text>
+  <text x="720" y="481" text-anchor="middle" font-family="monospace" font-size="12" fill="#4ade80">PRNG( base_seed ⊕ κ(t) )</text>
+</svg>

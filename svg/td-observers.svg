@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
+<style>
+  /* Type 2 observer core – generate pulse */
+  @keyframes t2-pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.35)} }
+  /* Type 1 observer – slow blink showing it's watching, not acting */
+  @keyframes t1-blink { 0%,100%{opacity:.55} 50%{opacity:1} }
+  /* Type 3 outer cloud ring – slowly breathes / expands then fades */
+  @keyframes t3-breath { 0%,100%{transform:scale(1);opacity:.05} 50%{transform:scale(1.15);opacity:.02} }
+  /* Type 3 core – soft pulse as it receives */
+  @keyframes t3-receive { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.2);opacity:.8} }
+  .t2-core   { transform-box:fill-box; transform-origin:center; animation:t2-pulse   2s   ease-in-out infinite }
+  .t1-dot    { animation:t1-blink  2.5s ease-in-out infinite }
+  .t3-cloud  { transform-box:fill-box; transform-origin:center; animation:t3-breath  3s   ease-in-out infinite }
+  .t3-core   { transform-box:fill-box; transform-origin:center; animation:t3-receive 2.4s ease-in-out 1.2s infinite }
+</style>
+<defs>
+  <marker id="ag" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,.5 L8,3 L0,5.5Z" fill="#fbbf24" opacity=".8"/>
+  </marker>
+  <marker id="ag2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,.5 L8,3 L0,5.5Z" fill="#7d8590" opacity=".6"/>
+  </marker>
+</defs>
+
+<rect width="720" height="260" rx="8" fill="#0d1117"/>
+<rect width="720" height="260" rx="8" fill="none" stroke="#30363d" stroke-width="1"/>
+
+<!-- ── EVENT FRAME ── -->
+<text x="214" y="22" text-anchor="middle" font-size="8.5" fill="#7d8590" letter-spacing="2" font-family="monospace">EVENT FRAME</text>
+<rect x="124" y="32" width="180" height="174" rx="10" fill="#38bdf8" fill-opacity=".03" stroke="#38bdf8" stroke-width="1.4"/>
+
+<!-- Type 2 — In-Frame Observer (generates the scalar) -->
+<circle cx="214" cy="120" r="32" fill="#34d399" fill-opacity=".08" stroke="#34d399" stroke-width="1.4"/>
+<circle class="t2-core" cx="214" cy="120" r="10" fill="#34d399" opacity=".85"/>
+<text x="214" y="166" text-anchor="middle" font-size="11"  fill="#34d399" font-family="monospace">Type 2</text>
+<text x="214" y="180" text-anchor="middle" font-size="9"   fill="#34d399" opacity=".7" font-family="sans-serif">In-Frame Observer</text>
+<text x="214" y="194" text-anchor="middle" font-size="8.5" fill="#7d8590" font-family="sans-serif">performs Least Action</text>
+
+<!-- ── EXTERIOR ── -->
+<text x="52" y="22" text-anchor="middle" font-size="8.5" fill="#7d8590" letter-spacing="2" font-family="monospace">EXTERIOR</text>
+<!-- Type 1 — Unitary Observer -->
+<circle cx="52" cy="102" r="22" fill="#38bdf8" fill-opacity=".06" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="5 3"/>
+<circle class="t1-dot" cx="52" cy="102" r="7" fill="#38bdf8"/>
+<line x1="78" y1="104" x2="120" y2="116" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 3" opacity=".4" marker-end="url(#ag2)"/>
+<text x="52" y="140" text-anchor="middle" font-size="11"  fill="#38bdf8" font-family="monospace">Type 1</text>
+<text x="52" y="154" text-anchor="middle" font-size="9"   fill="#38bdf8" opacity=".7" font-family="sans-serif">Unitary Observer</text>
+<text x="52" y="168" text-anchor="middle" font-size="8.5" fill="#7d8590" font-family="sans-serif">watches · no collapse</text>
+
+<!-- ── PROPAGATION CHANNEL ── -->
+<!-- faint static background line -->
+<line x1="310" y1="105" x2="516" y2="105" stroke="#fbbf24" stroke-width=".8" opacity=".15"/>
+<text x="413" y="88"  text-anchor="middle" font-size="9"   fill="#fbbf24" opacity=".6" font-family="monospace">collapsed scalar propagates</text>
+<text x="413" y="122" text-anchor="middle" font-size="8.5" fill="#7d8590" font-family="monospace">no frame intersection required</text>
+
+<!-- traveling scalar dots – SMIL animated -->
+<circle cy="105" r="4.5" fill="#fbbf24">
+  <animate attributeName="cx" from="316" to="508" dur="2.4s" begin="0s"   repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0;.95;.95;0" keyTimes="0;.04;.76;1" dur="2.4s" begin="0s"   repeatCount="indefinite"/>
+</circle>
+<circle cy="105" r="3.5" fill="#fbbf24">
+  <animate attributeName="cx" from="316" to="508" dur="2.4s" begin="0.8s"  repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0;.75;.75;0" keyTimes="0;.04;.76;1" dur="2.4s" begin="0.8s"  repeatCount="indefinite"/>
+</circle>
+<circle cy="105" r="2.5" fill="#fbbf24">
+  <animate attributeName="cx" from="316" to="508" dur="2.4s" begin="1.6s"  repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0;.5;.5;0"  keyTimes="0;.04;.76;1" dur="2.4s" begin="1.6s"  repeatCount="indefinite"/>
+</circle>
+
+<!-- ── SEPARATE FRAME ── -->
+<text x="604" y="22" text-anchor="middle" font-size="8.5" fill="#7d8590" letter-spacing="2" font-family="monospace">SEPARATE FRAME</text>
+<rect x="516" y="32" width="176" height="174" rx="10" fill="#7d8590" fill-opacity=".03" stroke="#7d8590" stroke-width="1.4" stroke-dasharray="6 3"/>
+
+<!-- Type 3 — Shared Observer -->
+<circle class="t3-cloud" cx="604" cy="108" r="36" fill="#fbbf24" fill-opacity=".05"/>
+<circle cx="604" cy="108" r="24" fill="none" stroke="#fbbf24" stroke-width=".8" stroke-dasharray="3 5" opacity=".35"/>
+<circle cx="604" cy="108" r="13" fill="none" stroke="#fbbf24" stroke-width="1"  opacity=".55"/>
+<circle class="t3-core" cx="604" cy="108" r="5"  fill="#fbbf24" opacity=".5"/>
+<text x="604" y="160" text-anchor="middle" font-size="11"  fill="#fbbf24" font-family="monospace">Type 3</text>
+<text x="604" y="174" text-anchor="middle" font-size="9"   fill="#fbbf24" opacity=".7" font-family="sans-serif">Shared Observer</text>
+<text x="604" y="188" text-anchor="middle" font-size="8.5" fill="#7d8590" font-family="sans-serif">receives collapsed scalar</text>
+<text x="604" y="202" text-anchor="middle" font-size="8.5" fill="#7d8590" font-family="sans-serif">as new |φ⟩</text>
+
+<!-- Caption -->
+<text x="360" y="248" text-anchor="middle" font-size="9.5" fill="#7d8590" font-family="monospace">t collapsed by Type 2  ·  becomes |φ⟩ for Type 3  ·  without frame intersection</text>
+</svg>

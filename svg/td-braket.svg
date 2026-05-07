@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg">
+<style>
+  @keyframes pd   { 0%,100%{opacity:.3} 50%{opacity:1} }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.4)} }
+  @keyframes draw  { 0%{stroke-dashoffset:80;opacity:0} 6%{opacity:.65} 100%{stroke-dashoffset:0;opacity:.65} }
+  .pd1 { animation:pd 2.4s ease-in-out 0s    infinite }
+  .pd2 { animation:pd 2.4s ease-in-out .3s   infinite }
+  .pd3 { animation:pd 2.4s ease-in-out .6s   infinite }
+  .pd4 { animation:pd 2.4s ease-in-out .9s   infinite }
+  .pd5 { animation:pd 2.4s ease-in-out 1.2s  infinite }
+  .pd6 { animation:pd 2.4s ease-in-out 1.5s  infinite }
+  .pd7 { animation:pd 2.4s ease-in-out 1.8s  infinite }
+  .pd8 { animation:pd 2.4s ease-in-out 2.1s  infinite }
+  .obs { transform-box:fill-box; transform-origin:center; animation:pulse 1.8s ease-in-out 0s   infinite }
+  .scl { transform-box:fill-box; transform-origin:center; animation:pulse 1.8s ease-in-out .9s  infinite }
+  .ar1 { stroke-dasharray:80; animation:draw 2.6s ease-out 0s    infinite }
+  .ar2 { stroke-dasharray:76; animation:draw 2.6s ease-out 1.3s  infinite }
+</style>
+<defs>
+  <radialGradient id="bg-phi" cx="50%" cy="50%" r="50%">
+    <stop offset="20%"  stop-color="#38bdf8" stop-opacity=".18"/>
+    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="bg-scl" cx="50%" cy="50%" r="50%">
+    <stop offset="0%"   stop-color="#fbbf24" stop-opacity=".4"/>
+    <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+  </radialGradient>
+  <marker id="a" markerWidth="7" markerHeight="6" refX="6.5" refY="3" orient="auto">
+    <path d="M0,.5 L7,3 L0,5.5Z" fill="#38bdf8" opacity=".75"/>
+  </marker>
+</defs>
+
+<rect width="720" height="200" rx="8" fill="#0d1117"/>
+<rect width="720" height="200" rx="8" fill="none" stroke="#30363d" stroke-width="1"/>
+<line x1="240" y1="14" x2="240" y2="186" stroke="#30363d" stroke-dasharray="3 4"/>
+<line x1="480" y1="14" x2="480" y2="186" stroke="#30363d" stroke-dasharray="3 4"/>
+
+<!-- ── |φ⟩  FUTURE ── -->
+<circle cx="120" cy="100" r="64" fill="url(#bg-phi)"/>
+<circle cx="120" cy="100" r="52" fill="none" stroke="#38bdf8" stroke-width=".5" stroke-dasharray="3 6" opacity=".35"/>
+<circle cx="120" cy="100" r="40" fill="none" stroke="#38bdf8" stroke-width="1.3" opacity=".6"/>
+<!-- probability dots – staggered pulse (8 positions at r=40) -->
+<circle class="pd1" cx="160" cy="100" r="3.5" fill="#38bdf8"/>
+<circle class="pd2" cx="148" cy="72"  r="2.5" fill="#38bdf8"/>
+<circle class="pd3" cx="120" cy="60"  r="3"   fill="#38bdf8"/>
+<circle class="pd4" cx="92"  cy="72"  r="2"   fill="#38bdf8"/>
+<circle class="pd5" cx="80"  cy="100" r="3"   fill="#38bdf8"/>
+<circle class="pd6" cx="92"  cy="128" r="2.5" fill="#38bdf8"/>
+<circle class="pd7" cx="120" cy="140" r="3.5" fill="#38bdf8"/>
+<circle class="pd8" cx="148" cy="128" r="2"   fill="#38bdf8"/>
+<text x="120" y="26"  text-anchor="middle" font-size="9" fill="#38bdf8" opacity=".5" letter-spacing="2.5" font-family="monospace">FUTURE</text>
+<text x="120" y="108" text-anchor="middle" font-size="30" fill="#38bdf8" font-family="serif">|φ⟩</text>
+<text x="120" y="186" text-anchor="middle" font-size="10" fill="#7d8590" font-family="monospace">probability cloud · uncommitted</text>
+
+<!-- ── transition arrows (draw-in animation) ── -->
+<line class="ar1" x1="252" y1="100" x2="328" y2="100" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="290" y="93"  text-anchor="middle" font-size="9" fill="#7d8590" font-family="monospace">frame</text>
+<text x="290" y="116" text-anchor="middle" font-size="9" fill="#7d8590" font-family="monospace">entry</text>
+<line class="ar2" x1="492" y1="100" x2="564" y2="100" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="528" y="93"  text-anchor="middle" font-size="9" fill="#7d8590" font-family="monospace">Least</text>
+<text x="528" y="116" text-anchor="middle" font-size="9" fill="#7d8590" font-family="monospace">Action</text>
+
+<!-- ── ⟨u|  PRESENT ── -->
+<rect x="322" y="66" width="76" height="54" rx="6" fill="#34d399" fill-opacity=".05" stroke="#34d399" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="360" y="62"  text-anchor="middle" font-size="8" fill="#34d399" opacity=".6" font-family="monospace">in-frame</text>
+<circle cx="360" cy="93" r="15" fill="#34d399" fill-opacity=".1" stroke="#34d399" stroke-width="1.2"/>
+<circle class="obs" cx="360" cy="93" r="5.5" fill="#34d399"/>
+<text x="360" y="26"  text-anchor="middle" font-size="9" fill="#34d399" opacity=".5" letter-spacing="2.5" font-family="monospace">PRESENT</text>
+<text x="360" y="154" text-anchor="middle" font-size="30" fill="#34d399" font-family="serif">⟨u|</text>
+<text x="360" y="186" text-anchor="middle" font-size="10" fill="#7d8590" font-family="monospace">observer inside frame</text>
+
+<!-- ── ⟨u|φ⟩  PAST ── -->
+<circle cx="600" cy="88" r="28" fill="url(#bg-scl)"/>
+<circle class="scl" cx="600" cy="88" r="9" fill="#fbbf24" opacity=".95"/>
+<circle cx="600" cy="88" r="18" fill="none" stroke="#fbbf24" stroke-width="1" opacity=".3"/>
+<text x="600" y="26"  text-anchor="middle" font-size="9"  fill="#fbbf24" opacity=".5" letter-spacing="2.5" font-family="monospace">PAST</text>
+<text x="600" y="128" text-anchor="middle" font-size="12" fill="#fbbf24" font-family="monospace">t = scalar</text>
+<text x="600" y="156" text-anchor="middle" font-size="28" fill="#fbbf24" font-family="serif">⟨u|φ⟩</text>
+<text x="600" y="186" text-anchor="middle" font-size="10" fill="#7d8590" font-family="monospace">collapsed · finished · past</text>
+</svg>

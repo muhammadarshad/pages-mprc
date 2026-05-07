@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Z₂₅₆ ring — 4 quadrant arcs draw in sequence, vacuum nodes pulse
+     center=(290,290)  ring-radius=155  quarter-arc≈243.5 → dasharray=244 -->
+<svg viewBox="0 0 580 580" xmlns="http://www.w3.org/2000/svg">
+<style>
+  /* ── Arc sequential draw-in (period 6s) ──
+     arc0 draws 0→1s (0%→17%), stays visible rest of cycle
+     arc1 draws 0.8→1.8s (13%→30%), etc.                   */
+  @keyframes arc0 { 0%{stroke-dashoffset:244} 17%,100%{stroke-dashoffset:0} }
+  @keyframes arc1 { 0%,13%{stroke-dashoffset:244} 30%,100%{stroke-dashoffset:0} }
+  @keyframes arc2 { 0%,27%{stroke-dashoffset:244} 44%,100%{stroke-dashoffset:0} }
+  @keyframes arc3 { 0%,40%{stroke-dashoffset:244} 57%,100%{stroke-dashoffset:0} }
+  .arc0 { stroke-dasharray:244; animation:arc0 6s ease-out infinite }
+  .arc1 { stroke-dasharray:244; animation:arc1 6s ease-out infinite }
+  .arc2 { stroke-dasharray:244; animation:arc2 6s ease-out infinite }
+  .arc3 { stroke-dasharray:244; animation:arc3 6s ease-out infinite }
+
+  /* ── Vacuum node dots – staggered glow pulse ── */
+  @keyframes vac-glow { 0%,100%{transform:scale(1);opacity:.85} 50%{transform:scale(1.5);opacity:1} }
+  .vac0 { transform-box:fill-box; transform-origin:center; animation:vac-glow 2s ease-in-out 0s    infinite }
+  .vac1 { transform-box:fill-box; transform-origin:center; animation:vac-glow 2s ease-in-out .5s   infinite }
+  .vac2 { transform-box:fill-box; transform-origin:center; animation:vac-glow 2s ease-in-out 1s    infinite }
+  .vac3 { transform-box:fill-box; transform-origin:center; animation:vac-glow 2s ease-in-out 1.5s  infinite }
+
+  /* ── Vacuum diamond outlines – pulse opacity ── */
+  @keyframes diam { 0%,100%{opacity:.45} 50%{opacity:.95} }
+  .diam0 { animation:diam 2s ease-in-out 0s    infinite }
+  .diam1 { animation:diam 2s ease-in-out .5s   infinite }
+  .diam2 { animation:diam 2s ease-in-out 1s    infinite }
+  .diam3 { animation:diam 2s ease-in-out 1.5s  infinite }
+
+  /* ── Halo rings behind vacuum nodes ── */
+  @keyframes halo { 0%,100%{r:18;opacity:.1} 50%{r:24;opacity:.04} }
+  .halo0 { animation:halo 2s ease-in-out 0s    infinite }
+  .halo1 { animation:halo 2s ease-in-out .5s   infinite }
+  .halo2 { animation:halo 2s ease-in-out 1s    infinite }
+  .halo3 { animation:halo 2s ease-in-out 1.5s  infinite }
+</style>
+
+<rect width="580" height="580" rx="12" fill="#0d1117"/>
+
+<!-- ── Quadrant fills (static, very subtle) ── -->
+<path d="M 290,135 A 155,155 0 0,1 445,290 L 290,290 Z" fill="#38bdf8" opacity=".055"/>
+<path d="M 445,290 A 155,155 0 0,1 290,445 L 290,290 Z" fill="#34d399" opacity=".055"/>
+<path d="M 290,445 A 155,155 0 0,1 135,290 L 290,290 Z" fill="#38bdf8" opacity=".055"/>
+<path d="M 135,290 A 155,155 0 0,1 290,135 L 290,290 Z" fill="#34d399" opacity=".055"/>
+
+<!-- ── Quadrant arcs — animated sequential draw ── -->
+<!-- Q0: top → right  (φ 1–63) -->
+<path class="arc0" d="M 290,135 A 155,155 0 0,1 445,290" fill="none" stroke="#38bdf8" stroke-width="3.5" opacity=".7"/>
+<!-- Q1: right → bottom  (φ 65–127) -->
+<path class="arc1" d="M 445,290 A 155,155 0 0,1 290,445" fill="none" stroke="#34d399" stroke-width="3.5" opacity=".7"/>
+<!-- Q2: bottom → left  (φ 129–191) -->
+<path class="arc2" d="M 290,445 A 155,155 0 0,1 135,290" fill="none" stroke="#38bdf8" stroke-width="3.5" opacity=".7"/>
+<!-- Q3: left → top  (φ 193–255) -->
+<path class="arc3" d="M 135,290 A 155,155 0 0,1 290,135" fill="none" stroke="#34d399" stroke-width="3.5" opacity=".7"/>
+
+<!-- Clockwise arrow label -->
+<text x="352" y="152" text-anchor="start" font-size="14" fill="#38bdf8" opacity=".4" font-family="monospace">↻</text>
+
+<!-- ── Quadrant interior labels ── -->
+<text x="374" y="207" text-anchor="middle" font-size="12.5" fill="#38bdf8" opacity=".85" font-family="monospace">Q0</text>
+<text x="374" y="221" text-anchor="middle" font-size="9"    fill="#7d8590"             font-family="monospace">φ 1–63</text>
+<text x="374" y="372" text-anchor="middle" font-size="12.5" fill="#34d399" opacity=".85" font-family="monospace">Q1</text>
+<text x="374" y="386" text-anchor="middle" font-size="9"    fill="#7d8590"             font-family="monospace">φ 65–127</text>
+<text x="206" y="372" text-anchor="middle" font-size="12.5" fill="#38bdf8" opacity=".85" font-family="monospace">Q2</text>
+<text x="206" y="386" text-anchor="middle" font-size="9"    fill="#7d8590"             font-family="monospace">φ 129–191</text>
+<text x="206" y="207" text-anchor="middle" font-size="12.5" fill="#34d399" opacity=".85" font-family="monospace">Q3</text>
+<text x="206" y="221" text-anchor="middle" font-size="9"    fill="#7d8590"             font-family="monospace">φ 193–255</text>
+
+<!-- ── VACUUM NODE: φ=0  (top 290,135) ── -->
+<circle class="halo0" cx="290" cy="135" r="18" fill="#f47067"/>
+<circle class="vac0"  cx="290" cy="135" r="7"  fill="#f47067"/>
+<polygon class="diam0" points="290,121 304,135 290,149 276,135" fill="none" stroke="#f47067" stroke-width="1.5"/>
+<text x="290" y="76"  text-anchor="middle" font-size="13.5" fill="#f47067" font-weight="600" font-family="monospace">φ = 0</text>
+<text x="290" y="93"  text-anchor="middle" font-size="10"   fill="#7d8590"             font-family="monospace">h = 0  ·  New Moon</text>
+
+<!-- ── VACUUM NODE: φ=64  (right 445,290) ── -->
+<circle class="halo1" cx="445" cy="290" r="18" fill="#f47067"/>
+<circle class="vac1"  cx="445" cy="290" r="7"  fill="#f47067"/>
+<polygon class="diam1" points="445,276 459,290 445,304 431,290" fill="none" stroke="#f47067" stroke-width="1.5"/>
+<text x="462" y="284" text-anchor="start" font-size="13.5" fill="#f47067" font-weight="600" font-family="monospace">φ = 64</text>
+<text x="462" y="300" text-anchor="start" font-size="10"   fill="#7d8590"             font-family="monospace">h = 180 · 1st Qtr</text>
+
+<!-- ── VACUUM NODE: φ=128  (bottom 290,445) ── -->
+<circle class="halo2" cx="290" cy="445" r="18" fill="#f47067"/>
+<circle class="vac2"  cx="290" cy="445" r="7"  fill="#f47067"/>
+<polygon class="diam2" points="290,431 304,445 290,459 276,445" fill="none" stroke="#f47067" stroke-width="1.5"/>
+<text x="290" y="482" text-anchor="middle" font-size="13.5" fill="#f47067" font-weight="600" font-family="monospace">φ = 128</text>
+<text x="290" y="499" text-anchor="middle" font-size="10"   fill="#7d8590"             font-family="monospace">h = 360  ·  Full Moon</text>
+
+<!-- ── VACUUM NODE: φ=192  (left 135,290) ── -->
+<circle class="halo3" cx="135" cy="290" r="18" fill="#f47067"/>
+<circle class="vac3"  cx="135" cy="290" r="7"  fill="#f47067"/>
+<polygon class="diam3" points="135,276 149,290 135,304 121,290" fill="none" stroke="#f47067" stroke-width="1.5"/>
+<text x="118" y="284" text-anchor="end"    font-size="13.5" fill="#f47067" font-weight="600" font-family="monospace">φ = 192</text>
+<text x="118" y="300" text-anchor="end"    font-size="10"   fill="#7d8590"             font-family="monospace">h = 540 · Last Qtr</text>
+
+<!-- ── Center codec (static) ── -->
+<text x="290" y="268" text-anchor="middle" font-size="10.5" fill="#7d8590" font-family="monospace">Z₂₅₆  ·  256 states</text>
+<line x1="230" y1="276" x2="350" y2="276" stroke="#30363d" stroke-width="1"/>
+<text x="290" y="293" text-anchor="middle" font-size="12.5" fill="#38bdf8" font-family="monospace">g(h) = (16/45)·h</text>
+<text x="290" y="312" text-anchor="middle" font-size="12.5" fill="#34d399" font-family="monospace">g⁻¹(φ) = (45/16)·φ</text>
+<line x1="218" y1="322" x2="362" y2="322" stroke="#30363d" stroke-width="1"/>
+<text x="290" y="337" text-anchor="middle" font-size="9.5"  fill="#7d8590" font-family="monospace">[0, 720) hours  ↔  [0, 256) states</text>
+</svg>

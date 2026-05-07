@@ -5,3 +5,4 @@ docs/work/
 # Build/migration scripts — not for publication
 refactor.py
 book-nav.css
+.playwright-mcp/

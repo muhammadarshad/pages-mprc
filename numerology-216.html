@@ -18,6 +18,15 @@
 <style>
   /* ── Numerology Branch — page-specific components ── */
 
+  .revision-note {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 0.6rem;
+  }
+
   .abstract-box {
     border-left: 3px solid var(--accent);
     background: rgba(56,189,248,0.06);
@@ -52,6 +61,42 @@
     font-weight: 500;
   }
   .def-block p { margin: 0; }
+
+  .theorem-block {
+    border-left: 3px solid var(--text);
+    background: var(--surface);
+    padding: 14px 20px;
+    margin: 1.4em 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .theorem-block .block-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .theorem-block p { margin: 0; }
+
+  .interpretive-block {
+    border-left: 2px dashed var(--gold);
+    background: rgba(251,191,36,0.07);
+    padding: 14px 20px;
+    margin: 1.4em 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .interpretive-block .block-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .interpretive-block p { margin: 0; }
 
   .conjecture-box {
     border: 1.5px solid var(--accent);
@@ -136,6 +181,17 @@
     font-family: var(--font-mono); font-size: 0.72rem; color: #f87171;
     background: rgba(248,113,113,0.12); padding: 2px 8px; border-radius: 3px;
   }
+  .tag-partial {
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold);
+    background: rgba(251,191,36,0.12); padding: 2px 8px; border-radius: 3px;
+  }
+
+  .legend {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: -0.4rem;
+  }
 
   .removed-item {
     text-decoration: line-through;
@@ -172,9 +228,10 @@
       <header class="chapter-header">
         <h1>On the Superior<br><span>Uniqueness of 216</span></h1>
         <p class="chapter-subtitle">
-          A conjecture in numerology and degree-homogeneous Diophantine identity ·
+          A conjecture in numerology and pure-cubic consecutive identity ·
           Muhammad Arshad · May 2026 · Numerology Branch
         </p>
+        <div class="revision-note">v2 — revised after external critique</div>
       </header>
 
       <div class="chapter-body">
@@ -182,14 +239,14 @@
 <!-- ABSTRACT -->
 <div class="abstract-box">
   <div class="box-label">Abstract</div>
-  <p>The integer 26 is commonly celebrated as uniquely "sandwiched" between a perfect square
-  (25 = 5²) and a perfect cube (27 = 3³), a property whose uniqueness follows from the Mordell
-  equation \(y^2 = x^3 - 2\). We argue that this criterion is structurally deficient: it conflates
-  two distinct polynomial degrees. We establish that 216 satisfies a stronger,
-  degree-homogeneous uniqueness criterion — the sole integer solution to a cubic consecutive
-  identity — and demonstrate that two natural quantities, 40 and 55, arising from this number
-  are both independently anchored to the triangular number \(T(4) = 10\), with their difference
-  equal to \(T(5)\). A formal conjecture is stated with claims delineated by strength.</p>
+  <p>The integer 26 is commonly celebrated for lying between a perfect square (\(5^2 = 25\)) and
+  a perfect cube (\(3^3 = 27\)), a property whose uniqueness is established via the Mordell
+  equation \(x^3 - y^2 = 2\). We argue this criterion is structurally weaker than it appears:
+  the establishing equation relates quantities of two distinct polynomial degrees, and 26 is a
+  gap between their evaluations rather than the direct output of the identity. By contrast, 216
+  is established by a <em>pure-cubic consecutive identity</em> — uniform in degree 3 — whose
+  unique integer solution is a proven theorem. Mathematical claims and interpretive claims are
+  kept strictly separate throughout.</p>
 </div>
 
 <hr>
@@ -197,32 +254,26 @@
 <!-- SECTION 1 -->
 <section class="section">
   <div class="section-num">§1</div>
-  <h2>The Category Error in the <span class="accent">Standard Claim</span></h2>
-
-  <p>The celebrated property of 26 is stated as follows: it is the only positive integer
-  simultaneously one greater than a perfect square and one less than a perfect cube.</p>
+  <h2>The Establishing <span class="accent">Conditions</span></h2>
 
   <div class="def-block">
-    <div class="block-label">Standard Claim (Mordell)</div>
-    <p>The equation \(y^2 = x^3 - 2\) has the unique positive integer solution \((x,y) = (3,5)\),
-    giving \(27 - 25 = 2\) and pinning 26 as the only integer sandwiched between a square and a
-    cube at distance 1.</p>
+    <div class="block-label">Condition for 26 — Mordell</div>
+    <p>The equation \(x^3 - y^2 = 2\) has the unique positive integer solution \((x, y) = (3, 5)\),
+    giving \(27 - 25 = 2\). The number 26 is the integer between the two evaluated quantities.
+    It is a parameter within the equation, not its direct output.</p>
   </div>
-
-  <p>We observe that this property is <em>cross-degree</em>: the square \(5^2 = 25\) and the cube
-  \(3^3 = 27\) belong to distinct polynomial families. There is no single algebraic equation of
-  uniform degree that both satisfy. The "sandwich" is a proximity coincidence between two
-  incommensurable polynomial sequences, not a relationship within a coherent algebraic structure.</p>
 
   <div class="def-block">
-    <div class="block-label">Definition 1 — Degree-Homogeneous Identity</div>
-    <p>An identity \(f(n_1, n_2, \ldots, n_k) = 0\) is <em>degree-homogeneous</em> if every term
-    is a monomial of equal degree \(d\). A number established by a degree-homogeneous identity
-    inherits the scaling and structural coherence of a single polynomial family.</p>
+    <div class="block-label">Condition for 216</div>
+    <p>The equation \(3^3 + 4^3 + 5^3 = 6^3\) expresses 216 as both the sum of three cubes on the
+    left and a perfect cube on the right. 216 is the direct output — the value at which the
+    identity closes — not a gap between two separate evaluations.</p>
   </div>
 
-  <p>Under this definition, 26 fails immediately: its establishing equation
-  \(x^3 - y^2 = 2\) is degree-mixed (\(d=3\) and \(d=2\)), not degree-homogeneous.</p>
+  <p>The distinction is in the <em>role</em> the number plays. Both numbers are associated with a
+  Diophantine equation with a unique integer solution. The difference is that 26's equation mixes
+  polynomial degrees (degree 2 and degree 3) and 26 is the gap between them, while 216's equation
+  is uniform in degree 3 and 216 is its output.</p>
 </section>
 
 <hr>
@@ -233,15 +284,16 @@
   <h2>The Cubic Consecutive Identity <span class="accent">and 216</span></h2>
 
   <div class="def-block">
-    <div class="block-label">Definition 2 — Cubic Consecutive Identity</div>
-    <p>The Cubic Consecutive Identity is the Diophantine equation:</p>
+    <div class="block-label">Definition 1 — Pure-Cubic Consecutive Identity</div>
+    <p>The <em>pure-cubic consecutive identity</em> is:</p>
     <div class="eq-block">\[ n^3 + (n+1)^3 + (n+2)^3 = (n+3)^3 \]</div>
-    <p>seeking integer solutions \(n\).</p>
+    <p>It is "pure-cubic" in that every term is a cube of a consecutive integer — no term is a
+    square or linear quantity standing independently.</p>
   </div>
 
-  <div class="def-block">
-    <div class="block-label">Lemma 1 — Uniqueness</div>
-    <p>The Cubic Consecutive Identity has exactly one positive integer solution: \(n = 3\).</p>
+  <div class="theorem-block">
+    <div class="block-label">Theorem 1 — Uniqueness</div>
+    <p>The pure-cubic consecutive identity has exactly one positive integer solution: \(n = 3\).</p>
   </div>
 
   <p><strong>Proof.</strong> Expand both sides:</p>
@@ -254,8 +306,8 @@
   <p>Substituting \(n = 3\):</p>
   <div class="eq-block">\[ 3^3 + 4^3 + 5^3 = 27 + 64 + 125 = 216 = 6^3 \]</div>
 
-  <p>The identity is degree-homogeneous (\(d = 3\) throughout), bidirectionally verifiable, and
-  its unique solution yields 216.</p>
+  <p>All four terms are cubes of consecutive integers. The identity has a unique integer solution,
+  and that solution yields 216.</p>
 </section>
 
 <hr>
@@ -294,7 +346,9 @@
 
   <div class="def-block">
     <div class="block-label">Definition 3 — The Gap 40</div>
-    <p>\(40 = 256 - 216\), preserved invariantly under any common subtraction from a third quantity.</p>
+    <p>\(40 = 256 - 216\). This is the distance from 216 to \(2^8 = 256\). Its structural weight
+    depends on whether 256 carries significance in the framework being studied. It is stated here
+    as an arithmetic fact; no broader invariance claim is made.</p>
   </div>
 
   <div class="def-block">
@@ -332,32 +386,33 @@
     </thead>
     <tbody>
       <tr>
-        <td>Degree-homogeneous identity</td>
-        <td><span class="tag-no">✗ No</span> — mixed degrees 2 and 3</td>
-        <td><span class="tag-yes">✓ Yes</span> — degree 3 throughout</td>
+        <td>Has a Diophantine equation</td>
+        <td><span class="tag-yes">✓ Yes</span> — \(x^3 - y^2 = 2\)</td>
+        <td><span class="tag-yes">✓ Yes</span> — pure-cubic consecutive identity</td>
       </tr>
       <tr>
-        <td>Proven Diophantine uniqueness</td>
-        <td><span class="tag-yes">✓ Yes</span> — via Mordell equation</td>
-        <td><span class="tag-yes">✓ Yes</span> — cubic discriminant</td>
+        <td>Unique integer solution proven</td>
+        <td><span class="tag-yes">✓ Yes</span> — Mordell uniqueness</td>
+        <td><span class="tag-yes">✓ Yes</span> — Theorem 1</td>
       </tr>
       <tr>
-        <td>Number is subject of an equation</td>
-        <td><span class="tag-no">✗ No</span> — defined by a gap</td>
-        <td><span class="tag-yes">✓ Yes</span> — \(3^3+4^3+5^3=216\)</td>
+        <td>Number is the direct output of its equation</td>
+        <td><span class="tag-partial">~ Partial</span> — 26 is the gap between two evaluated quantities; it appears within the equation, not as its output</td>
+        <td><span class="tag-yes">✓ Yes</span> — 216 is the value at which both sides close</td>
       </tr>
       <tr>
-        <td>Membership in a polynomial family</td>
-        <td><span class="tag-no">✗ No</span> — extrinsic proximity</td>
-        <td><span class="tag-yes">✓ Yes</span> — degree-3 lift of (3,4,5)</td>
+        <td>Single-degree bases throughout</td>
+        <td><span class="tag-no">✗ No</span> — degree 2 (\(y^2\)) and degree 3 (\(x^3\)) mixed</td>
+        <td><span class="tag-yes">✓ Yes</span> — all bases are cubes (degree 3)</td>
       </tr>
       <tr>
-        <td>Generates structural offspring</td>
-        <td><span class="tag-no">✗ No</span></td>
-        <td><span class="tag-yes">✓ Yes</span> — 40 and 55 via \(T(4)\)</td>
+        <td>Belongs to a named integer family</td>
+        <td><span class="tag-no">✗ No</span> — no canonical family claim</td>
+        <td><span class="tag-yes">✓ Yes</span> — degree-3 extension of (3,4,5)</td>
       </tr>
     </tbody>
   </table>
+  <p class="legend">~ Partial: the claim holds in a qualified sense. See §1.</p>
 </section>
 
 <hr>
@@ -368,26 +423,57 @@
   <h2>The Formal <span class="accent">Statement</span></h2>
 
   <div class="conjecture-box">
-    <p>Let \(C\) be the unique positive integer solution to the Cubic Consecutive Identity
-    \(n^3+(n+1)^3+(n+2)^3=(n+3)^3\). Then \(C = 3\) and the number \(N = (C+3)^3 = 216\)
-    is more fundamentally unique than 26 by the following three independent criteria:</p>
+    <p>Let \(n=3\) be the unique integer solution to
+    \(n^3+(n+1)^3+(n+2)^3=(n+3)^3\) (Theorem 1). The number \(216 = 6^3\) arising from this
+    solution is distinguished from 26 by the following hierarchy of claims, separated by
+    epistemic status:</p>
 
-    <p><strong>I. Degree-Homogeneity.</strong> The establishing identity of 216 is
-    degree-homogeneous (\(d=3\)). The establishing condition of 26 is degree-mixed (\(d=3\)
-    and \(d=2\)) and therefore not a single algebraic identity.</p>
+    <p><strong>Theorem (proven).</strong> 216 is the unique output of the pure-cubic consecutive
+    identity. Uniqueness follows from the irreducibility of \(n^2+3n+3\) over \(\mathbb{R}\).</p>
 
-    <p><strong>II. Diophantine Uniqueness.</strong> \(n=3\) is the sole real root of
-    \(n^3 - 6n - 9 = 0\), proven by irreducibility of the complementary quadratic factor
-    over \(\mathbb{R}\).</p>
+    <p><strong>Theorem (proven).</strong> The quantities \(40 = 4 \cdot T(4)\) and
+    \(55 = T(T(4))\) share the seed \(T(4)=10\), have \(\gcd(40,55) = 5\), and satisfy
+    \(55 - 40 = T(5) = 15\).</p>
 
-    <p><strong>III. Structural Offspring via \(T(4)\).</strong> The quantities
-    \(40 = 4 \cdot T(4)\) and \(55 = T(T(4))\), arising independently from 216 and from
-    \(5^5\), share the common factor 5, have difference \(T(5)=15\), and are both generated
-    by a single seed \(T(4)=10\) through two distinct operations.</p>
+    <p><strong>Structural observation.</strong> The equation establishing 26 mixes polynomial
+    degrees 2 and 3; 26 is a gap between their evaluations. The equation establishing 216 is
+    uniform in degree 3; 216 is its direct output. This distinction is mathematically precise
+    but does not by itself constitute a formal ordering of fundamentalness.</p>
+
+    <p><strong>Interpretive claim (numerological judgment).</strong> On the grounds above, 216 is
+    a more elegant and structurally active number than 26: its uniqueness is intrinsic rather
+    than relational, and it is the output of its identity rather than a gap within it. This is
+    a judgment of mathematical aesthetics, not a theorem.</p>
   </div>
 </section>
 
 <hr>
+
+<!-- REVISIONS -->
+<section class="section">
+  <div class="section-num">Revisions from v1</div>
+  <h2>Corrections <span class="accent">After Scrutiny</span></h2>
+
+  <div class="def-block">
+    <div class="block-label">Degree-homogeneous framing</div>
+    <p>Corrected: \((n+1)^3\) is not a monomial. Replaced with “pure-cubic consecutive identity”.</p>
+  </div>
+
+  <div class="def-block">
+    <div class="block-label">“No single algebraic equation” claim</div>
+    <p>Corrected: \(x^3 - y^2 = 2\) is a valid single equation. The valid distinction is degree-mixing.</p>
+  </div>
+
+  <div class="def-block">
+    <div class="block-label">26 “not subject of an equation”</div>
+    <p>Corrected: 26 does appear in a Diophantine equation. The comparison is now qualified (“Partial”).</p>
+  </div>
+
+  <div class="def-block">
+    <div class="block-label">40 “invariance under subtraction”</div>
+    <p>Removed as a tautology. 40 is retained only as the arithmetic gap \(256 - 216\).</p>
+  </div>
+</section>
 
 <!-- REMOVED CLAIMS -->
 <section class="section">

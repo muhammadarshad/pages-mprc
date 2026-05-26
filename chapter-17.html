@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Muhammad Arshad">
+<title>Chapter 17: MPRC Black Hole — Horizon, Hawking Temperature &amp; No Singularity</title>
+<link rel="stylesheet" href="book-style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="book-layout">
+  <div id="nav-placeholder"></div>
+
+  <main class="book-main">
+    <div class="book-content">
+
+      <header class="chapter-header">
+        <h1>MPRC Black Hole<br/><span>Horizon, Hawking Temperature &amp; No Singularity</span></h1>
+        <p class="chapter-subtitle">
+          f<sub>L</sub>(0) = 0 derived from Z<sub>256</sub> ring geometry — κ<sub>L</sub>/κ<sub>GR</sub> = 2/9 exact —
+          T<sub>H</sub> = 1/(9τ²) without ħ, k<sub>B</sub>, or 2π — GR-pending horizon closed · exp19 · May 26, 2026
+        </p>
+      </header>
+
+      <div class="chapter-body">
+
+<!-- ─── ABSTRACT ─────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-num">Abstract</div>
+  <h2>Where GR and MPRC <span class="accent">Agree — and Diverge</span></h2>
+
+  <p>At the exact boundary of the event horizon (r = r<sub>s</sub>), both General Relativity and the MPRC framework derive the same result: <strong>the clock stops</strong>. This is not a coincidence — it is the same physical constraint expressed in two different formalisms.</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Agreement at the horizon boundary</div>
+    <div class="eq-row green">GR:   f_GR(r_s) = √(1 − r_s/r_s) = √0 = 0</div>
+    <div class="eq-row green">MPRC: f_L(0)   = 0 / (0 + τ/2) = 0         [DERIVED exp19]</div>
+    <div class="eq-row cyan" style="margin-top:8px;">Both frameworks: clock rate = 0 at the Schwarzschild radius  ✓</div>
+  </div>
+
+  <p>The crucial divergence appears <em>inside</em> the horizon. GR's clock rate becomes imaginary (√(−x)), forcing space and time coordinates to swap and producing an unavoidable singularity. MPRC imposes no such coordinate swap. Instead, the <strong>720° spinor stability condition</strong> defines a critical blanking radius at r<sub>c</sub> = r<sub>s</sub>/2, where matter nodes de-excite to vacuum. Space does not collapse. No physical singularity is created.</p>
+
+  <div class="eq-block">
+    <div class="eq-label">The divergence below the horizon</div>
+    <div class="eq-row" style="color:#f87171;">GR:   f_GR(r &lt; r_s) = √(negative) → imaginary → singularity at r=0</div>
+    <div class="eq-row green">MPRC: f_L(p) = p/(p+τ/2) &gt; 0 for all p &gt; 0 — no imaginary region</div>
+    <div class="eq-row cyan">      blanking at r_c = r_s/2 = τ/2  →  matter nodes blank, not spacetime</div>
+  </div>
+
+  <div class="pull-quote">
+    <p>GR-pending item CLOSED: f(r<sub>s</sub>) = 0 at the Schwarzschild radius is now derived from Z<sub>256</sub> ring geometry. The horizon is real. The singularity is not.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- ─── ANIMATION ─────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-num">00 · Animation</div>
+  <h2>MPRC Black Hole — <span class="accent">Live Render</span></h2>
+  <p>Accretion disk (Keplerian), event horizon glow, relativistic jets, and Hawking radiation particles — all annotated with MPRC Z<sub>256</sub> ring geometry. The outer ring marks τ = 256 ticks; gold dots are the four vacuum nodes {0, 64, 128, 192}. Particles emitted at the horizon boundary carry away the energy encoded in κ<sub>L</sub>/τ.</p>
+  <div style="text-align:center; margin:28px 0 8px;">
+    <canvas id="bh-canvas" width="680" height="500"
+      style="background:#000507; border-radius:6px; border:1px solid #1e293b;
+             max-width:100%; display:inline-block;"></canvas>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:12px;font:11px/1.6 'JetBrains Mono',monospace;color:#64748b;">
+    <span><span style="color:#38bdf8;">━</span> Event horizon (f_L=0)</span>
+    <span><span style="color:#fbbf24;">●</span> Vacuum nodes Z₂₅₆</span>
+    <span><span style="color:#34d399;">✦</span> Hawking radiation</span>
+    <span><span style="color:#a78bfa;">▲</span> Relativistic jet</span>
+    <span><span style="color:#fb923c;">━</span> Accretion disk</span>
+  </div>
+</section>
+
+<script>
+(function(){
+  const canvas = document.getElementById('bh-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const cx = W/2, cy = H/2 + 10;
+
+  /* ── MPRC constants ─────────────────────────────── */
+  const TAU      = 256;
+  const HORIZON  = 82;   // event horizon visual radius
+  const BLANKING = 41;   // r_c = r_s/2 blanking radius
+  const PHOTON   = 107;  // photon sphere ≈ 1.3 × HORIZON
+  const DISK_IN  = 90;
+  const DISK_OUT = 230;
+  const RING_R   = 270;  // Z₂₅₆ reference ring
+
+  /* ── static star field ──────────────────────────── */
+  const STARS = Array.from({length:220}, () => ({
+    x: Math.random()*W, y: Math.random()*H,
+    r: Math.random()*1.3+0.2,
+    a: Math.random()*0.7+0.3,
+    twinkle: Math.random()*0.03+0.005
+  }));
+
+  /* ── accretion disk particles ───────────────────── */
+  const DISK = Array.from({length:600}, () => {
+    const r     = DISK_IN + Math.pow(Math.random(), 1.4) * (DISK_OUT - DISK_IN);
+    const angle = Math.random() * Math.PI * 2;
+    const heat  = 1 - (r - DISK_IN) / (DISK_OUT - DISK_IN);
+    /* Keplerian orbital speed ∝ r^(-3/2) */
+    const speed = 0.0055 * Math.pow(DISK_IN / r, 1.5) * (Math.random()*0.3+0.85);
+    return { r, angle, speed, heat,
+             size: heat*2.2+0.4,
+             yOff: (Math.random()-0.5)*4 };
+  });
+
+  /* ── Hawking & jet particle pools ───────────────── */
+  let hawking = [], jets = [];
+
+  function spawnHawking() {
+    const a = Math.random() * Math.PI * 2;
+    const speed = 1.0 + Math.random() * 1.8;
+    hawking.push({
+      x: cx + Math.cos(a)*(HORIZON+2), y: cy + Math.sin(a)*(HORIZON+2)*0.55,
+      vx: Math.cos(a)*speed*(0.8+Math.random()*0.4),
+      vy: Math.sin(a)*speed*(0.4+Math.random()*0.3),
+      life:1.0, decay:0.007+Math.random()*0.009,
+      size:Math.random()*2.5+0.8,
+      hue: [180,145,60][Math.floor(Math.random()*3)]
+    });
+  }
+  function spawnJet() {
+    const top = Math.random()<0.5;
+    jets.push({
+      x: cx+(Math.random()-0.5)*12, y: cy,
+      vx:(Math.random()-0.5)*0.6,
+      vy:(top?-1:1)*(2.5+Math.random()*2),
+      life:1.0, decay:0.014+Math.random()*0.008,
+      size:Math.random()*2+0.8
+    });
+  }
+
+  /* ── helpers ────────────────────────────────────── */
+  function diskColor(heat) {
+    if (heat>0.75) return `rgb(255,255,${Math.round(180+75*heat)})`;
+    if (heat>0.45) return `rgb(255,${Math.round(130+100*heat)},40)`;
+    if (heat>0.18) return `rgb(255,${Math.round(80+60*heat)},20)`;
+    return `rgb(${Math.round(160+60*heat)},40,20)`;
+  }
+
+  /* ── draw layers ────────────────────────────────── */
+  function drawStars(t) {
+    STARS.forEach(s => {
+      const a = s.a + Math.sin(t*s.twinkle)*0.3;
+      ctx.globalAlpha = Math.max(0.1,a);
+      ctx.fillStyle = '#c8d8ff';
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, 6.2832);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  function drawDiskLayer(front, t) {
+    DISK.forEach(p => {
+      const isFront = Math.sin(p.angle) >= 0;
+      if (isFront !== front) return;
+      const ex = cx + Math.cos(p.angle)*p.r;
+      const ey = cy + Math.sin(p.angle)*p.r*0.28 + p.yOff;
+      /* hide pixels inside horizon shadow */
+      if (!front) {
+        const dx=ex-cx, dy=(ey-cy)/0.28;
+        if (dx*dx+dy*dy < HORIZON*HORIZON*0.9) return;
+      }
+      const brightness = front ? (0.55+p.heat*0.45) : (0.25+p.heat*0.3);
+      ctx.globalAlpha = brightness;
+      ctx.fillStyle = diskColor(p.heat);
+      ctx.shadowColor = diskColor(p.heat);
+      ctx.shadowBlur = front ? 4 : 2;
+      ctx.beginPath();
+      ctx.arc(ex, ey, p.size, 0, 6.2832);
+      ctx.fill();
+      p.angle += p.speed;
+    });
+    ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+  }
+
+  function drawHorizon(t) {
+    /* deep gravitational shadow */
+    const shadow = ctx.createRadialGradient(cx,cy,HORIZON*0.3,cx,cy,HORIZON*2.2);
+    shadow.addColorStop(0,  'rgba(0,0,0,1)');
+    shadow.addColorStop(0.6,'rgba(0,2,8,0.97)');
+    shadow.addColorStop(1,  'rgba(0,5,15,0)');
+    ctx.beginPath(); ctx.arc(cx,cy,HORIZON*2.2,0,6.2832);
+    ctx.fillStyle = shadow; ctx.fill();
+
+    /* pure black disc */
+    ctx.beginPath(); ctx.arc(cx,cy,HORIZON,0,6.2832);
+    ctx.fillStyle = '#000'; ctx.fill();
+
+    /* photon sphere glow */
+    ctx.beginPath(); ctx.arc(cx,cy,PHOTON,0,6.2832);
+    ctx.strokeStyle='rgba(80,180,255,0.12)'; ctx.lineWidth=14; ctx.stroke();
+    ctx.strokeStyle='rgba(80,180,255,0.08)'; ctx.lineWidth=24; ctx.stroke();
+
+    /* event horizon ring — pulsing */
+    const pulse = 0.65+0.35*Math.sin(t*0.018);
+    ctx.beginPath(); ctx.arc(cx,cy,HORIZON,0,6.2832);
+    ctx.strokeStyle=`rgba(56,189,248,${pulse})`; ctx.lineWidth=2.5;
+    ctx.shadowColor='#38bdf8'; ctx.shadowBlur=18; ctx.stroke();
+    ctx.shadowBlur=0;
+
+    /* blanking radius — dashed gold inside (partial visibility above disk) */
+    ctx.save();
+    ctx.setLineDash([4,5]);
+    ctx.beginPath(); ctx.arc(cx,cy,BLANKING,0,6.2832);
+    ctx.strokeStyle='rgba(251,191,36,0.35)'; ctx.lineWidth=1.2; ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+  }
+
+  function drawMPRCRing(t) {
+    ctx.save(); ctx.translate(cx,cy);
+
+    /* ring circle */
+    ctx.beginPath(); ctx.arc(0,0,RING_R,0,6.2832);
+    ctx.strokeStyle='rgba(80,100,160,0.18)'; ctx.lineWidth=1; ctx.stroke();
+
+    /* 256 ticks */
+    for (let i=0;i<256;i++) {
+      const ang   = i/256*6.2832 - 1.5708;
+      const vac   = (i%64===0);
+      const major = (i%32===0);
+      const tlen  = vac?14:major?7:3;
+      const alpha = vac?0.9:major?0.35:0.12;
+      ctx.beginPath();
+      ctx.moveTo(Math.cos(ang)*RING_R, Math.sin(ang)*RING_R);
+      ctx.lineTo(Math.cos(ang)*(RING_R+tlen), Math.sin(ang)*(RING_R+tlen));
+      ctx.strokeStyle = vac ? `rgba(251,191,36,${alpha})` : `rgba(100,140,220,${alpha})`;
+      ctx.lineWidth = vac?2:1;
+      ctx.stroke();
+    }
+
+    /* vacuum node gold dots + labels */
+    const VNODES = [
+      {tick:0,  ang:-1.5708, lbl:'0 (Horizon)'},
+      {tick:64, ang: 0,      lbl:'64 = τ/4'},
+      {tick:128,ang: 1.5708, lbl:'128 = τ/2'},
+      {tick:192,ang: 3.1416, lbl:'192 = 3τ/4'},
+    ];
+    ctx.font='10px "JetBrains Mono",monospace';
+    VNODES.forEach(v => {
+      const xd = Math.cos(v.ang)*(RING_R+2);
+      const yd = Math.sin(v.ang)*(RING_R+2);
+      /* dot */
+      ctx.beginPath(); ctx.arc(xd,yd,5.5,0,6.2832);
+      ctx.fillStyle='#fbbf24';
+      ctx.shadowColor='#fbbf24'; ctx.shadowBlur=10;
+      ctx.fill(); ctx.shadowBlur=0;
+      /* label offset outward */
+      const lx = Math.cos(v.ang)*(RING_R+22);
+      const ly = Math.sin(v.ang)*(RING_R+22);
+      ctx.fillStyle='rgba(251,191,36,0.7)';
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(v.lbl, lx, ly);
+    });
+    ctx.restore();
+  }
+
+  function drawHawkingParticles(t) {
+    const HUES = {180:'56,189,248', 145:'52,211,153', 60:'251,191,36'};
+    for (let i=hawking.length-1;i>=0;i--) {
+      const p=hawking[i];
+      p.x+=p.vx; p.y+=p.vy; p.life-=p.decay;
+      if(p.life<=0){hawking.splice(i,1);continue;}
+      const rgb = HUES[p.hue]||'56,189,248';
+      ctx.globalAlpha=p.life*0.85;
+      ctx.fillStyle=`rgb(${rgb})`;
+      ctx.shadowColor=`rgb(${rgb})`; ctx.shadowBlur=8;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,6.2832); ctx.fill();
+    }
+    for (let i=jets.length-1;i>=0;i--) {
+      const p=jets[i];
+      p.x+=p.vx; p.y+=p.vy; p.life-=p.decay;
+      if(p.life<=0){jets.splice(i,1);continue;}
+      ctx.globalAlpha=p.life*0.65;
+      ctx.fillStyle='rgb(167,139,250)';
+      ctx.shadowColor='rgb(167,139,250)'; ctx.shadowBlur=10;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,6.2832); ctx.fill();
+    }
+    ctx.globalAlpha=1; ctx.shadowBlur=0;
+  }
+
+  function drawLabels() {
+    ctx.save();
+    ctx.font='11px "JetBrains Mono",monospace';
+
+    /* MPRC formulae — top left */
+    const lines = [
+      {txt:'f_L(0) = 0   [DERIVED]', color:'#34d399'},
+      {txt:'κ_L/κ_GR = 2/9',          color:'#38bdf8'},
+      {txt:'T_H = 1/(9τ²)',            color:'#38bdf8'},
+      {txt:'τ = 256  Z₂₅₆  MPRC',     color:'#64748b'},
+    ];
+    lines.forEach((l,i)=>{
+      ctx.fillStyle=l.color; ctx.globalAlpha=0.9;
+      ctx.fillText(l.txt, 18, 24+i*17);
+    });
+
+    /* Event horizon pointer */
+    ctx.globalAlpha=0.8;
+    ctx.strokeStyle='#38bdf8'; ctx.lineWidth=1;
+    ctx.beginPath();
+    ctx.moveTo(cx+HORIZON+5, cy-18);
+    ctx.lineTo(cx+HORIZON+50, cy-38);
+    ctx.stroke();
+    ctx.fillStyle='#38bdf8';
+    ctx.textAlign='left'; ctx.textBaseline='middle';
+    ctx.fillText('Event Horizon', cx+HORIZON+52, cy-38);
+
+    /* Photon sphere pointer */
+    ctx.strokeStyle='rgba(80,180,255,0.5)'; ctx.lineWidth=1;
+    ctx.beginPath();
+    const pa = -0.7;
+    ctx.moveTo(cx+Math.cos(pa)*PHOTON+5, cy+Math.sin(pa)*PHOTON-5);
+    ctx.lineTo(cx+Math.cos(pa)*PHOTON+50, cy+Math.sin(pa)*PHOTON-30);
+    ctx.stroke();
+    ctx.fillStyle='rgba(80,180,255,0.6)';
+    ctx.fillText('Photon Sphere', cx+Math.cos(pa)*PHOTON+52, cy+Math.sin(pa)*PHOTON-30);
+
+    /* Hawking radiation note — bottom */
+    ctx.globalAlpha=0.55; ctx.textAlign='center';
+    ctx.fillStyle='#34d399';
+    ctx.fillText('Hawking Radiation  (T_H = κ_L/τ = 1.695×10⁻⁶)', cx, H-16);
+
+    ctx.globalAlpha=1; ctx.restore();
+  }
+
+  /* ── main loop ──────────────────────────────────── */
+  let frame=0;
+  function loop(t) {
+    frame++;
+
+    /* fade trail */
+    ctx.fillStyle='rgba(0,5,7,0.82)';
+    ctx.fillRect(0,0,W,H);
+
+    drawStars(t);
+    drawDiskLayer(false, t);  /* back disk */
+    drawHorizon(t);
+    drawDiskLayer(true,  t);  /* front disk */
+    drawMPRCRing(t);
+    if(frame%3===0) spawnHawking();
+    if(frame%7===0) spawnJet();
+    drawHawkingParticles(t);
+    drawLabels();
+
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+
+<hr>
+
+<!-- ─── RING TOPOLOGY ─────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-num">01 · Ring Topology</div>
+  <h2>The Horizon as <span class="accent">Vacuum Node 0</span></h2>
+
+  <p>In MPRC the radial coordinate is quantized on Z<sub>256</sub>. Setting r<sub>s</sub> = τ = 256 places the Schwarzschild radius exactly on ring position 0 — one of the four structural vacuum nodes {0, 64, 128, 192}. The horizon is not an arbitrary special point: it is the canonical vacuum of the ring.</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Horizon placement</div>
+    <div class="eq-row">r_s = τ = 256</div>
+    <div class="eq-row">r_s mod τ = 256 mod 256 = 0</div>
+    <div class="eq-row cyan">0 ∈ VACUUM = {0, 64, 128, 192}  →  horizon is vacuum node 0  [EXACT]</div>
+    <div class="eq-row" style="margin-top:8px;">Degree codec:  1 tick = 45°/32 = 1.40625°   →   64 ticks = 90°</div>
+  </div>
+
+  <!-- SVG 1: Z_256 ring with horizon, blanking radius, vacuum nodes -->
+  <div class="figure">
+    <svg viewBox="0 0 680 450" xmlns="http://www.w3.org/2000/svg" style="background:#0f1420;border-radius:6px;border:1px solid #2a3050;">
+      <defs>
+        <radialGradient id="horizonGlow" cx="50%" cy="47%" r="50%">
+          <stop offset="0%"   stop-color="#000000" stop-opacity="1"/>
+          <stop offset="38%"  stop-color="#090415" stop-opacity="1"/>
+          <stop offset="60%"  stop-color="#1a0a08" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#0f1420" stop-opacity="1"/>
+        </radialGradient>
+        <radialGradient id="activeZone" cx="50%" cy="47%" r="50%">
+          <stop offset="0%"   stop-color="rgba(56,189,248,0.0)"/>
+          <stop offset="70%"  stop-color="rgba(56,189,248,0.04)"/>
+          <stop offset="100%" stop-color="rgba(56,189,248,0.12)"/>
+        </radialGradient>
+        <filter id="horizonBlur">
+          <feGaussianBlur stdDeviation="4"/>
+        </filter>
+      </defs>
+
+      <!-- Outer active field region -->
+      <circle cx="340" cy="212" r="210" fill="url(#activeZone)"/>
+
+      <!-- Blanking zone fill (between r_c and r_s) -->
+      <circle cx="340" cy="212" r="170" fill="url(#horizonGlow)"/>
+
+      <!-- Torus field lines — latitude rings (adapted from ring_256) -->
+      <ellipse cx="340" cy="212" rx="170" ry="11"  fill="none" stroke="#1e3050" stroke-width="1"   opacity="0.9"/>
+      <ellipse cx="340" cy="212" rx="170" ry="22"  fill="none" stroke="#1e3050" stroke-width="0.8" opacity="0.8"/>
+      <ellipse cx="340" cy="212" rx="170" ry="43"  fill="none" stroke="#213355" stroke-width="0.8" opacity="0.7"/>
+      <ellipse cx="340" cy="212" rx="170" ry="85"  fill="none" stroke="#243860" stroke-width="0.8" opacity="0.6"/>
+      <ellipse cx="340" cy="212" rx="170" ry="128" fill="none" stroke="#273d6a" stroke-width="0.7" opacity="0.5"/>
+      <ellipse cx="340" cy="212" rx="170" ry="160" fill="none" stroke="#2a4070" stroke-width="0.7" opacity="0.4"/>
+
+      <!-- Torus field lines — longitude rings -->
+      <ellipse cx="340" cy="212" rx="11"  ry="170" fill="none" stroke="#2a1a2e" stroke-width="1"   opacity="0.9"/>
+      <ellipse cx="340" cy="212" rx="22"  ry="170" fill="none" stroke="#2a1a2e" stroke-width="0.8" opacity="0.8"/>
+      <ellipse cx="340" cy="212" rx="43"  ry="170" fill="none" stroke="#2d1e32" stroke-width="0.8" opacity="0.7"/>
+      <ellipse cx="340" cy="212" rx="85"  ry="170" fill="none" stroke="#301e35" stroke-width="0.8" opacity="0.6"/>
+      <ellipse cx="340" cy="212" rx="128" ry="170" fill="none" stroke="#33203a" stroke-width="0.7" opacity="0.5"/>
+
+      <!-- Blanking radius circle r_c = τ/2 = 128 → mapped to r=85 (half of 170) -->
+      <circle cx="340" cy="212" r="85" fill="rgba(0,0,0,0.75)" stroke="none"/>
+      <circle cx="340" cy="212" r="85" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="7,4"/>
+
+      <!-- Event horizon circle glow -->
+      <circle cx="340" cy="212" r="173" fill="none" stroke="rgba(248,113,113,0.18)" stroke-width="6" filter="url(#horizonBlur)"/>
+      <!-- Event horizon circle -->
+      <circle cx="340" cy="212" r="170" fill="none" stroke="#f87171" stroke-width="2"/>
+
+      <!-- Cross reference lines -->
+      <line x1="510" y1="212" x2="170" y2="212" stroke="#1e2d4d" stroke-width="1" stroke-dasharray="3,4"/>
+      <line x1="340" y1="382" x2="340" y2="42"  stroke="#1e2d4d" stroke-width="1" stroke-dasharray="3,4"/>
+
+      <!-- Vacuum node dots  {0→right, 64→bottom, 128→left, 192→top} -->
+      <!-- p=0   (510, 212) — HORIZON node, extra glow -->
+      <circle cx="510" cy="212" r="11" fill="rgba(248,113,113,0.2)" stroke="none"/>
+      <circle cx="510" cy="212" r="7"  fill="#f87171" stroke="#0f1420" stroke-width="2"/>
+      <!-- p=64  (340, 382) -->
+      <circle cx="340" cy="382" r="7"  fill="#f87171" stroke="#0f1420" stroke-width="2"/>
+      <!-- p=128 (170, 212) -->
+      <circle cx="170" cy="212" r="7"  fill="#f87171" stroke="#0f1420" stroke-width="2"/>
+      <!-- p=192 (340, 42) -->
+      <circle cx="340" cy="42"  r="7"  fill="#f87171" stroke="#0f1420" stroke-width="2"/>
+
+      <!-- Vacuum node labels -->
+      <text x="524" y="208" font-family="JetBrains Mono,monospace" font-size="11" fill="#f87171">p=0  V₀</text>
+      <text x="524" y="222" font-family="JetBrains Mono,monospace" font-size="10" fill="#fbbf24">← HORIZON</text>
+      <text x="350" y="400" font-family="JetBrains Mono,monospace" font-size="11" fill="#f87171">V₆₄  (p=64)</text>
+      <text x="158" y="208" font-family="JetBrains Mono,monospace" font-size="11" fill="#f87171" text-anchor="end">V₁₂₈</text>
+      <text x="340" y="32"  font-family="JetBrains Mono,monospace" font-size="11" fill="#f87171" text-anchor="middle">V₁₉₂  (p=192)</text>
+
+      <!-- r_s annotation -->
+      <text x="398" y="160" font-family="Inter,sans-serif" font-size="12" fill="#f87171" font-style="italic">r_s = τ = 256</text>
+      <text x="398" y="175" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(248,113,113,0.6)">f_L(0) = 0</text>
+
+      <!-- Blanking radius annotation -->
+      <text x="342" y="198" font-family="Inter,sans-serif" font-size="11" fill="#fbbf24" text-anchor="middle">r_c = τ/2</text>
+      <text x="342" y="212" font-family="Inter,sans-serif" font-size="10" fill="#8892a8"  text-anchor="middle">BLANK</text>
+      <text x="342" y="225" font-family="Inter,sans-serif" font-size="10" fill="#5f718f"  text-anchor="middle">nodes → vacuum</text>
+
+      <!-- Active zone label (between r_c and far field) -->
+      <text x="560" y="280" font-family="Inter,sans-serif" font-size="11" fill="rgba(56,189,248,0.7)">active lattice</text>
+      <text x="560" y="294" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(56,189,248,0.5)">f_L → 1</text>
+
+      <!-- Active zone label between r_c and r_s -->
+      <text x="395" y="240" font-family="Inter,sans-serif" font-size="10" fill="rgba(251,191,36,0.7)">clock active</text>
+      <text x="395" y="253" font-family="JetBrains Mono,monospace" font-size="9"  fill="rgba(251,191,36,0.5)">0 &lt; f_L &lt; 2/3</text>
+
+      <!-- Degree codec note -->
+      <text x="20" y="416" font-family="JetBrains Mono,monospace" font-size="10" fill="#3d5070">tick = (32/45)·deg  →  64 ticks = 90°</text>
+
+      <!-- Center dot -->
+      <circle cx="340" cy="212" r="4" fill="#5f718f"/>
+
+      <text x="340" y="440" font-family="Inter,sans-serif" font-size="11" fill="#8892a8" text-anchor="middle">
+        Fig 1 — Z₂₅₆ ring · r_s = τ at vacuum node 0 · 4 structural vacuums · blanking radius r_c = τ/2 (dashed gold)
+      </text>
+    </svg>
+    <div class="figure-caption">The Z₂₅₆ ring as a radial lattice. Red dots: vacuum nodes {0, 64, 128, 192}. The event horizon r<sub>s</sub> = τ = 256 lands exactly on vacuum node 0 (right, HORIZON). The dashed gold circle is the blanking radius r<sub>c</sub> = τ/2 — inside this radius, matter nodes de-excite to vacuum instead of collapsing to a singularity. The active lattice (blue glow) extends from r<sub>c</sub> outward to the far field where f<sub>L</sub> → 1.</div>
+  </div>
+
+  <table class="data-table">
+    <tr><th>Ring Node</th><th>Lattice Position</th><th>Clock Rate f_L</th><th>Physical Meaning</th><th>Status</th></tr>
+    <tr><td><strong>p = 0</strong></td><td>V₀ — vacuum node 0</td><td>0 (stops)</td><td>Event horizon r_s = τ</td><td><span class="ok">DERIVED</span></td></tr>
+    <tr><td><strong>p = 64</strong></td><td>V₆₄ — π_sphere</td><td>64/192 = 1/3</td><td>Quarter-ring vacuum</td><td><span class="ok">DERIVED</span></td></tr>
+    <tr><td><strong>p = 128</strong></td><td>V₁₂₈ — π_circle</td><td>128/256 = 1/2</td><td>Half-ring vacuum, blanking radius r_c</td><td><span class="ok">DERIVED</span></td></tr>
+    <tr><td><strong>p = 192</strong></td><td>V₁₉₂ — 3π_sphere</td><td>192/320 = 3/5</td><td>Three-quarter vacuum</td><td><span class="ok">DERIVED</span></td></tr>
+    <tr><td><strong>p → ∞</strong></td><td>Far field</td><td>→ 1 (flat)</td><td>Newtonian / flat spacetime limit</td><td><span class="ok">DERIVED</span></td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- ─── CLOCK FIELD ────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-num">02 · Clock Field</div>
+  <h2>f<sub>L</sub>(p) vs f<sub>GR</sub>(r) — <span class="accent">Agreement and Divergence</span></h2>
+
+  <p>The MPRC clock field f<sub>L</sub>(p) = p / (p + τ/2) is derived entirely from ring geometry. It agrees with GR at the horizon (both give 0) and approaches 1 in the far field — but diverges structurally for r &lt; r<sub>s</sub> where GR becomes imaginary and MPRC remains real and positive.</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Clock field comparison</div>
+    <div class="eq-row">MPRC: f_L(p)   = p / (p + τ/2)     for all p ≥ 0</div>
+    <div class="eq-row">GR:   f_GR(r)  = √(1 − r_s/r)      only defined for r ≥ r_s</div>
+    <div class="eq-row" style="margin-top:8px;">Agreement:  f_L(0) = f_GR(r_s) = 0  [horizon, clock stops]</div>
+    <div class="eq-row green">MPRC advantage: f_L(p) ∈ ℝ for all p — no imaginary region, no singularity</div>
+  </div>
+
+  <!-- SVG 2: Clock field comparison plot -->
+  <div class="figure">
+    <svg viewBox="0 0 680 310" xmlns="http://www.w3.org/2000/svg" style="background:#0f1420;border-radius:6px;border:1px solid #2a3050;">
+
+      <!-- Plot area background -->
+      <rect x="80" y="25" width="540" height="230" fill="#080e1a" rx="3"/>
+
+      <!-- GR undefined region (left of r_s, x < 350): hatched red -->
+      <rect x="80" y="25" width="270" height="230" fill="rgba(248,113,113,0.04)"/>
+      <line x1="90"  y1="25" x2="80"  y2="35"  stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="110" y1="25" x2="80"  y2="55"  stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="130" y1="25" x2="80"  y2="75"  stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="150" y1="25" x2="80"  y2="95"  stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="170" y1="25" x2="80"  y2="115" stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="190" y1="25" x2="80"  y2="135" stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="210" y1="25" x2="80"  y2="155" stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="230" y1="25" x2="80"  y2="175" stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="250" y1="25" x2="80"  y2="195" stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="270" y1="25" x2="80"  y2="215" stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="290" y1="25" x2="100" y2="215" stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="310" y1="25" x2="120" y2="215" stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="330" y1="25" x2="140" y2="215" stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+      <line x1="350" y1="25" x2="160" y2="215" stroke="rgba(248,113,113,0.12)" stroke-width="1"/>
+
+      <!-- Grid lines -->
+      <!-- Horizontal: f=0 (y=255), f=0.25 (y=200), f=0.5 (y=145), f=0.75 (y=90), f=1.0 (y=35) -->
+      <line x1="80" y1="255" x2="620" y2="255" stroke="#1e2d4d" stroke-width="1"/>
+      <line x1="80" y1="200" x2="620" y2="200" stroke="#1e2d4d" stroke-width="0.8" stroke-dasharray="4,4"/>
+      <line x1="80" y1="145" x2="620" y2="145" stroke="#1e2d4d" stroke-width="0.8" stroke-dasharray="4,4"/>
+      <line x1="80" y1="90"  x2="620" y2="90"  stroke="#1e2d4d" stroke-width="0.8" stroke-dasharray="4,4"/>
+      <line x1="80" y1="35"  x2="620" y2="35"  stroke="#1e2d4d" stroke-width="0.8" stroke-dasharray="4,4"/>
+
+      <!-- Y-axis labels -->
+      <text x="68" y="259" font-family="JetBrains Mono,monospace" font-size="10" fill="#5f718f" text-anchor="end">0</text>
+      <text x="68" y="204" font-family="JetBrains Mono,monospace" font-size="10" fill="#5f718f" text-anchor="end">0.25</text>
+      <text x="68" y="149" font-family="JetBrains Mono,monospace" font-size="10" fill="#5f718f" text-anchor="end">0.50</text>
+      <text x="68" y="94"  font-family="JetBrains Mono,monospace" font-size="10" fill="#5f718f" text-anchor="end">0.75</text>
+      <text x="68" y="39"  font-family="JetBrains Mono,monospace" font-size="10" fill="#5f718f" text-anchor="end">1.00</text>
+      <text x="30" y="145" font-family="Inter,sans-serif" font-size="11" fill="#8892a8" text-anchor="middle" transform="rotate(-90,30,145)">clock rate  f</text>
+
+      <!-- X-axis: p from 0 to 512, x = 80 + p*540/512 -->
+      <!-- Key x positions: p=0→80, p=64→147.4, p=128→214.8, p=192→282.2, p=256→349.6≈350, p=384→485, p=512→620 -->
+      <line x1="80" y1="255" x2="80"  y2="25"  stroke="#1e2d4d" stroke-width="1"/>
+      <line x1="147" y1="255" x2="147" y2="258" stroke="#1e2d4d" stroke-width="1"/>
+      <line x1="215" y1="255" x2="215" y2="258" stroke="#1e2d4d" stroke-width="1"/>
+      <line x1="350" y1="255" x2="350" y2="258" stroke="#f87171" stroke-width="1.5"/>
+      <line x1="485" y1="255" x2="485" y2="258" stroke="#1e2d4d" stroke-width="1"/>
+      <line x1="620" y1="255" x2="620" y2="25"  stroke="#1e2d4d" stroke-width="1"/>
+
+      <!-- X-axis tick labels -->
+      <text x="80"  y="270" font-family="JetBrains Mono,monospace" font-size="10" fill="#5f718f" text-anchor="middle">0</text>
+      <text x="147" y="270" font-family="JetBrains Mono,monospace" font-size="10" fill="#f87171" text-anchor="middle">64</text>
+      <text x="215" y="270" font-family="JetBrains Mono,monospace" font-size="10" fill="#f87171" text-anchor="middle">128</text>
+      <text x="350" y="270" font-family="JetBrains Mono,monospace" font-size="10" fill="#f87171" text-anchor="middle">256=r_s</text>
+      <text x="485" y="270" font-family="JetBrains Mono,monospace" font-size="10" fill="#5f718f" text-anchor="middle">384</text>
+      <text x="620" y="270" font-family="JetBrains Mono,monospace" font-size="10" fill="#5f718f" text-anchor="middle">512</text>
+      <text x="350" y="285" font-family="Inter,sans-serif" font-size="11" fill="#8892a8" text-anchor="middle">radial position  p  (ring ticks)</text>
+
+      <!-- f_L(p) = p/(p+128) curve — MPRC, cyan -->
+      <!-- Points: (80,255), (88,237), (97,226), (131,177), (215,145), (283,118), (350,103), (418,83), (485,75), (553,69), (620,64) -->
+      <polyline
+        points="80,255 88,237 97,226 106,217 115,209 131,196 147,177 181,156 215,145 283,118 350,103 418,83 485,75 553,69 620,64"
+        fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+
+      <!-- f_GR(r) = sqrt(1-256/r) for r>=256 — GR, dashed red -->
+      <!-- r=256→(350,255), r=270→(358,213), r=288→(370,190), r=320→(418,152), r=352→(434,135), r=384→(485,123), r=416→(503,114), r=448→(553,106), r=512→(620,95) -->
+      <polyline
+        points="350,255 358,213 370,190 418,152 434,135 485,123 503,114 553,106 620,95"
+        fill="none" stroke="#f87171" stroke-width="2" stroke-dasharray="8,4"/>
+
+      <!-- Vertical line at r_s = 256 (x=350) -->
+      <line x1="350" y1="25" x2="350" y2="255" stroke="#f87171" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+
+      <!-- Annotation: horizon, both = 0 -->
+      <circle cx="80"  cy="255" r="5" fill="#38bdf8" stroke="#0f1420" stroke-width="1.5"/>
+      <circle cx="350" cy="255" r="5" fill="#f87171" stroke="#0f1420" stroke-width="1.5"/>
+      <text x="82"  y="248" font-family="JetBrains Mono,monospace" font-size="10" fill="#38bdf8">f_L(0)=0</text>
+      <text x="354" y="248" font-family="JetBrains Mono,monospace" font-size="10" fill="#f87171">f_GR(r_s)=0</text>
+      <text x="215" y="139" font-family="JetBrains Mono,monospace" font-size="10" fill="#38bdf8">f_L(τ/2)=½</text>
+      <circle cx="215" cy="145" r="4" fill="#38bdf8" stroke="#0f1420" stroke-width="1.5"/>
+
+      <!-- GR undefined region label -->
+      <text x="215" y="52" font-family="Inter,sans-serif" font-size="12" fill="rgba(248,113,113,0.6)" text-anchor="middle">GR: undefined</text>
+      <text x="215" y="68" font-family="Inter,sans-serif" font-size="11" fill="rgba(248,113,113,0.4)" text-anchor="middle">(imaginary)</text>
+
+      <!-- MPRC defined region label -->
+      <text x="215" y="240" font-family="Inter,sans-serif" font-size="11" fill="rgba(56,189,248,0.6)" text-anchor="middle">MPRC: f_L ∈ ℝ, &gt;0</text>
+
+      <!-- Legend -->
+      <line x1="420" y1="44" x2="455" y2="44" stroke="#38bdf8" stroke-width="2.5"/>
+      <text x="460" y="48" font-family="Inter,sans-serif" font-size="11" fill="#38bdf8">MPRC  f_L(p)</text>
+      <line x1="420" y1="62" x2="455" y2="62" stroke="#f87171" stroke-width="2" stroke-dasharray="8,4"/>
+      <text x="460" y="66" font-family="Inter,sans-serif" font-size="11" fill="#f87171">GR  f_GR(r)</text>
+
+      <text x="340" y="300" font-family="Inter,sans-serif" font-size="11" fill="#8892a8" text-anchor="middle">
+        Fig 2 — Clock rate vs radial position · Both = 0 at r_s · GR imaginary below r_s · MPRC real for all p ≥ 0
+      </text>
+    </svg>
+    <div class="figure-caption">Clock rate comparison. Cyan: MPRC f<sub>L</sub>(p) = p/(p + τ/2), defined and real for all p ≥ 0. Dashed red: GR f<sub>GR</sub>(r) = √(1 − r<sub>s</sub>/r), only defined for r ≥ r<sub>s</sub>. Both reach zero at the horizon. Below r<sub>s</sub>, GR becomes imaginary (hatched region); MPRC remains real and positive.</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ─── SURFACE GRAVITY ───────────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-num">03 · Surface Gravity</div>
+  <h2>κ<sub>L</sub> / κ<sub>GR</sub> = 2/9 — <span class="accent">Exact, Zero Error</span></h2>
+
+  <p>The surface gravity is derived by differentiating f<sub>L</sub>(p) at the Schwarzschild radius p = r<sub>s</sub> = τ and applying the standard κ = ½ df/dr definition:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">Surface gravity derivation (exp19)</div>
+    <div class="eq-row">f_L(p) = p / (p + τ/2)        →      df_L/dp = (τ/2) / (p + τ/2)²</div>
+    <div class="eq-row" style="margin-top:6px;">At p = r_s = τ:     df_L/dp|_{r_s} = (τ/2) / (τ + τ/2)² = (τ/2) / (9τ²/4) = 2/(9τ)</div>
+    <div class="eq-row cyan" style="margin-top:6px;">κ_L  = ½ · df_L/dp|_{r_s} = 1/(9τ) = 1/2304</div>
+    <div class="eq-row" style="margin-top:6px;">κ_GR = ½ · 1/r_s            = 1/(2τ) = 1/512</div>
+    <div class="eq-row green" style="margin-top:8px;">κ_L / κ_GR = [1/(9τ)] / [1/(2τ)] = 2/9     [EXACT — finite difference error: 8.27×10⁻⁸%]</div>
+  </div>
+
+  <p>The 2/9 ratio is structural: the factor of 9 comes from (3/2)² where 3/2 is the value of (τ + τ/2)/τ evaluated at p = r<sub>s</sub>. This is a pure ring geometry consequence — no fitting, no free parameters.</p>
+
+  <table class="data-table">
+    <tr><th>Quantity</th><th>GR Value</th><th>MPRC Value</th><th>Ratio</th><th>Status</th></tr>
+    <tr><td>Surface gravity κ</td><td>1/(2τ) = 1/512</td><td>1/(9τ) = 1/2304</td><td>2/9 exact</td><td><span class="ok">DERIVED</span></td></tr>
+    <tr><td>Hawking temperature T<sub>H</sub></td><td>ħκ/(2πk_B)</td><td>κ_L/τ = 1/(9τ²) = 1/589824</td><td>—</td><td><span class="ok">DERIVED</span></td></tr>
+    <tr><td>f at horizon</td><td>0</td><td>0</td><td>1 (agree)</td><td><span class="ok">DERIVED</span></td></tr>
+    <tr><td>f below horizon</td><td>imaginary</td><td>real &gt; 0</td><td>diverge</td><td><span class="ok">DERIVED</span></td></tr>
+  </table>
+</section>
+
+<hr>
+
+<!-- ─── INSIDE HORIZON ────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-num">04 · Inside the Horizon</div>
+  <h2>Singularity (GR) vs Blanking Radius <span class="accent">(MPRC)</span></h2>
+
+  <p>The critical divergence between GR and MPRC appears inside r<sub>s</sub>. GR's geometry forces a singularity. MPRC's lattice stability condition prevents one.</p>
+
+  <!-- SVG 3: Dual panel GR vs MPRC -->
+  <div class="figure">
+    <svg viewBox="0 0 680 370" xmlns="http://www.w3.org/2000/svg" style="background:#0f1420;border-radius:6px;border:1px solid #2a3050;">
+      <defs>
+        <radialGradient id="singGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#f87171" stop-opacity="0.5"/>
+          <stop offset="60%" stop-color="#f87171" stop-opacity="0.1"/>
+          <stop offset="100%" stop-color="#0f1420" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="blankGrad2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#000000" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#0f1420" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Panel divider -->
+      <line x1="340" y1="20" x2="340" y2="345" stroke="#1e2d4d" stroke-width="1.5"/>
+
+      <!-- ═══ LEFT PANEL: GR ═══ (center 170, 190) -->
+      <text x="170" y="38" font-family="Inter,sans-serif" font-size="14" fill="#f87171" text-anchor="middle" font-weight="600">General Relativity</text>
+
+      <!-- Far field region -->
+      <circle cx="170" cy="195" r="130" fill="rgba(56,189,248,0.04)" stroke="#2a3050" stroke-width="0.8"/>
+      <!-- Event horizon -->
+      <circle cx="170" cy="195" r="100" fill="rgba(248,113,113,0.06)" stroke="#f87171" stroke-width="2"/>
+      <!-- Singularity zone (inside r_s) — red fill -->
+      <circle cx="170" cy="195" r="100" fill="url(#singGrad)"/>
+      <!-- Singularity point -->
+      <circle cx="170" cy="195" r="8"   fill="#f87171" stroke="#0f1420" stroke-width="2"/>
+      <circle cx="170" cy="195" r="16"  fill="none" stroke="rgba(248,113,113,0.5)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <circle cx="170" cy="195" r="24"  fill="none" stroke="rgba(248,113,113,0.3)" stroke-width="1" stroke-dasharray="3,4"/>
+
+      <!-- Annotations GR left panel -->
+      <text x="170" y="190" font-family="JetBrains Mono,monospace" font-size="9" fill="#f87171" text-anchor="middle">SINGULARITY</text>
+      <text x="170" y="202" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(248,113,113,0.7)" text-anchor="middle">r=0</text>
+      <text x="170" y="92"  font-family="JetBrains Mono,monospace" font-size="10" fill="#f87171" text-anchor="middle">event horizon r_s</text>
+      <text x="170" y="106" font-family="JetBrains Mono,monospace" font-size="10" fill="#f87171" text-anchor="middle">f_GR(r_s) = 0</text>
+
+      <!-- Inside horizon annotation GR -->
+      <text x="220" y="165" font-family="Inter,sans-serif" font-size="10" fill="rgba(248,113,113,0.8)">f = √(−x)</text>
+      <text x="218" y="178" font-family="Inter,sans-serif" font-size="10" fill="rgba(248,113,113,0.6)">imaginary</text>
+      <text x="220" y="230" font-family="Inter,sans-serif" font-size="10" fill="rgba(248,113,113,0.8)">r becomes</text>
+      <text x="220" y="243" font-family="Inter,sans-serif" font-size="10" fill="rgba(248,113,113,0.6)">time-like</text>
+
+      <!-- Clock rate scale GR (along radius) -->
+      <line x1="170" y1="195" x2="270" y2="195" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+      <text x="272" y="198" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(56,189,248,0.5)">f=0</text>
+
+      <!-- ═══ RIGHT PANEL: MPRC ═══ (center 510, 190) -->
+      <text x="510" y="38" font-family="Inter,sans-serif" font-size="14" fill="#38bdf8" text-anchor="middle" font-weight="600">MPRC</text>
+
+      <!-- Far field region -->
+      <circle cx="510" cy="195" r="130" fill="rgba(56,189,248,0.04)" stroke="#2a3050" stroke-width="0.8"/>
+      <!-- Event horizon -->
+      <circle cx="510" cy="195" r="100" fill="none" stroke="#f87171" stroke-width="2"/>
+      <!-- Active blanking zone (between r_s and r_c) — subtle glow -->
+      <circle cx="510" cy="195" r="100" fill="rgba(251,191,36,0.05)"/>
+      <!-- Blanking radius r_c = r_s/2 -->
+      <circle cx="510" cy="195" r="50"  fill="url(#blankGrad2)" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <!-- Blanked interior — dark, no singularity -->
+      <circle cx="510" cy="195" r="50"  fill="rgba(0,0,0,0.6)"/>
+      <!-- Center — vacuum node, not singularity -->
+      <circle cx="510" cy="195" r="6"   fill="#fbbf24" stroke="#0f1420" stroke-width="2"/>
+
+      <!-- Annotations MPRC right panel -->
+      <text x="510" y="190" font-family="JetBrains Mono,monospace" font-size="9" fill="#fbbf24" text-anchor="middle">BLANK</text>
+      <text x="510" y="202" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(251,191,36,0.7)" text-anchor="middle">nodes → vacuum</text>
+      <text x="510" y="92"  font-family="JetBrains Mono,monospace" font-size="10" fill="#f87171" text-anchor="middle">event horizon r_s</text>
+      <text x="510" y="106" font-family="JetBrains Mono,monospace" font-size="10" fill="#38bdf8" text-anchor="middle">f_L(0) = 0  [DERIVED]</text>
+
+      <!-- Blanking radius label -->
+      <text x="558" y="177" font-family="Inter,sans-serif" font-size="10" fill="rgba(251,191,36,0.9)">r_c = r_s/2</text>
+      <text x="558" y="190" font-family="Inter,sans-serif" font-size="10" fill="rgba(251,191,36,0.7)">τ/2 = 128</text>
+
+      <!-- Active zone label MPRC -->
+      <text x="435" y="163" font-family="Inter,sans-serif" font-size="10" fill="rgba(56,189,248,0.8)">clock active</text>
+      <text x="435" y="176" font-family="Inter,sans-serif" font-size="10" fill="rgba(56,189,248,0.6)">0 &lt; f_L &lt; 2/3</text>
+      <text x="435" y="230" font-family="Inter,sans-serif" font-size="10" fill="rgba(56,189,248,0.6)">f_L always</text>
+      <text x="435" y="243" font-family="Inter,sans-serif" font-size="10" fill="rgba(56,189,248,0.6)">real ∈ ℝ</text>
+
+      <!-- No singularity label -->
+      <text x="510" y="215" font-family="Inter,sans-serif" font-size="9" fill="rgba(52,211,153,0.8)" text-anchor="middle">no singularity</text>
+      <text x="510" y="227" font-family="Inter,sans-serif" font-size="9" fill="rgba(52,211,153,0.6)" text-anchor="middle">space intact</text>
+
+      <!-- Labels at top of panels -->
+      <text x="30"  y="355" font-family="Inter,sans-serif" font-size="11" fill="#8892a8">GR: f imaginary → coordinates swap → singularity inevitable</text>
+      <text x="340" y="355" font-family="Inter,sans-serif" font-size="11" fill="#38bdf8">  MPRC: f_L real, blanking at r_c → no singularity created</text>
+
+      <text x="340" y="365" font-family="Inter,sans-serif" font-size="11" fill="#8892a8" text-anchor="middle">
+        Fig 3 — GR singularity (left) vs MPRC blanking radius (right) · same event horizon, different interiors
+      </text>
+    </svg>
+    <div class="figure-caption">Left: GR predicts an unavoidable singularity at r = 0. Once inside r<sub>s</sub>, the clock rate becomes imaginary and spacetime coordinates swap. Right: MPRC predicts a blanking radius at r<sub>c</sub> = r<sub>s</sub>/2 = τ/2. Matter nodes de-excite to vacuum here — space remains intact, no coordinate swap, no physical singularity. The event horizon (red circle) is identical in both frameworks: f = 0 at r<sub>s</sub>.</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ─── HAWKING TEMPERATURE ───────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-num">05 · Hawking Temperature</div>
+  <h2>T<sub>H</sub> = 1/(9τ²) — <span class="accent">No ħ. No k<sub>B</sub>. No 2π.</span></h2>
+
+  <p>Standard Hawking temperature requires three fundamental constants: ħ (Planck), k<sub>B</sub> (Boltzmann), and 2π from the surface gravity formula. MPRC derives its Hawking-analogue temperature purely from ring geometry:</p>
+
+  <div class="eq-block">
+    <div class="eq-label">MPRC Hawking temperature (exp19)</div>
+    <div class="eq-row">Standard: T_H = ħ·κ_GR / (2π·k_B) = ħ/(4πk_B·r_s)   [requires ħ, k_B, 2π]</div>
+    <div class="eq-row" style="margin-top:8px;">MPRC:     T_H = κ_L / τ  =  (1/(9τ)) / τ  =  1/(9τ²)</div>
+    <div class="eq-row cyan" style="margin-top:6px;">T_H = 1/(9 × 256²) = 1/589824 = 1.6954×10⁻⁶  [native ring units]</div>
+    <div class="eq-row green" style="margin-top:6px;">No ħ. No k_B. No 2π imported.  All DERIVED from Z₂₅₆ geometry.</div>
+  </div>
+
+  <p>The emission shells arise from the helix wave structure z_rev(p) = S(p)_scaled mod τ, where S(p) = (τ/2)/(p + τ/2)² is the shear field. The helix nodes land exactly on the four vacuum planes:</p>
+
+  <!-- SVG 4: Emission shells + T_H structure -->
+  <div class="figure">
+    <svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" style="background:#0f1420;border-radius:6px;border:1px solid #2a3050;">
+      <defs>
+        <radialGradient id="shell3" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="rgba(167,139,250,0.0)"/>
+          <stop offset="85%" stop-color="rgba(167,139,250,0.12)"/>
+          <stop offset="100%" stop-color="rgba(167,139,250,0.3)"/>
+        </radialGradient>
+        <radialGradient id="shell2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="rgba(56,189,248,0.0)"/>
+          <stop offset="85%" stop-color="rgba(56,189,248,0.12)"/>
+          <stop offset="100%" stop-color="rgba(56,189,248,0.3)"/>
+        </radialGradient>
+        <radialGradient id="shell1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="rgba(52,211,153,0.0)"/>
+          <stop offset="85%" stop-color="rgba(52,211,153,0.12)"/>
+          <stop offset="100%" stop-color="rgba(52,211,153,0.3)"/>
+        </radialGradient>
+        <radialGradient id="shell0" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="rgba(248,113,113,0.0)"/>
+          <stop offset="85%" stop-color="rgba(248,113,113,0.10)"/>
+          <stop offset="100%" stop-color="rgba(248,113,113,0.25)"/>
+        </radialGradient>
+      </defs>
+
+      <!-- ═══ LEFT: Emission shells diagram ═══ cx=200, cy=185 -->
+
+      <!-- Shell 3 — z=192, outermost, violet -->
+      <circle cx="200" cy="185" r="155" fill="url(#shell3)" stroke="#a78bfa" stroke-width="1.5"/>
+      <!-- Shell 2 — z=128, cyan -->
+      <circle cx="200" cy="185" r="115" fill="url(#shell2)" stroke="#38bdf8" stroke-width="1.5"/>
+      <!-- Shell 1 — z=64, green -->
+      <circle cx="200" cy="185" r="75"  fill="url(#shell1)" stroke="#34d399" stroke-width="1.5"/>
+      <!-- Shell 0 — z=0, horizon, red -->
+      <circle cx="200" cy="185" r="35"  fill="url(#shell0)" stroke="#f87171" stroke-width="2"/>
+
+      <!-- Center -->
+      <circle cx="200" cy="185" r="5"  fill="#fbbf24"/>
+
+      <!-- Shell labels -->
+      <text x="200" y="30"  font-family="JetBrains Mono,monospace" font-size="10" fill="#a78bfa" text-anchor="middle">z = 192 = 3τ/4</text>
+      <text x="200" y="70"  font-family="JetBrains Mono,monospace" font-size="10" fill="#38bdf8" text-anchor="middle">z = 128 = τ/2</text>
+      <text x="200" y="110" font-family="JetBrains Mono,monospace" font-size="10" fill="#34d399" text-anchor="middle">z = 64 = τ/4</text>
+      <text x="200" y="183" font-family="JetBrains Mono,monospace" font-size="10" fill="#f87171" text-anchor="middle">z = 0</text>
+      <text x="200" y="195" font-family="JetBrains Mono,monospace" font-size="9"  fill="rgba(248,113,113,0.6)" text-anchor="middle">horizon</text>
+
+      <!-- Drop arrows and quantum labels -->
+      <line x1="320" y1="32"  x2="320" y2="68"  stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="320" y1="72"  x2="320" y2="108" stroke="#fbbf24" stroke-width="1.5"/>
+      <line x1="320" y1="112" x2="320" y2="148" stroke="#fbbf24" stroke-width="1.5"/>
+      <!-- Draw arrows manually -->
+      <polygon points="320,72  316,60  324,60"  fill="#fbbf24"/>
+      <polygon points="320,112 316,100 324,100" fill="#fbbf24"/>
+      <polygon points="320,152 316,140 324,140" fill="#fbbf24"/>
+      <text x="326" y="53"  font-family="JetBrains Mono,monospace" font-size="10" fill="#fbbf24">Δz = τ/4 = 64</text>
+      <text x="326" y="93"  font-family="JetBrains Mono,monospace" font-size="10" fill="#fbbf24">Δz = τ/4 = 64</text>
+      <text x="326" y="133" font-family="JetBrains Mono,monospace" font-size="10" fill="#fbbf24">Δz = τ/4 = 64</text>
+      <!-- Final line to horizon -->
+      <line x1="318" y1="148" x2="318" y2="170" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="324" y="162" font-family="JetBrains Mono,monospace" font-size="10" fill="#fbbf24">→ horizon</text>
+
+      <!-- ═══ RIGHT: T_H derivation chain + helix nodes ═══ x=380..660 -->
+      <text x="520" y="42" font-family="Inter,sans-serif" font-size="13" fill="#38bdf8" text-anchor="middle" font-weight="600">Derivation Chain</text>
+
+      <rect x="380" y="56"  width="270" height="26" rx="4" fill="#0c1628" stroke="#1e2d4d" stroke-width="1"/>
+      <text x="515" y="74" font-family="JetBrains Mono,monospace" font-size="11" fill="#5b9cf6" text-anchor="middle">Z₂₅₆  ring</text>
+
+      <line x1="515" y1="82" x2="515" y2="92" stroke="#3d5070" stroke-width="1.5"/>
+      <rect x="380" y="92"  width="270" height="26" rx="4" fill="#0c1628" stroke="#1e2d4d" stroke-width="1"/>
+      <text x="515" y="110" font-family="JetBrains Mono,monospace" font-size="11" fill="#f87171" text-anchor="middle">VACUUM = {0, 64, 128, 192}</text>
+
+      <line x1="515" y1="118" x2="515" y2="128" stroke="#3d5070" stroke-width="1.5"/>
+      <rect x="380" y="128" width="270" height="26" rx="4" fill="#0c1628" stroke="#1e2d4d" stroke-width="1"/>
+      <text x="515" y="146" font-family="JetBrains Mono,monospace" font-size="11" fill="#f87171" text-anchor="middle">r_s = τ  →  horizon = V₀</text>
+
+      <line x1="515" y1="154" x2="515" y2="164" stroke="#3d5070" stroke-width="1.5"/>
+      <rect x="380" y="164" width="270" height="26" rx="4" fill="#0c1628" stroke="#1e2d4d" stroke-width="1"/>
+      <text x="515" y="182" font-family="JetBrains Mono,monospace" font-size="11" fill="#38bdf8" text-anchor="middle">f_L(p) = p/(p + τ/2)</text>
+
+      <line x1="515" y1="190" x2="515" y2="200" stroke="#3d5070" stroke-width="1.5"/>
+      <rect x="380" y="200" width="270" height="26" rx="4" fill="#0c1628" stroke="#1e2d4d" stroke-width="1"/>
+      <text x="515" y="218" font-family="JetBrains Mono,monospace" font-size="11" fill="#38bdf8" text-anchor="middle">κ_L = 1/(9τ)</text>
+
+      <line x1="515" y1="226" x2="515" y2="236" stroke="#3d5070" stroke-width="1.5"/>
+      <rect x="380" y="236" width="270" height="26" rx="4" fill="#0c1628" stroke="#1e2d4d" stroke-width="1"/>
+      <text x="515" y="254" font-family="JetBrains Mono,monospace" font-size="11" fill="#34d399" text-anchor="middle">2π → τ  [ring trig] + a=1</text>
+
+      <line x1="515" y1="262" x2="515" y2="272" stroke="#3d5070" stroke-width="1.5"/>
+      <rect x="380" y="272" width="270" height="26" rx="4" fill="#0d1e18" stroke="#34d399" stroke-width="1.5"/>
+      <text x="515" y="290" font-family="JetBrains Mono,monospace" font-size="11" fill="#34d399" text-anchor="middle">T_H = 1/(9τ²) = 1/589824</text>
+
+      <line x1="515" y1="298" x2="515" y2="308" stroke="#3d5070" stroke-width="1.5"/>
+      <rect x="380" y="308" width="270" height="26" rx="4" fill="#0d1e18" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="515" y="326" font-family="JetBrains Mono,monospace" font-size="11" fill="#a78bfa" text-anchor="middle">helix nodes at τ/4 multiples</text>
+
+      <text x="340" y="352" font-family="Inter,sans-serif" font-size="11" fill="#8892a8" text-anchor="middle">
+        Fig 4 — Emission shells {192,128,64,0} each τ/4 apart (left) · full derivation chain (right)
+      </text>
+    </svg>
+    <div class="figure-caption">Left: Quantized emission shells at {192, 128, 64, 0} — each separated by τ/4 = 64 = π<sub>sphere</sub>. The quantum of emission is the same structural constant as the vacuum spacing. Right: Complete derivation chain from Z<sub>256</sub> ring axiom to T<sub>H</sub> = 1/(9τ²) and helix vacuum crossings. Every step is a derived consequence — no constants imported from QM or GR.</div>
+  </div>
+
+  <div class="eq-block">
+    <div class="eq-label">Helix wave vacuum crossings — exp19 exact values</div>
+    <div class="eq-row green">z_rev(p=1)   = 0    — horizon plane  V₀     [DERIVED]</div>
+    <div class="eq-row green">z_rev(p=54)  = 128  — π_circle plane V₁₂₈   [DERIVED]</div>
+    <div class="eq-row green">z_rev(p=129) = 64   — π_sphere plane V₆₄    [DERIVED]</div>
+    <div class="eq-row cyan" style="margin-top:6px;">Shell quantum: Δz = τ/4 = π_sphere = 64 = constant  [DERIVED]</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ─── SCORECARD ──────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-num">06 · Scorecard</div>
+  <h2>exp19 — <span class="accent">14 / 14 DERIVED</span></h2>
+
+  <p>All claims from exp19 (May 26, 2026) passed. The Hawking node is closed.</p>
+
+  <table class="data-table">
+    <tr><th>#</th><th>Claim</th><th>Evidence</th><th>Status</th></tr>
+    <tr>
+      <td>1</td>
+      <td>Ring constants: π_circle = τ/2, π_sphere = τ/4, active = τ − 4 = 252</td>
+      <td>128, 64, 252</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>r_s = τ → horizon = vacuum node 0</td>
+      <td>256 mod 256 = 0 ∈ {0,64,128,192}</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>f_L(0) = 0 — clock stops at horizon</td>
+      <td>0/(0+128) = 0.0</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>f_L(τ/2) = 1/2 exactly</td>
+      <td>128/256 = 0.500000000000000</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>f_L → 1 in far field</td>
+      <td>f_L(100·r_s) = 0.995025</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>κ_L = 1/(9·r_s) from df_L/dr at r_s</td>
+      <td>FD error = 8.27×10⁻⁶%</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>κ_L / κ_GR = 2/9 exact</td>
+      <td>ratio = 0.2222222222, err = 0.00e+00</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2·π_circle = τ → 2π<sub>native</sub> = τ (ring trig full cycle)</td>
+      <td>cycle deviation = 2.45×10⁻¹⁶</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>a = 1 universal: discrete wave eqn c<sub>ring</sub> = 1</td>
+      <td>ω error = 4.11×10⁻⁵%</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>T<sub>H</sub> = 1/(9τ²) = 1/589824</td>
+      <td>κ_L/τ = 1.6954×10⁻⁶</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Helix node: z_rev(1) = 0 — horizon plane</td>
+      <td>int(shear(1)/sh_max × 256) mod 256 = 0</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Helix node: z_rev(54) = 128 — π_circle plane</td>
+      <td>exact vacuum crossing</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Helix node: z_rev(129) = 64 — π_sphere plane</td>
+      <td>exact vacuum crossing</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Emission shells {192,128,64,0} drop by τ/4 = 64 each</td>
+      <td>drops = [64, 64, 64]</td>
+      <td><span class="ok">DERIVED</span></td>
+    </tr>
+  </table>
+
+  <div class="eq-block" style="margin-top:1.5em;">
+    <div class="eq-row green">TOTAL: 14 DERIVED  |  0 FAILED</div>
+    <div class="eq-row cyan" style="margin-top:6px;">ALL CLAIMS DERIVED. HAWKING NODE CLOSED.  —  exp19  May 26, 2026</div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ─── REFERENCES ────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-num">References</div>
+  <h2>Sources and <span class="accent">Code</span></h2>
+  <ul style="font-family:var(--font-ui);font-size:0.9rem;color:var(--text-muted);line-height:2.2;padding-left:1.5em;">
+    <li>Hawking, S. W. (1975). "Particle creation by black holes." <em>Commun. Math. Phys.</em> 43, 199–220.</li>
+    <li>Schwarzschild, K. (1916). "Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie." <em>Sitzungsber. Preuss. Akad. Wiss.</em></li>
+    <li>MPRC Chapter 1 — Discrete Lattice Mechanics (this booklet)</li>
+    <li>MPRC Chapter 2 — Grand Unified Theory v2 (clock field derivation)</li>
+    <li>MPRC Chapter 10 — Bell Correlations, P3 update (this booklet)</li>
+    <li>Source: <code>exp19.py</code> — MPRC Black Hole Complete Record — May 26, 2026</li>
+    <li>Ring geometry: <code>ring_256.svg</code> — Z₂₅₆ torus field structure</li>
+  </ul>
+
+  <div class="eq-block" style="margin-top:2em;">
+    <div class="eq-label">Epistemic status</div>
+    <div class="eq-row cyan">f_L(0) = 0 derivation:     COMPLETE — zero free parameters</div>
+    <div class="eq-row cyan">κ_L/κ_GR = 2/9:            COMPLETE — exact, finite-difference verified</div>
+    <div class="eq-row cyan">T_H = 1/(9τ²):             COMPLETE — no ħ, no k_B, no 2π</div>
+    <div class="eq-row cyan">Helix vacuum crossings:    COMPLETE — three exact nodes verified</div>
+    <div class="eq-row" style="color:#fbbf24;">Singularity prevention:    DERIVED — blanking radius from 720° spinor stability</div>
+    <div class="eq-row" style="color:#f87171;">LIGO echo observation:     PENDING — test against GWOSC GW150914 ringdown data</div>
+  </div>
+</section>
+
+      </div>
+
+      <div class="chapter-nav-footer">
+        <a href="chapter-10.html">← Chapter 10: Bell Correlations</a>
+        <a href="index.html">MPRC Book</a>
+        <a href="chapter-7.html">Chapter 7: Artemis III →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<footer class="site-copyright">© 2025–2026 Muhammad Arshad. All Rights Reserved. No part of this work may be reproduced, distributed, or transmitted without explicit written permission.</footer>
+
+<script src="loader.js"></script>
+</body>
+</html>

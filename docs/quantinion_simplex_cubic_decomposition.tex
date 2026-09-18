@@ -24,7 +24,7 @@
 \newcommand{\rank}{\operatorname{rank}}
 \newcommand{\wt}{\operatorname{wt}}
 
-\title{\textbf{Quantinion Simplex Cubic Decomposition over $2$-Power Rings}\\
+\title{\textbf{Simplex Cubic Decomposition over $2$-Power Rings}\\
 Global Identifiability from Binary Contractions and Exact Bit Lifting}
 \author{Muhammad Arshad}
 \date{September 2026}
@@ -39,6 +39,11 @@ T=\sum_{q=0}^{n} v_q^{\otimes 3}\in \Sym^3\!\left((\Z/2^m\Z)^n\right).
 \]
 Assume that the parity reductions $s_q=v_q\bmod 2$ form a binary simplex frame: $\sum_q s_q=0$ and every $n$ of the $n+1$ vectors are linearly independent over $\F_2$. We show that the unordered collection $\{v_0,\ldots,v_n\}$ is globally identifiable among all $(n+1)$-term symmetric cubic decompositions of $T$. The proof has two parts. First, contraction ranks of $T\bmod 2$ recover the dual simplex frame and force a unique $(n+1)$-term parity decomposition. Second, a Hensel-style bit lift is linear at every stage and has an injective Jacobian, yielding unique lifts through $\Z/4\Z,\Z/8\Z,\ldots,\Z/2^m\Z$. The specialization $(n,m)=(8,8)$ gives a $9$-component decomposition in dimension $8$ over $\Z_{256}$, with a cubic observation space of size $8^3=512$. A pure-integer verification program accompanies the paper and independently checks the contraction law, Jacobian rank, and blind exact recovery for random hidden simplex frames.
 \end{abstract}
+
+\noindent\textbf{Keywords:} symmetric tensor decomposition; finite local rings; dyadic rings; binary simplex frames; Hensel lifting; overcomplete tensors.
+
+\medskip
+\noindent\textbf{Code and reproducibility:} An exact-integer reference verifier is provided with the public preprint repository. It uses no floating-point arithmetic or third-party numerical package.
 
 \section{Introduction}
 Tensor decomposition is a basic problem in multilinear algebra and has applications in latent-variable learning, algebraic complexity, statistics, and signal processing. Classical simultaneous diagonalization methods are naturally limited to ranks at most the ambient dimension, while recent work on overcomplete tensors uses more sophisticated flattenings to cross that barrier for generic real tensors \cite{KothariMoitraWein2025}. Exact tensor decomposition over finite fields has also received renewed attention \cite{Yang2025,CotardoZullo2026}, and symmetric tensors over $\F_2$ have their own rank and uniqueness phenomena \cite{SongZhengHuang2022}.

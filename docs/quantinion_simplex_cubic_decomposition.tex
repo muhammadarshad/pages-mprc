@@ -56,6 +56,7 @@ The motivating Quantinion/MPRC instance has $n=8$, $m=8$, and therefore $r=n+1=9
   \item We prove that every one-bit lift is governed by a linear system over $\F_2$ whose Jacobian has trivial kernel for $n\ge 4$.
   \item We combine the two steps into a constructive global identifiability theorem over $\Z/2^m\Z$.
   \item We give the concrete $\Z_{256}$, $n=8$, $r=9$ specialization and an exact-integer regression implementation.
+  \item We identify a structured rank-$n+2$ residual-simplex extension whose lift is unique when the residual support and its complement are both sufficiently large; for $n=8$ this is exactly the balanced weight-$4/5$ class.
 \end{enumerate}
 
 \paragraph{Novelty boundary.}
@@ -323,6 +324,68 @@ Moreover $\mu_q\equiv1\pmod2$, so the parity simplex frame is unchanged.
 The unit group of $\Z/2^m\Z$ is a finite $2$-group. Hence exponentiation by $3$ is an automorphism because $3$ is coprime to the group order. Therefore every unit has a unique cube root. The remaining statements are immediate.
 \end{proof}
 
+
+\section{A residual-simplex extension at rank $n+2$}
+The main theorem is an $(n+1)$-term global identifiability result. A structured $(n+2)$-term extension is nevertheless possible without changing the lifting mechanism.
+
+Let $S=\{s_0,\ldots,s_n\}$ be a binary simplex frame in $\F_2^n$ and let $u\in\F_2^n$ be one additional parity atom. Consider
+\[
+\overline T=\sum_{q=0}^{n}s_q^{\otimes3}+u^{\otimes3}.
+\]
+Since $\sum_q s_q=0$ and the diagonal of $x^{\otimes3}$ equals $x$ over $\F_2$,
+\[
+\operatorname{diag}(\overline T)=u.
+\]
+Thus the residual parity atom is directly observable. Subtracting $u^{\otimes3}$ reduces parity recovery to Theorem~\ref{thm:parity}.
+
+It remains to determine when the combined frame lifts uniquely. In canonical coordinates write
+\[
+s_0=\one,\qquad s_i=e_i,\qquad U=\{i:u_i=1\},\qquad O=[n]\setminus U.
+\]
+
+\begin{theorem}[Residual-simplex lifting criterion]\label{thm:residual}
+Let $n\ge 4$. For the simplex frame plus a residual parity atom $u$, the one-bit lifting Jacobian is injective whenever
+\[
+|U|\ge 4,\qquad |O|\ge 3.
+\]
+Consequently, once the residual-simplex parity support is fixed, every lift through $\Z/2^m\Z$ is unique.
+\end{theorem}
+
+\begin{proof}
+Let $a$ be the perturbation of the all-one atom, let $b_i$ be the perturbation of $e_i$, and let $c$ be the perturbation of $u$. From the tensor coordinates $(i,i,j)$, including the case $i=j$, the kernel equations give
+\[
+b_{i,j}=a_j+u_i c_j.
+\]
+Hence all basis-atom perturbations are determined by $a$ and $c$.
+
+For pairwise distinct $i,j,k$, the remaining equations are
+\[
+a_i+a_j+a_k+
+c_i u_j u_k+
+u_i c_j u_k+
+u_i u_j c_k=0. \tag{*}
+\]
+Choose three distinct indices in $O$ and one index in $U$. Applying $(*)$ to the all-$O$ triple and to the triples containing two of those $O$ indices and the chosen $U$ index forces all corresponding $a$-coordinates to vanish. Varying the indices gives $a=0$.
+
+With $a=0$, take one index in $O$ and two in $U$. Equation $(*)$ yields $c_i=0$ for every $i\in O$. Finally, on triples entirely in $U$ we have
+\[
+c_i+c_j+c_k=0.
+\]
+Because $|U|\ge4$, comparison of two such triples shows that all $c_i$ on $U$ are equal, and substitution into any triple forces the common bit to be zero. Therefore $c=0$, and then $b_i=0$ for every $i$. The Jacobian kernel is trivial.
+\end{proof}
+
+For the Quantinion specialization $n=8$, the criterion is equivalent to
+\[
+\operatorname{wt}(u)\in\{4,5\}.
+\]
+The combined Jacobian then has full rank $10\cdot8=80$. For weights $2,3,6,7$ the rank is $78$, and for weights $1,8$ it is $72$; the deficient cases admit nonzero one-bit kernel directions and therefore distinct lifts already modulo $4$.
+
+\begin{corollary}[Balanced Quantinion residual class]
+Over $\Z_{256}$, a $9$-atom simplex cubic plus a tenth residual atom whose parity support has weight $4$ or $5$ is uniquely liftable inside the residual-simplex family.
+\end{corollary}
+
+This extension is deliberately narrower than a general rank-$n+2$ theorem. It does not exclude a representation of the same tensor by a completely unrelated $(n+2)$-atom family.
+
 \section{Falsification boundaries}
 The theorem was isolated by testing stronger claims and retaining the failures.
 
@@ -354,7 +417,7 @@ Multiplication by high powers of $2$ discards information. For example, multipli
 The full-rank contraction pattern in Lemma~\ref{lem:ranklaw} changes when $n$ is odd. The present proof does not cover that case.
 
 \paragraph{Beyond $r=n+1$.}
-The proof that a full-rank observer annihilates exactly one atom uses both the evenness of $n$ and the fact that the decomposition has $n+1$ terms. For $r=n+2$, the same parity count no longer forces a unique omitted atom. General $r=n+2$ identifiability remains outside Theorem~\ref{thm:main}.
+The proof that a full-rank observer annihilates exactly one atom uses both the evenness of $n$ and the fact that the decomposition has $n+1$ terms. For arbitrary $r=n+2$, the same parity count no longer forces a unique omitted atom. The residual-simplex subclass of Theorem~\ref{thm:residual} is recoverable because its extra parity atom is exposed by the tensor diagonal, but general $r=n+2$ identifiability remains outside Theorem~\ref{thm:main}.
 
 \section{Computational verification}
 The accompanying script \texttt{verify\_quantinion\_simplex\_cubic.py} uses exact integer and bit arithmetic only. It performs three families of checks:

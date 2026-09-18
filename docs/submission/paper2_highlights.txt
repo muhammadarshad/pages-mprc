@@ -1,0 +1,5 @@
+Cubic dictionary capacity is exact over every dyadic ring
+Parity reduction gives a sharp universal upper bound
+A dense explicit construction attains the bound over every dyadic ring
+Dimension eight supports exactly 92 free rank-one cubic atoms
+Binary dependencies lift to exact nonzero dyadic-ring relations

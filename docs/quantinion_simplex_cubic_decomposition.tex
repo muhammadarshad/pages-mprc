@@ -1,0 +1,434 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{longtable}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{R_m}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\wt}{\operatorname{wt}}
+
+\title{\textbf{Quantinion Simplex Cubic Decomposition over $2$-Power Rings}\\
+Global Identifiability from Binary Contractions and Exact Bit Lifting}
+\author{Muhammad Arshad}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove a constructive identifiability theorem for an overcomplete family of symmetric cubic tensor decompositions over the finite local rings $\Z/2^m\Z$. Let $n\ge 4$ be even and let
+\[
+T=\sum_{q=0}^{n} v_q^{\otimes 3}\in \Sym^3\!\left((\Z/2^m\Z)^n\right).
+\]
+Assume that the parity reductions $s_q=v_q\bmod 2$ form a binary simplex frame: $\sum_q s_q=0$ and every $n$ of the $n+1$ vectors are linearly independent over $\F_2$. We show that the unordered collection $\{v_0,\ldots,v_n\}$ is globally identifiable among all $(n+1)$-term symmetric cubic decompositions of $T$. The proof has two parts. First, contraction ranks of $T\bmod 2$ recover the dual simplex frame and force a unique $(n+1)$-term parity decomposition. Second, a Hensel-style bit lift is linear at every stage and has an injective Jacobian, yielding unique lifts through $\Z/4\Z,\Z/8\Z,\ldots,\Z/2^m\Z$. The specialization $(n,m)=(8,8)$ gives a $9$-component decomposition in dimension $8$ over $\Z_{256}$, with a cubic observation space of size $8^3=512$. A pure-integer verification program accompanies the paper and independently checks the contraction law, Jacobian rank, and blind exact recovery for random hidden simplex frames.
+\end{abstract}
+
+\section{Introduction}
+Tensor decomposition is a basic problem in multilinear algebra and has applications in latent-variable learning, algebraic complexity, statistics, and signal processing. Classical simultaneous diagonalization methods are naturally limited to ranks at most the ambient dimension, while recent work on overcomplete tensors uses more sophisticated flattenings to cross that barrier for generic real tensors \cite{KothariMoitraWein2025}. Exact tensor decomposition over finite fields has also received renewed attention \cite{Yang2025,CotardoZullo2026}, and symmetric tensors over $\F_2$ have their own rank and uniqueness phenomena \cite{SongZhengHuang2022}.
+
+This paper studies a different regime: symmetric cubic tensors over the finite local ring $\Z/2^m\Z$, with an overcomplete frame of exactly $n+1$ atoms in dimension $n$. The result is not a generic tensor-decomposition theorem. It exploits a rigid parity geometry: the reductions of the atoms form a binary simplex frame. Within that class, however, the theorem is global: no second $(n+1)$-term decomposition exists.
+
+The proof is elementary in its ingredients but uses the $2$-adic structure in an essential way. Modulo $2$, a family of full-rank contractions identifies the parity frame. Once parity is known, lifting one bit at a time linearizes the cubic because all terms containing two new-bit factors vanish modulo the next power of two. The associated binary Jacobian is injective.
+
+The motivating Quantinion/MPRC instance has $n=8$, $m=8$, and therefore $r=n+1=9$ atoms over $\Z_{256}$ with $8^3=512$ ordered cubic entries. The theorem is stated independently of that motivation.
+
+\paragraph{Contributions.}
+\begin{enumerate}[leftmargin=*]
+  \item We characterize the contraction ranks of the canonical binary simplex cubic for even $n$ and show that exactly $n+1$ observers have full rank.
+  \item We prove global uniqueness of the $(n+1)$-term parity decomposition over $\F_2$.
+  \item We prove that every one-bit lift is governed by a linear system over $\F_2$ whose Jacobian has trivial kernel for $n\ge 4$.
+  \item We combine the two steps into a constructive global identifiability theorem over $\Z/2^m\Z$.
+  \item We give the concrete $\Z_{256}$, $n=8$, $r=9$ specialization and an exact-integer regression implementation.
+\end{enumerate}
+
+\paragraph{Novelty boundary.}
+Regular simplex tensors have been studied over the reals, especially through eigenstructure and robustness \cite{CzaplinskiRaaschSteinberg2023,WangGengZhang2023}. The present result concerns a different question and ground ring: uniqueness and constructive recovery of a cubic decomposition over $\Z/2^m\Z$ through binary contraction geometry and bit lifting. To the author's knowledge, the precise theorem proved here has not appeared in the cited literature; this statement should be read as a literature assessment rather than as a substitute for exhaustive novelty review.
+
+\section{Algebraic setting}
+Fix an integer $m\ge 1$ and write
+\[
+R_m=\Z/2^m\Z.
+\]
+For $v\in R_m^n$, the symmetric rank-one cubic $v^{\otimes 3}$ has entries
+\[
+(v^{\otimes 3})_{ijk}=v_i v_j v_k.
+\]
+All tensor equalities over $R_m$ are understood entrywise modulo $2^m$.
+
+\begin{definition}[Binary simplex frame]
+A collection $S=\{s_0,\ldots,s_n\}\subset \F_2^n$ is a binary simplex frame if
+\[
+\sum_{q=0}^{n}s_q=0
+\]
+and every $n$ of the $n+1$ vectors are linearly independent.
+\end{definition}
+
+\begin{lemma}[Canonical form]\label{lem:canonical}
+Every binary simplex frame is equivalent under $GL_n(\F_2)$ to
+\[
+s_0=\one,\qquad s_i=e_i\quad (1\le i\le n),
+\]
+where $e_i$ are the standard basis vectors and $\one=(1,\ldots,1)^T$.
+\end{lemma}
+
+\begin{proof}
+Choose any $n$ frame vectors as a basis and map them to $e_1,\ldots,e_n$. The remaining vector equals the sum of those $n$ basis vectors because the total frame sum is zero, hence it maps to $\one$.
+\end{proof}
+
+Accordingly, it suffices to prove all binary statements in canonical coordinates.
+
+\section{The binary cubic and its contraction ranks}
+Let
+\[
+\overline{T}=\one^{\otimes 3}+\sum_{i=1}^{n} e_i^{\otimes 3}\in \Sym^3(\F_2^n).
+\]
+For $x\in\F_2^n$, contract the first mode:
+\[
+M_x=\overline{T}(x,\cdot,\cdot).
+\]
+If $w=\wt(x)$ denotes Hamming weight, then
+\begin{equation}\label{eq:Mx}
+M_x=\operatorname{diag}(x)+(w\bmod 2)\,\one\one^T.
+\end{equation}
+
+\begin{lemma}[Contraction-rank law]\label{lem:ranklaw}
+Let $0\ne x\in\F_2^n$ and $w=\wt(x)$. Then
+\[
+\rank M_x=
+\begin{cases}
+w, & w\text{ even},\\
+w+1, & w\text{ odd and }w<n.
+\end{cases}
+\]
+In particular, if $n$ is even, $M_x$ has full rank $n$ if and only if $w\in\{n-1,n\}$.
+\end{lemma}
+
+\begin{proof}
+If $w$ is even, \eqref{eq:Mx} is simply $\operatorname{diag}(x)$, which has rank $w$.
+
+Now assume $w$ is odd. Reorder coordinates so the first $w$ entries of $x$ are $1$. A vector $y=(u,v)$, with $u\in\F_2^w$ and $v\in\F_2^{n-w}$, lies in $\ker M_x$ precisely when
+\[
+u+(\one^T y)\one_w=0,\qquad (\one^T y)\one_{n-w}=0.
+\]
+If $w<n$, the second equation gives $\one^T y=0$, hence $u=0$; the remaining condition is $\one^T v=0$, whose solution space has dimension $n-w-1$. Thus $\rank M_x=n-(n-w-1)=w+1$.
+
+For even $n$, the only full-rank possibilities are $w=n$ (even) and $w=n-1$ (odd).
+\end{proof}
+
+\begin{corollary}[Dual simplex observers]\label{cor:dual}
+For even $n$, exactly $n+1$ nonzero observers have full contraction rank. In canonical coordinates they are
+\[
+d_0=\one,\qquad d_i=\one+e_i\quad(1\le i\le n).
+\]
+They satisfy
+\[
+d_q^T s_q=0,\qquad d_q^T s_p=1\quad(p\ne q).
+\]
+\end{corollary}
+
+\section{Global uniqueness modulo two}
+We now show that the tensor itself forces the simplex decomposition among all decompositions with $n+1$ terms.
+
+\begin{theorem}[Global parity identifiability]\label{thm:parity}
+Let $n\ge 4$ be even and suppose
+\[
+\overline{T}=\sum_{q=0}^{n} s_q^{\otimes 3}
+\]
+for a binary simplex frame $\{s_q\}$. If also
+\[
+\overline{T}=\sum_{q=0}^{n} t_q^{\otimes 3},\qquad t_q\in\F_2^n,
+\]
+then the unordered collections coincide:
+\[
+\{t_0,\ldots,t_n\}=\{s_0,\ldots,s_n\}.
+\]
+\end{theorem}
+
+\begin{proof}
+By applying the same $GL_n(\F_2)$ transformation to all modes, assume the first decomposition is canonical. Taking tensor diagonal entries gives
+\[
+\sum_{q=0}^{n}t_q=\operatorname{diag}(\overline{T})=0,
+\]
+because $a^3=a$ over $\F_2$ and the canonical simplex sums to zero.
+
+Let $d$ be any of the $n+1$ full-rank observers from Corollary~\ref{cor:dual}. Contracting the second decomposition gives
+\[
+M_d=\sum_{q:d^Tt_q=1}t_qt_q^T.
+\]
+Since $\rank M_d=n$, at least $n$ of the $t_q$ are active. On the other hand,
+\[
+\sum_q d^Tt_q=d^T\sum_q t_q=0,
+\]
+so the number of active atoms is even. There are only $n+1$ atoms and $n$ is even, hence exactly $n$ are active. Those $n$ active vectors must span $\F_2^n$, so they form a basis. Thus each full-rank observer annihilates exactly one atom.
+
+Two different full-rank observers cannot annihilate the same atom: if they did, they would both evaluate to $1$ on the same remaining basis and therefore be equal. Hence the $n+1$ full-rank observers are in bijection with the $n+1$ atoms. Reorder the atoms so that $d_q^Tt_q=0$. Then for $p\ne q$, $d_p^Tt_q=1$.
+
+Let $D$ be the $(n+1)\times n$ matrix with rows $d_q^T$. Each $t_q$ is therefore the unique solution of
+\[
+Dt_q=\one_{n+1}+e_q.
+\]
+The matrix $D$ has column rank $n$, and the canonical simplex vectors $s_q$ satisfy the same systems. Hence $t_q=s_q$ for all $q$, after permutation.
+\end{proof}
+
+\begin{corollary}
+The symmetric rank of the canonical binary simplex cubic is exactly $n+1$.
+\end{corollary}
+
+\begin{proof}
+It is at most $n+1$ by construction. If a decomposition used at most $n$ atoms, a full-rank contraction would force exactly $n$ active atoms forming a basis, while the diagonal identity would force their sum to be zero, a contradiction.
+\end{proof}
+
+\section{One-bit lifting over $\Z/2^m\Z$}
+Suppose atoms are already known modulo $2^b$ for some $b\ge 1$. A candidate lift to modulus $2^{b+1}$ has the form
+\[
+v'_q=v_q+2^b\delta_q,\qquad \delta_q\in\F_2^n.
+\]
+Modulo $2^{b+1}$,
+\begin{align}\label{eq:linearization}
+(v_q+2^b\delta_q)^{\otimes3}
+&\equiv v_q^{\otimes3}\\
+&\quad+2^b\bigl(\delta_q\otimes s_q\otimes s_q+s_q\otimes\delta_q\otimes s_q+s_q\otimes s_q\otimes\delta_q\bigr),
+\end{align}
+where $s_q=v_q\bmod 2$. All terms containing two or three factors $2^b$ vanish modulo $2^{b+1}$. Thus the next-bit residual produces a linear system over $\F_2$.
+
+Let $J_S$ denote the linear map on perturbations $(\delta_0,\ldots,\delta_n)$ defined by the bracketed sum in \eqref{eq:linearization}.
+
+\begin{lemma}[Injective lifting Jacobian]\label{lem:jacobian}
+For the canonical simplex frame in dimension $n\ge 4$,
+\[
+\ker J_S=\{0\}.
+\]
+Consequently $J_S$ has column rank $n(n+1)$.
+\end{lemma}
+
+\begin{proof}
+Suppose $J_S(\delta)=0$. Write $\delta_0$ for the perturbation of the all-one atom. On a tensor coordinate $(i,j,k)$ with $i,j,k$ pairwise distinct, no basis atom $e_a$ contributes, so
+\[
+\delta_{0,i}+\delta_{0,j}+\delta_{0,k}=0.
+\]
+Because $n\ge4$, compare the equations for $(i,j,k)$ and $(i,j,\ell)$ to obtain $\delta_{0,k}=\delta_{0,\ell}$. Hence all coordinates of $\delta_0$ are equal to a common bit $c$. Substitution into any distinct triple gives $c+c+c=c=0$, so $\delta_0=0$.
+
+Now inspect coordinate $(i,i,j)$ with $i\ne j$. The only remaining contribution is $\delta_{i,j}$ from the $e_i$ atom, hence $\delta_{i,j}=0$. Finally coordinate $(i,i,i)$ gives $\delta_{i,i}=0$. Therefore every $\delta_i$ vanishes.
+\end{proof}
+
+\begin{remark}
+The injectivity statement is invariant under simultaneous $GL_n(\F_2)$ changes of coordinates, so Lemma~\ref{lem:jacobian} applies to every binary simplex frame.
+\end{remark}
+
+\section{Main theorem}
+\begin{theorem}[Quantinion Simplex Cubic Decomposition Theorem]\label{thm:main}
+Let $n\ge4$ be even, $m\ge1$, and $R_m=\Z/2^m\Z$. Suppose
+\[
+T=\sum_{q=0}^{n}v_q^{\otimes3}\in\Sym^3(R_m^n)
+\]
+and the reductions $s_q=v_q\bmod2$ form a binary simplex frame. If
+\[
+T=\sum_{q=0}^{n}w_q^{\otimes3}
+\]
+is any other $(n+1)$-term symmetric cubic decomposition over $R_m$, then after a permutation of the terms,
+\[
+w_q=v_q\qquad(0\le q\le n).
+\]
+Thus the decomposition is globally identifiable up to permutation.
+\end{theorem}
+
+\begin{proof}
+Reduce both decompositions modulo $2$. By Theorem~\ref{thm:parity}, their parity atoms coincide up to permutation. Align that permutation.
+
+Assume inductively that $w_q\equiv v_q\pmod{2^b}$ for some $1\le b<m$. Write
+\[
+w_q=v_q+2^b\delta_q\pmod{2^{b+1}}.
+\]
+Subtract the two tensor decompositions modulo $2^{b+1}$ and divide the residual by $2^b$. By \eqref{eq:linearization}, the perturbations satisfy
+\[
+J_S(\delta_0,\ldots,\delta_n)=0.
+\]
+Lemma~\ref{lem:jacobian} gives $\delta_q=0$ for every $q$. Hence equality modulo $2^b$ lifts uniquely to equality modulo $2^{b+1}$. Induction yields equality modulo $2^m$.
+\end{proof}
+
+\subsection{Constructive recovery algorithm}
+The proof directly gives an algorithm.
+\begin{enumerate}[leftmargin=*]
+  \item Reduce $T$ modulo $2$.
+  \item For each nonzero $x\in\F_2^n$, compute $M_x=\overline{T}(x,\cdot,\cdot)$ and retain the full-rank observers.
+  \item Stack the $n+1$ full-rank observers as $D$ and solve
+  \[
+  Ds_q=\one_{n+1}+e_q
+  \]
+  for $q=0,\ldots,n$.
+  \item Build the binary Jacobian $J_S$ once.
+  \item For $b=1,\ldots,m-1$, compute the residual modulo $2^{b+1}$, divide it by $2^b$, and solve the resulting binary linear system for the next atom bits.
+\end{enumerate}
+The straightforward observer enumeration is exponential in $n$; the theorem is a constructive identifiability result, not a claim that this implementation is asymptotically optimal.
+
+\section{The $\Z_{256}$ Quantinion instance}
+Set
+\[
+n=8,\qquad m=8,\qquad r=9.
+\]
+Then
+\[
+T\in\Sym^3(\Z_{256}^8),\qquad T=\sum_{q=0}^{8}v_q^{\otimes3}.
+\]
+The relevant counts are
+\[
+2^8-1=255\quad\text{nonzero binary observers},
+\]
+\[
+9\times8=72\quad\text{atom coordinates},
+\]
+and
+\[
+8^3=512\quad\text{ordered cubic entries}.
+\]
+After parity recovery, seven lifts recover all byte bits:
+\[
+2\to4\to8\to16\to32\to64\to128\to256.
+\]
+This is an overcomplete decomposition because $r=9>n=8$.
+
+\section{Odd unit weights}
+The unweighted form immediately covers odd coefficients.
+
+\begin{proposition}\label{prop:weights}
+Let
+\[
+T=\sum_{q=0}^{n}\lambda_q v_q^{\otimes3}
+\]
+with every $\lambda_q$ a unit of $R_m$, equivalently odd. Then each $\lambda_q$ has a unique unit cube root $\mu_q$, and
+\[
+\lambda_qv_q^{\otimes3}=(\mu_qv_q)^{\otimes3}.
+\]
+Moreover $\mu_q\equiv1\pmod2$, so the parity simplex frame is unchanged.
+\end{proposition}
+
+\begin{proof}
+The unit group of $\Z/2^m\Z$ is a finite $2$-group. Hence exponentiation by $3$ is an automorphism because $3$ is coprime to the group order. Therefore every unit has a unique cube root. The remaining statements are immediate.
+\end{proof}
+
+\section{Falsification boundaries}
+The theorem was isolated by testing stronger claims and retaining the failures.
+
+\paragraph{Even-order orientation loss.}
+For every vector $v$,
+\[
+v^{\otimes2}=(-v)^{\otimes2},
+\]
+so second order cannot encode orientation.
+
+\paragraph{Third order is not universally sign-faithful over $\Z_{256}$.}
+For a scalar $x$,
+\[
+x^3=(-x)^3\pmod{256}
+\]
+if and only if $2x^3\equiv0\pmod{256}$. This holds for all $x$ divisible by $8$, so cubic orientation recovery is not automatic for arbitrary ring states.
+
+\paragraph{Primitive atoms alone do not guarantee mixture identifiability.}
+There are exact low-rank collisions along a single direction; for example
+\[
+3^3+13^3\equiv5^3+11^3\pmod{256}.
+\]
+Thus the simplex geometry, rather than merely oddness or primitivity, is essential.
+
+\paragraph{Even/non-unit weights.}
+Multiplication by high powers of $2$ discards information. For example, multiplication by $128$ retains only parity. Proposition~\ref{prop:weights} therefore cannot be extended to arbitrary coefficients without additional hypotheses.
+
+\paragraph{Odd dimension.}
+The full-rank contraction pattern in Lemma~\ref{lem:ranklaw} changes when $n$ is odd. The present proof does not cover that case.
+
+\paragraph{Beyond $r=n+1$.}
+The proof that a full-rank observer annihilates exactly one atom uses both the evenness of $n$ and the fact that the decomposition has $n+1$ terms. For $r=n+2$, the same parity count no longer forces a unique omitted atom. General $r=n+2$ identifiability remains outside Theorem~\ref{thm:main}.
+
+\section{Computational verification}
+The accompanying script \texttt{verify\_quantinion\_simplex\_cubic.py} uses exact integer and bit arithmetic only. It performs three families of checks:
+\begin{enumerate}[leftmargin=*]
+  \item Exhaustive verification of Lemma~\ref{lem:ranklaw} for $n=4,6,8,10$.
+  \item Exact rank verification of the lifting Jacobian for those dimensions.
+  \item Blind recovery experiments over $\Z_{256}$ for random $GL_n(\F_2)$-hidden simplex frames and random byte lifts for $n=4,6,8$.
+\end{enumerate}
+With deterministic seed 20260918, the published regression run reports:
+\begin{center}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+$n$ & full-rank observers & Jacobian rank & blind $\Z_{256}$ recoveries \\
+\midrule
+4 & 5 & 20 & 20/20 \\
+6 & 7 & 42 & 20/20 \\
+8 & 9 & 72 & 20/20 \\
+10 & 11 & 110 & rank-law/Jacobian check \\
+\bottomrule
+\end{tabular}
+\end{center}
+These computations are regression evidence for the implementation. The theorem itself is established by the proofs above.
+
+\section{Relation to prior work}
+Overcomplete tensor decomposition over the reals has recently advanced through Koszul--Young flattenings, with guarantees approaching rank $2n$ for generic order-three tensors \cite{KothariMoitraWein2025}. Exact tensor search over finite fields has also been studied algorithmically \cite{Yang2025}, and symmetric tensor decomposition over finite fields is an active topic \cite{CotardoZullo2026}. Symmetric tensor rank and uniqueness over the binary field have been analyzed in low dimensions and higher orders \cite{SongZhengHuang2022}.
+
+Regular simplex tensors over $\mathbb{R}$ form another relevant neighboring literature. Their eigenstructure and robust eigenvectors have been studied in detail \cite{CzaplinskiRaaschSteinberg2023,WangGengZhang2023}. Those works use real equiangular simplex frames and focus on eigenstructure or optimization. The theorem here instead concerns exact decomposition over the non-field ring $\Z/2^m\Z$, using a binary simplex frame as a parity skeleton and a unique $2$-adic lift.
+
+The mechanism is also distinct from generic Hensel lifting in computational algebra: the one-bit system here is derived directly from the cubic tensor expansion, and injectivity follows from explicit tensor coordinates of the simplex frame.
+
+\section{Conclusion}
+A symmetric cubic with $n+1$ atoms in dimension $n$ is already overcomplete. Over $\Z/2^m\Z$, generic identifiability is delicate because zero divisors and $2$-adic torsion create exact collisions. Nevertheless, the binary simplex frame defines a rigid class for which global recovery is possible.
+
+The decisive structure is two-level. Modulo $2$, full-rank contraction observers expose a dual simplex frame and force a unique parity decomposition. Above parity, every additional bit enters linearly and the lifting Jacobian is injective. This yields an exact constructive decomposition theorem over every $2$-power ring for even $n\ge4$.
+
+The next mathematical questions are therefore sharply separated from the proved result: characterize odd-dimensional analogues, determine which non-unit weights preserve identifiability, and identify the correct replacement for the dual-simplex observer once the rank exceeds $n+1$.
+
+\section*{Reproducibility}
+The reference verifier is distributed with this manuscript. It uses no floating-point arithmetic and no third-party numerical package. The Quantinion/MPRC specialization is $n=8$, $m=8$, $R_m=\Z_{256}$.
+
+\begin{thebibliography}{9}
+\bibitem{KothariMoitraWein2025}
+P. K. Kothari, A. Moitra, and A. S. Wein,
+``Overcomplete Tensor Decomposition via Koszul--Young Flattenings,''
+\emph{Proceedings of the 66th IEEE Symposium on Foundations of Computer Science (FOCS)}, 2025, pp. 1871--1882.
+DOI: 10.1109/FOCS63196.2025.00098.
+
+\bibitem{Yang2025}
+J. Yang,
+``Faster Search for Tensor Decomposition over Finite Fields,''
+\emph{Proceedings of the 2025 International Symposium on Symbolic and Algebraic Computation (ISSAC)}, 2025.
+DOI: 10.1145/3747199.3747555.
+
+\bibitem{CotardoZullo2026}
+G. Cotardo and F. Zullo,
+``Symmetric Tensor Decompositions over Finite Fields,''
+arXiv:2605.12295, 2026.
+
+\bibitem{SongZhengHuang2022}
+X. Song, B. Zheng, and R. Huang,
+``The symmetric rank and decomposition of m-order n-dimensional (n=2,3,4) symmetric tensors over the binary field,''
+\emph{Linear Algebra and its Applications}, vol. 653, pp. 1--32, 2022.
+DOI: 10.1016/j.laa.2022.07.013.
+
+\bibitem{CzaplinskiRaaschSteinberg2023}
+A. Czaplinski, T. Raasch, and J. Steinberg,
+``Real eigenstructure of regular simplex tensors,''
+\emph{Advances in Applied Mathematics}, vol. 148, 102521, 2023.
+DOI: 10.1016/j.aam.2023.102521.
+
+\bibitem{WangGengZhang2023}
+L. Wang, X. Geng, and L. Zhang,
+``Robust Eigenvectors of Regular Simplex Tensors: Conjecture Proof,''
+arXiv:2303.13847, 2023.
+\end{thebibliography}
+
+\end{document}

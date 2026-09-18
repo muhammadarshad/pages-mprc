@@ -1,0 +1,5 @@
+Simplex cubics are globally identifiable over every 2-power ring
+Binary contractions recover the hidden parity simplex frame exactly
+Each new 2-adic bit is recovered by an injective linear system
+The Z256 eight-state case recovers nine overcomplete cubic atoms
+A balanced residual tenth atom also lifts uniquely in the structured class

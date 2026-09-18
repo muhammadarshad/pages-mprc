@@ -16,7 +16,7 @@ jobs:
   verify-and-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Run exact mathematical verifiers
         run: |
@@ -39,7 +39,7 @@ jobs:
         run: latexmk -pdf -halt-on-error -interaction=nonstopmode -outdir=build/paper3 docs/quantinion_operator_transpose_geometry.tex
 
       - name: Upload compiled manuscripts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: research-papers
           path: |

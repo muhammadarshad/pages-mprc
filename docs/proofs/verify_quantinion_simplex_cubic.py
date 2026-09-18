@@ -211,8 +211,75 @@ def verify_random_recovery() -> None:
         print(f"n={n}: {trials}/{trials} blind Z_256 recoveries PASS")
 
 
+def xor_vecs(vs: list[list[int]]) -> list[int]:
+    out = [0] * len(vs[0])
+    for v in vs:
+        out = [a ^ b for a, b in zip(out, v)]
+    return out
+
+
+def recover_residual_simplex(t: list[int], n: int, m: int = 8) -> list[list[int]]:
+    """Recover a simplex frame plus one residual atom when the combined Jacobian is full rank."""
+    t2 = [x & 1 for x in t]
+    # Over F2, diag(v^{⊗3}) = v.  The simplex frame sums to zero,
+    # therefore the total diagonal is exactly the extra residual support.
+    u = [tensor_get(t2, n, i, i, i) for i in range(n)]
+    u3 = tensor_sum([u], 2)
+    simplex_tensor = [a ^ b for a, b in zip(t2, u3)]
+    simplex_supports = recover_supports(simplex_tensor, n)
+    supports = simplex_supports + [u]
+
+    jac = build_jacobian(supports)
+    expected = (n + 2) * n
+    assert gf2_rank(jac) == expected
+
+    cur = [s[:] for s in supports]
+    for b in range(1, m):
+        mod = 1 << (b + 1)
+        step = 1 << b
+        pred = tensor_sum(cur, mod)
+        rhs = []
+        for target, got in zip(t, pred):
+            d = (target - got) % mod
+            assert d % step == 0
+            rhs.append((d // step) & 1)
+        delta = gf2_solve(jac, rhs)
+        for q in range(n + 2):
+            for i in range(n):
+                cur[q][i] = (cur[q][i] + step * delta[q * n + i]) % mod
+    return cur
+
+
+def verify_residual_simplex_extension() -> None:
+    n = 8
+    base = canonical_simplex(n)
+    expected_ranks = {1: 72, 2: 78, 3: 78, 4: 80, 5: 80, 6: 78, 7: 78, 8: 72}
+    for w, expected in expected_ranks.items():
+        u = [1] * w + [0] * (n - w)
+        rank = gf2_rank(build_jacobian(base + [u]))
+        assert rank == expected, (w, rank, expected)
+    print("n=8 residual-simplex Jacobian profile PASS: 72,78,78,80,80,78,78,72")
+
+    trials = 20
+    for trial in range(trials):
+        g = random_gl(n)
+        simplex_supports = [mat_vec_mod2(g, s) for s in base]
+        chosen = random.sample(range(n + 1), 4)
+        u = xor_vecs([simplex_supports[q] for q in chosen])
+        supports = simplex_supports + [u]
+        assert gf2_rank(build_jacobian(supports)) == 80
+        atoms = []
+        for s in supports:
+            atoms.append([2 * random.randrange(128) + bit for bit in s])
+        t = tensor_sum(atoms, 256)
+        got = recover_residual_simplex(t, n, 8)
+        assert canon_set(got) == canon_set(atoms), trial
+    print(f"n=8 balanced residual-simplex: {trials}/{trials} blind Z_256 recoveries PASS")
+
+
 if __name__ == "__main__":
     print(f"seed={SEED}")
     verify_rank_law()
     verify_random_recovery()
+    verify_residual_simplex_extension()
     print("ALL CHECKS PASS")

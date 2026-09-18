@@ -1,0 +1,242 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Cap}{\operatorname{Cap}}
+
+\title{\textbf{Exact Free Capacity of Symmetric Rank-One Cubic Dictionaries over Dyadic Rings}}
+\author{Muhammad Arshad}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let \(R_m=\Z/2^m\Z\) and consider dictionaries whose atoms are symmetric rank-one cubics \(v^{\otimes3}\in\Sym^3(R_m^n)\). Since \(R_m\) is not a field, we ask for the maximum cardinality of a \emph{free} \(R_m\)-linearly independent dictionary rather than a vector-space dimension. We prove
+\[
+\Cap_3(n,m)=\sum_{k=1}^{\min(3,n)}\binom nk,
+\]
+independent of \(m\). The upper bound follows by reducing modulo \(2\): every cubic evaluation on a binary vector collapses to a square-free monomial whose support has size \(1\), \(2\), or \(3\). Any larger family therefore has a nontrivial binary dependence, which lifts to an exact \(R_m\)-dependence after multiplication by \(2^{m-1}\). For the lower bound we give an explicit family indexed by all nonempty subsets of \([n]\) of size at most three. A selected cubic minor reduces modulo \(2\) to the zeta matrix of the truncated Boolean lattice, which is unitriangular and therefore has odd determinant. For \(n=8\) the exact free capacity is \(8+28+56=92\). The result concerns dictionary capacity; it is not a claim that arbitrary \(92\)-term decompositions are identifiable or that generic cubic rank equals \(92\).
+\end{abstract}
+
+\section{Introduction}
+Symmetric tensor decomposition asks for representations of a tensor as a sum of powers \(v^{\otimes d}\), equivalently Waring decompositions of homogeneous forms. Much of the classical geometric theory is developed over fields, while finite-field and binary-field decompositions exhibit additional arithmetic phenomena \cite{SongZhengHuang2022,CotardoZullo2026}. Overcomplete tensor decomposition is also algorithmically difficult even over \(\mathbb R\) or \(\mathbb C\) \cite{KothariMoitraWein2025}.
+
+This paper studies a different invariant over the finite local ring \(R_m=\Z/2^m\Z\). We do not ask for the rank of an arbitrary tensor. Instead, among all rank-one symmetric cubic atoms, how many can coexist in a \emph{free} dictionary, so that no nontrivial \(R_m\)-linear relation exists between them?
+
+The answer is controlled by the parity shadow. In characteristic two, repeated variables collapse under evaluation on binary points: \(x_i^2=x_i\) and \(x_i^3=x_i\). Hence a cubic rank-one atom has only square-free support information of sizes one, two, and three. This yields an upper bound. A matching lower bound follows from an explicit truncated-Boolean-lattice incidence matrix.
+
+\paragraph{Contributions.}
+\begin{enumerate}[leftmargin=*]
+\item We define the free rank-one cubic dictionary capacity over \(\Z/2^m\Z\).
+\item We prove the sharp upper bound \(\sum_{k=1}^{3}\binom nk\) by parity reduction and an exact \(2\)-adic lift of any binary dependence.
+\item We construct a matching family with entries in \(\{1,2\}\), dense when \(m\ge2\).
+\item We obtain the exact \(n=8\) capacity \(92\) and give reproducible exact-integer verification.
+\end{enumerate}
+
+\paragraph{Novelty boundary.}
+The result is a module-theoretic capacity statement for rank-one cubic atoms over a dyadic local ring. It is not a generic symmetric-rank formula and not an identifiability theorem for unknown atoms. The incidence-matrix ingredient is classical; subset-incidence ranks over finite fields have a substantial literature \cite{LinialRothschild1981}. The contribution is the exact capacity statement obtained by coupling the characteristic-two square-free collapse with the \(2\)-adic dependence lift and an explicit attaining cubic family.
+
+\section{Definitions}
+Fix \(n,m\ge1\) and write \(R_m=\Z/2^m\Z\).
+
+\begin{definition}[Cubic atom]
+For \(v\in R_m^n\), define
+\[
+C(v)=v^{\otimes3}\in\Sym^3(R_m^n).
+\]
+\end{definition}
+
+\begin{definition}[Free dictionary]
+A finite family \(\{C(v_q)\}_{q=1}^r\) is free independent if
+\[
+\sum_{q=1}^r\lambda_q C(v_q)=0,\qquad \lambda_q\in R_m
+\]
+implies \(\lambda_q=0\) for every \(q\).
+\end{definition}
+
+\begin{definition}[Cubic dictionary capacity]
+Let \(\Cap_3(n,m)\) be the largest cardinality of a free independent family of cubic atoms in \(\Sym^3(R_m^n)\).
+\end{definition}
+
+\section{Parity support dimension}
+Reduce \(v\) modulo two and write \(x=v\bmod2\in\F_2^n\). A cubic coordinate is \(x_ix_jx_k\). Since
+\[
+x_i^2=x_i,\qquad x_i^3=x_i,
+\]
+the value depends only on the support set \(\{i,j,k\}\) after repetitions are removed.
+
+Let
+\[
+\mathcal P_{\le3}([n])=\{S\subseteq[n]:1\le |S|\le3\}.
+\]
+Its cardinality is
+\[
+N_3(n)=\sum_{k=1}^{\min(3,n)}\binom nk.
+\]
+
+\begin{lemma}[Parity image bound]\label{lem:parity}
+The \(\F_2\)-linear span of all reductions \(C(v)\bmod2\) has dimension at most \(N_3(n)\).
+\end{lemma}
+
+\begin{proof}
+Choose one representative cubic coordinate for each nonempty support \(S\) of size at most three. Every other ordered cubic coordinate has the same binary value as the representative with the same set of distinct indices. Hence the entire parity image factors through \(\F_2^{N_3(n)}\).
+\end{proof}
+
+\section{Upper bound over the dyadic ring}
+\begin{theorem}[Capacity upper bound]\label{thm:upper}
+Every free dictionary of cubic atoms over \(R_m\) has size at most \(N_3(n)\).
+\end{theorem}
+
+\begin{proof}
+Take \(r>N_3(n)\) atoms \(C_q=C(v_q)\). By Lemma~\ref{lem:parity}, their reductions are linearly dependent over \(\F_2\). Hence some nonzero \(\alpha=(\alpha_q)\in\F_2^r\) satisfies
+\[
+\sum_q\alpha_q C_q\equiv0\pmod2.
+\]
+Lift \(\alpha_q\) to \(\{0,1\}\subset R_m\). Every entry of the sum is even. Therefore
+\[
+\sum_q2^{m-1}\alpha_q C_q=0\pmod{2^m}.
+\]
+At least one coefficient \(2^{m-1}\alpha_q\) is nonzero in \(R_m\), so the dictionary is not free independent.
+\end{proof}
+
+\section{An explicit attaining construction}
+Index vectors by \(S\in\mathcal P_{\le3}([n])\). For \(m\ge2\), define
+\[
+(v_S)_i=
+\begin{cases}
+1,&i\in S,\\
+2,&i\notin S.
+\end{cases}
+\]
+For \(m=1\) the same formula reduces to the binary support vector \(1_S\).
+
+For every \(R\in\mathcal P_{\le3}([n])\), choose an ordered cubic coordinate \(\kappa(R)\) having exactly \(R\) as its set of distinct indices:
+\[
+\kappa(\{i\})=(i,i,i),\quad
+\kappa(\{i,j\})=(i,i,j),\quad
+\kappa(\{i,j,k\})=(i,j,k).
+\]
+Form
+\[
+B_{R,S}=C(v_S)_{\kappa(R)}.
+\]
+
+\begin{lemma}[Boolean zeta minor]\label{lem:zeta}
+Modulo two,
+\[
+B_{R,S}\equiv
+\begin{cases}
+1,&R\subseteq S,\\
+0,&R\nsubseteq S.
+\end{cases}
+\]
+Consequently \(\det B\) is odd.
+\end{lemma}
+
+\begin{proof}
+Modulo two, \(v_S\) is exactly the indicator vector of \(S\). The selected cubic coordinate is one precisely when every index in \(R\) belongs to \(S\). Order row and column subsets by nondecreasing cardinality. If \(R\subseteq S\), then \(|R|\le|S|\), and if the cardinalities are equal then \(R=S\). Thus the binary matrix is block upper triangular with identity diagonal blocks. Its determinant is one over \(\F_2\), so the integer determinant of \(B\) is odd.
+\end{proof}
+
+Since odd elements are units in \(R_m\), \(B\) is invertible over \(R_m\).
+
+\begin{theorem}[Exact cubic dictionary capacity]\label{thm:capacity}
+For all \(n,m\ge1\),
+\[
+\boxed{\displaystyle
+\Cap_3(n,m)=\sum_{k=1}^{\min(3,n)}\binom nk.}
+\]
+For \(m\ge2\), the capacity is attained by a dense dictionary with all vector coordinates in \(\{1,2\}\).
+\end{theorem}
+
+\begin{proof}
+The upper bound is Theorem~\ref{thm:upper}. Lemma~\ref{lem:zeta} provides \(N_3(n)\) atoms with an invertible \(N_3(n)\times N_3(n)\) coordinate minor, so they are free independent.
+\end{proof}
+
+\section{The \(n=8\) specialization}
+For \(n=8\),
+\[
+\Cap_3(8,m)=\binom81+\binom82+\binom83
+=8+28+56
+=92.
+\]
+Thus a dimension-eight dyadic state supports a free dictionary of \(92\) symmetric rank-one cubic atoms, an overcompleteness ratio \(92/8=11.5\).
+
+This is deliberately distinct from tensor identifiability. If the \(92\) atoms are known, their coefficients are uniquely recoverable. The theorem does not say that an arbitrary tensor has a unique unknown-atom decomposition with \(92\) terms.
+
+\section{Explicit torsion dependencies}
+Fix four coordinates \(Q\subseteq[n]\). For all \(15\) nonempty subsets \(S\subseteq Q\), take the corresponding binary support atoms. For a square-free monomial with support \(R\), \(1\le|R|\le3\), the number of subsets \(S\subseteq Q\) containing \(R\) is \(2^{4-|R|}\), which is even. Hence
+\[
+\sum_{\varnothing\ne S\subseteq Q}C(1_S)\equiv0\pmod2
+\]
+and therefore
+\[
+2^{m-1}\sum_{\varnothing\ne S\subseteq Q}C(1_S)=0\pmod{2^m}.
+\]
+This exact torsion relation shows why field-based intuition cannot simply be transferred to the dyadic ring.
+
+\section{Relation to symmetric tensor literature}
+Rank-one symmetric tensors are parametrized by Veronese-type maps, and their spans, ranks, and identifiability are classical objects over fields. Finite-field symmetric decompositions and binary symmetric rank have distinct arithmetic behavior \cite{SongZhengHuang2022,CotardoZullo2026}. The present theorem instead fixes the ground ring \(\Z/2^m\Z\) and asks for the maximal free dictionary formed by rank-one cubic atoms.
+
+The binary zeta minor is closely related to classical subset-incidence matrices \cite{LinialRothschild1981}. The key dyadic step is that a mod-\(2\) dependence is not merely evidence of reduced rank: multiplication by \(2^{m-1}\) turns it into an exact nonzero module relation over the original ring.
+
+\section{Computational verification}
+The accompanying pure-Python program \texttt{verify\_cubic\_dictionary\_capacity.py} uses only integer and bit arithmetic. It enumerates the subset family for \(1\le n\le8\), checks the capacities
+\[
+1,3,7,14,25,41,63,92,
+\]
+and verifies an explicit four-coordinate parity dependency together with its exact \(\Z_{256}\) lift.
+
+\section{Limitations and open questions}
+The theorem concerns cubic degree three. For higher degree \(d\), the parity shadow suggests
+\[
+\sum_{k=1}^{\min(d,n)}\binom nk,
+\]
+but an exact dyadic-ring capacity theorem requires a separate proof and construction.
+
+Likewise, free dictionary capacity does not imply global unknown-atom identifiability. Understanding the gap between free capacity and identifiable unknown-atom capacity is a separate problem.
+
+\section{Conclusion}
+The exact number of symmetric rank-one cubic atoms that can form a free dictionary over \(\Z/2^m\Z\) is governed by the square-free Boolean shadow of the cubic. Characteristic two produces the sharp upper bound \(N_3(n)\), and a truncated-Boolean-lattice zeta minor attains the bound over every dyadic ring because its determinant remains odd. In dimension eight the exact free cubic capacity is \(92\).
+
+\begin{thebibliography}{9}
+\bibitem{KothariMoitraWein2025}
+P. K. Kothari, A. Moitra, and A. S. Wein,
+"Overcomplete Tensor Decomposition via Koszul--Young Flattenings,"
+\emph{Proceedings of the 66th IEEE Symposium on Foundations of Computer Science (FOCS)}, 2025, pp. 1871--1882.
+DOI: 10.1109/FOCS63196.2025.00098.
+
+\bibitem{CotardoZullo2026}
+G. Cotardo and F. Zullo,
+"Symmetric Tensor Decompositions over Finite Fields,"
+arXiv:2605.12295, 2026.
+
+\bibitem{SongZhengHuang2022}
+X. Song, B. Zheng, and R. Huang,
+"The symmetric rank and decomposition of m-order n-dimensional (n=2,3,4) symmetric tensors over the binary field,"
+\emph{Linear Algebra and its Applications}, vol. 653, pp. 1--32, 2022.
+DOI: 10.1016/j.laa.2022.07.013.
+
+\bibitem{LinialRothschild1981}
+N. Linial and B. L. Rothschild,
+"Incidence Matrices of Subsets---A Rank Formula,"
+\emph{SIAM Journal on Algebraic Discrete Methods}, vol. 2, no. 3, pp. 333--340, 1981.
+DOI: 10.1137/0602037.
+\end{thebibliography}
+
+\end{document}

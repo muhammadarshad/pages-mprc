@@ -17,7 +17,7 @@
 \newcommand{\F}{\mathbb F}
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\Sym}{\operatorname{Sym}}
-\newcommand{\Cap}{\operatorname{Cap}}
+\newcommand{\CubCap}{\operatorname{Cap}}
 
 \title{\textbf{Exact Free Capacity of Symmetric Rank-One Cubic Dictionaries over Dyadic Rings}}
 \author{Muhammad Arshad}
@@ -29,7 +29,7 @@
 \begin{abstract}
 Let \(R_m=\Z/2^m\Z\) and consider dictionaries whose atoms are symmetric rank-one cubics \(v^{\otimes3}\in\Sym^3(R_m^n)\). Since \(R_m\) is not a field, we ask for the maximum cardinality of a \emph{free} \(R_m\)-linearly independent dictionary rather than a vector-space dimension. We prove
 \[
-\Cap_3(n,m)=\sum_{k=1}^{\min(3,n)}\binom nk,
+\CubCap_3(n,m)=\sum_{k=1}^{\min(3,n)}\binom nk,
 \]
 independent of \(m\). The upper bound follows by reducing modulo \(2\): every cubic evaluation on a binary vector collapses to a square-free monomial whose support has size \(1\), \(2\), or \(3\). Any larger family therefore has a nontrivial binary dependence, which lifts to an exact \(R_m\)-dependence after multiplication by \(2^{m-1}\). For the lower bound we give an explicit family indexed by all nonempty subsets of \([n]\) of size at most three. A selected cubic minor reduces modulo \(2\) to the zeta matrix of the truncated Boolean lattice, which is unitriangular and therefore has odd determinant. For \(n=8\) the exact free capacity is \(8+28+56=92\). The result concerns dictionary capacity; it is not a claim that arbitrary \(92\)-term decompositions are identifiable or that generic cubic rank equals \(92\).
 \end{abstract}
@@ -76,7 +76,7 @@ implies \(\lambda_q=0\) for every \(q\).
 \end{definition}
 
 \begin{definition}[Cubic dictionary capacity]
-Let \(\Cap_3(n,m)\) be the largest cardinality of a free independent family of cubic atoms in \(\Sym^3(R_m^n)\).
+Let \(\CubCap_3(n,m)\) be the largest cardinality of a free independent family of cubic atoms in \(\Sym^3(R_m^n)\).
 \end{definition}
 
 \section{Parity support dimension}
@@ -164,7 +164,7 @@ Since odd elements are units in \(R_m\), \(B\) is invertible over \(R_m\).
 For all \(n,m\ge1\),
 \[
 \boxed{\displaystyle
-\Cap_3(n,m)=\sum_{k=1}^{\min(3,n)}\binom nk.}
+\CubCap_3(n,m)=\sum_{k=1}^{\min(3,n)}\binom nk.}
 \]
 For \(m\ge2\), the capacity is attained by a dense dictionary with all vector coordinates in \(\{1,2\}\).
 \end{theorem}
@@ -176,7 +176,7 @@ The upper bound is Theorem~\ref{thm:upper}. Lemma~\ref{lem:zeta} provides \(N_3(
 \section{The \(n=8\) specialization}
 For \(n=8\),
 \[
-\Cap_3(8,m)=\binom81+\binom82+\binom83
+\CubCap_3(8,m)=\binom81+\binom82+\binom83
 =8+28+56
 =92.
 \]

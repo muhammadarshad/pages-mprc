@@ -1,0 +1,5 @@
+The trace-zero eight-state operator module has free rank 63
+Fourteen reference couplings generate all trace-zero directions
+The frozen address reduces exactly to mixed radix 64, 21, 7, 1
+The transpose law gives exact fixed points and two-cycles
+The tensor-lift kernel is exactly the scalar annihilator of the order

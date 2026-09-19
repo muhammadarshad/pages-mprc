@@ -192,9 +192,9 @@ No directly matching theorem surfaced in the SciSpace searches. This remains a l
 
 ### Current mathematical boundary
 
-For `n=14`, parity collisions can first involve weight `32=2d` codewords of `RM(10,14)`. Non-minimal weight-32 words are unions of two disjoint minimum affine 4-flats and therefore have low-dimensional support; they cannot host a rank-14 16-point frame. The unresolved obstruction is a **minimal** weight-32 word whose support has full linear span 14.
+The Kasami–Tokura–Azumi classification actually covers every relevant Reed–Muller word of weight below `40=2.5d`. Using the explicit representatives tabulated by Nezami–Haah, the possible collision weights `16,24,28,30,32,34,36,38` all have support contained in a proper low-dimensional affine subspace. This extends global parity rigidity through `n=17`.
 
-That exact geometric question is the next proof target.
+At `n=18`, the collision bound reaches weight `40`, exactly outside the strict `<2.5d` classification used by the proof. Weight-40 support geometry in `RM(14,18)` is therefore the next proof target.
 
 ---
 

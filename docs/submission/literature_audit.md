@@ -1,3 +1,53 @@
+# Status Update — 20 September 2026
+
+The earlier three-paper novelty framing is superseded.
+
+## Primary novelty candidate
+
+**Rank-(n+2) Cubic Identifiability over Dyadic Rings: Reed–Muller Rigidity and a Relation-Code/Sidon Classification**
+
+Current theorem candidate:
+
+- Ring: `R_m = Z/(2^m)`, `m >= 2`.
+- Rank: `r = n+2`.
+- Parity frame: distinct nonzero spanning columns `S=[s_1 ... s_{n+2}]`.
+- Relation code: `K = ker S`, a binary `[n+2,2]` code.
+- Global parity support recovery: proved for `3 <= n <= 13`.
+- Dyadic lift rigidity: proved for all `n >= 3` in this rank-`n+2` setting:
+  `ker J_S = 0 iff d(K) >= 5`.
+- Classical reformulation: `d(K) >= 5` iff `{0,s_1,...,s_{n+2}}` is a binary Sidon set.
+- Exact converse: if `d(K) <= 4`, a 3- or 4-atom circuit yields a nonzero Jacobian direction, and toggling it in the top dyadic bit gives an exact second decomposition over every `Z/(2^m)`.
+- Quantinion case `n=8,r=10`: 32 frame classes, exactly 9 rigid and 23 non-rigid; every non-rigid class has an exact `Z_256` counter-decomposition.
+
+The current proof uses classical Reed–Muller duality and the Kasami–Tokura low-weight classification for the parity-support step. The first unresolved dimension for this proof method is `n=14`, where weight `32=2d` becomes reachable.
+
+### Closest prior work now explicitly acknowledged
+
+1. Kopparty–Potukuchi (SODA 2018): Reed–Muller syndrome decoding and equivalent tensor decomposition over finite fields.
+2. Berlekamp–Sloane / Kasami–Tokura: low-weight Reed–Muller structure.
+3. Nagy (JCTA 2025) and Czerwinski–Pott (JCTA 2026): binary Sidon sets and their equivalence with minimum-distance-five binary codes.
+4. General Hensel lifting: classical; not claimed as novel.
+
+The novelty claim, if it survives professional review, is therefore **not** Reed–Muller theory, Sidon sets, distance five, or Hensel lifting individually. It is the exact coupling:
+
+```
+rank n+2 cubic over Z/(2^m)
++ global parity rigidity
++ relation-code/Sidon criterion
++ exact iff dyadic lift rigidity
++ explicit top-bit non-uniqueness when the criterion fails.
+```
+
+## Status of the earlier papers
+
+- **Simplex cubic paper:** foundational special case and derivation history. It should become a precursor/section of the new classification paper rather than the primary novelty claim.
+- **Exact cubic dictionary capacity:** supporting Boolean/Reed–Muller structure; not currently treated as a standalone novelty paper.
+- **Operator/Transpose geometry:** MPRC internal algebra and supporting derivation; substantial classical content, not currently treated as the main novelty paper.
+
+The active submission target is therefore **one principal theorem paper**, not three novelty claims.
+
+---
+
 # Literature and Novelty Audit
 
 Audit date: 18 September 2026

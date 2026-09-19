@@ -513,6 +513,105 @@ then
 |B|\ge2,\qquad |C|\ge2.
 \]
 
+
+\subsection{General Jacobian--Koszul reduction}
+The lifting linearization has a useful formulation that does not depend on the special value \(\dim K=2\). Let a parity frame have \(r=n+t\) columns and relation code
+\[
+K=\ker S\subseteq\F_2^r,
+\qquad
+\dim K=t.
+\]
+For \(k=(k_1,\ldots,k_r)\in K\), define the alternating second-moment form
+\[
+\Omega_S(k)
+=
+\sum_{1\le i<j\le n}
+\left(
+\sum_{q=1}^r k_q s_{q,i}s_{q,j}
+\right)e_i\wedge e_j
+\in\Lambda^2\F_2^n.
+\]
+The diagonal second moments vanish because
+\[
+\sum_qk_qs_{q,i}=(Sk)_i=0.
+\]
+
+Define the Koszul map
+\[
+\kappa_S:
+\F_2^n\otimes K
+\longrightarrow
+\Lambda^3\F_2^n,
+\qquad
+\lambda\otimes k
+\longmapsto
+\lambda\wedge\Omega_S(k).
+\]
+
+\begin{proposition}[General Jacobian--Koszul reduction]\label{prop:koszul}
+For any distinct nonzero spanning parity frame \(S\), with arbitrary excess \(t=r-n\),
+\[
+\boxed{
+\ker J_S\cong\ker\kappa_S.
+}
+\]
+Consequently a necessary condition for a rigid one-bit lift is
+\[
+nt\le\binom n3.
+\]
+\end{proposition}
+
+\begin{proof}
+Write the perturbation matrix as
+\[
+\Delta=[\delta_1\ \cdots\ \delta_r]\in\F_2^{n\times r}.
+\]
+Consider first tensor coordinates with a repeated index. For every \(i,j\),
+\[
+\left[J_S(\Delta)\right]_{iij}
+=
+\sum_{q=1}^r s_{q,i}\delta_{q,j}.
+\]
+Thus all repeated-index equations are exactly
+\[
+S\Delta^T=0.
+\]
+Equivalently, every row of \(\Delta\), viewed as a length-\(r\) vector, belongs to \(K\).
+
+Choose a basis \(k_1,\ldots,k_t\) of \(K\). There are therefore unique vectors
+\[
+\lambda_1,\ldots,\lambda_t\in\F_2^n
+\]
+such that
+\[
+\delta_q=\sum_{a=1}^t k_a(q)\lambda_a.
+\]
+Now inspect a tensor coordinate \((i,j,k)\) with three distinct indices. Substitution gives
+\[
+\sum_{a=1}^t
+\left[
+\lambda_{a,i}\Omega_S(k_a)_{jk}
++
+\lambda_{a,j}\Omega_S(k_a)_{ik}
++
+\lambda_{a,k}\Omega_S(k_a)_{ij}
+\right]=0.
+\]
+In characteristic two this is precisely the \((i,j,k)\)-coefficient of
+\[
+\sum_{a=1}^t\lambda_a\wedge\Omega_S(k_a).
+\]
+Hence the remaining equations are exactly
+\[
+\kappa_S\!\left(\sum_a\lambda_a\otimes k_a\right)=0.
+\]
+The construction is independent of the chosen basis of \(K\), proving the kernel isomorphism. The dimension inequality follows from injectivity of a linear map from a space of dimension \(nt\) into one of dimension \(\binom n3\).
+\end{proof}
+
+\begin{remark}
+Koszul maps and Koszul flattenings are classical tools in tensor decomposition. Proposition~\ref{prop:koszul} is used here only as an exact reformulation of the dyadic one-bit lifting problem. Theorem~\ref{thm:jac} below gives a complete classification when \(t=2\). For \(t\ge3\), injectivity of \(\kappa_S\) is a separate problem.
+\end{remark}
+
 \section{Relation-code distance and Jacobian rigidity}
 \begin{theorem}[Jacobian classification]\label{thm:jac}
 Let \(n\ge3\), let \(S\in\F_2^{n\times(n+2)}\) have distinct nonzero spanning columns, and let \(K=\ker S\). Then
@@ -763,6 +862,12 @@ The next case is
 r=n+t,\qquad t\ge3,
 \]
 where the relation code has dimension \(t\). The rank-\(n+2\) theorem suggests that short circuits, Sidon-type conditions, and the Schur powers of the parity frame should continue to govern dyadic lifting rigidity, but a two-dimensional relation code is used essentially in Theorem~\ref{thm:jac}. A higher-dimensional classification requires new ideas.
+
+Proposition~\ref{prop:koszul} gives a precise formulation: for excess \(t\), the question is whether the relation-code moment space \(\Omega_S(K)\subseteq\Lambda^2\F_2^n\) has an injective Koszul multiplication map
+\[
+\F_2^n\otimes K\to\Lambda^3\F_2^n.
+\]
+Initial exact experiments at excess \(t=3\) found no counterexample to Sidon sufficiency in the tested range, but no theorem is claimed for \(t\ge3\).
 
 A second direction is to determine whether the projective triorthogonal bound
 \[

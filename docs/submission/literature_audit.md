@@ -1,3 +1,87 @@
+# Status Update — Dimension-Free Parity Rigidity
+
+The previous `n <= 17` boundary is superseded.
+
+A new projective Schur-square lemma removes the ambient-dimension restriction entirely.
+
+## New lemma
+
+Let `F` be a finite set of `w` distinct nonzero binary points spanning rank `r`. If all square-free moments of degrees 1, 2, and 3 vanish on `F`, then the row code `C` of the point matrix satisfies
+
+```
+C * C <= C^perp
+```
+
+under the Schur product. In systematic form `G=[I_r | A]`, projectivity forces every extra column of `A` to have weight at least two. The quadratic map
+
+```
+q(a) = (a_i a_j)_{i<j}
+```
+
+is nonzero and injective on those columns. Since
+
+```
+dim(C*C) = r + rank(Q) <= w-r,
+```
+
+we obtain
+
+```
+w-r <= 2^(w-2r)-1.
+```
+
+## Consequence for cubic parity collisions
+
+For an `n+2`-atom spanning cubic parity frame, any collision support `F` must contain at least half of its points from the original support, giving
+
+```
+r >= w/2 - 2.
+```
+
+Combining this with the projective Schur-square lemma forces `w <= 30`, independently of `n`.
+
+The zero-vector case is also impossible: removing zero gives defect at most three, forcing at most 14 nonzero support points, contradicting the Reed-Muller minimum weight 16.
+
+Therefore every nonzero parity collision would have Reed-Muller weight in
+
+```
+{16,24,28,30},
+```
+
+all inside the classical Kasami-Tokura range. Their affine normal forms have support-span bounds too small to satisfy `r >= w/2-2`.
+
+Hence global parity support rigidity now holds for **every `n >= 3`**.
+
+## Current main theorem candidate
+
+For every `n >= 3`, `m >= 2`, and rank `r=n+2` symmetric cubic over `Z/(2^m)` whose parity atoms are distinct, nonzero, and span `F_2^n`:
+
+```
+global decomposition uniqueness
+iff d(ker S) >= 5
+iff {0,s_1,...,s_{n+2}} is a binary Sidon set.
+```
+
+If the Sidon condition fails, a 3- or 4-atom circuit gives an explicit Jacobian-kernel direction, and toggling that direction in the top dyadic bit gives an exact second decomposition over every `Z/(2^m)`.
+
+## Novelty boundary after this update
+
+Classical:
+- Reed-Muller duality and low-weight normal forms;
+- Reed-Muller/tensor syndrome connection;
+- Sidon sets and the minimum-distance-five code correspondence;
+- Hensel lifting;
+- general Schur-product coding theory.
+
+Candidate contribution:
+- the exact rank-`n+2` dyadic cubic identifiability iff Sidon classification;
+- the dimension-free parity-rigidity proof via projective Schur-square counting;
+- the exact top-bit non-uniqueness construction in every non-Sidon case.
+
+The next mathematical extension is **relation-code dimension greater than two**, i.e. rank `r=n+t`, `t>=3`.
+
+---
+
 # Status Update — 20 September 2026
 
 The earlier three-paper novelty framing is superseded.
@@ -194,7 +278,7 @@ No directly matching theorem surfaced in the SciSpace searches. This remains a l
 
 The Kasami–Tokura–Azumi classification actually covers every relevant Reed–Muller word of weight below `40=2.5d`. Using the explicit representatives tabulated by Nezami–Haah, the possible collision weights `16,24,28,30,32,34,36,38` all have support contained in a proper low-dimensional affine subspace. This extends global parity rigidity through `n=17`.
 
-At `n=18`, the collision bound reaches weight `40`, exactly outside the strict `<2.5d` classification used by the proof. Weight-40 support geometry in `RM(14,18)` is therefore the next proof target.
+The former `n=18` weight-40 boundary is superseded by the dimension-free Schur-square argument.
 
 ---
 

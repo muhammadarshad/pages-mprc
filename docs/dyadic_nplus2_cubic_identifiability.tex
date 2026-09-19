@@ -43,7 +43,7 @@ and let
 \[
 K=\ker S\subset\F_2^{n+2}.
 \]
-Then \(K\) is a binary \([n+2,2]\) relation code. For \(3\le n\le9\) we prove an exact classification:
+Then \(K\) is a binary \([n+2,2]\) relation code. For \(3\le n\le13\) we prove an exact classification:
 \[
 \boxed{\quad
 \{v_q\}_{q=1}^{n+2}\text{ is globally identifiable from }T
@@ -76,7 +76,7 @@ The reduction modulo two has a two-dimensional space of linear relations. We sho
 The result has two logically independent components. The first is a support-rigidity theorem over \(\F_2\). It uses Reed--Muller duality together with the classical low-weight structure of Reed--Muller codes \cite{BerlekampSloane1969,KasamiTokura1970,DelsarteNewProof2012}. The second is a local-ring lifting theorem. Its proof is direct and elementary: after a frame is normalized to \([I_n\mid u\mid v]\), all Jacobian-kernel equations reduce to the supports of \(u\), \(v\), and \(u+v\).
 
 \paragraph{Main contribution.}
-For \(3\le n\le9\), the parity support is always rigid under the stated spanning/distinctness assumptions. Over \(R_m\), \(m\ge2\), the decomposition is globally identifiable if and only if the binary relation code has minimum distance at least five.
+For \(3\le n\le13\), the parity support is always rigid under the stated spanning/distinctness assumptions. Over \(R_m\), \(m\ge2\), the decomposition is globally identifiable if and only if the binary relation code has minimum distance at least five.
 
 \paragraph{Novelty boundary.}
 None of the following is claimed as new: Reed--Muller duality, the minimum distance of Reed--Muller codes, the characterization of their minimum-weight words as affine flats, low-weight Reed--Muller classifications, Hensel lifting as a general method, or the connection between Reed--Muller syndromes and finite-field tensor decomposition. The proposed new statement is the \emph{combined exact classification} for rank \(n+2\) symmetric cubics over dyadic rings in terms of the distance of the two-dimensional relation code, together with the explicit non-identifiability construction when that distance is at most four. The literature assessment is not a substitute for an exhaustive novelty review.
@@ -172,7 +172,7 @@ Its minimum-weight codewords are incidence vectors of affine \(4\)-flats \cite{D
 We now allow the competing decomposition to be a multiset rather than assuming distinct parity atoms.
 
 \begin{theorem}[Rank-\(n+2\) parity rigidity]\label{thm:parity}
-Let \(3\le n\le9\). Let \(X\subset\F_2^n\setminus\{0\}\) consist of \(n+2\) distinct points spanning \(\F_2^n\). If a multiset \(Y\) of \(n+2\) vectors in \(\F_2^n\) satisfies
+Let \(3\le n\le13\). Let \(X\subset\F_2^n\setminus\{0\}\) consist of \(n+2\) distinct points spanning \(\F_2^n\). If a multiset \(Y\) of \(n+2\) vectors in \(\F_2^n\) satisfies
 \[
 \sum_{x\in X}x^{\otimes3}
 =
@@ -182,60 +182,81 @@ then \(Y\) contains each element of \(X\) exactly once.
 \end{theorem}
 
 \begin{proof}
-Let \(Y_{\rm odd}\) be the set of points occurring with odd multiplicity in \(Y\). Over \(\F_2\), the tensor of the multiset \(Y\) equals the tensor of \(Y_{\rm odd}\). Also
+Let \(Y_{\rm odd}\) be the set of points occurring with odd multiplicity in \(Y\). Over \(\F_2\), the tensor of the multiset \(Y\) equals the tensor of \(Y_{\rm odd}\), and
 \[
-|Y_{\rm odd}|\equiv n+2\equiv|X|\pmod2.
+|Y_{\rm odd}|\equiv|Y|=n+2\equiv|X|\pmod2.
 \]
-
-For \(n=3\), the nonconstant square-free monomials of degrees at most three, together with the constant function, form a basis of all Boolean functions on \(\F_2^3\). Therefore the incidence difference is zero.
-
-Assume \(4\le n\le9\). Set
+Set
 \[
 z=1_X+1_{Y_{\rm odd}}.
 \]
-By the preceding section,
+Equality of the cubic tensors gives equality of every nonconstant square-free Boolean moment of degrees one, two, and three; the parity of the cardinalities supplies the constant moment. Hence
+\[
+z\in RM(3,n)^\perp.
+\]
+For \(n\ge4\), Reed--Muller duality gives
 \[
 z\in RM(n-4,n).
 \]
-Moreover
+Also
 \[
-\wt(z)\le |X|+|Y_{\rm odd}|\le2(n+2)\le22.
-\]
-The low-weight Reed--Muller structure therefore leaves only two possibilities:
-\[
-\wt(z)=0
-\quad\text{or}\quad
-\wt(z)=16.
+\wt(z)\le |X|+|Y_{\rm odd}|\le2(n+2).
 \]
 
-Suppose \(\wt(z)=16\). Then \(\supp(z)\) is an affine \(4\)-flat \(F\). Since
+The case \(n=3\) is immediate because square-free Boolean monomials of degrees at most three, together with the constant, form a basis of all Boolean functions on \(\F_2^3\). The cases \(n=4,5\) follow directly from the weight spectra of \(RM(0,4)\) and \(RM(1,5)\). Assume \(6\le n\le13\). Then
+\[
+\wt(z)\le 30<32=2d,
+\qquad d=16.
+\]
+Kasami--Tokura's classification of Reed--Muller words below twice the minimum distance implies that every nonzero such \(z\) has weight
+\[
+16,\quad24,\quad28,\quad\text{or}\quad30,
+\]
+with the following support-span bounds.
+
+A weight-\(16\) word is a minimum word, hence the indicator of an affine \(4\)-flat; its support has linear span dimension at most \(5\).
+
+For the other weights, specialize the two Kasami--Tokura normal forms to order \(\nu=n-4\). Their supports lie in affine subspaces of dimension at most \(6\), \(7\), and \(8\), respectively, giving the conservative linear-span bounds
+\[
+\begin{array}{c|cccc}
+\wt(z)&16&24&28&30\\ \hline
+\dim\langle\supp(z)\rangle&\le5&\le7&\le8&\le9.
+\end{array}
+\]
+More explicitly, weight \(24\) comes from the quadratic-pair normal form with two hyperbolic pairs; weight \(28\) comes either from three hyperbolic pairs or from the two-product normal form with product length three; and weight \(30\) comes from the two-product normal form with product length four.
+
+Let \(F=\supp(z)\), \(w=|F|\), and \(t=|X\cap F|\). Since
 \[
 Y_{\rm odd}=X\triangle F,
 \]
 we have
 \[
-|Y_{\rm odd}|=|X|+16-2|X\cap F|.
+|Y_{\rm odd}|=|X|+w-2t\le|X|,
 \]
-The bound \(|Y_{\rm odd}|\le|X|=n+2\) forces
+so
 \[
-|X\cap F|\ge8.
+t\ge w/2.
 \]
-The linear span of an affine \(4\)-flat has dimension at most five. At most
+Thus at most
 \[
-(n+2)-8=n-6
+n+2-w/2
 \]
-points of \(X\) lie outside \(F\). Consequently
+points of \(X\) lie outside \(F\). Combining this with the support-span bounds gives
 \[
 \dim\langle X\rangle
-\le5+(n-6)=n-1,
+\le
+\begin{cases}
+5+(n+2-8)=n-1,&w=16,\\
+7+(n+2-12)=n-3,&w=24,\\
+8+(n+2-14)=n-4,&w=28,\\
+9+(n+2-15)=n-4,&w=30.
+\end{cases}
 \]
-contradicting the assumption that \(X\) spans \(\F_2^n\).
-
-Hence \(z=0\) and \(Y_{\rm odd}=X\). The multiset \(Y\) has exactly \(n+2\) terms and already must contain every one of the \(n+2\) elements of \(X\) an odd positive number of times. Therefore each occurs exactly once.
+Every case contradicts \(\langle X\rangle=\F_2^n\). Therefore \(z=0\), so \(Y_{\rm odd}=X\). Since \(Y\) has exactly \(n+2\) terms and each of the \(n+2\) elements of \(X\) must occur an odd positive number of times, every one occurs exactly once.
 \end{proof}
 
 \begin{remark}
-The range \(n\le9\) is where the simple low-weight gap suffices automatically, since \(2(n+2)\le22<24\). At \(n=10\), weight \(24\) enters the classical Reed--Muller spectrum and a separate analysis is required.
+The simple weight-gap proof stops at \(n=9\), but the Kasami--Tokura normal forms control the newly reachable weights \(24\), \(28\), and \(30\), extending rigidity through \(n=13\). At \(n=14\), weight \(32=2d\) becomes reachable and this below-\(2d\) argument no longer applies.
 \end{remark}
 
 \section{The one-bit cubic Jacobian}
@@ -458,7 +479,7 @@ Thus \(d(K)\le4\) produces exact non-identifiability over every dyadic level.
 
 \section{Main classification theorem}
 \begin{theorem}[Rank-\(n+2\) dyadic cubic identifiability]\label{thm:main}
-Let \(3\le n\le9\), \(m\ge2\), and
+Let \(3\le n\le13\), \(m\ge2\), and
 \[
 T=\sum_{q=1}^{n+2}v_q^{\otimes3}
 \in\Sym^3((\Z/2^m\Z)^n).
@@ -552,7 +573,7 @@ d(K)\ge5
 for this rank-\(n+2\) cubic family, together with an exact top-bit collision when the criterion fails.
 
 \section{Limitations and open questions}
-The global parity theorem is proved here only for \(3\le n\le9\). At \(n=10\), the possible symmetric-difference weight reaches \(24\), which is an allowed non-minimum Reed--Muller weight. Extending the global classification therefore requires a finer interaction between the low-weight support geometry and the spanning hypothesis.
+The global parity theorem is proved here for \(3\le n\le13\). At \(n=14\), a symmetric difference may have weight \(32=2d\), outside the strict below-\(2d\) Kasami--Tokura classification used in the proof. Extending the global classification beyond this point therefore requires a separate analysis of weight-\(32\) supports and their possible interaction with a spanning \(n+2\)-point frame.
 
 The relation-code/Jacobian theorem itself is not restricted to \(n\le9\); Theorem~\ref{thm:jac} applies whenever the frame has \(n+2\) distinct nonzero spanning columns. What changes beyond \(n=9\) is the global recovery of the parity support.
 
@@ -561,7 +582,7 @@ A second direction is rank \(n+t\), \(t>2\). Then the relation code has dimensio
 Finally, the theorem concerns unweighted sums of cubes. Odd unit weights can often be absorbed into atoms through cube roots in dyadic unit groups, but a weighted global theorem requires careful bookkeeping and is kept separate here.
 
 \section{Conclusion}
-For the first overcomplete level \(r=n+2\), the two-dimensional binary relation code completely controls dyadic cubic identifiability in dimensions \(3\) through \(9\). Reed--Muller low-weight rigidity determines the parity support globally; the relation-code distance determines whether that support has a unique dyadic lift. The threshold is exact:
+For the first overcomplete level \(r=n+2\), the two-dimensional binary relation code completely controls dyadic cubic identifiability in dimensions \(3\) through \(13\). Reed--Muller low-weight rigidity determines the parity support globally; the relation-code distance determines whether that support has a unique dyadic lift. The threshold is exact:
 \[
 d(K)\ge5
 \]

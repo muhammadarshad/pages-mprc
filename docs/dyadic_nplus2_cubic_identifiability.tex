@@ -843,15 +843,17 @@ In every class, the computed Jacobian is injective if and only if \(d(K)\ge5\).
 The program is a regression check for the finite \(n=8\) classification. The general theorem follows from the proofs above.
 
 \section{Relation to prior work}
-The parity argument is built deliberately on established coding theory. Reed--Muller codes have dimension, duality, minimum-distance, and low-weight structures that are classical; the relevant low-weight restrictions go back to Berlekamp--Sloane and Kasami--Tokura \cite{BerlekampSloane1969,KasamiTokura1970}. Minimum-weight words of generalized Reed--Muller codes are affine-flat indicators; a modern proof is given in \cite{DelsarteNewProof2012}.
+The parity argument is built deliberately on established coding theory. Reed--Muller duality and minimum distance are classical, and minimum-weight words are affine-flat indicators; a modern proof of the latter is given in \cite{DelsarteNewProof2012}.
 
-Kopparty and Potukuchi showed that Reed--Muller syndrome decoding is equivalent to a tensor-decomposition problem over finite fields and gave efficient algorithms in a random low-rank regime \cite{KoppartyPotukuchi2018}. The present theorem uses Reed--Muller structure differently: the code controls \emph{global support collisions} of a fixed \(n+2\)-term symmetric cubic.
+Kopparty and Potukuchi showed that Reed--Muller syndrome decoding is equivalent to a tensor-decomposition problem over finite fields and gave efficient algorithms in a random low-rank regime \cite{KoppartyPotukuchi2018}. The present theorem uses Reed--Muller structure differently: the dual code first captures \emph{global support collisions} of a fixed \(n+2\)-term symmetric cubic.
 
-The second layer is specific to the dyadic local ring. Once parity is fixed, the relation code \(K=\ker S\) controls the tangent/one-bit map exactly through its minimum distance. Hensel-style lifting itself is a standard algebraic strategy; the new claim is not the use of lifting but the explicit if-and-only-if criterion
+The all-dimensional support proof also uses the coding-theoretic Kneser theorem and stabilizer decomposition developed in the Schur-product literature \cite{LinZemor2026}. Recent work of Li and Liu applies the same Schur-product Kneser machinery to minimal dependencies of powers of linear forms, obtaining sharp Veronese-circuit span bounds and positive-characteristic variants \cite{LiLiu2026}. That is close neighboring work. Lemma~\ref{lem:triobound} exploits additional structure specific to the collision support here---projectivity, self-orthogonality and triorthogonality---to obtain the stronger \(8c/21\) span bound needed for global rigidity.
+
+The second layer is specific to the dyadic local ring. Once parity is fixed, the relation code \(K=\ker S\) controls the tangent/one-bit map. Proposition~\ref{prop:koszul} identifies the general lifting obstruction with a Koszul multiplication map; Koszul constructions themselves are classical in tensor decomposition. Hensel-style lifting is also standard. The new claim is therefore not any of these tools individually, but the exact if-and-only-if criterion
 \[
 d(K)\ge5
 \]
-for this rank-\(n+2\) cubic family, together with an exact top-bit collision when the criterion fails.
+for the complete rank-\(n+2\) dyadic cubic family, together with an exact top-bit collision when the criterion fails.
 
 \section{Limitations and open questions}
 The global-support theorem and the relation-code/Jacobian theorem now hold for every dimension \(n\ge3\) at rank \(r=n+2\). The remaining structural boundary is therefore not dimension but \emph{excess rank}.
@@ -941,6 +943,13 @@ C. Lin and G. Z\'emor,
 "Kneser's theorem for codes and \(\ell\)-divisible set families,"
 \emph{Finite Fields and Their Applications}, vol. 111, 102783, 2026.
 DOI: 10.1016/j.ffa.2025.102783.
+
+
+\bibitem{LiLiu2026}
+H. Li and X. Liu,
+"Sharp bounds for minimal dependencies of linear-form powers,"
+arXiv:2606.24349, 2026.
+DOI: 10.48550/arXiv.2606.24349.
 
 \end{thebibliography}
 

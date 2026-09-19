@@ -51,7 +51,7 @@ Then \(K\) is a binary \([n+2,2]\) relation code. Equivalently, (d(K)\ge5) means
 d(K)\ge5.
 \quad}
 \]
-The proof separates two mechanisms. First, the parity support set is globally rigid: equality of cubic parity tensors yields a low-weight word in the dual Reed--Muller code \(RM(n-4,n)\); classical low-weight results force the only possible nonzero obstruction below the relevant weight threshold to be an affine \(4\)-flat, which is incompatible with a spanning \(n+2\)-point support. Second, after parity is fixed, one-bit lifting is governed by a binary Jacobian \(J_S\). We prove
+The proof separates two mechanisms. First, the parity support set is globally rigid. Equality of cubic parity tensors yields a word in the dual Reed--Muller code \(RM(n-4,n)\). Its nonzero support generates a projective all-even triorthogonal binary code. Schur-product Kneser theory gives the dimension bound \(\dim C\le 8|\operatorname{supp}C|/21\), which rules out every collision support of size at least \(18\); the minimum-weight case \(16\) is an affine \(4\)-flat and is ruled out separately. Second, after parity is fixed, one-bit lifting is governed by a binary Jacobian \(J_S\). We prove
 \[
 \ker J_S=\{0\}\Longleftrightarrow d(K)\ge5.
 \]
@@ -73,7 +73,7 @@ r=n+2.
 \]
 The reduction modulo two has a two-dimensional space of linear relations. We show that this small relation code is the complete rigidity invariant for the dyadic lifting problem: its minimum distance determines whether the cubic decomposition survives uniquely through all \(2\)-power lifts.
 
-The result has two logically independent components. The first is a support-rigidity theorem over \(\F_2\). It uses Reed--Muller duality together with the classical low-weight structure of Reed--Muller codes \cite{BerlekampSloane1969,KasamiTokura1970,DelsarteNewProof2012}. The second is a local-ring lifting theorem. Its proof is direct and elementary: after a frame is normalized to \([I_n\mid u\mid v]\), all Jacobian-kernel equations reduce to the supports of \(u\), \(v\), and \(u+v\).
+The result has two logically independent components. The first is a support-rigidity theorem over \(\F_2\). It combines Reed--Muller duality and the minimum-weight affine-flat theorem \cite{DelsarteNewProof2012} with Schur-product Kneser theory for codes \cite{LinZemor2026}; the resulting projective-triorthogonal dimension bound removes any upper restriction on \(n\). The second is a local-ring lifting theorem. Its proof is direct and elementary: after a frame is normalized to \([I_n\mid u\mid v]\), all Jacobian-kernel equations reduce to the supports of \(u\), \(v\), and \(u+v\).
 
 \paragraph{Main contribution.}
 For every \(n\ge3\), the parity support is rigid under the stated spanning/distinctness assumptions. Over \(R_m\), \(m\ge2\), the decomposition is globally identifiable if and only if the binary relation code has minimum distance at least five.
@@ -126,6 +126,12 @@ a weight-one relation is a zero column and a weight-two relation is a repeated c
 Two full-row-rank \(n\times(n+2)\) parity frames are equivalent under a left action of \(GL_n(\F_2)\) and a permutation of their columns if and only if their relation codes are permutation-equivalent.
 \end{proposition}
 
+\begin{proof}
+The row space of \(S\) is \(K^\perp\). A column permutation permutes coordinates of \(K\). Conversely, if two relation codes agree after a coordinate permutation, the two frame row spaces agree; two full-row-rank matrices with the same row space differ by an invertible left multiplication.
+\end{proof}
+
+Thus the \([n+2,2]\) code is not auxiliary bookkeeping: it classifies the parity frame up to the natural equivalences.
+
 \subsection{Sidon reformulation}
 The threshold \(d(K)\ge5\) is classical in coding theory and additive combinatorics. Let
 \[
@@ -148,13 +154,6 @@ A\text{ is a Sidon set in }\F_2^n.
 }
 \]
 This equivalence is not new: binary Sidon sets are classically represented by parity-check matrices of binary codes of minimum distance at least five. Recent work on binary Sidon sets and APN functions emphasizes the same code correspondence \cite{Nagy2025,CzerwinskiPott2026}. The new role of the condition in this paper is different: it is exactly the rigidity threshold for the cubic one-bit lifting map.
-
-
-\begin{proof}
-The row space of \(S\) is \(K^\perp\). A column permutation permutes coordinates of \(K\). Conversely, if two relation codes agree after a coordinate permutation, the two frame row spaces agree; two full-row-rank matrices with the same row space differ by an invertible left multiplication.
-\end{proof}
-
-Thus the \([n+2,2]\) code is not auxiliary bookkeeping: it classifies the parity frame up to the natural equivalences.
 
 \section{Cubic parity moments and Reed--Muller duality}
 For a finite set \(X\subset\F_2^n\), define its cubic parity tensor

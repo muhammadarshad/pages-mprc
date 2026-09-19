@@ -289,6 +289,49 @@ r\le\frac{8c}{21}.
 \]
 \end{proof}
 
+\begin{lemma}[Projective Schur-square bound]\label{lem:schur}
+Let \(F\subset\F_2^N\setminus\{0\}\) be a finite set of \(w\) distinct points, let
+\[
+r=\dim\langle F\rangle,
+\]
+and suppose every square-free moment of degrees one, two, and three vanishes on \(F\). Then
+\[
+w-r\le 2^{\,w-2r}-1.
+\]
+\end{lemma}
+
+\begin{proof}
+Choose coordinates on \(\langle F\rangle\) and let \(G\) be the \(r\times w\) matrix whose columns are the points of \(F\). Its row space \(C\subseteq\F_2^w\) has dimension \(r\). Degree-one moment vanishing makes every row even. Degree-two moment vanishing makes the rows pairwise orthogonal, including self-orthogonality. Degree-three moment vanishing then implies
+\[
+C*C\subseteq C^\perp,
+\]
+where \(C*C\) is the span of componentwise products.
+
+After permuting columns and applying row operations, write
+\[
+G=[I_r\mid A].
+\]
+Because the columns of \(G\) are distinct and nonzero, every column \(a\) of \(A\) is different from \(0,e_1,\ldots,e_r\), hence \(\wt(a)\ge2\).
+
+The products of distinct systematic generator rows vanish on the first \(r\) coordinates. On an extra column \(a\), their values form the quadratic vector
+\[
+q(a)=(a_i a_j)_{1\le i<j\le r}.
+\]
+Let \(Q\) be the matrix having these \(q(a)\) as columns. Since the original row space projects isomorphically onto the first \(r\) coordinates while the pair-product space vanishes there,
+\[
+\dim(C*C)=r+\rank Q.
+\]
+The containment \(C*C\subseteq C^\perp\) gives
+\[
+\rank Q\le (w-r)-r=w-2r.
+\]
+
+For every \(a\) of weight at least two, \(q(a)\ne0\). Moreover \(q\) is injective on such vectors: \(q(a)\) records the edge set of the complete graph on \(\supp(a)\), whose union of incident vertices recovers \(\supp(a)\). Thus the \(w-r\) extra columns yield \(w-r\) distinct nonzero vectors in a space of dimension at most \(w-2r\). Therefore
+\[
+w-r\le2^{\,w-2r}-1.
+\]
+\end{proof}
+
 \begin{theorem}[Rank-\(n+2\) parity rigidity]\label{thm:parity}
 Let \(n\ge3\). Let \(X\subset\F_2^n\setminus\{0\}\) consist of \(n+2\) distinct points spanning \(\F_2^n\). If a multiset \(Y\) of \(n+2\) vectors in \(\F_2^n\) satisfies
 \[
@@ -302,60 +345,22 @@ then \(Y\) contains each element of \(X\) exactly once.
 \begin{proof}
 Let \(Y_{\rm odd}\) be the set of points occurring with odd multiplicity in \(Y\), and put
 \[
-z=1_X+1_{Y_{\rm odd}}.
+z=1_X+1_{Y_{\rm odd}},\qquad F=\supp(z),\qquad w=|F|.
 \]
-The tensor equality gives equality of every nonconstant square-free Boolean moment of degrees one, two, and three. Since
+Over \(\F_2\), repeated equal atoms cancel in pairs, so equality of cubic tensors gives vanishing of every nonconstant square-free moment of degrees one, two, and three on \(F\). Also
 \[
-|Y_{\rm odd}|\equiv|Y|=n+2\equiv|X|\pmod2,
+|Y_{\rm odd}|\equiv |Y|=n+2\equiv |X|\pmod2,
 \]
-the constant moment agrees as well.
-
-For \(n=3\), the square-free monomials of degrees at most three, together with the constant function, form a basis of all Boolean functions on \(\F_2^3\), so \(z=0\).
-
-Assume \(n\ge4\). Reed--Muller duality gives
+so the constant moment vanishes as well. For \(n\ge4\),
 \[
 z\in RM(3,n)^\perp=RM(n-4,n).
 \]
-Suppose \(z\ne0\), and let
-\[
-F=\supp(z),\qquad c=|F|.
-\]
-The minimum distance of \(RM(n-4,n)\) is \(16\), so
-\[
-c\ge16. \tag{2}
-\]
+For \(n=3\), the constant together with all square-free monomials of degrees at most three already form a basis of all Boolean functions, so \(z=0\). Assume henceforth \(n\ge4\).
 
-Let
+If \(z\ne0\), the minimum distance of \(RM(n-4,n)\) gives
 \[
-\epsilon=
-\begin{cases}
-1,&0\in F,\\
-0,&0\notin F,
-\end{cases}
-\qquad
-F^\ast=F\setminus\{0\},
-\qquad
-c^\ast=c-\epsilon.
+w\ge16.
 \]
-Form the binary matrix \(M_F\) whose columns are the distinct nonzero vectors in \(F^\ast\), and let
-\[
-C_F=\operatorname{RowSpan}(M_F).
-\]
-The code \(C_F\) is full-support and projective. The degree-one, degree-two, and degree-three moment equations imply, by trilinearity,
-\[
-C_F^{\langle2\rangle}\subseteq C_F^\perp.
-\]
-Moreover
-\[
-\dim C_F=\dim\langle F\rangle,
-\]
-because deleting the zero point does not change linear span. Lemma~\ref{lem:triobound} therefore gives
-\[
-\dim\langle F\rangle
-\le
-\frac{8c^\ast}{21}. \tag{3}
-\]
-
 Let
 \[
 t=|X\cap F|.
@@ -364,68 +369,87 @@ Since
 \[
 Y_{\rm odd}=X\triangle F
 \]
-and \(|Y_{\rm odd}|\le|X|=n+2\),
+and \(|Y_{\rm odd}|\le n+2=|X|\),
 \[
-|X|+c-2t\le|X|,
-\qquad
-t\ge c/2. \tag{4}
+t\ge w/2.
 \]
-Thus
+Hence at most
 \[
-|X\setminus F|
-\le n+2-c/2. \tag{5}
+n+2-w/2
+\]
+points of \(X\) lie outside \(F\).
+
+We first show that \(0\notin F\). Suppose \(0\in F\), and let
+\[
+F'=F\setminus\{0\},\qquad w'=w-1,\qquad r=\dim\langle F'\rangle.
+\]
+The set \(F'\) has the same positive-degree moment vanishing as \(F\), so Lemma~\ref{lem:schur} applies. Since \(X\) contains no zero point and spans \(\F_2^n\),
+\[
+r+\left(n+2-\frac w2\right)\ge n,
+\qquad\text{hence}\qquad
+r\ge\frac w2-2.
+\]
+Therefore
+\[
+w'-2r\le3.
+\]
+Lemma~\ref{lem:schur} gives
+\[
+w'-r\le2^3-1=7.
+\]
+Self-orthogonality gives \(r\le w'/2\), so \(w'-r\ge w'/2\). Thus \(w'\le14\), whence \(w\le15\), contradicting \(w\ge16\). Therefore \(0\notin F\).
+
+Set
+\[
+r=\dim\langle F\rangle.
+\]
+As above,
+\[
+r\ge\frac w2-2,
+\]
+so
+\[
+0\le w-2r\le4.
+\]
+By Lemma~\ref{lem:schur},
+\[
+w-r\le 2^{\,w-2r}-1\le15.
+\]
+Again \(r\le w/2\), hence
+\[
+\frac w2\le w-r\le15,
+\]
+and therefore
+\[
+w\le30.
 \]
 
-If \(0\in F\), then from (3)--(5),
+Thus any nonzero collision word lies strictly below twice the Reed--Muller minimum-distance threshold \(32\). The Kasami--Tokura classification leaves only
 \[
-\begin{aligned}
-n=\dim\langle X\rangle
-&\le \dim\langle F\rangle+|X\setminus F|\\
-&\le \frac{8(c-1)}{21}+n+2-\frac c2\\
-&=n+\frac{68-5c}{42}.
-\end{aligned}
+w\in\{16,24,28,30\}.
 \]
-By (2), \(68-5c\le-12\), a contradiction.
+Their normal forms give the support-span bounds
+\[
+\begin{array}{c|rrrr}
+w&16&24&28&30\\ \hline
+\dim\langle F\rangle&\le5&\le7&\le8&\le9.
+\end{array}
+\]
+On the other hand, the spanning argument above requires
+\[
+r\ge\frac w2-2,
+\]
+namely
+\[
+r\ge6,\quad10,\quad12,\quad13
+\]
+for these four weights. Every case is impossible.
 
-Hence \(0\notin F\). Then
-\[
-n
-\le
-\frac{8c}{21}+n+2-\frac c2
-=
-n+\frac{84-5c}{42}.
-\]
-For every \(c\ge18\), the final term is negative, again a contradiction. Therefore
-\[
-c=16,
-\]
-because \(z\) is orthogonal to the constant word and hence has even weight.
-
-A minimum-weight word of \(RM(n-4,n)\) is the indicator of an affine \(4\)-flat \cite{DelsarteNewProof2012}. Hence
-\[
-\dim\langle F\rangle\le5.
-\]
-Equation (4) gives \(t\ge8\), so at most \(n-6\) points of \(X\) lie outside \(F\). For \(n\ge6\),
-\[
-\dim\langle X\rangle
-\le5+(n-6)
-=n-1,
-\]
-contradicting the spanning hypothesis. For \(n=4,5\), already
-\[
-c=16>2(n+2),
-\]
-so such a symmetric difference is impossible.
-
-Thus \(z=0\), and therefore
-\[
-Y_{\rm odd}=X.
-\]
-Since \(Y\) has exactly \(n+2\) terms and every one of the \(n+2\) elements of \(X\) must occur with positive odd multiplicity, each occurs exactly once.
+Hence \(z=0\), so \(Y_{\rm odd}=X\). The multiset \(Y\) has exactly \(n+2\) terms and must contain every one of the \(n+2\) elements of \(X\) an odd positive number of times. Therefore every element occurs exactly once.
 \end{proof}
 
 \begin{remark}
-The parity-rigidity theorem has no upper dimension cutoff. The proof uses only Reed--Muller duality and minimum distance, the affine-flat form of minimum-weight words, and Lemma~\ref{lem:triobound}. The earlier finite-dimensional proof through \(n=17\) remains useful as independent regression evidence but is no longer needed for the theorem.
+The proof is dimension-free. The projective Schur-square bound first forces every hypothetical collision support to have weight at most \(30\), independently of \(n\). The only remaining Reed--Muller weights are therefore \(16,24,28,30\), all inside the classical Kasami--Tokura range.
 \end{remark}
 
 \section{The one-bit cubic Jacobian}

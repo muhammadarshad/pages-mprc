@@ -125,6 +125,68 @@ def tensor_sum(atoms: list[list[int]], mod: int) -> list[int]:
     return out
 
 
+
+def verify_relation_code_jacobian_all_dimensions() -> None:
+    """Enumerate every [n+2,2,d>=3] relation-code type for n=3..13.
+
+    GL_2(F2) permutes the three nonzero coordinate types, so canonical
+    representatives are count tuples (a,b,c,d) with b>=c>=d.
+    The theorem predicts Jacobian injectivity iff the minimum nonzero
+    relation weight is at least five.
+    """
+    expected_classes = {
+        3: 1, 4: 4, 5: 8, 6: 14, 7: 22, 8: 32,
+        9: 44, 10: 59, 11: 76, 12: 96, 13: 119,
+    }
+    expected_rigid = {
+        3: 0, 4: 0, 5: 0, 6: 1, 7: 4, 8: 9,
+        9: 16, 10: 26, 11: 38, 12: 53, 13: 71,
+    }
+
+    for n in range(3, 14):
+        length = n + 2
+        classes = 0
+        rigid = 0
+        for a in range(length + 1):
+            rem = length - a
+            for b in range(rem + 1):
+                for c in range(rem - b + 1):
+                    d = rem - b - c
+                    if not (b >= c >= d):
+                        continue
+                    if sum(x > 0 for x in (b, c, d)) < 2:
+                        continue
+
+                    weights = (b + d, c + d, b + c)
+                    distance = min(weights)
+                    if distance < 3:
+                        continue
+
+                    K = relation_code_from_counts(a, b, c, d)
+                    assert gf2_rank(K, length) == 2
+                    cols = frame_from_relation_code(K, length)
+                    assert len(cols) == length
+                    assert len(set(cols)) == length
+                    assert all(cols)
+                    assert gf2_rank(cols, n) == n
+
+                    J = jacobian_rows(cols, n)
+                    rank_j = gf2_rank(J, length * n)
+                    injective = rank_j == length * n
+                    assert injective == (distance >= 5), (
+                        n, (a, b, c, d), weights, rank_j, length * n
+                    )
+
+                    classes += 1
+                    rigid += int(injective)
+
+        assert classes == expected_classes[n], (n, classes)
+        assert rigid == expected_rigid[n], (n, rigid)
+        print(
+            f"n={n}, r={n+2}: {classes} relation-code classes; "
+            f"{rigid} rigid iff d(K)>=5 PASS"
+        )
+
 def enumerate_n8_classes() -> None:
     n = 8
     length = 10
@@ -236,5 +298,6 @@ def verify_small_parity_rigidity() -> None:
 
 if __name__ == "__main__":
     verify_small_parity_rigidity()
+    verify_relation_code_jacobian_all_dimensions()
     enumerate_n8_classes()
     print("ALL CHECKS PASS")

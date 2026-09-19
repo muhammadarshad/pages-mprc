@@ -854,12 +854,12 @@ uses exact bit and integer arithmetic only. It performs:
 
 
 \paragraph{Relation-code class counts.}
-The verifier also enumerates every permutation-equivalence class of binary \([n+2,2,d\ge3]\) relation codes for \(3\le n\le17\) and checks Theorem~\ref{thm:jac} exactly. The class counts are:
+The verifier also enumerates every permutation-equivalence class of binary \([n+2,2,d\ge3]\) relation codes for \(3\le n\le17\) as a finite regression sample and checks Theorem~\ref{thm:jac} exactly. The class counts are:
 \[
-\begin{array}{c|rrrrrrrrrrr}
-n&3&4&5&6&7&8&9&10&11&12&13\\ \hline
-\text{all classes}&1&4&8&14&22&32&44&59&76&96&119\\
-d(K)\ge5&0&0&0&1&4&9&16&26&38&53&71.
+\begin{array}{c|rrrrrrrrrrrrrrr}
+n&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17\\ \hline
+\text{all classes}&1&4&8&14&22&32&44&59&76&96&119&145&174&207&243\\
+d(K)\ge5&0&0&0&1&4&9&16&26&38&53&71&92&116&144&175.
 \end{array}
 \]
 In every class, the computed Jacobian is injective if and only if \(d(K)\ge5\).

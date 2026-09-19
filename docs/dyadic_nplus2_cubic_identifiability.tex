@@ -43,7 +43,7 @@ and let
 \[
 K=\ker S\subset\F_2^{n+2}.
 \]
-Then \(K\) is a binary \([n+2,2]\) relation code. Equivalently, (d(K)\ge5) means that the parity support augmented by the origin is a binary Sidon set. For \(3\le n\le17\) we prove an exact classification:
+Then \(K\) is a binary \([n+2,2]\) relation code. Equivalently, (d(K)\ge5) means that the parity support augmented by the origin is a binary Sidon set. For every \(n\ge3\) we prove an exact classification:
 \[
 \boxed{\quad
 \{v_q\}_{q=1}^{n+2}\text{ is globally identifiable from }T
@@ -76,7 +76,7 @@ The reduction modulo two has a two-dimensional space of linear relations. We sho
 The result has two logically independent components. The first is a support-rigidity theorem over \(\F_2\). It uses Reed--Muller duality together with the classical low-weight structure of Reed--Muller codes \cite{BerlekampSloane1969,KasamiTokura1970,DelsarteNewProof2012}. The second is a local-ring lifting theorem. Its proof is direct and elementary: after a frame is normalized to \([I_n\mid u\mid v]\), all Jacobian-kernel equations reduce to the supports of \(u\), \(v\), and \(u+v\).
 
 \paragraph{Main contribution.}
-For \(3\le n\le17\), the parity support is always rigid under the stated spanning/distinctness assumptions. Over \(R_m\), \(m\ge2\), the decomposition is globally identifiable if and only if the binary relation code has minimum distance at least five.
+For every \(n\ge3\), the parity support is rigid under the stated spanning/distinctness assumptions. Over \(R_m\), \(m\ge2\), the decomposition is globally identifiable if and only if the binary relation code has minimum distance at least five.
 
 \paragraph{Novelty boundary.}
 None of the following is claimed as new: Reed--Muller duality, the minimum distance of Reed--Muller codes, the characterization of their minimum-weight words as affine flats, low-weight Reed--Muller classifications, Hensel lifting as a general method, or the connection between Reed--Muller syndromes and finite-field tensor decomposition. The proposed new statement is the \emph{combined exact classification} for rank \(n+2\) symmetric cubics over dyadic rings: Sidon parity frames are exactly the frames with unique dyadic cubic lift, while every non-Sidon frame admits an explicit exact top-bit counter-decomposition. Neither the Sidon/code correspondence nor Reed--Muller theory is claimed as new. The literature assessment is not a substitute for an exhaustive novelty review.
@@ -195,8 +195,103 @@ Its minimum-weight codewords are incidence vectors of affine \(4\)-flats \cite{D
 \section{Global parity rigidity}
 We now allow the competing decomposition to be a multiset rather than assuming distinct parity atoms.
 
+\begin{lemma}[Projective triorthogonal dimension bound]\label{lem:triobound}
+Let \(C\subseteq\F_2^c\) be a full-support projective binary code satisfying
+\[
+C^{\langle2\rangle}\subseteq C^\perp.
+\]
+If \(r=\dim C\), then
+\[
+\boxed{\displaystyle r\le \frac{8c}{21}.}
+\]
+\end{lemma}
+
+\begin{proof}
+Put
+\[
+D=C^{\langle2\rangle}.
+\]
+Over \(\F_2\), coordinatewise squaring is the identity, so \(C\subseteq D\). Hence \(D\) has full support. Let
+\[
+h=\dim\operatorname{St}(D).
+\]
+Kneser's theorem for codes gives
+\[
+\dim D\ge 2r-h
+\]
+\cite{LinZemor2026}. On the other hand \(D\subseteq C^\perp\), so
+\[
+\dim D\le c-r.
+\]
+Consequently
+\[
+3r\le c+h. \tag{1}
+\]
+
+It remains to bound \(h\). By the stabilizer decomposition theorem for full-support codes \cite{LinZemor2026}, \(D\) decomposes uniquely as
+\[
+D=D_1\oplus\cdots\oplus D_h
+\]
+on pairwise-disjoint nonempty coordinate blocks
+\[
+B_1,\ldots,B_h
+\]
+that partition \([c]\).
+
+Let \(C_i\) be the restriction of \(C\) to \(B_i\). Since \(C\subseteq D\), every block component of a word of \(C\) lies in \(D_i\), so
+\[
+C_i\subseteq D_i.
+\]
+Since \(D\subseteq C^\perp\), every \(D_i\) is orthogonal to \(C_i\), hence
+\[
+C_i\subseteq C_i^\perp.
+\]
+Thus each \(C_i\) is self-orthogonal. It is full-support on \(B_i\). It is also projective: restricting a projective generator matrix of \(C\) to a block preserves distinct nonzero columns, and passing to a row basis does not identify columns.
+
+Write
+\[
+\ell_i=|B_i|,\qquad r_i=\dim C_i.
+\]
+Self-orthogonality gives
+\[
+r_i\le\lfloor\ell_i/2\rfloor,
+\]
+while projectivity gives
+\[
+\ell_i\le2^{r_i}-1.
+\]
+These two inequalities are incompatible for \(1\le\ell_i\le5\).
+
+If \(\ell_i=6\), both inequalities force \(r_i=3\). Then \(C_i\) is self-dual. Projectivity gives
+\[
+d(C_i^\perp)\ge3,
+\]
+hence \(d(C_i)\ge3\); self-orthogonality makes every codeword even, so in fact \(d(C_i)\ge4\). This would be a binary \([6,3,4]\) code, contradicting the Griesmer bound
+\[
+6\ge4+2+1=7.
+\]
+Therefore
+\[
+\ell_i\ge7
+\]
+for every stabilizer block. Hence
+\[
+c=\sum_{i=1}^h\ell_i\ge7h,
+\qquad
+h\le c/7.
+\]
+Substituting into (1),
+\[
+3r\le c+c/7=\frac{8c}{7},
+\]
+which yields
+\[
+r\le\frac{8c}{21}.
+\]
+\end{proof}
+
 \begin{theorem}[Rank-\(n+2\) parity rigidity]\label{thm:parity}
-Let \(3\le n\le17\). Let \(X\subset\F_2^n\setminus\{0\}\) consist of \(n+2\) distinct points spanning \(\F_2^n\). If a multiset \(Y\) of \(n+2\) vectors in \(\F_2^n\) satisfies
+Let \(n\ge3\). Let \(X\subset\F_2^n\setminus\{0\}\) consist of \(n+2\) distinct points spanning \(\F_2^n\). If a multiset \(Y\) of \(n+2\) vectors in \(\F_2^n\) satisfies
 \[
 \sum_{x\in X}x^{\otimes3}
 =
@@ -214,78 +309,124 @@ The tensor equality gives equality of every nonconstant square-free Boolean mome
 \[
 |Y_{\rm odd}|\equiv|Y|=n+2\equiv|X|\pmod2,
 \]
-the constant moment agrees as well. Hence, for \(n\ge4\),
+the constant moment agrees as well.
+
+For \(n=3\), the square-free monomials of degrees at most three, together with the constant function, form a basis of all Boolean functions on \(\F_2^3\), so \(z=0\).
+
+Assume \(n\ge4\). Reed--Muller duality gives
 \[
 z\in RM(3,n)^\perp=RM(n-4,n).
 \]
-Also
-\[
-\wt(z)\le2(n+2).
-\]
-
-For \(3\le n\le13\), the previous Reed--Muller low-weight argument applies: Kasami--Tokura's classification below \(2d=32\), together with the affine-span bounds of the corresponding normal forms, rules out every nonzero support because \(X\) spans \(\F_2^n\).
-
-It remains to treat \(14\le n\le17\). Let
+Suppose \(z\ne0\), and let
 \[
 F=\supp(z),\qquad c=|F|.
 \]
-Then \(c\le2(n+2)\le38\). Form the \(n\times c\) binary matrix \(M_F\) whose columns are the distinct points of \(F\), and let
+The minimum distance of \(RM(n-4,n)\) is \(16\), so
 \[
-C_F=\operatorname{RowSpan}(M_F).
+c\ge16. \tag{2}
 \]
-Orthogonality of \(z\) to all degree-one, degree-two, and degree-three monomials says exactly that every row of \(M_F\) has even weight, every pair of rows has even overlap, and every triple of rows has even overlap. Thus \(C_F\) is an all-even triorthogonal subspace.
 
 Let
 \[
-H_F=\langle C_F,\mathbf1_c\rangle.
+\epsilon=
+\begin{cases}
+1,&0\in F,\\
+0,&0\notin F,
+\end{cases}
+\qquad
+F^\ast=F\setminus\{0\},
+\qquad
+c^\ast=c-\epsilon.
 \]
-Because \(C_F\) is self-orthogonal and all of its rows have even weight, adjoining \(\mathbf1_c\) preserves triorthogonality. Hence \(H_F\) is a unital triorthogonal subspace. The columns remain distinct, and the all-one coordinate ensures that no column is zero.
-
-Nezami and Haah classified all unital triorthogonal subspaces with no repeated columns and fewer than \(40\) columns \cite{NezamiHaah2022}. Their exhaustive Table II gives the following maximal dimensions:
+Form the binary matrix \(M_F\) whose columns are the distinct nonzero vectors in \(F^\ast\), and let
 \[
-\begin{array}{c|rrrrrrrr}
-c&16&24&28&30&32&34&36&38\\ \hline
-h(c)&5&7&8&9&10&9&10&11.
-\end{array}
+C_F=\operatorname{RowSpan}(M_F).
 \]
-No other nonzero column counts below \(40\) occur in their classification. Since
+The code \(C_F\) is full-support and projective. The degree-one, degree-two, and degree-three moment equations imply, by trilinearity,
 \[
-\dim\langle F\rangle=\rank M_F\le\dim H_F\le h(c),
+C_F^{\langle2\rangle}\subseteq C_F^\perp.
 \]
-we obtain a direct rank bound on every possible collision support.
+Moreover
+\[
+\dim C_F=\dim\langle F\rangle,
+\]
+because deleting the zero point does not change linear span. Lemma~\ref{lem:triobound} therefore gives
+\[
+\dim\langle F\rangle
+\le
+\frac{8c^\ast}{21}. \tag{3}
+\]
 
-Let \(t=|X\cap F|\). Since
+Let
+\[
+t=|X\cap F|.
+\]
+Since
 \[
 Y_{\rm odd}=X\triangle F
 \]
 and \(|Y_{\rm odd}|\le|X|=n+2\),
 \[
-t\ge c/2.
+|X|+c-2t\le|X|,
+\qquad
+t\ge c/2. \tag{4}
 \]
-Thus at most \(n+2-c/2\) points of \(X\) lie outside \(F\), and therefore
+Thus
+\[
+|X\setminus F|
+\le n+2-c/2. \tag{5}
+\]
+
+If \(0\in F\), then from (3)--(5),
+\[
+\begin{aligned}
+n=\dim\langle X\rangle
+&\le \dim\langle F\rangle+|X\setminus F|\\
+&\le \frac{8(c-1)}{21}+n+2-\frac c2\\
+&=n+\frac{68-5c}{42}.
+\end{aligned}
+\]
+By (2), \(68-5c\le-12\), a contradiction.
+
+Hence \(0\notin F\). Then
+\[
+n
+\le
+\frac{8c}{21}+n+2-\frac c2
+=
+n+\frac{84-5c}{42}.
+\]
+For every \(c\ge18\), the final term is negative, again a contradiction. Therefore
+\[
+c=16.
+\]
+(The support size is even because \(z\) is orthogonal to the constant word.)
+
+A minimum-weight word of \(RM(n-4,n)\) is the indicator of an affine \(4\)-flat \cite{DelsarteNewProof2012}. Hence
+\[
+\dim\langle F\rangle\le5.
+\]
+Equation (4) gives \(t\ge8\), so at most \(n-6\) points of \(X\) lie outside \(F\). For \(n\ge6\),
 \[
 \dim\langle X\rangle
-\le h(c)+n+2-c/2.
+\le5+(n-6)
+=n-1,
 \]
-For every entry of the table,
+contradicting the spanning hypothesis. For \(n=4,5\), already
 \[
-h(c)+2<c/2.
+c=16>2(n+2),
 \]
-Consequently
-\[
-\dim\langle X\rangle<n,
-\]
-contradicting the spanning hypothesis. Hence \(z=0\).
+so such a symmetric difference is impossible.
 
-Therefore \(Y_{\rm odd}=X\). Since \(Y\) contains exactly \(n+2\) terms and all \(n+2\) elements of \(X\) must occur with positive odd multiplicity, each occurs exactly once.
+Thus \(z=0\), and therefore
+\[
+Y_{\rm odd}=X.
+\]
+Since \(Y\) has exactly \(n+2\) terms and every one of the \(n+2\) elements of \(X\) must occur with positive odd multiplicity, each occurs exactly once.
 \end{proof}
 
 \begin{remark}
-The first unresolved dimension for the global-support argument is \(n=18\). Then
-\[
-2(n+2)=40,
-\]
-so a collision can have a \(40\)-point support, just outside the exhaustive \(c<40\) triorthogonal classification used above. All collision supports of size below \(40\) remain excluded by the same argument.
+The parity-rigidity argument now has no upper dimension cutoff. The earlier finite-dimensional proof via low-weight Reed--Muller classification and small triorthogonal-code catalogs is subsumed by Lemma~\ref{lem:triobound}.
 \end{remark}
 
 \section{The one-bit cubic Jacobian}
@@ -508,7 +649,7 @@ Thus \(d(K)\le4\) produces exact non-identifiability over every dyadic level.
 
 \section{Main classification theorem}
 \begin{theorem}[Rank-\(n+2\) dyadic cubic identifiability]\label{thm:main}
-Let \(3\le n\le17\), \(m\ge2\), and
+Let \(n\ge3\), \(m\ge2\), and
 \[
 T=\sum_{q=1}^{n+2}v_q^{\otimes3}
 \in\Sym^3((\Z/2^m\Z)^n).
@@ -615,16 +756,24 @@ d(K)\ge5
 for this rank-\(n+2\) cubic family, together with an exact top-bit collision when the criterion fails.
 
 \section{Limitations and open questions}
-The global parity theorem is proved here for \(3\le n\le17\). At \(n=14\), a symmetric difference may have weight \(32=2d\), outside the strict below-\(2d\) Kasami--Tokura classification used in the proof. Extending the global classification beyond this point therefore requires a separate analysis of weight-\(32\) supports and their possible interaction with a spanning \(n+2\)-point frame.
+The global-support theorem and the relation-code/Jacobian theorem now hold for every dimension \(n\ge3\) at rank \(r=n+2\). The remaining structural boundary is therefore not dimension but \emph{excess rank}.
 
-The relation-code/Jacobian theorem itself is not restricted to \(n\le17\); Theorem~\ref{thm:jac} applies whenever the frame has \(n+2\) distinct nonzero spanning columns. What changes beyond \(n=17\) is the global recovery of the parity support.
+The next case is
+\[
+r=n+t,\qquad t\ge3,
+\]
+where the relation code has dimension \(t\). The rank-\(n+2\) theorem suggests that short circuits, Sidon-type conditions, and the Schur powers of the parity frame should continue to govern dyadic lifting rigidity, but a two-dimensional relation code is used essentially in Theorem~\ref{thm:jac}. A higher-dimensional classification requires new ideas.
 
-A second direction is rank \(n+t\), \(t>2\). Then the relation code has dimension \(t\). The present result suggests that circuit structure or code distance may continue to govern dyadic lifting rigidity, but the two-dimensional proof does not automatically generalize.
+A second direction is to determine whether the projective triorthogonal bound
+\[
+\dim C\le\frac{8}{21}\,\operatorname{length}(C)
+\]
+is sharp. The proof only uses Schur-product Kneser theory, projectivity, self-orthogonality, and the nonexistence of a projective self-orthogonal binary block of length below seven. Improving the minimum stabilizer-block size, or classifying equality cases, would strengthen the support-rigidity mechanism independently of tensor decomposition.
 
-Finally, the theorem concerns unweighted sums of cubes. Odd unit weights can often be absorbed into atoms through cube roots in dyadic unit groups, but a weighted global theorem requires careful bookkeeping and is kept separate here.
+Finally, the theorem concerns unweighted sums of cubes. Odd unit weights can be absorbed into atoms through cube roots in dyadic unit groups, but a fully weighted global statement should be formulated separately, especially when non-unit coefficients introduce \(2\)-adic torsion.
 
 \section{Conclusion}
-For the first overcomplete level \(r=n+2\), the two-dimensional binary relation code completely controls dyadic cubic identifiability in dimensions \(3\) through \(17\). Reed--Muller low-weight rigidity determines the parity support globally; the relation-code distance determines whether that support has a unique dyadic lift. The threshold is exact:
+For the first overcomplete level \(r=n+2\), the two-dimensional binary relation code completely controls dyadic cubic identifiability in every dimension \(n\ge3\). Reed--Muller low-weight rigidity determines the parity support globally; the relation-code distance determines whether that support has a unique dyadic lift. The threshold is exact:
 \[
 d(K)\ge5
 \]
@@ -688,6 +837,13 @@ S. Nezami and J. Haah,
 "Classification of small triorthogonal codes,"
 \emph{Physical Review A}, vol. 106, 012437, 2022.
 DOI: 10.1103/PhysRevA.106.012437.
+
+
+\bibitem{LinZemor2026}
+C. Lin and G. Z\'emor,
+"Kneser's theorem for codes and \(\ell\)-divisible set families,"
+\emph{Finite Fields and Their Applications}, vol. 111, 102783, 2026.
+DOI: 10.1016/j.ffa.2025.102783.
 
 \end{thebibliography}
 

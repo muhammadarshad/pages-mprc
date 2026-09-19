@@ -24,6 +24,7 @@ jobs:
           python3 docs/proofs/verify_cubic_dictionary_capacity.py
           python3 docs/proofs/verify_quantinion_operator_geometry.py
           python3 docs/proofs/verify_dyadic_nplus2_cubic.py
+          python3 docs/proofs/verify_dyadic_excess3.py
 
       - name: Install LaTeX
         run: |

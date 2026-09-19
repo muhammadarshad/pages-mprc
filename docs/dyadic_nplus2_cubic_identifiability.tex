@@ -1,0 +1,611 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{array}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\title{\textbf{Rank-\(n+2\) Cubic Identifiability over Dyadic Rings}\\
+Reed--Muller Rigidity and a Relation-Code Classification}
+\author{Muhammad Arshad}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let \(R_m=\Z/2^m\Z\), \(m\ge2\), and consider an overcomplete symmetric cubic
+\[
+T=\sum_{q=1}^{n+2}v_q^{\otimes3}\in\Sym^3(R_m^n).
+\]
+Assume that the parity reductions \(s_q=v_q\bmod2\) are distinct, nonzero, and span \(\F_2^n\). Let
+\[
+S=[s_1\ \cdots\ s_{n+2}]\in\F_2^{n\times(n+2)}
+\]
+and let
+\[
+K=\ker S\subset\F_2^{n+2}.
+\]
+Then \(K\) is a binary \([n+2,2]\) relation code. For \(3\le n\le9\) we prove an exact classification:
+\[
+\boxed{\quad
+\{v_q\}_{q=1}^{n+2}\text{ is globally identifiable from }T
+\quad\Longleftrightarrow\quad
+d(K)\ge5.
+\quad}
+\]
+The proof separates two mechanisms. First, the parity support set is globally rigid: equality of cubic parity tensors yields a low-weight word in the dual Reed--Muller code \(RM(n-4,n)\); classical low-weight results force the only possible nonzero obstruction below the relevant weight threshold to be an affine \(4\)-flat, which is incompatible with a spanning \(n+2\)-point support. Second, after parity is fixed, one-bit lifting is governed by a binary Jacobian \(J_S\). We prove
+\[
+\ker J_S=\{0\}\Longleftrightarrow d(K)\ge5.
+\]
+If \(d(K)\le4\), a \(3\)- or \(4\)-point circuit gives a nonzero Jacobian direction, and toggling that direction in the top dyadic bit produces an exact second decomposition over every \(R_m\), not only an infinitesimal failure.
+
+For \(n=8\), \(r=10\), there are \(32\) equivalence classes of admissible parity frames under \(GL_8(\F_2)\) and permutation of the ten atoms. Exactly \(9\) satisfy \(d(K)\ge5\) and are identifiable; the other \(23\) admit exact distinct decompositions over \(\Z_{256}\). This converts the first overcomplete step beyond a simplex frame into a complete relation-code classification.
+\end{abstract}
+
+\section{Introduction}
+Exact tensor decomposition over a finite field is closely connected to decoding Reed--Muller syndromes. Kopparty and Potukuchi made this connection explicit for random low-rank tensors over finite fields and developed efficient decoding/decomposition algorithms \cite{KoppartyPotukuchi2018}. Symmetric tensor decomposition over finite fields continues to be studied in more specialized algebraic settings \cite{CotardoZullo2026}. Over characteristic zero, identifiability is commonly formulated through Veronese secant varieties and tangent spaces; the theory and effective criteria are extensive.
+
+This paper addresses a different regime. The base ring is the finite local ring
+\[
+R_m=\Z/2^m\Z,
+\]
+and the number of rank-one cubic summands is exactly two larger than the vector dimension:
+\[
+r=n+2.
+\]
+The reduction modulo two has a two-dimensional space of linear relations. We show that this small relation code is the complete rigidity invariant for the dyadic lifting problem: its minimum distance determines whether the cubic decomposition survives uniquely through all \(2\)-power lifts.
+
+The result has two logically independent components. The first is a support-rigidity theorem over \(\F_2\). It uses Reed--Muller duality together with the classical low-weight structure of Reed--Muller codes \cite{BerlekampSloane1969,KasamiTokura1970,DelsarteNewProof2012}. The second is a local-ring lifting theorem. Its proof is direct and elementary: after a frame is normalized to \([I_n\mid u\mid v]\), all Jacobian-kernel equations reduce to the supports of \(u\), \(v\), and \(u+v\).
+
+\paragraph{Main contribution.}
+For \(3\le n\le9\), the parity support is always rigid under the stated spanning/distinctness assumptions. Over \(R_m\), \(m\ge2\), the decomposition is globally identifiable if and only if the binary relation code has minimum distance at least five.
+
+\paragraph{Novelty boundary.}
+None of the following is claimed as new: Reed--Muller duality, the minimum distance of Reed--Muller codes, the characterization of their minimum-weight words as affine flats, low-weight Reed--Muller classifications, Hensel lifting as a general method, or the connection between Reed--Muller syndromes and finite-field tensor decomposition. The proposed new statement is the \emph{combined exact classification} for rank \(n+2\) symmetric cubics over dyadic rings in terms of the distance of the two-dimensional relation code, together with the explicit non-identifiability construction when that distance is at most four. The literature assessment is not a substitute for an exhaustive novelty review.
+
+\section{Setting and relation code}
+Fix \(m\ge2\) and write
+\[
+R_m=\Z/2^m\Z.
+\]
+Let
+\[
+T=\sum_{q=1}^{n+2}v_q^{\otimes3},
+\qquad
+v_q\in R_m^n.
+\]
+Define
+\[
+s_q=v_q\bmod2\in\F_2^n
+\]
+and assume throughout that the \(s_q\) are distinct, nonzero, and span \(\F_2^n\).
+
+Put
+\[
+S=[s_1\ \cdots\ s_{n+2}].
+\]
+Since \(\rank S=n\),
+\[
+K=\ker S
+\]
+has dimension two.
+
+\begin{definition}[Relation code]
+The binary \([n+2,2]\) code \(K=\ker S\) is called the relation code of the parity frame.
+\end{definition}
+
+A codeword \(c\in K\) is exactly a linear relation
+\[
+\sum_{q:c_q=1}s_q=0.
+\]
+The assumptions that the columns are nonzero and pairwise distinct are equivalent to
+\[
+d(K)\ge3:
+\]
+a weight-one relation is a zero column and a weight-two relation is a repeated column.
+
+\begin{proposition}[Frame equivalence is code equivalence]\label{prop:equiv}
+Two full-row-rank \(n\times(n+2)\) parity frames are equivalent under a left action of \(GL_n(\F_2)\) and a permutation of their columns if and only if their relation codes are permutation-equivalent.
+\end{proposition}
+
+\begin{proof}
+The row space of \(S\) is \(K^\perp\). A column permutation permutes coordinates of \(K\). Conversely, if two relation codes agree after a coordinate permutation, the two frame row spaces agree; two full-row-rank matrices with the same row space differ by an invertible left multiplication.
+\end{proof}
+
+Thus the \([n+2,2]\) code is not auxiliary bookkeeping: it classifies the parity frame up to the natural equivalences.
+
+\section{Cubic parity moments and Reed--Muller duality}
+For a finite set \(X\subset\F_2^n\), define its cubic parity tensor
+\[
+\mathcal T(X)=\sum_{x\in X}x^{\otimes3}.
+\]
+Because \(x_i^2=x_i\) on \(\F_2\), the entries of \(\mathcal T(X)\) are exactly the sums of all nonconstant square-free Boolean monomials of degrees one, two, and three:
+\[
+\sum_{x\in X}x_i,\qquad
+\sum_{x\in X}x_ix_j,\qquad
+\sum_{x\in X}x_ix_jx_k.
+\]
+
+Let \(1_X\in\F_2^{2^n}\) be the incidence vector of \(X\). The evaluation vectors of all Boolean polynomials of degree at most three form \(RM(3,n)\). Hence equality
+\[
+\mathcal T(X)=\mathcal T(Y)
+\]
+says that
+\[
+1_X+1_Y
+\]
+is orthogonal to every nonconstant generator of \(RM(3,n)\). If \(|X|\equiv|Y|\pmod2\), it is also orthogonal to the constant word, so
+\[
+1_X+1_Y\in RM(3,n)^\perp.
+\]
+For \(n\ge4\), classical Reed--Muller duality gives
+\[
+RM(3,n)^\perp=RM(n-4,n)
+\]
+\cite{RMTheory2021}.
+
+The dual code has minimum distance
+\[
+2^{n-(n-4)}=16.
+\]
+Its minimum-weight codewords are incidence vectors of affine \(4\)-flats \cite{DelsarteNewProof2012}. Classical low-weight results further imply that below \(24\) the only nonzero weight is \(16\): the possible weights between the minimum distance \(d=16\) and \(2d=32\) are restricted to values \(2d-2^i\), whose next value after \(16\) is \(24\) \cite{BerlekampSloane1969,KasamiTokura1970}.
+
+\section{Global parity rigidity}
+We now allow the competing decomposition to be a multiset rather than assuming distinct parity atoms.
+
+\begin{theorem}[Rank-\(n+2\) parity rigidity]\label{thm:parity}
+Let \(3\le n\le9\). Let \(X\subset\F_2^n\setminus\{0\}\) consist of \(n+2\) distinct points spanning \(\F_2^n\). If a multiset \(Y\) of \(n+2\) vectors in \(\F_2^n\) satisfies
+\[
+\sum_{x\in X}x^{\otimes3}
+=
+\sum_{y\in Y}y^{\otimes3},
+\]
+then \(Y\) contains each element of \(X\) exactly once.
+\end{theorem}
+
+\begin{proof}
+Let \(Y_{\rm odd}\) be the set of points occurring with odd multiplicity in \(Y\). Over \(\F_2\), the tensor of the multiset \(Y\) equals the tensor of \(Y_{\rm odd}\). Also
+\[
+|Y_{\rm odd}|\equiv n+2\equiv|X|\pmod2.
+\]
+
+For \(n=3\), the nonconstant square-free monomials of degrees at most three, together with the constant function, form a basis of all Boolean functions on \(\F_2^3\). Therefore the incidence difference is zero.
+
+Assume \(4\le n\le9\). Set
+\[
+z=1_X+1_{Y_{\rm odd}}.
+\]
+By the preceding section,
+\[
+z\in RM(n-4,n).
+\]
+Moreover
+\[
+\wt(z)\le |X|+|Y_{\rm odd}|\le2(n+2)\le22.
+\]
+The low-weight Reed--Muller structure therefore leaves only two possibilities:
+\[
+\wt(z)=0
+\quad\text{or}\quad
+\wt(z)=16.
+\]
+
+Suppose \(\wt(z)=16\). Then \(\supp(z)\) is an affine \(4\)-flat \(F\). Since
+\[
+Y_{\rm odd}=X\triangle F,
+\]
+we have
+\[
+|Y_{\rm odd}|=|X|+16-2|X\cap F|.
+\]
+The bound \(|Y_{\rm odd}|\le|X|=n+2\) forces
+\[
+|X\cap F|\ge8.
+\]
+The linear span of an affine \(4\)-flat has dimension at most five. At most
+\[
+(n+2)-8=n-6
+\]
+points of \(X\) lie outside \(F\). Consequently
+\[
+\dim\langle X\rangle
+\le5+(n-6)=n-1,
+\]
+contradicting the assumption that \(X\) spans \(\F_2^n\).
+
+Hence \(z=0\) and \(Y_{\rm odd}=X\). The multiset \(Y\) has exactly \(n+2\) terms and already must contain every one of the \(n+2\) elements of \(X\) an odd positive number of times. Therefore each occurs exactly once.
+\end{proof}
+
+\begin{remark}
+The range \(n\le9\) is where the simple low-weight gap suffices automatically, since \(2(n+2)\le22<24\). At \(n=10\), weight \(24\) enters the classical Reed--Muller spectrum and a separate analysis is required.
+\end{remark}
+
+\section{The one-bit cubic Jacobian}
+Suppose the parity frame \(S=(s_q)\) is fixed. If atoms are known modulo \(2^b\), a candidate next-bit lift has the form
+\[
+v_q'=v_q+2^b\delta_q,
+\qquad
+\delta_q\in\F_2^n.
+\]
+Modulo \(2^{b+1}\),
+\[
+(v_q')^{\otimes3}
+\equiv
+v_q^{\otimes3}
++
+2^b D_{s_q}(\delta_q),
+\]
+where
+\[
+D_s(a)
+=
+a\otimes s\otimes s
++s\otimes a\otimes s
++s\otimes s\otimes a.
+\]
+Define
+\[
+J_S(\delta_1,\ldots,\delta_{n+2})
+=
+\sum_{q=1}^{n+2}D_{s_q}(\delta_q).
+\]
+Thus the ambiguity of every one-bit lift is exactly \(\ker J_S\).
+
+\section{Normal form for the relation code}
+Assume \(d(K)\ge5\). Choose a basis \(c^{(1)},c^{(2)}\) of the two-dimensional relation code. Each coordinate has one of the four types
+\[
+00,\quad10,\quad01,\quad11.
+\]
+Changing the code basis permutes the three nonzero coordinate types. Choose the basis so their counts satisfy
+\[
+B_0\ge C_0\ge D_0.
+\]
+Since the three nonzero codeword weights are
+\[
+B_0+D_0,\qquad
+C_0+D_0,\qquad
+B_0+C_0,
+\]
+the hypothesis \(d(K)\ge5\) implies
+\[
+B_0\ge C_0\ge3.
+\]
+
+Choose one coordinate of type \(10\) and one of type \(01\) as the two extra columns. Removing those two coordinates destroys every nonzero relation in \(K\), so the remaining \(n\) frame columns are independent. After an ambient \(GL_n(\F_2)\) transformation,
+\[
+S=[I_n\mid u\mid v].
+\]
+Let
+\[
+U=\supp(u),\qquad V=\supp(v).
+\]
+The three nonzero relation-code words now have weights
+\[
+|U|+1,\qquad |V|+1,\qquad |U\triangle V|+2.
+\]
+Hence
+\[
+d(K)\ge5
+\]
+is equivalent to
+\[
+|U|\ge4,\qquad
+|V|\ge4,\qquad
+|U\triangle V|\ge3.
+\]
+With the particular pivot choice above, if
+\[
+B=U\setminus V,\quad
+C=V\setminus U,\quad
+D=U\cap V,
+\]
+then
+\[
+|B|\ge2,\qquad |C|\ge2.
+\]
+
+\section{Relation-code distance and Jacobian rigidity}
+\begin{theorem}[Jacobian classification]\label{thm:jac}
+Let \(n\ge3\), let \(S\in\F_2^{n\times(n+2)}\) have distinct nonzero spanning columns, and let \(K=\ker S\). Then
+\[
+\boxed{
+\ker J_S=\{0\}
+\quad\Longleftrightarrow\quad
+d(K)\ge5.
+}
+\]
+\end{theorem}
+
+\begin{proof}
+First assume \(d(K)\ge5\) and use the normal form
+\[
+S=[I_n\mid u\mid v]
+\]
+constructed above. Let \(a_i\in\F_2^n\) be the perturbation of basis atom \(e_i\), and let \(p,q\in\F_2^n\) perturb \(u,v\), respectively.
+
+Suppose
+\[
+J_S(a_1,\ldots,a_n,p,q)=0.
+\]
+From tensor coordinate \((i,i,j)\), valid also at \(i=j\), one obtains
+\[
+(a_i)_j=u_i p_j+v_i q_j. \tag{1}
+\]
+Thus every \(a_i\) is determined by \(p,q\).
+
+On a coordinate \((i,j,k)\) with all three indices distinct, basis atoms contribute nothing. Hence
+\[
+\Phi_U(p)_{ijk}=\Phi_V(q)_{ijk}, \tag{2}
+\]
+where
+\[
+\Phi_U(p)_{ijk}
+=
+p_i u_j u_k
++
+u_i p_j u_k
++
+u_i u_j p_k.
+\]
+
+Partition \([n]\) into
+\[
+A=(U\cup V)^c,\qquad
+B=U\setminus V,\qquad
+C=V\setminus U,\qquad
+D=U\cap V.
+\]
+We have \(|B|,|C|\ge2\).
+
+Choose distinct \(b_1,b_2\in B\). Equation (2) on \(\{b_1,b_2,x\}\), for \(x\in A\cup C\), gives
+\[
+p_x=0.
+\]
+Similarly, two distinct points of \(C\) give
+\[
+q_x=0
+\qquad(x\in A\cup B).
+\]
+
+It remains to eliminate \(p\) on \(B\cup D\) and \(q\) on \(C\cup D\).
+
+If \(|D|\ge2\), equations on triples \(\{b_1,b_2,d\}\) show that all \(p_d\), \(d\in D\), equal \(p_{b_1}+p_{b_2}\). Equations on \(\{b,d_1,d_2\}\) then force every \(p_b=0\), hence every \(p_d=0\). The same argument with \(C\) gives \(q=0\).
+
+If \(|D|=1\), the distance conditions imply \(|B|,|C|\ge3\). Equations on two points of \(B\) and the unique point of \(D\) force all \(p_b\) to be equal and \(p_D=0\); a triple contained in \(B\) forces the common value to zero. Again the symmetric argument gives \(q=0\).
+
+If \(D=\varnothing\), the distance conditions imply \(|B|,|C|\ge4\). The remaining coordinates of \(p\) lie in \(B\). Equations on all triples in \(B\) force all these coordinates equal, and any such triple then forces the common value to zero. The same holds for \(q\).
+
+Thus \(p=q=0\), and (1) gives \(a_i=0\) for all \(i\). Hence \(J_S\) is injective.
+
+Conversely, suppose \(d(K)\le4\). Since the columns are nonzero and distinct, \(d(K)\ge3\). Choose a minimum-weight relation. Its support is a circuit of size three or four.
+
+A three-point circuit is \(GL_n\)-equivalent on its span to
+\[
+e_1,\quad e_2,\quad e_1+e_2.
+\]
+Set all other perturbations to zero and perturb these three atoms by the same nonzero vector \(w\in\langle e_1,e_2\rangle\). Direct substitution in the definition of \(D_s\) gives
+\[
+D_{e_1}(w)+D_{e_2}(w)+D_{e_1+e_2}(w)=0.
+\]
+This gives a two-dimensional kernel subspace.
+
+A four-point circuit is equivalent to
+\[
+e_1,\quad e_2,\quad e_3,\quad e_1+e_2+e_3.
+\]
+Perturb all four by the same
+\[
+w\in
+\{(w_1,w_2,w_3):w_1+w_2+w_3=0\},
+\]
+embedded in their three-dimensional span. Again direct substitution yields zero. This is a two-dimensional nonzero kernel subspace.
+
+Therefore \(J_S\) is not injective.
+\end{proof}
+
+\section{From first-bit singularity to exact dyadic non-uniqueness}
+A singular Jacobian is not merely a local or mod-\(4\) defect.
+
+\begin{proposition}[Top-bit collision]\label{prop:topbit}
+Let \(m\ge2\). If \(0\ne\delta\in\ker J_S\), then every lift \(v_1,\ldots,v_{n+2}\in R_m^n\) with parity frame \(S\) has a distinct companion decomposition
+\[
+v_q'=v_q+2^{m-1}\delta_q
+\]
+such that
+\[
+\sum_q(v_q')^{\otimes3}
+=
+\sum_qv_q^{\otimes3}
+\quad\text{in }R_m.
+\]
+\end{proposition}
+
+\begin{proof}
+Expand:
+\[
+(v_q+2^{m-1}\delta_q)^{\otimes3}-v_q^{\otimes3}.
+\]
+Every term containing at least two factors \(2^{m-1}\) is divisible by \(2^m\). Modulo \(2^m\), the remaining term is
+\[
+2^{m-1}D_{s_q}(\delta_q),
+\]
+because only \(v_q\bmod2=s_q\) matters after multiplication by \(2^{m-1}\). Summing over \(q\) gives
+\[
+2^{m-1}J_S(\delta)=0.
+\]
+Since the parity atoms are distinct, a nonzero top-bit perturbation cannot be absorbed by a permutation of atoms.
+\end{proof}
+
+Thus \(d(K)\le4\) produces exact non-identifiability over every dyadic level.
+
+\section{Main classification theorem}
+\begin{theorem}[Rank-\(n+2\) dyadic cubic identifiability]\label{thm:main}
+Let \(3\le n\le9\), \(m\ge2\), and
+\[
+T=\sum_{q=1}^{n+2}v_q^{\otimes3}
+\in\Sym^3((\Z/2^m\Z)^n).
+\]
+Assume the parity reductions \(s_q=v_q\bmod2\) are distinct, nonzero, and span \(\F_2^n\). Let
+\[
+K=\ker[s_1\ \cdots\ s_{n+2}].
+\]
+Then the unordered \(n+2\)-term decomposition of \(T\) is globally unique if and only if
+\[
+\boxed{d(K)\ge5.}
+\]
+\end{theorem}
+
+\begin{proof}
+If \(d(K)\ge5\), Theorem~\ref{thm:parity} forces any competing \(n+2\)-term decomposition to have exactly the same parity atoms, up to permutation. Align the permutation. Suppose inductively that the two decompositions agree modulo \(2^b\), \(1\le b<m\). Their difference modulo \(2^{b+1}\) gives an element of \(\ker J_S\). By Theorem~\ref{thm:jac}, the kernel is zero, so the atoms agree modulo \(2^{b+1}\). Induction gives equality modulo \(2^m\).
+
+If \(d(K)\le4\), Theorem~\ref{thm:jac} gives a nonzero Jacobian-kernel direction, and Proposition~\ref{prop:topbit} constructs an exact second decomposition over \(R_m\).
+\end{proof}
+
+\section{The \(n=8,\ r=10\) classification}
+The Quantinion-motivated instance has
+\[
+n=8,\qquad r=10,\qquad m=8.
+\]
+Every admissible parity frame has a binary \([10,2,d\ge3]\) relation code.
+
+A two-dimensional binary code can be represented by a \(2\times10\) generator matrix. Let
+\[
+(a,b,c,d)
+\]
+be the numbers of coordinate columns of types
+\[
+00,\quad10,\quad01,\quad11.
+\]
+Changing the code basis permutes the three nonzero types, so we may impose
+\[
+b\ge c\ge d.
+\]
+The three nonzero codeword weights are
+\[
+b+d,\qquad c+d,\qquad b+c.
+\]
+Admissibility is exactly that their minimum is at least three.
+
+Finite enumeration of
+\[
+a+b+c+d=10
+\]
+under these conditions yields exactly
+\[
+32
+\]
+equivalence classes under \(GL_8(\F_2)\) and permutation of atoms. Theorem~\ref{thm:main} leaves exactly nine rigid classes. Their unordered nonzero relation-weight triples are
+\[
+\boxed{
+\begin{aligned}
+&(5,5,6),\ (5,5,8),\ (5,5,10),\\
+&(5,6,7),\ (5,6,9),\ (5,7,8),\\
+&(6,6,6),\ (6,6,8),\ (6,7,7).
+\end{aligned}}
+\]
+The other \(23\) classes contain a relation of weight three or four and are therefore non-identifiable over every \(\Z/2^m\Z\), \(m\ge2\).
+
+\section{Computational verification}
+The accompanying pure-Python verifier
+\[
+\texttt{verify\_dyadic\_nplus2\_cubic.py}
+\]
+uses exact bit and integer arithmetic only. It performs:
+\begin{enumerate}[leftmargin=*]
+\item exhaustive parity-support uniqueness checks for the small control cases \(n=3,4\);
+\item complete enumeration of the \(32\) binary \([10,2,d\ge3]\) relation-code classes;
+\item exact construction of a parity frame from each relation code;
+\item exact rank computation of the \(512\times80\) cubic lifting Jacobian;
+\item verification that full rank occurs exactly for the nine classes with \(d(K)\ge5\);
+\item for every one of the \(23\) singular classes, construction and direct tensor verification of an exact second decomposition over \(\Z_{256}\) by a top-bit perturbation.
+\end{enumerate}
+
+The program is a regression check for the finite \(n=8\) classification. The general theorem follows from the proofs above.
+
+\section{Relation to prior work}
+The parity argument is built deliberately on established coding theory. Reed--Muller codes have dimension, duality, minimum-distance, and low-weight structures that are classical; the relevant low-weight restrictions go back to Berlekamp--Sloane and Kasami--Tokura \cite{BerlekampSloane1969,KasamiTokura1970}. Minimum-weight words of generalized Reed--Muller codes are affine-flat indicators; a modern proof is given in \cite{DelsarteNewProof2012}.
+
+Kopparty and Potukuchi showed that Reed--Muller syndrome decoding is equivalent to a tensor-decomposition problem over finite fields and gave efficient algorithms in a random low-rank regime \cite{KoppartyPotukuchi2018}. The present theorem uses Reed--Muller structure differently: the code controls \emph{global support collisions} of a fixed \(n+2\)-term symmetric cubic.
+
+The second layer is specific to the dyadic local ring. Once parity is fixed, the relation code \(K=\ker S\) controls the tangent/one-bit map exactly through its minimum distance. Hensel-style lifting itself is a standard algebraic strategy; the new claim is not the use of lifting but the explicit if-and-only-if criterion
+\[
+d(K)\ge5
+\]
+for this rank-\(n+2\) cubic family, together with an exact top-bit collision when the criterion fails.
+
+\section{Limitations and open questions}
+The global parity theorem is proved here only for \(3\le n\le9\). At \(n=10\), the possible symmetric-difference weight reaches \(24\), which is an allowed non-minimum Reed--Muller weight. Extending the global classification therefore requires a finer interaction between the low-weight support geometry and the spanning hypothesis.
+
+The relation-code/Jacobian theorem itself is not restricted to \(n\le9\); Theorem~\ref{thm:jac} applies whenever the frame has \(n+2\) distinct nonzero spanning columns. What changes beyond \(n=9\) is the global recovery of the parity support.
+
+A second direction is rank \(n+t\), \(t>2\). Then the relation code has dimension \(t\). The present result suggests that circuit structure or code distance may continue to govern dyadic lifting rigidity, but the two-dimensional proof does not automatically generalize.
+
+Finally, the theorem concerns unweighted sums of cubes. Odd unit weights can often be absorbed into atoms through cube roots in dyadic unit groups, but a weighted global theorem requires careful bookkeeping and is kept separate here.
+
+\section{Conclusion}
+For the first overcomplete level \(r=n+2\), the two-dimensional binary relation code completely controls dyadic cubic identifiability in dimensions \(3\) through \(9\). Reed--Muller low-weight rigidity determines the parity support globally; the relation-code distance determines whether that support has a unique dyadic lift. The threshold is exact:
+\[
+d(K)\ge5
+\]
+gives global uniqueness, while a relation of size three or four creates an exact second decomposition at every dyadic modulus.
+
+In dimension eight this yields a finite complete classification: \(32\) parity-frame types, \(9\) identifiable and \(23\) non-identifiable. The result replaces a simplex-specific construction by an invariant classification of all ten-atom full-span parity frames.
+
+\begin{thebibliography}{9}
+
+\bibitem{KoppartyPotukuchi2018}
+S. Kopparty and A. Potukuchi,
+"Syndrome decoding of Reed--Muller codes and tensor decomposition over finite fields,"
+\emph{Proceedings of the Twenty-Ninth Annual ACM-SIAM Symposium on Discrete Algorithms (SODA)}, pp. 680--691, 2018.
+DOI: 10.1137/1.9781611975031.44.
+
+\bibitem{BerlekampSloane1969}
+E. R. Berlekamp and N. J. A. Sloane,
+"Restrictions on weight distribution of Reed--Muller codes,"
+\emph{Information and Control}, vol. 14, no. 5, pp. 442--456, 1969.
+DOI: 10.1016/S0019-9958(69)90150-8.
+
+\bibitem{KasamiTokura1970}
+T. Kasami and N. Tokura,
+"On the weight structure of Reed--Muller codes,"
+\emph{IEEE Transactions on Information Theory}, vol. 16, no. 6, pp. 752--759, 1970.
+DOI: 10.1109/TIT.1970.1054545.
+
+\bibitem{DelsarteNewProof2012}
+C. Carvalho and V. G. L. Neumann,
+"A new proof of Delsarte, Goethals and Mac Williams theorem on minimal weight codewords of generalized Reed--Muller codes,"
+\emph{Finite Fields and Their Applications}, vol. 18, no. 3, pp. 581--586, 2012.
+DOI: 10.1016/j.ffa.2011.12.003.
+
+\bibitem{RMTheory2021}
+E. Abbe, A. Shpilka, and M. Ye,
+"Reed--Muller Codes: Theory and Algorithms,"
+\emph{IEEE Transactions on Information Theory}, vol. 67, 2021.
+DOI: 10.1109/TIT.2020.3004749.
+
+\bibitem{CotardoZullo2026}
+G. Cotardo and F. Zullo,
+"Symmetric Tensor Decompositions over Finite Fields,"
+arXiv:2605.12295, 2026.
+
+\end{thebibliography}
+
+\end{document}

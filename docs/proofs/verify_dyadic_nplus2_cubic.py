@@ -276,6 +276,44 @@ def moment_mask(x: int, n: int) -> int:
     return out
 
 
+
+def verify_projective_selforthogonal_block_bound() -> None:
+    """Exhaustively verify the finite edge case used in the Schur-Kneser proof.
+
+    No full-support projective self-orthogonal binary code exists at lengths
+    1..6.  At length 7 the [7,3,4] simplex code is the first example.
+    """
+    from itertools import combinations
+
+    def exists(length: int):
+        for r in range(1, length + 1):
+            if 2 * r > length:
+                continue
+            if (1 << r) - 1 < length:
+                continue
+            cols = list(range(1, 1 << r))
+            for chosen in combinations(cols, length):
+                rows = []
+                for i in range(r):
+                    row = 0
+                    for j, col in enumerate(chosen):
+                        row |= ((col >> i) & 1) << j
+                    rows.append(row)
+                if gf2_rank(rows, length) != r:
+                    continue
+                if all(
+                    ((rows[i] & rows[j]).bit_count() & 1) == 0
+                    for i in range(r) for j in range(r)
+                ):
+                    return r, chosen
+        return None
+
+    for length in range(1, 7):
+        assert exists(length) is None, length
+    first = exists(7)
+    assert first is not None and first[0] == 3
+    print("projective self-orthogonal stabilizer blocks: none at 1..6; first at 7 PASS")
+
 def verify_small_parity_rigidity() -> None:
     # Exhaustive controls. The general n=4..9 proof in the manuscript uses
     # Reed-Muller duality and its low-weight classification.
@@ -297,6 +335,7 @@ def verify_small_parity_rigidity() -> None:
 
 
 if __name__ == "__main__":
+    verify_projective_selforthogonal_block_bound()
     verify_small_parity_rigidity()
     verify_relation_code_jacobian_all_dimensions()
     enumerate_n8_classes()

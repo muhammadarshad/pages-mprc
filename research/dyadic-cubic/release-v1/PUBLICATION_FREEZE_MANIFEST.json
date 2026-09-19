@@ -1,0 +1,170 @@
+{
+  "checked_at_utc": "2026-09-19T23:31:20.234946+00:00",
+  "scope": "Five canonical individual PDFs and two Paper 5 supplementary files currently uploaded; no collective booklet",
+  "hash_provenance": "SHA-256 calculated from retained exact upload copies. Each copy matches the MD5 displayed by Zenodo for that file. Independent post-upload download and SHA-256 readback was not completed: direct browser download was blocked and asset export did not support PDFs.",
+  "supersedes": "Earlier RC2 manifest does not apply to these canonical PDFs.",
+  "records": [
+    {
+      "paper": 1,
+      "title": "Quantinion Simplex Cubic Decomposition over 2-Power Rings: Global Identifiability from Binary Contractions and Exact Bit Lifting",
+      "doi": "10.5281/zenodo.22850767",
+      "draft_url": "https://zenodo.org/uploads/22850767",
+      "status": "unpublished draft",
+      "author": "Muhammad Arshad",
+      "orcid": "0009-0002-1314-0494",
+      "type": "Publication / Preprint",
+      "date": "2026-09-20",
+      "version": "v1",
+      "license": "CC BY 4.0",
+      "repository_url": "https://github.com/muhammadarshad/pages-mprc/blob/master/research/dyadic-cubic/verification/verify_quantinion_simplex_cubic.py",
+      "pages": 9,
+      "own_title_and_references_checked_in_zenodo_preview": true,
+      "keywords_checked": true,
+      "doi_embedded_in_pdf": false
+    },
+    {
+      "paper": 2,
+      "title": "Exact Free Capacity of Symmetric Rank-One Cubic Dictionaries over Dyadic Rings",
+      "doi": "10.5281/zenodo.22850810",
+      "draft_url": "https://zenodo.org/uploads/22850810",
+      "status": "unpublished draft",
+      "author": "Muhammad Arshad",
+      "orcid": "0009-0002-1314-0494",
+      "type": "Publication / Preprint",
+      "date": "2026-09-20",
+      "version": "v1",
+      "license": "CC BY 4.0",
+      "repository_url": "https://github.com/muhammadarshad/pages-mprc/blob/master/research/dyadic-cubic/verification/verify_cubic_dictionary_capacity.py",
+      "pages": 5,
+      "own_title_and_references_checked_in_zenodo_preview": true,
+      "keywords_checked": true,
+      "doi_embedded_in_pdf": false
+    },
+    {
+      "paper": 3,
+      "title": "An Eight-State Operator and Transpose Geometry over Dyadic Rings: Trace-Zero Modules, Mixed-Radix Addressing, and Tensor-Lift Kernels",
+      "doi": "10.5281/zenodo.22850830",
+      "draft_url": "https://zenodo.org/uploads/22850830",
+      "status": "unpublished draft",
+      "author": "Muhammad Arshad",
+      "orcid": "0009-0002-1314-0494",
+      "type": "Publication / Preprint",
+      "date": "2026-09-20",
+      "version": "v1",
+      "license": "CC BY 4.0",
+      "repository_url": "https://github.com/muhammadarshad/pages-mprc/blob/master/research/dyadic-cubic/verification/verify_quantinion_operator_geometry.py",
+      "pages": 9,
+      "own_title_and_references_checked_in_zenodo_preview": true,
+      "keywords_checked": true,
+      "doi_embedded_in_pdf": false
+    },
+    {
+      "paper": 4,
+      "title": "Dimension-Free Identifiability of (n+2) Symmetric Cubics over Dyadic Rings",
+      "doi": "10.5281/zenodo.22850834",
+      "draft_url": "https://zenodo.org/uploads/22850834",
+      "status": "unpublished draft",
+      "author": "Muhammad Arshad",
+      "orcid": "0009-0002-1314-0494",
+      "type": "Publication / Preprint",
+      "date": "2026-09-20",
+      "version": "v1",
+      "license": "CC BY 4.0",
+      "repository_url": "https://github.com/muhammadarshad/pages-mprc/tree/master/research/dyadic-cubic/verification",
+      "pages": 5,
+      "own_title_and_references_checked_in_zenodo_preview": true,
+      "keywords_checked": true,
+      "doi_embedded_in_pdf": false
+    },
+    {
+      "paper": 5,
+      "title": "Koszul–Sidon Rigidity for (n+3) Cubic Decompositions over Dyadic Rings",
+      "doi": "10.5281/zenodo.22850842",
+      "draft_url": "https://zenodo.org/uploads/22850842",
+      "status": "unpublished draft",
+      "author": "Muhammad Arshad",
+      "orcid": "0009-0002-1314-0494",
+      "type": "Publication / Preprint",
+      "date": "2026-09-20",
+      "version": "v1",
+      "license": "CC BY 4.0",
+      "repository_url": "https://github.com/muhammadarshad/pages-mprc/blob/master/research/dyadic-cubic/verification/t3_koszul_certificate.py",
+      "pages": 6,
+      "own_title_and_references_checked_in_zenodo_preview": true,
+      "keywords_checked": true,
+      "doi_embedded_in_pdf": false
+    }
+  ],
+  "files": [
+    {
+      "paper": 1,
+      "filename": "Paper1_Simplex_Cubic_Decomposition_RC2.pdf",
+      "bytes": 278333,
+      "md5": "1f8e4d51d93b7e7e97d14ed07a09610a",
+      "sha256": "b07b3fbd6e9c71447abdcf9c1d3628e2f49cac9183e52d4bcb05d71de55d2c27",
+      "zenodo_md5_match": true
+    },
+    {
+      "paper": 2,
+      "filename": "Paper2_Exact_Cubic_Dictionary_Capacity.pdf",
+      "bytes": 243461,
+      "md5": "7a20ee1976ab757b385aa0c67def74ff",
+      "sha256": "76888e2fbdba6d3768fb57f6d89c63021c21d1f0056ad9259a283e1dcf87893d",
+      "zenodo_md5_match": true
+    },
+    {
+      "paper": 3,
+      "filename": "Paper3_Operator_Transpose_Geometry.pdf",
+      "bytes": 277962,
+      "md5": "e8fa7061c6e5f3f7d77548c7707e387a",
+      "sha256": "a4d4e9dfd7c3b55f4b75067b262faf685bee9ab3a0ac11115ecfb5809d231ad9",
+      "zenodo_md5_match": true
+    },
+    {
+      "paper": 4,
+      "filename": "Paper4_Dimension_Free_nPlus2_Identifiability_RC2.pdf",
+      "bytes": 240430,
+      "md5": "197269e8978710ff698a0ceccc32738c",
+      "sha256": "a4fe1cc6523eba5e357301934214f9094e57584eae48a6274e68a3d9ca0c82d6",
+      "zenodo_md5_match": true
+    },
+    {
+      "paper": 5,
+      "filename": "Paper5_nPlus3_Koszul_Sidon_Rigidity_RC2.pdf",
+      "bytes": 274942,
+      "md5": "b047ead49f8f304b44a46f7960467faa",
+      "sha256": "71050756bb20eb171cd5e9f919c8dd555821e5721621fd90853eba035bb31013",
+      "zenodo_md5_match": true
+    },
+    {
+      "paper": 5,
+      "filename": "t3_koszul_certificate.py",
+      "bytes": 9073,
+      "md5": "f6bc34086d34b12f7d653f8b3fb2ac40",
+      "sha256": "82f20ec030387ba10caa6b2173b68387f04eed176949a26d9fda6324ec214c5e",
+      "zenodo_md5_match": true
+    },
+    {
+      "paper": 5,
+      "filename": "t3_koszul_certificate.json",
+      "bytes": 6991,
+      "md5": "b7b679ca13a915cc31e617e5bc6c0885",
+      "sha256": "4c1093cc8aa9c8f5edf366e16cc34afc78e84b0ce5a1ca2e3550082c39ff0431",
+      "zenodo_md5_match": true
+    }
+  ],
+  "certificate_result": "20/20 PASS; JSON regenerated from the supplied unchanged Python script",
+  "publication_performed": false,
+  "cross_references_prepared_not_applied": [
+    {
+      "from_paper": 4,
+      "relation": "References",
+      "target_doi": "10.5281/zenodo.22850767"
+    },
+    {
+      "from_paper": 5,
+      "relation": "References",
+      "target_doi": "10.5281/zenodo.22850834"
+    }
+  ]
+}

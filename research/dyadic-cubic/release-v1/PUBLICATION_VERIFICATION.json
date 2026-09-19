@@ -1,0 +1,105 @@
+{
+  "checked_at_utc": "2026-09-19T23:49:48.061108+00:00",
+  "records": [
+    {
+      "paper": 1,
+      "doi": "10.5281/zenodo.22850767",
+      "public_url": "https://zenodo.org/records/22850767",
+      "doi_resolves_in_browser": true,
+      "status": "published"
+    },
+    {
+      "paper": 2,
+      "doi": "10.5281/zenodo.22850810",
+      "public_url": "https://zenodo.org/records/22850810",
+      "doi_resolves_in_browser": true,
+      "status": "published"
+    },
+    {
+      "paper": 3,
+      "doi": "10.5281/zenodo.22850830",
+      "public_url": "https://zenodo.org/records/22850830",
+      "doi_resolves_in_browser": true,
+      "status": "published"
+    },
+    {
+      "paper": 4,
+      "doi": "10.5281/zenodo.22850834",
+      "public_url": "https://zenodo.org/records/22850834",
+      "doi_resolves_in_browser": true,
+      "status": "published"
+    },
+    {
+      "paper": 5,
+      "doi": "10.5281/zenodo.22850842",
+      "public_url": "https://zenodo.org/records/22850842",
+      "doi_resolves_in_browser": true,
+      "status": "published"
+    }
+  ],
+  "files": [
+    {
+      "paper": 1,
+      "filename": "Paper1_Simplex_Cubic_Decomposition_RC2.pdf",
+      "url": "https://zenodo.org/records/22850767/files/Paper1_Simplex_Cubic_Decomposition_RC2.pdf?download=1",
+      "bytes": 278333,
+      "sha256": "b07b3fbd6e9c71447abdcf9c1d3628e2f49cac9183e52d4bcb05d71de55d2c27",
+      "expected_sha256": "b07b3fbd6e9c71447abdcf9c1d3628e2f49cac9183e52d4bcb05d71de55d2c27",
+      "match": true
+    },
+    {
+      "paper": 2,
+      "filename": "Paper2_Exact_Cubic_Dictionary_Capacity.pdf",
+      "url": "https://zenodo.org/records/22850810/files/Paper2_Exact_Cubic_Dictionary_Capacity.pdf?download=1",
+      "bytes": 243461,
+      "sha256": "76888e2fbdba6d3768fb57f6d89c63021c21d1f0056ad9259a283e1dcf87893d",
+      "expected_sha256": "76888e2fbdba6d3768fb57f6d89c63021c21d1f0056ad9259a283e1dcf87893d",
+      "match": true
+    },
+    {
+      "paper": 3,
+      "filename": "Paper3_Operator_Transpose_Geometry.pdf",
+      "url": "https://zenodo.org/records/22850830/files/Paper3_Operator_Transpose_Geometry.pdf?download=1",
+      "bytes": 277962,
+      "sha256": "a4d4e9dfd7c3b55f4b75067b262faf685bee9ab3a0ac11115ecfb5809d231ad9",
+      "expected_sha256": "a4d4e9dfd7c3b55f4b75067b262faf685bee9ab3a0ac11115ecfb5809d231ad9",
+      "match": true
+    },
+    {
+      "paper": 4,
+      "filename": "Paper4_Dimension_Free_nPlus2_Identifiability_RC2.pdf",
+      "url": "https://zenodo.org/records/22850834/files/Paper4_Dimension_Free_nPlus2_Identifiability_RC2.pdf?download=1",
+      "bytes": 240430,
+      "sha256": "a4fe1cc6523eba5e357301934214f9094e57584eae48a6274e68a3d9ca0c82d6",
+      "expected_sha256": "a4fe1cc6523eba5e357301934214f9094e57584eae48a6274e68a3d9ca0c82d6",
+      "match": true
+    },
+    {
+      "paper": 5,
+      "filename": "Paper5_nPlus3_Koszul_Sidon_Rigidity_RC2.pdf",
+      "url": "https://zenodo.org/records/22850842/files/Paper5_nPlus3_Koszul_Sidon_Rigidity_RC2.pdf?download=1",
+      "bytes": 274942,
+      "sha256": "71050756bb20eb171cd5e9f919c8dd555821e5721621fd90853eba035bb31013",
+      "expected_sha256": "71050756bb20eb171cd5e9f919c8dd555821e5721621fd90853eba035bb31013",
+      "match": true
+    },
+    {
+      "paper": 5,
+      "filename": "t3_koszul_certificate.py",
+      "url": "https://zenodo.org/records/22850842/files/t3_koszul_certificate.py?download=1",
+      "bytes": 9073,
+      "sha256": "82f20ec030387ba10caa6b2173b68387f04eed176949a26d9fda6324ec214c5e",
+      "expected_sha256": "82f20ec030387ba10caa6b2173b68387f04eed176949a26d9fda6324ec214c5e",
+      "match": true
+    },
+    {
+      "paper": 5,
+      "filename": "t3_koszul_certificate.json",
+      "url": "https://zenodo.org/records/22850842/files/t3_koszul_certificate.json?download=1",
+      "bytes": 6991,
+      "sha256": "4c1093cc8aa9c8f5edf366e16cc34afc78e84b0ce5a1ca2e3550082c39ff0431",
+      "expected_sha256": "4c1093cc8aa9c8f5edf366e16cc34afc78e84b0ce5a1ca2e3550082c39ff0431",
+      "match": true
+    }
+  ]
+}

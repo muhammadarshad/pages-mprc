@@ -127,7 +127,7 @@ def tensor_sum(atoms: list[list[int]], mod: int) -> list[int]:
 
 
 def verify_relation_code_jacobian_all_dimensions() -> None:
-    """Enumerate every [n+2,2,d>=3] relation-code type for n=3..13.
+    """Enumerate every [n+2,2,d>=3] relation-code type for n=3..17.
 
     GL_2(F2) permutes the three nonzero coordinate types, so canonical
     representatives are count tuples (a,b,c,d) with b>=c>=d.
@@ -143,7 +143,7 @@ def verify_relation_code_jacobian_all_dimensions() -> None:
         9: 16, 10: 26, 11: 38, 12: 53, 13: 71,
     }
 
-    for n in range(3, 14):
+    for n in range(3, 18):
         length = n + 2
         classes = 0
         rigid = 0

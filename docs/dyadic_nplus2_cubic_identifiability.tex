@@ -290,7 +290,7 @@ r\le\frac{8c}{21}.
 \end{proof}
 
 \begin{theorem}[Rank-\(n+2\) parity rigidity]\label{thm:parity}
-Let \(3\le n\le17\). Let \(X\subset\F_2^n\setminus\{0\}\) consist of \(n+2\) distinct points spanning \(\F_2^n\). If a multiset \(Y\) of \(n+2\) vectors in \(\F_2^n\) satisfies
+Let \(n\ge3\). Let \(X\subset\F_2^n\setminus\{0\}\) consist of \(n+2\) distinct points spanning \(\F_2^n\). If a multiset \(Y\) of \(n+2\) vectors in \(\F_2^n\) satisfies
 \[
 \sum_{x\in X}x^{\otimes3}
 =
@@ -300,85 +300,132 @@ then \(Y\) contains each element of \(X\) exactly once.
 \end{theorem}
 
 \begin{proof}
-Let \(Y_{\rm odd}\) be the set of points occurring with odd multiplicity in \(Y\). Over \(\F_2\), the tensor of the multiset \(Y\) equals the tensor of \(Y_{\rm odd}\), and
-\[
-|Y_{\rm odd}|\equiv |Y|=n+2\equiv |X|\pmod2.
-\]
-Set
+Let \(Y_{\rm odd}\) be the set of points occurring with odd multiplicity in \(Y\), and put
 \[
 z=1_X+1_{Y_{\rm odd}}.
 \]
-Equality of the cubic tensors gives equality of every nonconstant square-free Boolean moment of degrees one, two, and three; the parity of the cardinalities supplies the constant moment. Hence
+The tensor equality gives equality of every nonconstant square-free Boolean moment of degrees one, two, and three. Since
 \[
-z\in RM(3,n)^\perp.
+|Y_{\rm odd}|\equiv|Y|=n+2\equiv|X|\pmod2,
 \]
-For \(n\ge4\), Reed--Muller duality gives
+the constant moment agrees as well.
+
+For \(n=3\), the square-free monomials of degrees at most three, together with the constant function, form a basis of all Boolean functions on \(\F_2^3\), so \(z=0\).
+
+Assume \(n\ge4\). Reed--Muller duality gives
 \[
-z\in RM(n-4,n).
+z\in RM(3,n)^\perp=RM(n-4,n).
 \]
-Also
+Suppose \(z\ne0\), and let
 \[
-\wt(z)\le |X|+|Y_{\rm odd}|\le2(n+2).
+F=\supp(z),\qquad c=|F|.
+\]
+The minimum distance of \(RM(n-4,n)\) is \(16\), so
+\[
+c\ge16. \tag{2}
 \]
 
-For \(n=3\), square-free Boolean monomials of degrees at most three, together with the constant, form a basis of all Boolean functions on \(\F_2^3\), so \(z=0\). Assume \(4\le n\le17\). Then
+Let
 \[
-\wt(z)\le 2(n+2)\le38<40=\frac52 d,
-\qquad d=16.
+\epsilon=
+\begin{cases}
+1,&0\in F,\\
+0,&0\notin F,
+\end{cases}
+\qquad
+F^\ast=F\setminus\{0\},
+\qquad
+c^\ast=c-\epsilon.
+\]
+Form the binary matrix \(M_F\) whose columns are the distinct nonzero vectors in \(F^\ast\), and let
+\[
+C_F=\operatorname{RowSpan}(M_F).
+\]
+The code \(C_F\) is full-support and projective. The degree-one, degree-two, and degree-three moment equations imply, by trilinearity,
+\[
+C_F^{\langle2\rangle}\subseteq C_F^\perp.
+\]
+Moreover
+\[
+\dim C_F=\dim\langle F\rangle,
+\]
+because deleting the zero point does not change linear span. Lemma~\ref{lem:triobound} therefore gives
+\[
+\dim\langle F\rangle
+\le
+\frac{8c^\ast}{21}. \tag{3}
 \]
 
-Kasami--Tokura--Azumi classify all binary Reed--Muller words of weight below \(2.5d\). Specializing their classification to \(RM(n-4,n)\), and using the explicit affine representatives tabulated by Nezami--Haah, every nonzero word with weight below \(40\) has weight
+Let
 \[
-16,\ 24,\ 28,\ 30,\ 32,\ 34,\ 36,\ \text{or }38.
+t=|X\cap F|.
 \]
-Moreover the support of each such word is contained, after affine change of variables and restoration of any removed linear factors, in an affine subspace whose linear span has dimension bounded as follows:
+Since
 \[
-\begin{array}{c|rrrrrrrr}
-\wt(z)&16&24&28&30&32&34&36&38\\ \hline
-\dim\langle\supp(z)\rangle
-&\le5&\le7&\le8&\le9&\le10&\le9&\le10&\le11.
-\end{array}
+Y_{\rm odd}=X\triangle F
 \]
-For weights \(16,24,28,30\) these bounds follow from the classical Kasami--Tokura normal forms. For weights \(32,34,36,38\), the complete low-weight representatives in the Kasami--Tokura--Azumi range use at most \(9,8,9,10\) effective variables respectively; their supports therefore have linear span at most \(10,9,10,11\).
+and \(|Y_{\rm odd}|\le|X|=n+2\),
+\[
+|X|+c-2t\le|X|,
+\qquad
+t\ge c/2. \tag{4}
+\]
+Thus
+\[
+|X\setminus F|
+\le n+2-c/2. \tag{5}
+\]
 
-Let \(F=\supp(z)\), \(w=|F|\), and \(t=|X\cap F|\). Since
+If \(0\in F\), then from (3)--(5),
 \[
-Y_{\rm odd}=X\triangle F,
+\begin{aligned}
+n=\dim\langle X\rangle
+&\le \dim\langle F\rangle+|X\setminus F|\\
+&\le \frac{8(c-1)}{21}+n+2-\frac c2\\
+&=n+\frac{68-5c}{42}.
+\end{aligned}
 \]
-we have
+By (2), \(68-5c\le-12\), a contradiction.
+
+Hence \(0\notin F\). Then
 \[
-|Y_{\rm odd}|=|X|+w-2t\le|X|,
+n
+\le
+\frac{8c}{21}+n+2-\frac c2
+=
+n+\frac{84-5c}{42}.
 \]
-so
+For every \(c\ge18\), the final term is negative, again a contradiction. Therefore
 \[
-t\ge w/2.
+c=16,
 \]
-Thus at most
+because \(z\) is orthogonal to the constant word and hence has even weight.
+
+A minimum-weight word of \(RM(n-4,n)\) is the indicator of an affine \(4\)-flat \cite{DelsarteNewProof2012}. Hence
 \[
-n+2-w/2
+\dim\langle F\rangle\le5.
 \]
-points of \(X\) lie outside \(F\). If \(s(w)\) denotes the corresponding support-span bound above, then
+Equation (4) gives \(t\ge8\), so at most \(n-6\) points of \(X\) lie outside \(F\). For \(n\ge6\),
 \[
 \dim\langle X\rangle
-\le s(w)+n+2-\frac w2.
+\le5+(n-6)
+=n-1,
 \]
-For the eight possible weights this gives, respectively,
+contradicting the spanning hypothesis. For \(n=4,5\), already
 \[
-n-1,\ n-3,\ n-4,\ n-4,\ n-4,\ n-6,\ n-6,\ n-6,
+c=16>2(n+2),
 \]
-all strictly less than \(n\). This contradicts
+so such a symmetric difference is impossible.
+
+Thus \(z=0\), and therefore
 \[
-\langle X\rangle=\F_2^n.
+Y_{\rm odd}=X.
 \]
-Hence \(z=0\), so \(Y_{\rm odd}=X\). Since \(Y\) contains exactly \(n+2\) terms and every one of the \(n+2\) elements of \(X\) must occur an odd positive number of times, every one occurs exactly once.
+Since \(Y\) has exactly \(n+2\) terms and every one of the \(n+2\) elements of \(X\) must occur with positive odd multiplicity, each occurs exactly once.
 \end{proof}
 
 \begin{remark}
-The proof uses the strict Kasami--Tokura--Azumi range \(\wt<2.5d=40\). Since
-\[
-2(n+2)\le38
-\]
-for \(n\le17\), every possible collision word is covered. At \(n=18\), weight \(40\) becomes reachable and the cited low-weight classification no longer applies directly. Thus \(n=18\) is the first unresolved dimension for the present global-support argument.
+The parity-rigidity theorem has no upper dimension cutoff. The proof uses only Reed--Muller duality and minimum distance, the affine-flat form of minimum-weight words, and Lemma~\ref{lem:triobound}. The earlier finite-dimensional proof through \(n=17\) remains useful as independent regression evidence but is no longer needed for the theorem.
 \end{remark}
 
 \section{The one-bit cubic Jacobian}

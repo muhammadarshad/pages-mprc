@@ -54,6 +54,65 @@ Audit date: 18 September 2026
 
 This file records the closest literature found during submission hardening. It is not a proof of novelty. The journal-facing manuscripts deliberately use cautious language such as "to the author's knowledge".
 
+## SciSpace professional-index pass — 20 September 2026
+
+A targeted SciSpace search was run across the academic index using full natural-language questions rather than keyword matching.
+
+### Search questions
+
+1. Are there papers proving identifiability or unique decomposition of symmetric cubic tensors over finite local rings `Z/2^m Z), especially overcomplete rank `n+2`?
+2. Are there papers connecting binary Sidon sets / minimum-distance-five codes to uniqueness of symmetric cubic tensor decompositions?
+3. Are there papers combining Reed–Muller low-weight structure with Hensel lifting for tensor decomposition over finite local rings?
+4. What literature studies tensor decomposition over finite local rings, chain rings, `Z/4Z`, or `Z/2^mZ` rather than fields?
+
+### Closest results surfaced
+
+- Kopparty–Potukuchi, *Syndrome decoding of Reed-Muller codes and tensor decomposition over finite fields* (SODA 2018).
+  - Explicitly establishes an equivalence between Reed–Muller syndrome decoding and random low-rank tensor decomposition over finite fields.
+  - Uses finite-field Jennrich / decoding methods.
+  - Does not work over dyadic local rings or give the Sidon/relation-code lifting criterion.
+
+- Czerwinski–Pott, *Sidon sets, sum-free sets and linear codes* (Advances in Mathematics of Communications, 2024).
+  - Explicitly recalls the one-to-one correspondence between sum-free Sidon sets in `F_2^t` and binary linear codes with minimum distance at least five.
+  - Does not connect this condition to cubic tensor identifiability or local-ring lifting.
+
+- Standard symmetric-tensor identifiability papers (Chiantini–Ottaviani–Vannieuwenhoven and related work).
+  - Work over fields, typically `C` / algebraic-geometric settings.
+  - Do not address `Z/2^mZ`, Reed–Muller parity supports, or top-bit exact counter-decompositions.
+
+- Searches specifically requesting finite local / chain ring / `Z/4Z` tensor decomposition did not surface a directly matching symmetric cubic identifiability theorem. Returned results were mostly ordinary tensor-ring/network papers or field-based tensor geometry.
+
+### Current novelty statement after the SciSpace pass
+
+The manuscript must not claim novelty for:
+- Reed–Muller/tensor correspondence;
+- Sidon sets;
+- the minimum-distance-five code correspondence;
+- Reed–Muller low-weight classification;
+- Hensel lifting;
+- generic symmetric tensor identifiability.
+
+The remaining candidate novelty is the exact combined theorem:
+
+```
+rank r=n+2 symmetric cubic over Z/(2^m)
++ globally rigid parity support for 3<=n<=13
++ relation code K=ker S
++ Sidon iff d(K)>=5
++ ker(J_S)=0 iff Sidon
++ explicit exact top-bit second decomposition for every non-Sidon frame.
+```
+
+No directly matching theorem surfaced in the SciSpace searches. This remains a literature finding, not a proof of priority.
+
+### Current mathematical boundary
+
+For `n=14`, parity collisions can first involve weight `32=2d` codewords of `RM(10,14)`. Non-minimal weight-32 words are unions of two disjoint minimum affine 4-flats and therefore have low-dimensional support; they cannot host a rank-14 16-point frame. The unresolved obstruction is a **minimal** weight-32 word whose support has full linear span 14.
+
+That exact geometric question is the next proof target.
+
+---
+
 ## Paper 1 — Simplex Cubic Decomposition over 2-Power Rings
 
 ### Closest work found

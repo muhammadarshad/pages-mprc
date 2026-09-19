@@ -43,7 +43,7 @@ and let
 \[
 K=\ker S\subset\F_2^{n+2}.
 \]
-Then \(K\) is a binary \([n+2,2]\) relation code. For \(3\le n\le13\) we prove an exact classification:
+Then \(K\) is a binary \([n+2,2]\) relation code. Equivalently, (d(K)\ge5) means that the parity support augmented by the origin is a binary Sidon set. For \(3\le n\le13\) we prove an exact classification:
 \[
 \boxed{\quad
 \{v_q\}_{q=1}^{n+2}\text{ is globally identifiable from }T
@@ -79,7 +79,7 @@ The result has two logically independent components. The first is a support-rigi
 For \(3\le n\le13\), the parity support is always rigid under the stated spanning/distinctness assumptions. Over \(R_m\), \(m\ge2\), the decomposition is globally identifiable if and only if the binary relation code has minimum distance at least five.
 
 \paragraph{Novelty boundary.}
-None of the following is claimed as new: Reed--Muller duality, the minimum distance of Reed--Muller codes, the characterization of their minimum-weight words as affine flats, low-weight Reed--Muller classifications, Hensel lifting as a general method, or the connection between Reed--Muller syndromes and finite-field tensor decomposition. The proposed new statement is the \emph{combined exact classification} for rank \(n+2\) symmetric cubics over dyadic rings in terms of the distance of the two-dimensional relation code, together with the explicit non-identifiability construction when that distance is at most four. The literature assessment is not a substitute for an exhaustive novelty review.
+None of the following is claimed as new: Reed--Muller duality, the minimum distance of Reed--Muller codes, the characterization of their minimum-weight words as affine flats, low-weight Reed--Muller classifications, Hensel lifting as a general method, or the connection between Reed--Muller syndromes and finite-field tensor decomposition. The proposed new statement is the \emph{combined exact classification} for rank \(n+2\) symmetric cubics over dyadic rings: Sidon parity frames are exactly the frames with unique dyadic cubic lift, while every non-Sidon frame admits an explicit exact top-bit counter-decomposition. Neither the Sidon/code correspondence nor Reed--Muller theory is claimed as new. The literature assessment is not a substitute for an exhaustive novelty review.
 
 \section{Setting and relation code}
 Fix \(m\ge2\) and write
@@ -125,6 +125,30 @@ a weight-one relation is a zero column and a weight-two relation is a repeated c
 \begin{proposition}[Frame equivalence is code equivalence]\label{prop:equiv}
 Two full-row-rank \(n\times(n+2)\) parity frames are equivalent under a left action of \(GL_n(\F_2)\) and a permutation of their columns if and only if their relation codes are permutation-equivalent.
 \end{proposition}
+
+\subsection{Sidon reformulation}
+The threshold \(d(K)\ge5\) is classical in coding theory and additive combinatorics. Let
+\[
+A=\{0,s_1,\ldots,s_{n+2}\}\subset\F_2^n.
+\]
+Because the \(s_q\) are distinct and nonzero, the conditions \(d(K)\ge3\) already exclude relations of weights one and two. A relation of weight three has the form
+\[
+s_i+s_j+s_k=0,
+\]
+while a relation of weight four has the form
+\[
+s_i+s_j=s_k+s_\ell
+\]
+with distinct indices. Therefore
+\[
+\boxed{
+d(K)\ge5
+\quad\Longleftrightarrow\quad
+A\text{ is a Sidon set in }\F_2^n.
+}
+\]
+This equivalence is not new: binary Sidon sets are classically represented by parity-check matrices of binary codes of minimum distance at least five. Recent work on binary Sidon sets and APN functions emphasizes the same code correspondence \cite{Nagy2025,CzerwinskiPott2026}. The new role of the condition in this paper is different: it is exactly the rigidity threshold for the cubic one-bit lifting map.
+
 
 \begin{proof}
 The row space of \(S\) is \(K^\perp\). A column permutation permutes coordinates of \(K\). Conversely, if two relation codes agree after a coordinate permutation, the two frame row spaces agree; two full-row-rank matrices with the same row space differ by an invertible left multiplication.
@@ -559,6 +583,19 @@ uses exact bit and integer arithmetic only. It performs:
 \item for every one of the \(23\) singular classes, construction and direct tensor verification of an exact second decomposition over \(\Z_{256}\) by a top-bit perturbation.
 \end{enumerate}
 
+
+
+\paragraph{Relation-code class counts.}
+The verifier also enumerates every permutation-equivalence class of binary \([n+2,2,d\ge3]\) relation codes for \(3\le n\le13\) and checks Theorem~\ref{thm:jac} exactly. The class counts are:
+\[
+\begin{array}{c|rrrrrrrrrrr}
+n&3&4&5&6&7&8&9&10&11&12&13\\ \hline
+\text{all classes}&1&4&8&14&22&32&44&59&76&96&119\\
+d(K)\ge5&0&0&0&1&4&9&16&26&38&53&71.
+\end{array}
+\]
+In every class, the computed Jacobian is injective if and only if \(d(K)\ge5\).
+
 The program is a regression check for the finite \(n=8\) classification. The general theorem follows from the proofs above.
 
 \section{Relation to prior work}
@@ -575,7 +612,7 @@ for this rank-\(n+2\) cubic family, together with an exact top-bit collision whe
 \section{Limitations and open questions}
 The global parity theorem is proved here for \(3\le n\le13\). At \(n=14\), a symmetric difference may have weight \(32=2d\), outside the strict below-\(2d\) Kasami--Tokura classification used in the proof. Extending the global classification beyond this point therefore requires a separate analysis of weight-\(32\) supports and their possible interaction with a spanning \(n+2\)-point frame.
 
-The relation-code/Jacobian theorem itself is not restricted to \(n\le9\); Theorem~\ref{thm:jac} applies whenever the frame has \(n+2\) distinct nonzero spanning columns. What changes beyond \(n=9\) is the global recovery of the parity support.
+The relation-code/Jacobian theorem itself is not restricted to \(n\le13\); Theorem~\ref{thm:jac} applies whenever the frame has \(n+2\) distinct nonzero spanning columns. What changes beyond \(n=13\) is the global recovery of the parity support.
 
 A second direction is rank \(n+t\), \(t>2\). Then the relation code has dimension \(t\). The present result suggests that circuit structure or code distance may continue to govern dyadic lifting rigidity, but the two-dimensional proof does not automatically generalize.
 
@@ -626,6 +663,19 @@ DOI: 10.1109/TIT.2020.3004749.
 G. Cotardo and F. Zullo,
 "Symmetric Tensor Decompositions over Finite Fields,"
 arXiv:2605.12295, 2026.
+
+
+\bibitem{Nagy2025}
+G. P. Nagy,
+"Sidon sets, thin sets, and the nonlinearity of vectorial Boolean functions,"
+\emph{Journal of Combinatorial Theory, Series A}, vol. 212, 106001, 2025.
+DOI: 10.1016/j.jcta.2024.106001.
+
+\bibitem{CzerwinskiPott2026}
+I. Czerwinski and A. Pott,
+"On large Sidon sets,"
+\emph{Journal of Combinatorial Theory, Series A}, vol. 220, 106129, 2026.
+DOI: 10.1016/j.jcta.2025.106129.
 
 \end{thebibliography}
 

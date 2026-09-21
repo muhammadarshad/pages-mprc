@@ -101,19 +101,36 @@
 <p>Therefore the pair may be written (4,7,9)→(4,9,16). This is especially suggestive because the CXR work used 3×3 and 4×4 grids. The arithmetic identity is exact; a theorem identifying these factors with the CXR grid construction has not yet been proved and is intentionally left open.</p>
 </section><hr>
 
-<section class="section"><div class="section-num">10 · Open Register</div><h2>What Remains <span class="accent">Open</span></h2>
+<hr>
+<section class="section"><div class="section-num">10 · Theorem</div><h2>Unoriented Sheet <span class="accent">Quotient</span></h2>
+<div class="pull-quote"><p><strong>Theorem 26.3.</strong> On the self-conjugate displacement sheets P=0 and P=H, charge conjugation acts on the static simplex exactly by (η⁺,η⁻,η_H)↦(η⁻,η⁺,η_H). The unoriented sheet is therefore Δ_T/ℤ₂.</p></div>
+<p>Circular magnitude is invariant under e↦−e, so L and Q are unchanged while P↦−P. The only fixed displacement sheets are 0 and H. On those sheets the base residues coincide, a=b, so conjugation swaps only the two oriented excess coordinates and leaves the half-turn coordinate fixed. The K-admissibility condition is symmetric in the two oriented sums, hence the quotient is exact.</p>
+<div class="eq-block"><div class="eq-row">|Δ_T/ℤ₂| = ½[ C(T+2,2) + ⌊T/2⌋ + 1 ]</div></div>
+<p>for the unrestricted simplex; K-admissible subsets inherit the same involution orbit construction.</p>
+</section><hr>
+<section class="section"><div class="section-num">11 · Theorem</div><h2>Exact Metric-Affine <span class="accent">Symmetry</span></h2>
+<div class="pull-quote"><p><strong>Theorem 26.4.</strong> The uniform metric-affine ring symmetries are exactly V₄={I,C,A,AC}; with K-coordinate permutations the full stated group is S_K×V₄.</p></div>
+<p>For f(e)=ae+b with gcd(a,2H)=1, requiring either D(f(e))=D(e) for all e or D(f(e))=H−D(e) for all e forces, from e=0 and e=1 alone, b∈{0,H} and a∈{+1,−1}. Thus no other affine ring map survives.</p>
+<div class="eq-block">
+<div class="eq-row">C: P↦−P, L↦L, Λ↦Λ</div>
+<div class="eq-row">A: P↦P+KH, L↦KH−L, Λ↦−Λ</div>
+<div class="eq-row">Λ = 2L−KH.</div>
+</div>
+<p>Coordinate permutations commute with the uniform V₄ action, yielding the direct product.</p>
+</section>
+<section class="section"><div class="section-num">12 · Open Register</div><h2>What Remains <span class="accent">Open</span></h2>
 <table class="data-table"><tr><th>Item</th><th>Status</th></tr>
 <tr><td>Top-KPQ completeness</td><td>PROVEN — closed</td></tr>
 <tr><td>Dense Z₂₅₆ collision ramification length 576</td><td>PROVEN — closed at the dense diagonal localization</td></tr>
-<tr><td>Unoriented P∈{0,H} sheet swap / Δ_T quotient</td><td>Open</td></tr>
-<tr><td>Full S_K × V₄ Q-space symmetry audit</td><td>Open audit</td></tr>
+<tr><td>Unoriented P∈{0,H} sheet swap / Δ_T quotient</td><td>PROVEN — Theorem 26.3</td></tr>
+<tr><td>Metric-affine S_K × V₄ Q-space symmetry</td><td>PROVEN — Theorem 26.4</td></tr>
 <tr><td>Gröbner/Betti claims beyond the verified Hilbert function</td><td>Open audit</td></tr>
 <tr><td>Associated graded layer structure gr_𝔭</td><td>Open</td></tr>
 <tr><td>CXR structural law behind 252=4·7·9 and 576=4·9·16</td><td>Observation; not yet a theorem</td></tr>
 </table>
 </section><hr>
 
-<section class="section"><div class="section-num">11 · Provenance</div><h2>Frozen <span class="accent">Research Record</span></h2>
+<section class="section"><div class="section-num">13 · Provenance</div><h2>Frozen <span class="accent">Research Record</span></h2>
 <p>The collision theorem and audits were first frozen in the SILIQ/MPRC math ledger and verifier code before this booklet chapter was created. This chapter preserves the mathematical statement and its scope; it does not turn unaudited adjacent claims into consequences.</p>
 <div class="eq-block">
 <div class="eq-row"><a href="https://github.com/muhammadarshad/siliq-rotor/blob/7c99e8f85859e3d6294f0533dbe385fed3b31e44/MATH_LEDGER.md">Pinned MATH_LEDGER snapshot →</a></div>

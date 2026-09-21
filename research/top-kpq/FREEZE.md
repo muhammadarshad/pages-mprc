@@ -43,3 +43,17 @@ Still open:
 - the CXR identification of `252=4*7*9` and `576=4*9*16`. The current stored CXR/ViT sources explicitly support the 3x3/252 side but do not yet define the 4x4/576 map, so this remains unpromoted.
 
 This file is a repository freeze marker, not a DOI publication record.
+
+
+## Gate-discovered notation correction
+
+Claude's independent ROTOR gate found an off-by-one in the first booklet writeup, not in the completeness theorem.
+
+Frozen convention:
+
+- `K` = number of selected positions/states.
+- `m=K-1` = number of movements.
+- The canonical terminal counts movement slots, hence
+  `z=m-h-[a>0]-[b>0]=(K-1)-h-[a>0]-[b>0]`.
+
+The earlier `z=K-h-...` wording is superseded. The theorem `F(c1)=F(c2) iff c1~c2` is unchanged.

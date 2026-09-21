@@ -2,7 +2,7 @@
 
 Frozen: 2026-09-22
 
-Status: **preprint drafts, not yet DOI-published**.
+Status: **preprint drafts, mathematically audited after revision; not yet DOI-published**.
 
 This record freezes the first coherent manuscript split of the post-five-paper MPRC collision results. It does not modify the published five-paper Dyadic Cubic Series.
 
@@ -84,3 +84,14 @@ P7 uses Eagon-Northcott only as standard determinantal-resolution machinery. The
 
 Reference:
 J. A. Eagon and D. G. Northcott, “Ideals defined by matrices and a certain complex associated with them,” Proc. Royal Soc. A 269 (1962), 188–204, DOI 10.1098/rspa.1962.0170.
+
+
+## Referee audit
+
+See `research/top-kpq/AUDIT_P6_P7.md`.
+
+Current publication gate:
+- mathematics: passed after revision;
+- novelty/prior-art review: hold;
+- TeX compile/PDF proofread: hold;
+- publication/DOI: hold.

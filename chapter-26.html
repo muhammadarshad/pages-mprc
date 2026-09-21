@@ -118,19 +118,30 @@
 </div>
 <p>Coordinate permutations commute with the uniform V₄ action, yielding the direct product.</p>
 </section>
-<section class="section"><div class="section-num">12 · Open Register</div><h2>What Remains <span class="accent">Open</span></h2>
+<hr>
+<section class="section"><div class="section-num">12 · Theorem</div><h2>Collision Presentation <span class="accent">Closure</span></h2>
+<div class="pull-quote"><p><strong>Theorem 26.5.</strong> The H(H−1) primitive collision quadrics form a Gröbner basis. Their initial ideal is X²+Y², the quotient has Hilbert series ((1+(H−1)t)²)/(1−t)², is Cohen–Macaulay and Koszul of Krull dimension 2 and projective dimension 2H−2, and its Betti polynomial is the square of the one-sign Eagon–Northcott polynomial.</p></div>
+<p>Each sign family is exactly the 2×2-minor ideal of a 2×H Hankel matrix with shared endpoints z and h. The Top-KPQ unique-terminal theorem supplies the normal-form interpretation: an irreducible monomial contains at most one positive interior variable and at most one negative interior variable. Thus the standard monomials are z^a h^b times 1, x_i, y_j, or x_i y_j.</p>
+<div class="eq-block">
+<div class="eq-row">in(I_H)= (x₁,…,x_{H−1})² + (y₁,…,y_{H−1})²</div>
+<div class="eq-row">Hilb(t)=((1+(H−1)t)²)/(1−t)²</div>
+<div class="eq-row">N_K=H[H(K−1)+2]</div>
+</div>
+<p>For one sign, the Eagon–Northcott quotient Betti numbers are β_i=i·C(H,i+1) with shift i+1. The positive and negative resolutions tensor over the shared free base k[z,h], so the full Betti polynomial factors as B_H(u,t)².</p>
+</section>
+<section class="section"><div class="section-num">13 · Open Register</div><h2>What Remains <span class="accent">Open</span></h2>
 <table class="data-table"><tr><th>Item</th><th>Status</th></tr>
 <tr><td>Top-KPQ completeness</td><td>PROVEN — closed</td></tr>
 <tr><td>Dense Z₂₅₆ collision ramification length 576</td><td>PROVEN — closed at the dense diagonal localization</td></tr>
 <tr><td>Unoriented P∈{0,H} sheet swap / Δ_T quotient</td><td>PROVEN — Theorem 26.3</td></tr>
 <tr><td>Metric-affine S_K × V₄ Q-space symmetry</td><td>PROVEN — Theorem 26.4</td></tr>
-<tr><td>Gröbner/Betti claims beyond the verified Hilbert function</td><td>Open audit</td></tr>
+<tr><td>Gröbner basis, Hilbert series and Betti factorization</td><td>PROVEN — Theorem 26.5</td></tr>
 <tr><td>Associated graded layer structure gr_𝔭</td><td>Open</td></tr>
 <tr><td>CXR structural law behind 252=4·7·9 and 576=4·9·16</td><td>Observation; not yet a theorem</td></tr>
 </table>
 </section><hr>
 
-<section class="section"><div class="section-num">13 · Provenance</div><h2>Frozen <span class="accent">Research Record</span></h2>
+<section class="section"><div class="section-num">14 · Provenance</div><h2>Frozen <span class="accent">Research Record</span></h2>
 <p>The collision theorem and audits were first frozen in the SILIQ/MPRC math ledger and verifier code before this booklet chapter was created. This chapter preserves the mathematical statement and its scope; it does not turn unaudited adjacent claims into consequences.</p>
 <div class="eq-block">
 <div class="eq-row"><a href="https://github.com/muhammadarshad/siliq-rotor/blob/7c99e8f85859e3d6294f0533dbe385fed3b31e44/MATH_LEDGER.md">Pinned MATH_LEDGER snapshot →</a></div>

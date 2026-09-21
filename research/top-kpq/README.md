@@ -114,7 +114,6 @@ The CXR work used `3x3` and `4x4` grids, making the transition `(4,7,9)->(4,9,16
 
 ## Open items
 
-- Gröbner/Betti claims beyond the independently verified Hilbert function.
 - Associated graded structure `gr_p` of the 576-level dense local ring.
 - Exact CXR structural map behind `252=4*7*9` and `576=4*9*16`.
 
@@ -166,3 +165,37 @@ where `Lambda=2L-KH`.
 
 Verifier:
 https://github.com/muhammadarshad/siliq-rotor/blob/master/model/motif/audit_qspace_symmetry.py
+
+
+## Theorem E — Collision presentation closure
+
+Let
+
+`S=k[z,h,x_1,...,x_(H-1),y_1,...,y_(H-1)]`
+
+with shared endpoints `x_0=y_0=z`, `x_H=y_H=h`.
+
+The primitive collision quadrics form the two Hankel-minor families
+
+`x_i x_j - x_(i-1)x_(j+1)`
+
+and
+
+`y_i y_j - y_(i-1)y_(j+1)`.
+
+Each sign family is the 2x2-minor ideal of a 2xH Hankel matrix. The Top-KPQ
+unique-terminal theorem orients these into a confluent quadratic Gröbner system, giving
+
+`in(I_H)=(x_1,...,x_(H-1))^2 + (y_1,...,y_(H-1))^2`.
+
+Consequences:
+
+- `Hilb(t)=((1+(H-1)t)^2)/(1-t)^2`.
+- Degree-K class count `N_K=H[H(K-1)+2]`.
+- Krull dimension `2`.
+- Cohen-Macaulay.
+- Projective dimension `2H-2`.
+- Koszul.
+- One-sign quotient Betti numbers `beta_i=i*C(H,i+1)`, shift `i+1`.
+- Full Betti polynomial `B_H(u,t)^2`, from tensoring the two Eagon-Northcott
+  resolutions over the shared free base `k[z,h]`.

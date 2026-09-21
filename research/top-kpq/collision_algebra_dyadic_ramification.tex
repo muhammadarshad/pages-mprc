@@ -131,11 +131,30 @@ quadrics per sign and therefore
 primitive quadrics in total. At $H=128$ the count is $16{,}256$.
 
 \section{Gröbner basis from collision confluence}
+Define a variable weight
+\[
+w(z)=H^2,\qquad w(h)=0,\qquad
+w(x_i)=w(y_i)=H^2-i^2\quad(1\le i\le H-1).
+\]
+Use a matrix monomial order whose first row is total degree, whose second row is the additive $w$-weight, and whose remaining rows give any lexicographic tie-breaker. The positive total-degree first row makes this a well-order. For every primitive source,
+\[
+w(x_i x_j)-w(x_{i-1}x_{j+1})
+=2(j-i+1)>0,
+\]
+and identically for the $y$ variables. Thus
+\[
+x_i x_j
+\]
+is the leading monomial of
+\[
+x_i x_j-x_{i-1}x_{j+1}.
+\]
+
 Orient
 \[
 x_i x_j\longrightarrow x_{i-1}x_{j+1}
 \]
-and similarly for the $y$ family. The Top-KPQ collision theorem provides a strictly increasing integer potential and a unique terminal for every collision class. Therefore the induced monomial rewriting is terminating and confluent.
+and similarly for the $y$ family. The Top-KPQ collision theorem provides a strictly increasing squared-magnitude potential and a unique terminal for every collision class. Therefore the induced monomial rewriting is terminating and confluent for the displayed monomial order.
 
 An irreducible monomial contains at most one ordinary positive interior variable and at most one ordinary negative interior variable. Thus the standard monomials are exactly
 \[
@@ -216,7 +235,19 @@ Thus $A_H$ is Cohen--Macaulay. Since $S$ has $2H$ variables,
 The defining Gröbner basis is quadratic, so the standard graded algebra is Koszul.
 
 \section{Betti polynomial}
-For one sign, the quotient by the maximal minors of the $2\times H$ Hankel matrix has the Eagon--Northcott resolution \cite{EagonNorthcott1962}. The quotient Betti numbers are
+For one sign, let
+\[
+S_x=B[x_1,\ldots,x_{H-1}],\qquad R_x=S_x/I_+.
+\]
+The standard-monomial description shows that $R_x$ is finite free of rank $H$ over $B$, hence
+\[
+\dim R_x=2.
+\]
+Since $\dim S_x=H+1$, the minor ideal has height
+\[
+\operatorname{ht} I_+=H-1,
+\]
+which is the expected height of the maximal-minor ideal of a $2\times H$ matrix. Therefore the Eagon--Northcott complex is exact and gives the minimal resolution \cite{EagonNorthcott1962}. The quotient Betti numbers are
 \[
 \beta_i=i\binom H{i+1},
 \qquad 1\le i\le H-1,

@@ -114,8 +114,6 @@ The CXR work used `3x3` and `4x4` grids, making the transition `(4,7,9)->(4,9,16
 
 ## Open items
 
-- Unoriented `P in {0,H}` sheet swap / `Delta_T/Z2` quotient.
-- Full `S_K x V4` Q-space symmetry audit.
 - Gröbner/Betti claims beyond the independently verified Hilbert function.
 - Associated graded structure `gr_p` of the 576-level dense local ring.
 - Exact CXR structural map behind `252=4*7*9` and `576=4*9*16`.
@@ -123,3 +121,48 @@ The CXR work used `3x3` and `4x4` grids, making the transition `(4,7,9)->(4,9,16
 ## Booklet
 
 See [Chapter 26 — Top-KPQ Collision Geometry](../../chapter-26.html).
+
+
+## Theorem C — Self-conjugate sheet quotient
+
+On `P=0` or `P=H`, charge conjugation `C(e)=-e` stays in the same `(P,Q)`
+fiber and acts by
+
+`(eta+,eta-,eta_H) -> (eta-,eta+,eta_H)`.
+
+Hence the unoriented sheet is exactly `Delta_T/Z2`.
+
+For the unrestricted simplex the orbit count is
+
+`( C(T+2,2) + floor(T/2) + 1 ) / 2`.
+
+The K-admissible simplex is invariant under the same involution.
+
+## Theorem D — Exact metric-affine Q-space symmetry
+
+For a uniform affine automorphism `f(e)=ae+b` of `Z_(2H)`, require globally either
+
+`D(f(e))=D(e)`
+
+or
+
+`D(f(e))=H-D(e)`.
+
+Then the only possibilities are
+
+`I, C:e->-e, A:e->e+H, AC`.
+
+Thus the ring group is exactly `V4`. K-coordinate permutations commute with it, so the
+stated metric-affine group is exactly
+
+`S_K x V4`.
+
+The induced aggregate action is
+
+- `C: P->-P, L->L, Lambda->Lambda`;
+- `A: P->P+KH, L->KH-L, Lambda->-Lambda`;
+
+where `Lambda=2L-KH`.
+
+Verifier:
+https://github.com/muhammadarshad/siliq-rotor/blob/master/model/motif/audit_qspace_symmetry.py

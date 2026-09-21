@@ -6,14 +6,14 @@
 </section><hr>
 
 <section class="section"><div class="section-num">01 · Frozen Fingerprint</div><h2>The <span class="accent">(K,P,Q)</span> Object</h2>
-<p>Let c be a temporally ordered MPRC selection on Z₂H. For the MPRC ring H=128 and 2H=256. Let its movement multiset have cardinality K. Define</p>
+<p>Let c=(x₀,…,x_{K−1}) be a temporally ordered MPRC selection of K selected positions on Z₂H. For the MPRC ring H=128 and 2H=256. Its movement multiset has cardinality m=K−1. Define</p>
 <div class="eq-block">
 <div class="eq-row">P = (x_last − x_first) mod 2H</div>
 <div class="eq-row">D = min(P, 2H − P)</div>
 <div class="eq-row">L = Σ d_circle(x_i,x_{i+1})</div>
 <div class="eq-row">Q = (L − D)/2.</div>
 </div>
-<p>K is an observed cardinality, not a tuned Top-K hyperparameter. U, the sliding observer, changes the candidate domain; it is not part of the fingerprint of a fixed selection.</p>
+<p>K is the observed number of selected positions, not a tuned Top-K hyperparameter; m=K−1 is the number of movements. U, the sliding observer, changes the candidate domain; it is not part of the fingerprint of a fixed selection.</p>
 </section><hr>
 
 <section class="section"><div class="section-num">02 · Primitive Collision Law</div><h2>The Native <span class="accent">Repartition</span></h2>
@@ -32,7 +32,7 @@
 <div class="eq-block"><div class="eq-row">Ψ = Σ D(e)².</div></div>
 <p>A move (i,j)→(i−1,j+1) changes the potential by</p>
 <div class="eq-block"><div class="eq-row">(i−1)²+(j+1)²−i²−j² = 2(j−i+1) ≥ 2.</div></div>
-<p>Ψ is integer and bounded above by KH², so every oriented rewrite sequence terminates. A terminal multiset contains at most one ordinary positive magnitude and at most one ordinary negative magnitude; all remaining entries are 0 or H. The invariants force that terminal uniquely.</p>
+<p>Ψ is integer and bounded above by mH², so every oriented rewrite sequence terminates. A terminal multiset contains at most one ordinary positive magnitude and at most one ordinary negative magnitude; all remaining entries are 0 or H. The invariants force that terminal uniquely.</p>
 </section><hr>
 
 <section class="section"><div class="section-num">04 · Canonical Terminal</div><h2>Closed Form in <span class="accent">(a,b,h,z)</span></h2>
@@ -41,7 +41,7 @@
 <div class="eq-row">a = ((L+P)/2) mod H</div>
 <div class="eq-row">b = ((L−P)/2) mod H</div>
 <div class="eq-row">h = (L−a−b)/H</div>
-<div class="eq-row">z = K−h−[a&gt;0]−[b&gt;0].</div>
+<div class="eq-row">z = m−h−[a&gt;0]−[b&gt;0] = (K−1)−h−[a&gt;0]−[b&gt;0].</div>
 </div>
 <p>Hence every (K,P,Q) fiber has one irreducible normal form. Two selections with the same fingerprint reduce to the same terminal and are therefore in the same undirected rewrite component.</p>
 </section><hr>

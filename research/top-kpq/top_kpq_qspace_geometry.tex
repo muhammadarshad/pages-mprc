@@ -1,0 +1,430 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{array}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Fp}{\mathbb{F}_2}
+\newcommand{\D}{\operatorname{D}}
+\newcommand{\1}{\mathbf{1}}
+
+\title{\textbf{Top-KPQ Completeness and Q-Space Geometry on Even Cyclic Rings}\\
+Exact Collision Classes, Canonical Terminals, and Metric-Affine Symmetry}
+\author{Muhammad Arshad}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $R_H=\Z/(2H)\Z$ and let $c=(x_0,\ldots,x_{K-1})$ be a temporally ordered selection of $K$ ring positions. Its $m=K-1$ movements are $e_t=x_{t+1}-x_t$. We define the fingerprint
+\[
+F(c)=(K,P,Q),\qquad
+P=x_{K-1}-x_0,\qquad
+Q=\frac{L-\D(P)}2,
+\]
+where $L=\sum_t \D(e_t)$ and $\D$ is circular distance. Under the primitive same-sign repartitions
+\[
+\{+i,+j\}\leftrightarrow\{+(i-1),+(j+1)\},
+\qquad
+\{-i,-j\}\leftrightarrow\{-(i-1),-(j+1)\},
+\]
+together with temporal permutation, we prove that $(K,P,Q)$ is a complete invariant: two selections lie in the same collision class if and only if their fingerprints agree. Every class has a unique terminal described by four integers $(a,b,h,z)$. The same data induce an exact integer Q-space simplex, an exact minimum realizable order $K^\ast$, a $\Z_2$ quotient on the self-conjugate displacement sheets $P\in\{0,H\}$, and the metric-affine symmetry group $S_m\times V_4$. The MPRC specialization is $H=128$, i.e. $R_H=\Z_{256}$. Exhaustive computations are retained as regression evidence but are not substituted for the proofs.
+\end{abstract}
+
+\noindent\textbf{Keywords:} cyclic ring; discrete geometry; rewrite system; complete invariant; canonical form; Q-space; MPRC; $\Z_{256}$.
+
+\medskip
+\noindent\textbf{Reproducibility.}
+The exact-integer reference gates are archived in the public \texttt{siliq-rotor} repository; no floating-point arithmetic is required for the theorem checks.
+
+\section{Introduction}
+This paper studies a finite collision geometry on the even cycle $R_H=\Z/(2H)\Z$. The motivating case is the MPRC ring $\Z_{256}$, but the principal statements are formulated for general $H$.
+
+The symbol $K$ is not a tunable Top-K hyperparameter. It is the observed number of selected positions in a temporally ordered word. A $K$-position word contains
+\[
+m=K-1
+\]
+movements. The problem is to classify such movement data under a native local repartition law.
+
+The central result is
+\[
+F(c_1)=F(c_2)\quad\Longleftrightarrow\quad c_1\sim c_2.
+\]
+Thus $(K,P,Q)$ does not merely survive the rewrites; it exactly labels their connected components.
+
+\paragraph{Contributions.}
+\begin{enumerate}[leftmargin=*]
+\item We prove termination of the oriented primitive collision system by an integer potential.
+\item We derive the unique terminal form $(a,b,h,z)$ and correct the slot count using $m=K-1$.
+\item We prove that $(K,P,Q)$ is a complete invariant of the full rewrite congruence.
+\item We derive the static Q-space simplex and its exact $m$-admissibility condition.
+\item We derive the exact minimum selected-position order $K^\ast$.
+\item We prove that the self-conjugate sheets $P=0,H$ quotient by the involution $\eta^+\leftrightarrow\eta^-$.
+\item We classify the uniform metric-affine ring symmetries and obtain $S_m\times V_4$.
+\end{enumerate}
+
+\paragraph{Scope.}
+Completeness is relative to the stated collision congruence. It does not identify byte equality, semantic equality, address equality, or any finer histogram metric with KPQ equality.
+
+\section{Ring geometry and the frozen fingerprint}
+For $e\in R_H$, define
+\[
+\D(e)=\min(e\bmod 2H,\,(-e)\bmod 2H),
+\]
+so $0\le \D(e)\le H$.
+
+Let
+\[
+c=(x_0,\ldots,x_{K-1})
+\]
+be a temporally ordered selection and put
+\[
+m=K-1,\qquad e_t=x_{t+1}-x_t\pmod{2H}.
+\]
+Define
+\[
+P=\sum_{t=0}^{m-1}e_t=x_{K-1}-x_0\pmod{2H},
+\]
+\[
+L=\sum_{t=0}^{m-1}\D(e_t),\qquad d=\D(P).
+\]
+On an even cycle, $L-d$ is even, so
+\[
+Q=\frac{L-d}{2}\in\Z_{\ge0}.
+\]
+
+\begin{definition}[Top-KPQ fingerprint]
+The frozen fingerprint of $c$ is
+\[
+F(c)=(K,P,Q).
+\]
+Here $K$ counts selected positions, while $m=K-1$ counts movement slots.
+\end{definition}
+
+\section{Primitive collision relations}
+Write ordinary movements as $+r$ or $-r$, $1\le r\le H-1$. The states $0$ and $H$ are sign-free. The primitive same-sign relations are
+\[
+\{+i,+j\}\leftrightarrow\{+(i-1),+(j+1)\},
+\]
+\[
+\{-i,-j\}\leftrightarrow\{-(i-1),-(j+1)\},
+\]
+for $1\le i\le j\le H-1$ when the resulting magnitudes are legal. Temporal permutation of movement slots is also admitted.
+
+Each primitive move preserves $m$, the signed sum $P$, and the length $L$. Hence it preserves $Q$.
+
+\section{Termination}
+Define
+\[
+\Psi(e_1,\ldots,e_m)=\sum_{r=1}^m \D(e_r)^2.
+\]
+Orient each primitive relation as
+\[
+(i,j)\longmapsto(i-1,j+1).
+\]
+Then
+\[
+(i-1)^2+(j+1)^2-i^2-j^2=2(j-i+1)\ge2.
+\]
+
+\begin{lemma}[Strict potential]
+Every oriented primitive rewrite strictly increases $\Psi$.
+\end{lemma}
+
+Since $\D(e_r)\le H$,
+\[
+\Psi\le mH^2.
+\]
+Therefore:
+
+\begin{corollary}[Termination]
+Every movement multiset reaches an irreducible terminal after finitely many oriented primitive rewrites.
+\end{corollary}
+
+\section{The terminal shape}
+An irreducible multiset cannot contain two ordinary positive magnitudes, since they would admit a positive repartition. The same holds on the negative side. Hence every terminal is of the form
+\[
+\{+a\}^{[a>0]}\cup\{-b\}^{[b>0]}\cup\{H\}^h\cup\{0\}^z,
+\]
+with $0\le a,b<H$.
+
+Let $P$ be represented by its residue in $\{0,\ldots,2H-1\}$. Define
+\[
+a=\left(\frac{L+P}{2}\right)\bmod H,\qquad
+b=\left(\frac{L-P}{2}\right)\bmod H.
+\]
+For a reachable class,
+\[
+h=\frac{L-a-b}{H}\in\Z_{\ge0}.
+\]
+The terminal counts movement slots, therefore
+\[
+\boxed{
+z=m-h-[a>0]-[b>0]
+=(K-1)-h-[a>0]-[b>0].
+}
+\]
+
+\begin{remark}[Gate-discovered notation correction]
+An earlier draft used $K$ rather than $m$ in the formula for $z$. That is off by one because $K$ counts positions and the terminal counts movements. The completeness theorem and the formulas for $(a,b,h)$ are unchanged.
+\end{remark}
+
+\begin{theorem}[Unique terminal]
+For every reachable $(K,P,Q)$ class, the above $(a,b,h,z)$ is the unique irreducible terminal.
+\end{theorem}
+
+\begin{proof}
+The invariants give $m=K-1$ and $L=2Q+\D(P)$. Any irreducible terminal has the stated shape. Its signed sum and total length force $a$ and $b$ modulo $H$; reachability forces the representatives in $[0,H)$ and makes $L-a-b$ a nonnegative multiple of $H$. This determines $h$, and the movement count then determines $z$.
+\end{proof}
+
+\section{Top-KPQ completeness}
+\begin{theorem}[Top-KPQ Completeness]\label{thm:complete}
+For two temporally ordered selections $c_1,c_2$,
+\[
+\boxed{
+F(c_1)=F(c_2)\iff c_1\sim c_2.
+}
+\]
+\end{theorem}
+
+\begin{proof}
+The reverse implication follows from invariance of $K,P,L$ under primitive rewrites and permutations.
+
+Conversely, suppose $F(c_1)=F(c_2)$. Then both selections have the same $m=K-1$, the same $P$, and the same
+\[
+L=2Q+\D(P).
+\]
+By termination, both reduce to irreducible terminals. By the unique-terminal theorem, those terminals are identical. Since the generating collision relations are undirected in the congruence, both selections lie in the same component.
+\end{proof}
+
+Thus the canonicalization map
+\[
+\mathcal C(c)=T(F(c))
+\]
+is exact for the stated collision congruence.
+
+\section{Static Q-space simplex}
+Fix a reachable $(P,Q)$ class and write $d=\D(P)$. Choose the endpoint orientation. Let $A$ denote total ordinary magnitude in that direction, $B$ the total ordinary magnitude in the opposite direction, and $h$ the number of half-turn movements.
+
+Define
+\[
+a=(Q+d)\bmod H,\qquad
+r=\left\lfloor\frac{Q+d}{H}\right\rfloor,
+\]
+\[
+b=Q\bmod H,\qquad
+s=\left\lfloor\frac QH\right\rfloor,
+\qquad
+T=r+s.
+\]
+Every member of the class has
+\[
+A=a+H\eta^+,\qquad
+B=b+H\eta^-,
+\]
+with
+\[
+\boxed{
+\eta^++\eta^-+\eta_H=T,\qquad \eta_H=h.
+}
+\]
+Hence the internal geometric coordinate lies on the integer simplex
+\[
+\Delta_T=\{(\eta^+,\eta^-,\eta_H)\in\Z_{\ge0}^3:
+\eta^++\eta^-+\eta_H=T\}.
+\]
+
+For $S\ge0$, put
+\[
+c_H(S)=
+\begin{cases}
+0,&S=0,\\[3pt]
+\left\lceil\dfrac{S}{H-1}\right\rceil,&S>0.
+\end{cases}
+\]
+
+\begin{theorem}[Exact admissibility]
+A simplex point is realizable with $m$ movement slots if and only if
+\[
+\boxed{
+c_H(A)+c_H(B)+h\le m.
+}
+\]
+\end{theorem}
+
+\section{Minimum realizable order}
+The canonical terminal uses
+\[
+m^\ast=T+[a>0]+[b>0]
+\]
+movement slots. Therefore the minimum selected-position count is
+\[
+\boxed{
+K^\ast=1+T+[a>0]+[b>0].
+}
+\]
+
+\section{Self-conjugate sheets}
+Let
+\[
+C(e)=-e\pmod{2H}.
+\]
+Then $\D(Ce)=\D(e)$, so $L$ and $Q$ are fixed while $P\mapsto-P$. The fixed displacement sheets are exactly
+\[
+P\in\{0,H\}.
+\]
+On either sheet, the base residues satisfy $a=b$. Conjugation swaps the oriented totals $A$ and $B$ and leaves the half-turn count fixed. Therefore
+\[
+(\eta^+,\eta^-,\eta_H)\mapsto(\eta^-,\eta^+,\eta_H).
+\]
+
+\begin{theorem}[Unoriented sheet quotient]
+On $P=0$ and $P=H$, the unoriented static Q-space is exactly
+\[
+\boxed{\Delta_T/\Z_2},
+\]
+where the nontrivial element swaps $\eta^+$ and $\eta^-$.
+\end{theorem}
+
+For the unrestricted simplex, Burnside gives
+\[
+\left|\Delta_T/\Z_2\right|
+=
+\frac12\left[
+\binom{T+2}{2}
++\left\lfloor\frac T2\right\rfloor+1
+\right].
+\]
+
+\section{Metric-affine symmetry}
+Consider a uniform affine ring automorphism
+\[
+f(e)=ae+b\pmod{2H},\qquad \gcd(a,2H)=1.
+\]
+Call $f$ metric-affine if globally either
+\[
+\D(f(e))=\D(e)
+\]
+or
+\[
+\D(f(e))=H-\D(e).
+\]
+
+\begin{theorem}[Exact ring symmetry]
+The metric-affine ring symmetry group is exactly
+\[
+\boxed{
+V_4=\{I,C,A,AC\},
+}
+\]
+where
+\[
+C(e)=-e,\qquad A(e)=e+H.
+\]
+\end{theorem}
+
+\begin{proof}
+In the preserving case, $e=0$ forces $b=0$ and $e=1$ forces $\D(a)=1$, hence $a=\pm1$. In the dual case, $e=0$ forces $b=H$; using $\D(x+H)=H-\D(x)$ at $e=1$ again gives $\D(a)=1$, hence $a=\pm1$.
+\end{proof}
+
+The uniform $V_4$ action commutes with arbitrary permutations of the $m$ movement coordinates. Therefore:
+
+\begin{corollary}[Full stated metric-affine group]
+\[
+\boxed{
+G_m=S_m\times V_4.
+}
+\]
+\end{corollary}
+
+Define
+\[
+\Lambda=2L-mH.
+\]
+Then
+\[
+C:\quad P\mapsto-P,\quad L\mapsto L,\quad \Lambda\mapsto\Lambda,
+\]
+while
+\[
+A:\quad P\mapsto P+mH,\quad L\mapsto mH-L,\quad \Lambda\mapsto-\Lambda.
+\]
+
+\section{Verification}
+The proof is analytical; finite computation serves as falsification and regression. The reference programs exhaust:
+\begin{itemize}[leftmargin=*]
+\item rewrite components versus $(K,P,Q)$ classes on small rings;
+\item strict potential increase;
+\item unique closed-form terminals;
+\item exact simplex coverage and $K^\ast$;
+\item the self-conjugate $\Z_2$ action;
+\item every affine automorphism in the tested rings.
+\end{itemize}
+
+For the MPRC ring $H=128$, every two-movement multiset is checked:
+\[
+\binom{257}{2}=32{,}896.
+\]
+Under the corrected convention this is the $K=3$ selected-position case.
+
+\section{Computational interpretation}
+Theorem~\ref{thm:complete} permits exact collision-class canonicalization. It does not erase finer equality relations. A runtime may use KPQ as an exact narrowing key only when the indexed equivalence is the collision congruence; exact byte or record equality must still decide individual candidates when required. Likewise, a metric defined only on a finer histogram fiber must not be extended across an entire KPQ class.
+
+\section{Limitations and open questions}
+This paper does not claim that KPQ equality is semantic equality, address equality, or universal identity. It does not identify the $252\to576$ arithmetic transition with a CXR grid lift. It also does not address the dyadic ramification of the collision algebra; that is treated separately.
+
+\section{Conclusion}
+The native even-cycle collision system admits an exact finite classification. The fingerprint
+\[
+(K,P,Q)
+\]
+is complete, every class has a unique terminal, the internal multiplicity has an exact simplex geometry, the self-conjugate sheets quotient by a single involution, and the metric-affine symmetry is exactly
+\[
+S_m\times V_4.
+\]
+No ranking score, fitted threshold, or probability simplex is required for this classification.
+
+\section*{Reproducibility record}
+The frozen theorem register is:
+\begin{center}
+\url{https://github.com/muhammadarshad/pages-mprc/tree/master/research/top-kpq}
+\end{center}
+The collision and symmetry gates are archived in:
+\begin{center}
+\url{https://github.com/muhammadarshad/siliq-rotor/tree/master/model/motif}
+\end{center}
+
+\begin{thebibliography}{9}
+\bibitem{ArshadSimplex}
+M. Arshad,
+\emph{Quantinion Simplex Cubic Decomposition over 2-Power Rings: Global Identifiability from Binary Contractions and Exact Bit Lifting},
+Zenodo, 2026.
+doi:10.5281/zenodo.22850767.
+
+\bibitem{ArshadCapacity}
+M. Arshad,
+\emph{Exact Free Capacity of Symmetric Rank-One Cubic Dictionaries over Dyadic Rings},
+Zenodo, 2026.
+doi:10.5281/zenodo.22850810.
+
+\bibitem{ArshadOperator}
+M. Arshad,
+\emph{An Eight-State Operator and Transpose Geometry over Dyadic Rings: Trace-Zero Modules, Mixed-Radix Addressing, and Tensor-Lift Kernels},
+Zenodo, 2026.
+doi:10.5281/zenodo.22850830.
+\end{thebibliography}
+
+\end{document}

@@ -75,7 +75,7 @@ This number is derived internally from the $\Z_{256}$ relation and is not insert
 \end{enumerate}
 
 \paragraph{Novelty boundary.}
-The field-side determinantal facts are classical: the one-sign ideal is the rational-normal-curve Hankel minor ideal, its Eagon--Northcott resolution is standard \cite{EagonNorthcott1962}, and combinatorial/chip-firing treatments of rational normal curves and their Gröbner degenerations already exist \cite{KarkiManjunath2023}. Likewise, once the dense factor is identified with the cyclic group ring $(\Z/2^8\Z)[C_{2^7}]$, the nilpotency index $576$ is a specialization of the classical augmentation-ideal formula; modern statements include \cite{Schauz2021}, building on earlier polynomial-periodicity results such as \cite{Wilson2006}. The contribution asserted here is therefore the MPRC-specific identification and synthesis: deriving these classical algebraic objects from the primitive collision law, proving the exact shared-endpoint factorization, and giving a self-contained MPRC-native weight proof of the $\Z_{256}$ specialization.
+The field-side determinantal facts are classical: the one-sign ideal is the rational-normal-curve Hankel minor ideal, its Eagon--Northcott resolution is standard \cite{EagonNorthcott1962}, and combinatorial/chip-firing treatments of rational normal curves and their Gröbner degenerations already exist \cite{KarkiManjunath2023}. Likewise, once the dense factor is identified with the cyclic group ring $(\Z/2^8\Z)[C_{2^7}]$, the nilpotency index $576$ of the augmentation generator $u-1$ is a specialization of the classical cyclic augmentation-ideal formula; modern statements include \cite{Schauz2021}, building on earlier polynomial-periodicity results such as \cite{Wilson2006}. Our larger ideal is the maximal/Jacobson radical $(2,u-1)$. The classical augmentation formula alone does not establish that adjoining the coefficient radical $2$ leaves its nilpotency index unchanged; that is supplied here by the weight argument. We therefore claim no novelty for the general cyclic augmentation formula itself. The contribution asserted here is the MPRC-specific identification and synthesis, together with the exact full-radical calculation in this specialization.
 
 \section{The collision algebra}
 Let $k$ be a field and fix $H\ge2$. Introduce shared endpoint variables $z,h$, positive variables $x_1,\ldots,x_{H-1}$, and negative variables $y_1,\ldots,y_{H-1}$. Set
@@ -480,9 +480,17 @@ T_8=D[u]/(u^{128}-1)
 \]
 is the group ring
 \[
-D[C_{128}],
+D[C_{128}].
 \]
-and $\varepsilon=u-1$ generates its augmentation ideal together with $2$. Thus the exact index above is not a new general group-ring formula. For
+Its augmentation ideal is
+\[
+I_{\mathrm{aug}}=(u-1)=(\varepsilon),
+\]
+whereas
+\[
+\mathfrak m=(2,\varepsilon)
+\]
+is the larger maximal/Jacobson radical of $T_8$. Thus the classical augmentation result below applies directly to $(\varepsilon)$, not automatically to the full $\mathfrak m$. For
 \[
 (\Z/p^\beta\Z)[C_{p^\alpha}],
 \]
@@ -496,9 +504,13 @@ p=2,\quad \alpha=7,\quad \beta=8,
 \]
 this gives
 \[
-\nu=(8+1)2^6=576.
+\nu(I_{\mathrm{aug}})= (8+1)2^6=576.
 \]
-The preceding MPRC weight argument is therefore an independent derivation of the same specialization after the collision algebra has been identified with this cyclic factor.
+This independently confirms
+\[
+\varepsilon^{575}\ne0,\qquad \varepsilon^{576}=0.
+\]
+The preceding MPRC weight argument does more in the present setting: it proves that every mixed generator $2^a\varepsilon^{576-a}$ also vanishes, so the larger radical $\mathfrak m=(2,\varepsilon)$ has the same exact index $576$.
 
 \section{The number $576$}
 The proof yields the exact terminal boundary

@@ -8,7 +8,8 @@ This register secures the post-five-paper MPRC collision results in the booklet 
 
 For a temporally ordered selection on `Z_(2H)`, with MPRC specialization `H=128`:
 
-- `K`: cardinality/order of the selected movement multiset. It is not a tuned Top-K hyperparameter.
+- `K`: number of selected positions/states in the temporally ordered selection. It is not a tuned Top-K hyperparameter.
+- `m = K-1`: number of movement slots in that selection.
 - `P = (x_last - x_first) mod 2H`.
 - `D = min(P, 2H-P)`.
 - `L = Σ d_circle(x_i,x_{i+1})`.
@@ -17,6 +18,14 @@ For a temporally ordered selection on `Z_(2H)`, with MPRC specialization `H=128`
   - `{+i,+j} <-> {+(i-1),+(j+1)}`
   - `{-i,-j} <-> {-(i-1),-(j+1)}`
   for `1 <= i <= j <= H-1`, with `0` and `H` sign-free.
+
+## Notation correction — gate-discovered
+
+The frozen Top-K quantity `K` counts selected positions. A `K`-position word has `m=K-1` movements. The canonical terminal `(a,b,h,z)` counts movement slots, so its zero count is
+
+`z = m-h-[a>0]-[b>0] = (K-1)-h-[a>0]-[b>0]`.
+
+An earlier booklet draft wrote `K` in this slot-count formula, which was off by one. The theorem and `(a,b,h)` formulas are unchanged.
 
 ## Theorem A — Top-KPQ Completeness
 
@@ -31,13 +40,13 @@ Equivalently,
 1. Every primitive rewrite preserves `K,P,L`, hence `Q`.
 2. Orient rewrites toward increasing `Psi = Σ D(e)^2`.
 3. Each forward rewrite increases `Psi` by `2(j-i+1) >= 2`.
-4. `Psi` is integer and bounded above by `K H^2`, hence every oriented sequence terminates.
+4. `Psi` is integer and bounded above by `m H^2`, hence every oriented sequence terminates.
 5. Every terminal multiset has at most one ordinary positive magnitude and at most one ordinary negative magnitude; all remaining entries are `0` or `H`.
 6. The invariants determine the terminal uniquely:
    - `a=((L+P)/2) mod H`
    - `b=((L-P)/2) mod H`
    - `h=(L-a-b)/H`
-   - `z=K-h-[a>0]-[b>0]`.
+   - `z=m-h-[a>0]-[b>0]=(K-1)-h-[a>0]-[b>0]`.
 7. Thus each `(K,P,Q)` fiber is exactly one rewrite component.
 
 ### Regression record
@@ -48,7 +57,7 @@ Pinned implementation snapshot:
 - https://github.com/muhammadarshad/siliq-rotor/blob/7c99e8f85859e3d6294f0533dbe385fed3b31e44/model/motif/audit_collision.py
 - https://github.com/muhammadarshad/siliq-rotor/blob/7c99e8f85859e3d6294f0533dbe385fed3b31e44/model/motif/audit_simplex.py
 
-Finite audit: exhaustive small `H`, edge cases by name, and all 32,896 `H=128, K=2` multisets. These are regression evidence; the general theorem is the termination + unique-terminal proof.
+Finite audit: exhaustive small `H`, edge cases by name, and all 32,896 `H=128, m=2` movement multisets (equivalently `K=3` selected-position words). These are regression evidence; the general theorem is the termination + unique-terminal proof.
 
 ## Theorem B — Dense MPRC Collision Ramification
 

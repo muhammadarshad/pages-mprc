@@ -163,14 +163,14 @@ Then the only possibilities are
 Thus the ring group is exactly `V4`. K-coordinate permutations commute with it, so the
 stated metric-affine group is exactly
 
-`S_K x V4`.
+`S_m x V4`.
 
 The induced aggregate action is
 
 - `C: P->-P, L->L, Lambda->Lambda`;
-- `A: P->P+KH, L->KH-L, Lambda->-Lambda`;
+- `A: P->P+mH, L->mH-L, Lambda->-Lambda`;
 
-where `Lambda=2L-KH`.
+where `Lambda=2L-mH`.
 
 Verifier:
 https://github.com/muhammadarshad/siliq-rotor/blob/master/model/motif/audit_qspace_symmetry.py
@@ -200,7 +200,7 @@ unique-terminal theorem orients these into a confluent quadratic Gröbner system
 Consequences:
 
 - `Hilb(t)=((1+(H-1)t)^2)/(1-t)^2`.
-- Degree-K class count `N_K=H[H(K-1)+2]`.
+- Degree-K class count `N_m=H[H(m-1)+2]`.
 - Krull dimension `2`.
 - Cohen-Macaulay.
 - Projective dimension `2H-2`.

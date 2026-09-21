@@ -1,6 +1,6 @@
 # Top-KPQ Booklet Freeze Record
 
-Frozen: 2026-09-21
+Frozen: 2026-09-21 · updated after M-010/M-011
 
 ## Source mathematics
 
@@ -31,12 +31,15 @@ Frozen as proved:
 1. Top-KPQ completeness for the stated primitive MPRC rewrite congruence.
 2. Dense-diagonal Z256 collision ramification: `p^575 != 0`, `p^576 = 0`.
 
-Not frozen as theorems:
+Frozen as additional theorems after the first record:
 
-- unoriented sheet quotient / Claim D;
-- full Q-space symmetry audit;
-- higher Groebner/Betti claims beyond the verified Hilbert function;
-- associated graded layer structure;
-- CXR identification of `252=4*7*9` and `576=4*9*16`.
+3. Self-conjugate sheet quotient: on `P in {0,H}`, the unoriented simplex is `Delta_T/Z2`.
+4. Exact metric-affine symmetry: `S_K x V4` for coordinate permutations and the four uniform affine ring maps `I,C,A,AC`.
+5. Collision presentation closure: quadratic Groebner basis, initial ideal `X^2+Y^2`, Hilbert series, Cohen-Macaulay/Koszul status, projective dimension, and squared Eagon-Northcott Betti polynomial.
+
+Still open:
+
+- the full associated-graded layer algebra `gr_p` (exact filtration data obtained; analytic presentation not yet frozen);
+- the CXR identification of `252=4*7*9` and `576=4*9*16`. The current stored CXR/ViT sources explicitly support the 3x3/252 side but do not yet define the 4x4/576 map, so this remains unpromoted.
 
 This file is a repository freeze marker, not a DOI publication record.

@@ -79,6 +79,9 @@ Thus $(K,P,Q)$ does not merely survive the rewrites; it exactly labels their con
 \paragraph{Scope.}
 Completeness is relative to the stated collision congruence. It does not identify byte equality, semantic equality, address equality, or any finer histogram metric with KPQ equality.
 
+\paragraph{Literature boundary.}
+The one-sign move $(i,j)\mapsto(i-1,j+1)$ is an elementary unit-transfer operation closely related to classical majorization theory \cite{MarshallOlkinArnold2011}. Rational-normal-curve toric ideals also admit combinatorial and chip-firing interpretations \cite{KarkiManjunath2023}. We therefore do not claim invention of unit-transfer dynamics or of rational-normal-curve normal forms. The contribution asserted here is the exact signed even-cycle synthesis with the frozen $(K,P,Q)$ coordinates, terminal formula, Q-space simplex, and metric-affine action.
+
 \section{Ring geometry and the frozen fingerprint}
 For $e\in R_H$, define
 \[
@@ -187,7 +190,28 @@ For every reachable $(K,P,Q)$ class, the above $(a,b,h,z)$ is the unique irreduc
 \end{theorem}
 
 \begin{proof}
-The invariants give $m=K-1$ and $L=2Q+\D(P)$. Any irreducible terminal has the stated shape. Its signed sum and total length force $a$ and $b$ modulo $H$; reachability forces the representatives in $[0,H)$ and makes $L-a-b$ a nonnegative multiple of $H$. This determines $h$, and the movement count then determines $z$.
+The invariants give $m=K-1$ and $L=2Q+\D(P)$. Any irreducible terminal has the stated shape. For such a terminal,
+\[
+L=a+b+hH
+\]
+and, for some integer $q$,
+\[
+P=a-b+hH+2Hq,
+\]
+where $P$ is the chosen representative in $\{0,\ldots,2H-1\}$. Hence
+\[
+\frac{L+P}{2}=a+H(h+q),\qquad
+\frac{L-P}{2}=b-Hq.
+\]
+Reduction modulo $H$ therefore forces the stated residues $a$ and $b$ uniquely in $[0,H)$. Then
+\[
+h=\frac{L-a-b}{H}
+\]
+is forced and is a nonnegative integer for every reachable class. Finally the movement count gives
+\[
+z=m-h-[a>0]-[b>0].
+\]
+Thus no two distinct irreducible terminals can share the same $(m,P,L)$, hence not the same $(K,P,Q)$.
 \end{proof}
 
 \section{Top-KPQ completeness}
@@ -217,7 +241,7 @@ Thus the canonicalization map
 is exact for the stated collision congruence.
 
 \section{Static Q-space simplex}
-Fix a reachable $(P,Q)$ class and write $d=\D(P)$. Choose the endpoint orientation. Let $A$ denote total ordinary magnitude in that direction, $B$ the total ordinary magnitude in the opposite direction, and $h$ the number of half-turn movements.
+Fix a reachable $(P,Q)$ class and write $d=\D(P)$. Represent $P$ in $\{0,\ldots,2H-1\}$ and choose the endpoint direction to be positive when $0\le P\le H$ and negative when $H<P<2H$; at $P=0,H$ this is a convention only. Let $A$ denote total ordinary magnitude in that chosen endpoint direction, $B$ the total ordinary magnitude in the opposite direction, and $h$ the number of half-turn movements.
 
 Define
 \[
@@ -230,15 +254,34 @@ s=\left\lfloor\frac QH\right\rfloor,
 \qquad
 T=r+s.
 \]
-Every member of the class has
+For every member of the class, the oriented signed displacement relation gives
+\[
+A-B+hH\equiv d\pmod{2H},
+\]
+while
+\[
+A+B+hH=L=2Q+d.
+\]
+Adding and subtracting these congruences yields
+\[
+A\equiv Q+d\pmod H,\qquad B\equiv Q\pmod H.
+\]
+Because $A,B\ge0$, there are unique nonnegative integers $\eta^+,\eta^-$ such that
 \[
 A=a+H\eta^+,\qquad
-B=b+H\eta^-,
+B=b+H\eta^-.
 \]
-with
+Moreover,
+\[
+\eta^++\eta^-+h
+=\frac{L-a-b}{H}
+=\left\lfloor\frac{Q+d}{H}\right\rfloor+\left\lfloor\frac QH\right\rfloor
+=T.
+\]
+Thus, with $\eta_H=h$,
 \[
 \boxed{
-\eta^++\eta^-+\eta_H=T,\qquad \eta_H=h.
+\eta^++\eta^-+\eta_H=T.
 }
 \]
 Hence the internal geometric coordinate lies on the integer simplex
@@ -265,12 +308,27 @@ c_H(A)+c_H(B)+h\le m.
 \]
 \end{theorem}
 
+\begin{proof}
+Necessity is immediate: each ordinary movement has magnitude at most $H-1$, so total directional magnitude $A$ requires at least $c_H(A)$ ordinary slots, total opposite magnitude $B$ requires at least $c_H(B)$ slots, and the $h$ half-turns require $h$ further slots.
+
+For sufficiency, any positive integer $S$ can be written as a sum of exactly $c_H(S)$ integers in $\{1,\ldots,H-1\}$: take as many $H-1$ terms as possible and one final remainder when needed. Apply this independently to $A$ and $B$, add the prescribed $h$ half-turns, and fill any unused slots with zero movements. The resulting multiset has the required $m,A,B,h$, hence the required $P$ and $L$, and therefore the required $(K,P,Q)$. By Theorem~\ref{thm:complete}, it belongs to the target collision class.
+\end{proof}
+
 \section{Minimum realizable order}
-The canonical terminal uses
+For $0\le a,b<H$ and $\eta\ge0$,
 \[
-m^\ast=T+[a>0]+[b>0]
+c_H(a+H\eta)\ge \eta+[a>0],
 \]
-movement slots. Therefore the minimum selected-position count is
+and similarly for $b$. Hence every admissible simplex point satisfies
+\[
+m\ge \eta^++\eta^-+\eta_H+[a>0]+[b>0]
+=T+[a>0]+[b>0].
+\]
+The canonical terminal attains equality by taking $\eta^+=\eta^-=0$ and $\eta_H=T$. Therefore
+\[
+m^\ast=T+[a>0]+[b>0],
+\]
+and the minimum selected-position count is
 \[
 \boxed{
 K^\ast=1+T+[a>0]+[b>0].
@@ -310,7 +368,7 @@ For the unrestricted simplex, Burnside gives
 \]
 
 \section{Metric-affine symmetry}
-Consider a uniform affine ring automorphism
+Consider a uniform affine bijection of the cyclic movement set
 \[
 f(e)=ae+b\pmod{2H},\qquad \gcd(a,2H)=1.
 \]
@@ -324,7 +382,7 @@ or
 \]
 
 \begin{theorem}[Exact ring symmetry]
-The metric-affine ring symmetry group is exactly
+The metric-affine movement symmetry group is exactly
 \[
 \boxed{
 V_4=\{I,C,A,AC\},
@@ -340,7 +398,7 @@ C(e)=-e,\qquad A(e)=e+H.
 In the preserving case, $e=0$ forces $b=0$ and $e=1$ forces $\D(a)=1$, hence $a=\pm1$. In the dual case, $e=0$ forces $b=H$; using $\D(x+H)=H-\D(x)$ at $e=1$ again gives $\D(a)=1$, hence $a=\pm1$.
 \end{proof}
 
-The uniform $V_4$ action commutes with arbitrary permutations of the $m$ movement coordinates. Therefore:
+For $m\ge1$, the uniform diagonal $V_4$ action commutes with arbitrary permutations of the $m$ movement coordinates, and the two actions intersect trivially. Therefore:
 
 \begin{corollary}[Full stated metric-affine group]
 \[
@@ -425,6 +483,17 @@ M. Arshad,
 \emph{An Eight-State Operator and Transpose Geometry over Dyadic Rings: Trace-Zero Modules, Mixed-Radix Addressing, and Tensor-Lift Kernels},
 Zenodo, 2026.
 doi:10.5281/zenodo.22850830.
+
+\bibitem{MarshallOlkinArnold2011}
+A. W. Marshall, I. Olkin, and B. C. Arnold,
+\emph{Inequalities: Theory of Majorization and Its Applications},
+2nd ed., Springer, 2011.
+doi:10.1007/978-0-387-68276-1.
+
+\bibitem{KarkiManjunath2023}
+R. Karki and M. Manjunath,
+\emph{Rational Normal Curves, Chip Firing and Free Resolutions},
+arXiv:2301.09104, 2023.
 \end{thebibliography}
 
 \end{document}

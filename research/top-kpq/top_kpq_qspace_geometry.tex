@@ -104,7 +104,15 @@ P=\sum_{t=0}^{m-1}e_t=x_{K-1}-x_0\pmod{2H},
 \[
 L=\sum_{t=0}^{m-1}\D(e_t),\qquad d=\D(P).
 \]
-On an even cycle, $L-d$ is even, so
+For every residue $e$, the two representatives $e$ and $2H-e$ have the same parity, so
+\[
+\D(e)\equiv e\pmod2.
+\]
+Therefore
+\[
+L\equiv\sum_t e_t\equiv P\equiv\D(P)\pmod2.
+\]
+The circular metric also satisfies the triangle inequality, hence $L\ge\D(P)$. Consequently
 \[
 Q=\frac{L-d}{2}\in\Z_{\ge0}.
 \]
@@ -319,7 +327,11 @@ For $0\le a,b<H$ and $\eta\ge0$,
 \[
 c_H(a+H\eta)\ge \eta+[a>0],
 \]
-and similarly for $b$. Hence every admissible simplex point satisfies
+and similarly for $b$: if $a=0$ this is immediate, while if $a>0$ then
+\[
+\frac{a+H\eta}{H-1}=\eta+\frac{a+\eta}{H-1}>\eta,
+\]
+so the ceiling is at least $\eta+1$. Hence every admissible simplex point satisfies
 \[
 m\ge \eta^++\eta^-+\eta_H+[a>0]+[b>0]
 =T+[a>0]+[b>0].
